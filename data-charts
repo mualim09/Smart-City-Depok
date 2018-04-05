@@ -1,0 +1,454 @@
+$(function(){
+
+            // for rs
+            var color = Chart.helpers.color;
+              var rsChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Rumah Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogoltsehat}} , {{$krukuttsehat}} , {{$meruyungtsehat}} , {{$limotsehat}} ]
+                }, {
+                  label: 'Rumah Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolsehat}} , {{$krukutsehat}} , {{$meruyungsehat}} , {{$limosehat}} ]
+                }]
+              };
+
+            $('#canvasrs').SippKlingCharts({
+                type        : 'bar',
+                chartData   : rsChartData,
+                titleText   : 'Data RS 2017',
+                ketId       : 'rs'
+            });
+
+
+
+
+
+            // for sarana air bersih
+              var sabChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Pompa Tangan Dangkal/Dalam/Listrik',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [19 , 24 , 18 , 25 ]
+                  
+                }, {
+                  label: 'Sumur Gali',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [27 , 18 , 38 , 19 ]
+                  
+                },{
+                  label: 'Sumur Gali Plus',
+                  backgroundColor: color(window.chartColors.gray).alpha(1).rgbString(),
+                  borderColor: window.chartColors.gray,
+                  borderWidth: 1,
+                  data: [10 , 40 , 30 , 29 ]
+                  
+                },{
+                  label: 'Perpipaan/PDAM',
+                  backgroundColor: color(window.chartColors.blue).alpha(1).rgbString(),
+                  borderColor: window.chartColors.blue,
+                  borderWidth: 1,
+                  data: [19 , 24 , 18 , 25 ]
+                  
+                },{
+                  label: 'Mata Air',
+                  backgroundColor: color(window.chartColors.yellow).alpha(1).rgbString(),
+                  borderColor: window.chartColors.yellow,
+                  borderWidth: 1,
+                  data: [10 , 40 , 30 , 29 ]
+                }]
+
+              };
+
+            $('#canvassab').SippKlingCharts({
+                type        : 'bar',
+                chartData   : sabChartData,
+                titleText   : 'Data Sarana Air Bersih 2017',
+                ketId       : 'sab'
+            });
+
+            
+
+            // pemantauan jentik berkala
+            var pjbChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [
+                {
+                  label: 'YA',
+                  backgroundColor: color(window.chartColors.red).alpha(0.9).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolypjb}} , {{$limoypjb}} , {{$meruyungypjb}} , {{$krukutypjb}}]
+                },
+                {
+                  label: 'TIDAK',
+                  backgroundColor: color(window.chartColors.green).alpha(0.9).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogoltpjb}} , {{$limotpjb}} , {{$meruyungtpjb}} , {{$krukuttpjb}} ]
+                }]
+            };
+
+            $('#canvaspjb').SippKlingCharts({
+                type        : 'bar',
+                chartData   : pjbChartData,
+                titleText   : 'Data PJB 2017',
+                ketId       : 'pjb'
+            });
+
+            // for spal
+            var color = Chart.helpers.color;
+              var spalChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Terbuka',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolterbuka}} , {{$krukutterbuka}} , {{$meruyungterbuka}} , {{$limoterbuka}} ]
+                }, {
+                  label: 'Tertutup',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogoltertutup}} , {{$krukuttertutup}} , {{$meruyungtertutup}} , {{$limotertutup}} ]
+                }]
+              };
+
+            $('#canvasspal').SippKlingCharts({
+                type        : 'bar',
+                chartData   : spalChartData,
+                titleText   : 'Data SPAL 2017',
+                ketId       : 'spal'
+            });
+
+//SAMPAH
+              var color = Chart.helpers.color;
+              var sampahChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Dipilah / Organik',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogoltpso}} , {{$krukuttpso}} , {{$meruyungtpso}} , {{$limotpso}} ]
+                }, {
+                  label: 'Tidak Dipilah / Dibuang',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogoltpsb}} , {{$krukuttpsb}} , {{$meruyungtpsb}} , {{$limotpsb}} ]
+                }]
+              };
+
+            $('#canvassampah').SippKlingCharts({
+                type        : 'bar',
+                chartData   : sampahChartData,
+                titleText   : 'Data Sampah 2017',
+                ketId       : 'sampah'
+            });
+
+            // for jamban
+            var color = Chart.helpers.color;
+              var jambanChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Kali',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolkali}} , {{$krukutkali}} , {{$meruyungkali}} , {{$limokali}} ]
+                },
+                {
+                  label: 'Koya / Empang',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolkoya}} , {{$krukutkoya}} , {{$meruyungkoya}} , {{$limokoya}} ]
+                },
+                {
+                  label: 'Helikopter',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolhel}} , {{$krukuthel}} , {{$meruyunghel}} , {{$limohel}} ]
+                }, {
+                  label: 'Septik Tank',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolst}} , {{$krukutst}} , {{$meruyungst}} , {{$limost}} ]
+                }]
+              };
+
+            $('#canvasjamban').SippKlingCharts({
+                type        : 'bar',
+                chartData   : jambanChartData,
+                titleText   : 'Data Jamban 2017',
+                ketId       : 'jamban'
+            });
+//============================================================PKL===============================
+            var color = Chart.helpers.color;
+              var pklChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Luar Gedung',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolpklluar}} , {{$krukutpklluar}} , {{$meruyungpklluar}} , {{$limopklluar}} ]
+                }, {
+                  label: 'Dalam Gedung',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolpkldalam}} , {{$krukutpkldalam}} , {{$meruyungpkldalam}} , {{$limopkldalam}} ]
+                }]
+              };
+
+            $('#canvaspkl').SippKlingCharts({
+                type        : 'bar',
+                chartData   : pklChartData,
+                titleText   : 'Data PKL 2017',
+                ketId       : 'pkl'
+            });
+//============================================================PKL===============================
+            var color = Chart.helpers.color;
+              var damChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Layak',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogoldamlayak}} , {{$krukutdamlayak}} , {{$meruyungdamlayak}} , {{$limodamlayak}} ]
+                }, {
+                  label: 'Tidak Layak',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogoldamtlayak}} , {{$krukutdamtlayak}} , {{$meruyungdamtlayak}} , {{$limodamtlayak}} ]
+                }]
+              };
+
+            $('#canvasdam').SippKlingCharts({
+                type        : 'bar',
+                chartData   : damChartData,
+                titleText   : 'Data DAM 2017',
+                ketId       : 'dam'
+            });
+//============================================================TMr===============================
+            var color = Chart.helpers.color;
+              var tmrChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Layak',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogoltmrlayak}} , {{$krukuttmrlayak}} , {{$meruyungtmrlayak}} , {{$limotmrlayak}} ]
+                }, {
+                  label: 'Tidak Layak',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogoltmrtlayak}} , {{$krukuttmrtlayak}} , {{$meruyungtmrtlayak}} , {{$limotmrtlayak}} ]
+                }]
+              };
+
+            $('#canvastmr').SippKlingCharts({
+                type        : 'bar',
+                chartData   : tmrChartData,
+                titleText   : 'Data Kuliner 2017',
+                ketId       : 'tmr'
+            });
+
+//============================================================TMPAT IBADAH===============================
+            var color = Chart.helpers.color;
+              var ibadahChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Layak',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolibadahlayak}} , {{$krukutibadahlayak}} , {{$meruyungibadahlayak}} , {{$limoibadahlayak}} ]
+                }, {
+                  label: 'Tidak Layak',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolibadahtlayak}} , {{$krukutibadahtlayak}} , {{$meruyungibadahtlayak}} , {{$limoibadahtlayak}} ]
+                }]
+              };
+
+            $('#canvasibadah').SippKlingCharts({
+                type        : 'bar',
+                chartData   : ibadahChartData,
+                titleText   : 'Data Tempat Ibadah 2017',
+                ketId       : 'ibadah'
+            });
+//=========================================================================Pasar
+            var color = Chart.helpers.color;
+              var pasarChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolpasartsehat}} , {{$krukutpasartsehat}} , {{$meruyungpasartsehat}} , {{$limopasartsehat}} ]
+                }, {
+                  label: 'Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolpasarsehat}} , {{$krukutpasarsehat}} , {{$meruyungpasarsehat}} , {{$limopasarsehat}} ]
+                }]
+              };
+
+            $('#canvaspasar').SippKlingCharts({
+                type        : 'bar',
+                chartData   : pasarChartData,
+                titleText   : 'Data Pasar 2017',
+                ketId       : 'pasar'
+            });
+
+
+
+
+
+            //=========================================================================SEKOLAH
+            var color = Chart.helpers.color;
+              var sekolahChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolsekolahtsehat}} , {{$krukutsekolahtsehat}} , {{$meruyungsekolahtsehat}} , {{$limosekolahtsehat}} ]
+                }, {
+                  label: 'Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolsekolahsehat}} , {{$krukutsekolahsehat}} , {{$meruyungsekolahsehat}} , {{$limosekolahsehat}} ]
+                }]
+              };
+
+            $('#canvassekolah').SippKlingCharts({
+                type        : 'bar',
+                chartData   : sekolahChartData,
+                titleText   : 'Data Sekolah 2017',
+                ketId       : 'sekolah'
+            });
+
+
+
+
+
+
+            //=========================================================================PESANTREN
+            var color = Chart.helpers.color;
+              var pesantrenChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolpstsehat}} , {{$krukutpstsehat}} , {{$meruyungpstsehat}} , {{$limopstsehat}} ]
+                }, {
+                  label: 'Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolpssehat}} , {{$krukutpssehat}} , {{$meruyungpssehat}} , {{$limopssehat}} ]
+                }]
+              };
+
+            $('#canvaspesantren').SippKlingCharts({
+                type        : 'bar',
+                chartData   : pesantrenChartData,
+                titleText   : 'Data Pesantren 2017',
+                ketId       : 'pesantren'
+            });
+
+
+
+
+                        //=========================================================================HOTEL=======================================
+            var color = Chart.helpers.color;
+              var hotelChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolhoteltsehat}} , {{$krukuthoteltsehat}} , {{$meruyunghoteltsehat}} , {{$limohoteltsehat}} ]
+                }, {
+                  label: 'Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolhotelsehat}} , {{$krukuthotelsehat}} , {{$meruyunghotelsehat}} , {{$limohotelsehat}} ]
+                }]
+              };
+
+            $('#canvashotel').SippKlingCharts({
+                type        : 'bar',
+                chartData   : hotelChartData,
+                titleText   : 'Data Hotel 2017',
+                ketId       : 'hotel'
+            });
+
+
+
+
+
+
+
+
+
+
+                        //=========================================================================HOTEL MELATI=======================================
+            var color = Chart.helpers.color;
+              var hotelmelatiChartData = {
+                labels: ["grogol", "krukut", "meruyung", "limo"],
+                datasets: [{
+                  label: 'Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: [{{$grogolhotelmtsehat}} , {{$krukuthotelmtsehat}} , {{$meruyunghotelmtsehat}} , {{$limohotelmtsehat}} ]
+                }, {
+                  label: 'Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [{{$grogolhotelmsehat}} , {{$krukuthotelmsehat}} , {{$meruyunghotelmsehat}} , {{$limohotelmsehat}} ]
+                }]
+              };
+
+            $('#canvashotelmelati').SippKlingCharts({
+                type        : 'bar',
+                chartData   : hotelmelatiChartData,
+                titleText   : 'Data Hotel Melati 2017',
+                ketId       : 'hotelmelati'
+            });
+
+
+        });

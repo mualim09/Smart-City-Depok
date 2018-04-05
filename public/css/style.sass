@@ -1,0 +1,44 @@
+.card-panel.hoverable
+  overflow: hidden
+  position: relative
+  transform-style: preserve-3d
+  color: white
+  height: 400px
+
+  &.small
+    height: 300px
+
+  &.medium
+    height: 400px
+
+  &.large
+    height: 500px
+  
+  .card-panel-header
+    position: relative
+    top: 50%
+    transform: translateY(-50%) scale(1.5)
+    transition: top .25s .1s, transform .25s ease .1s
+  
+  .card-panel-icon
+    display: block
+    text-align: center
+
+  .card-panel-caption
+    display: block
+    text-align: center
+    font-size: 1rem
+
+  .card-panel-content
+    opacity: 0
+    transform: translateY(20px)
+    transition: transform .25s, opacity .8s
+
+  &:hover
+    .card-panel-header
+      transform: translateY(0) scale(1)
+      top: 0
+
+    .card-panel-content
+      transform: translateY(0)
+      opacity: 1

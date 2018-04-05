@@ -1,0 +1,159 @@
+* {
+	box-sizing: border-box;
+}
+
+.box-table {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.box-table div {
+	white-space: normal;
+	text-align: justify;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.img-table img {
+	width: 100%;
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.filter-group {
+	margin-bottom: 20px;
+}
+
+.no-padding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#chat-box {
+	height: 180px;
+	overflow: auto;
+}
+
+button.dt-button, div.dt-button, a.dt-button {
+	background: #1ba1ed !important;
+	color: #fff !important;
+	border: 1px solid #1ba1ed !important;
+	border-radius: 2px !important;
+}
+
+.hide {
+	display: none;
+}
+
+.line-height-box-body {
+	width: 50px;
+	height: 2px;
+	margin: 10px 0px 20px;
+}
+
+.font-white {
+	color: #fff;
+}
+
+.bg-maroon {
+	background: #D81B60;
+}
+
+.bg-white {
+	background: #fff;
+}
+
+.bg-blue {
+	background: #3c8dbc;
+}
+
+.history-icon-style {
+	width: 40px;
+    height: 40px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.history-update {
+	color: #00c0ef;
+}
+
+.history-tambah {
+	color: #00a65a;
+}
+
+#chat-box {
+	padding-top: 20px;
+}
+
+.box-keterangan {
+	padding: 20px;
+	background: #1abc9c !important;
+}
+
+.margin-5 {
+	margin: 5px 0px;
+}
+
+.box-detail-keterangan {
+	padding: 5px 20px;
+	border: 1px solid #cecece;
+}
+
+.detail-implicit small {
+	margin-left: 4px;
+}
+
+.padding-20 {
+	padding: 20px;
+}
+
+.green-background-main-color {
+	background: #2e9d87 !important;
+}
+
+.green-main-color {
+	background: #2e9d87 !important;
+	transition: all 0.3s;
+}
+
+.green-main-color:hover {
+	background: #187361 !important;
+	color: #fff;
+}
+
+.red-sipp-kling-main-color {
+	background: #e53935 !important;
+}
+
+.orange-sipp-kling-main-color {
+	background: #ff884d !important;
+}
+
+.blue-sipp-kling-main-color {
+	background: #81b9c3 !important;
+}
+
+.hover-changed:hover {
+	background: #0e9076 !important;
+}
+
+.margin-30 {
+	margin: 30px 0px;
+}
+
+.padding-box-footer {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.label-data-chart {
+	font-weight: lighter;
+}

@@ -1,0 +1,76 @@
+@font-face {
+  font-family: "Brandon_Grotesque_bold";
+  src: url(../../assets/font/Brandon_blk.otf);}
+
+@font-face {
+  font-family: "Brandon_Grotesque_reg";
+  src: url(../../assets/font/Brandon_reg.otf);}
+
+@font-face {
+  font-family: "Christmas_in_Finland";
+  src: url(../../assets/font/Christmas_in_Finland.ttf);}
+
+@keyframes breath {
+  0%   { background-size: 100% auto; }
+  50% { background-size: 140% auto; }
+  100% { background-size: 100% auto; }
+}
+
+.f_bold {
+  font-family: "Brandon_Grotesque_bold";
+}
+
+.f_reg {
+  font-family: "Brandon_Grotesque_reg";
+}
+
+.ftag {
+  font-family: "Christmas_in_Finland";
+}
+
+.bg1, .bg2, .bg3, .bg4 { 
+  background-size: cover;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-animation: zoomin 40s ease-in infinite;
+  animation: zoomin 40s ease-in infinite;
+  transition: all .35s ease-in-out;
+  overflow: hidden;
+}
+.bg1 {
+  background-image: url('../../img/bg1.png'); 
+}
+
+.zoomoutheader {
+  text-align: center;
+  background: none;
+  -webkit-animation: zoomout 40s ease-in infinite;
+  animation: zoomout 40s ease-in infinite;
+  transition: all .35s ease-in-out;
+  overflow: hidden;
+}
+
+@-webkit-keyframes zoomin {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.5);}
+  100% {transform: scale(1);}
+}
+@keyframes zoomin {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.5);}
+  100% {transform: scale(1);}
+}
+
+@-webkit-keyframes zoomout {
+  0% {transform: scale(1);}
+  50% {transform: scale(0.67);}
+  100% {transform: scale(1);}
+}
+@keyframes zoomout {
+    0% {transform: scale(1);}
+  50% {transform: scale(0.67);}
+  100% {transform: scale(1);}
+}
