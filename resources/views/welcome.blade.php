@@ -33,12 +33,12 @@
           <img src="{{ URL::asset('img/minilogo.png') }}" style="width:50px; height:50px">
           <div class="f_bold w3-text-white w3-display-left w3-xlarge" style="margin-left:5em">HI-DEPOK</div>
         </a>
-        <!-- <div class="f_bold w3-display-middle w3-medium">
+        <div class="f_bold w3-display-middle w3-medium">
           <a href="#page1" class="w3-bar-item w3-hide-small w3-text-white w3-hover-text-blue" style="text-decoration:none"> INTRODUCTION </a>
           <a href="#page2" class="w3-bar-item w3-hide-small w3-text-white w3-hover-text-blue" style="text-decoration:none"> NEWS </a>
           <a href="#page3" class="w3-bar-item w3-hide-small w3-text-white w3-hover-text-blue" style="text-decoration:none"> FEATURES </a>
           <a href="#page4" class="w3-bar-item w3-hide-small w3-text-white w3-hover-text-blue" style="text-decoration:none"> ABOUT </a>
-        </div> -->
+        </div> 
         <div onclick="openNav()" class="w3-bar-item w3-text-white w3-display-right w3-hover-text-blue" style="margin-right:1.5em; cursor:pointer">
           <i class="fa fa-bars w3-xxlarge"></i>
         </div>
@@ -116,13 +116,13 @@
           </div>
           <div class="w3-display-middle">
             <div class="w3-content" style="max-width:1100px">
-            @foreach($beritas as $berita)
+{{--             @foreach($beritas as $berita)
               <div class="mySlides w3-card-4 w3-round-large w3-black w3-animate-fading" style="border: 5px solid #f8981d; padding: 4em; opacity:0.7;">
                 <h3><b>{{ $berita->get_title() }}</b></h3>
                 <p class="w3-justify w3-medium">{!! $berita->get_description() !!}</p>
                 <p class="w3-medium"><a href="{{ $berita->get_permalink() }}" style="text-decoration: none;" class="w3-medium"><br><button class="w3-button w3-padding-large w3-gray"><b>READ MORE</b></button></a></p>
               </div>
-            @endforeach
+            @endforeach --}}
             </div>
           </div>
         </div>
@@ -241,7 +241,7 @@
       </div>
     </section>
 
-    <!-- <section class="bg1 w3-display-container" id="introduction">
+    <section class="bg1 w3-display-container" id="introduction">
       <a href="#news" class="scroll w3-display-bottommiddle" style="margin-bottom:2em"><span></span></a>
       <div class="w3-center w3-text-white w3-display-middle" style="">
         <p class="ftag" style="font-size:80pt; margin:0px 0px"> We Share We Care </p>
@@ -252,7 +252,7 @@
     </section>
 
 
-    <section class="w3-display-container" id="news" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg2.jpg'); ">
+{{--     <section class="w3-display-container" id="news" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg2.jpg'); ">
       <div class="w3-display-middle">
       <div class="w3-content" style="max-width:1100px">
       @foreach($beritas as $berita)
@@ -265,9 +265,9 @@
       </div>
       </div>
       <a href="#features" class="scroll w3-display-bottommiddle" style="margin-bottom:2em"><span></span></a>
-    </section> -->
+    </section> --}}
 
-    <!-- <section class="w3-display-container" id="features" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg3.jpg');">
+    <section class="w3-display-container" id="features" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg3.jpg');">
       <div style="position: absolute;top: 50%;transform: translate(12%,-50%);">
         <div class="w3-row w3-padding-64" id="about">
           <div class="w3-col m6 w3-padding-large w3-hide-small">
@@ -291,11 +291,11 @@
         </div>
       </div>
       <a href="#about" class="scroll w3-display-bottommiddle" style="margin-bottom:2em"><span></span></a>
-    </section> -->
-<!-- 
+    </section>
+
     <section class="w3-display-container" id="about" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg4.png');">
       
-    </section> -->
+    </section>
   </div>
   <script src="{{ URL::asset('js/index.js') }}"></script>
   <script src="{{ URL::asset('js/effect.js') }}"></script>

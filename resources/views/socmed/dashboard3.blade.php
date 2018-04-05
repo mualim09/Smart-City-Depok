@@ -174,7 +174,7 @@
               <!-- /.user-block -->
             </div>
               <img src="../../dist/img/photo2.png" style="width:206px; height:84px;"> --}}
-            @if(!empty($data))
+{{--             @if(!empty($data))
                 @foreach($data as $key => $value)  
               <div class="box-body" class="container">
                 <hr>
@@ -211,7 +211,7 @@
                     <td colspan="6">There are no data.</td>
                 </tr>
             @endif
-               
+                --}}
 
 
             </div></p></div>

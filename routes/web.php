@@ -200,7 +200,10 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 //===============================================================
 //                   TAMPILAN PUBLIC                            =
 //===============================================================
-Route::get('/', 'FeedController@berita');
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('/', 'FeedController@berita');
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');
 Route::get('/blog/{judul}', 'BlogController@viewblog2');
@@ -209,9 +212,7 @@ Route::get('/event', 'EventController@viewevent');
 Route::get('/event/{nama_event}', 'EventController@viewevent2');
 Route::resource('complaint', 'ComplainController');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/information', function () {
     return view('information');
 });
