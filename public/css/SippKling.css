@@ -178,3 +178,9 @@
 .rw-p-control p {
 	margin: 0;
 }
+
+#history-chat-retrieve {
+	padding: 20px;
+	height: 700px;
+	overflow: auto;
+}

@@ -298,6 +298,11 @@ class DataCountRepository
     ->where('status', '=', 'Tidak Sehat')
     ->count();
 
+    $getHistoryData = DB::table('historys')
+                        ->leftJoin('petugas_sikelings as p', 'p.id_petugas', '=', 'historys.id_petugas')
+                        ->limit(10)
+                        ->get();
+
     return view('sipp-kling-pages/dashboard', compact ('jumlah_rs', 'jumlah_rssehat', 'jumlah_rstidaksehat', 
       'jumlah_pjb','jumlah_adapjb','jumlah_tidakpjb',
       'jumlah_spal', 'jumlah_spalterbuka','jumlah_spaltertutup',
@@ -316,7 +321,7 @@ class DataCountRepository
       'jumlah_kolam', 'jumlah_kolamlayak','jumlah_kolamtlayak',
       'jumlah_rss', 'jumlah_rslayak','jumlah_rstlayak',
       'jumlah_jb', 'jumlah_jblayak','jumlah_jbtlayak',
-      'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar'));
+      'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar', 'getHistoryData'));
 
     return 1;
     }
@@ -567,6 +572,11 @@ class DataCountRepository
     $jumlah_rstlayak = DB::table('rss')
     ->where('status', '=', 'Tidak Sehat')
     ->count();
+
+    $getHistoryData = DB::table('historys')
+                        ->leftJoin('petugas_sikelings as p', 'p.id_petugas', '=', 'historys.id_petugas')
+                        ->limit(10)
+                        ->get();
 // return
     return view('sipp-kling-pages/filter-pages/dashboard', compact ('jumlah_rs', 'jumlah_rssehat', 'jumlah_rstidaksehat', 
       'jumlah_pjb','jumlah_adapjb','jumlah_tidakpjb',
@@ -586,7 +596,7 @@ class DataCountRepository
       'jumlah_kolam', 'jumlah_kolamlayak','jumlah_kolamtlayak',
       'jumlah_rss', 'jumlah_rslayak','jumlah_rstlayak',
       'jumlah_jb', 'jumlah_jblayak','jumlah_jbtlayak',
-      'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar', 'data_kelurahan', 'param_kecamatan', 'param_kelurahan'));
+      'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar', 'data_kelurahan', 'param_kecamatan', 'param_kelurahan', 'getHistoryData'));
     }
 
 
