@@ -205,23 +205,23 @@
       <div id="data-angler-1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 1em 2em 1em; border-bottom: 1px solid #ccc;">
           <input type="checkbox" class="checkbox" id="limo" onclick="anglerWithParam(this.id)">LIMO<br>
             <div id="limo" style="display: none; margin-left: 10px;">
-                <input type="checkbox" class="checkbox">Rumah Sehat<br>
-                <input type="checkbox" class="checkbox">Rumah Tidak Sehat<br>
+                <input type="checkbox" class="checkbox" id="sehat" onclick="rumahsehat()">Rumah Sehat<br>
+                <input type="checkbox" class="checkbox" id="rts" onclick="tidaksehat()">Rumah Tidak Sehat<br>
             </div>
           <input type="checkbox" class="checkbox" id="grogol" onclick="anglerWithParam(this.id)">GROGOL<br>
             <div id="grogol" style="display: none; margin-left: 10px;">
-                <input type="checkbox" class="checkbox">Rumah Sehat<br>
-                <input type="checkbox" class="checkbox">Rumah Tidak Sehat<br>
+                <input type="checkbox" class="checkbox" id="grs" onclick="gro()">Rumah Sehat<br>
+                <input type="checkbox" class="checkbox" id="gts" onclick="grots()">Rumah Tidak Sehat<br>
             </div>
           <input type="checkbox" class="checkbox" id="krukut" onclick="anglerWithParam(this.id)">KRUKUT<br>
             <div id="krukut" style="display: none; margin-left: 10px;">
-                <input type="checkbox" class="checkbox">Rumah Sehat<br>
-                <input type="checkbox" class="checkbox">Rumah Tidak Sehat<br>
+                <input type="checkbox" class="checkbox" id="krs" onclick="kru()">Rumah Sehat<br>
+                <input type="checkbox" class="checkbox" id="kts" onclick="kruts()">Rumah Tidak Sehat<br>
             </div>
           <input type="checkbox" class="checkbox" id="meruyung" onclick="anglerWithParam(this.id)">MERUYUNG<br>
             <div id="meruyung" style="display: none; margin-left: 10px;">
-                <input type="checkbox" class="checkbox">Rumah Sehat<br>
-                <input type="checkbox" class="checkbox">Rumah Tidak Sehat<br>
+                <input type="checkbox" class="checkbox" id="mrs" onclick="mer()">Rumah Sehat<br>
+                <input type="checkbox" class="checkbox" id="mts" onclick="merts()">Rumah Tidak Sehat<br>
             </div>
       </div>
       
@@ -235,19 +235,34 @@
 <script>
 var rs = <?php print_r(json_encode($rss)) ?>;
 var trs = <?php print_r(json_encode($trss)) ?>;
+var grogol =<?php print_r(json_encode($grogols)) ?>;
+var grot = <?php print_r(json_encode($grots)) ?>;
+var krukut =<?php print_r(json_encode($krukuts)) ?>;
+var krut = <?php print_r(json_encode($kruts)) ?>;
+var meruyung =<?php print_r(json_encode($meruyungs)) ?>;
+var mert = <?php print_r(json_encode($merts)) ?>;
 
 var btn = document.getElementById("sehat");
 var btn2 = document.getElementById("rts");
+var btn3 = document.getElementById("grs");
+var btn4 = document.getElementById("gts");
+var btn5 = document.getElementById("krs");
+var btn6 = document.getElementById("kts");
+var btn7 = document.getElementById("mrs");
+var btn8 = document.getElementById("mts");
 
 var map;
 
 var markers = [];
 var markers2 = [];
+var markers3 = [];
+var markers4 = [];
+var markers5 = [];
+var markers6 = [];
+var markers7 = [];
+var markers8 = [];
 
 var layer_7;
-
-
-
 
       function initMap() {
         // Create a map object and specify the DOM element for display.
@@ -714,6 +729,266 @@ function addMarker(trs){
   }
 }
 }
+
+function gro(){
+  for(var i = 0; i < grogol.length; i++){
+    markers3[i] = addMarker(grogol[i]); 
+}
+function addMarker(grogol){
+  if(btn3.checked){
+    var nama = grogol.nama_kk;
+    var alamat = grogol.alamat;
+    var lurah = grogol.kelurahan;
+    var koordinat = grogol.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten = '<div>' + 
+                 '<h3>' + nama + '</h3>' +
+                 '<p>' + alamat + '</p>'+
+                 '<p>' + lurah + '</p>'+
+                 ''
+                 '<div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/gor.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(mark, 'click', function(){
+      infoWindow.setContent(konten);
+      infoWindow.open(map, mark);
+    });
+    return mark;
+  }
+  else{
+    markers3[i].setMap(null);
+  }
+}
+}
+
+function grots(){
+  for(var i = 0; i < grot.length; i++){
+    markers4[i] = addMarker(grot[i]); 
+}
+function addMarker(grot){
+  if(btn4.checked){
+    var nama = grot.nama_kk;
+    var alamat = grot.alamat;
+    var lurah = grot.kelurahan;
+    var koordinat = grot.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten = '<div>' + 
+                 '<h3>' + nama + '</h3>' +
+                 '<p>' + alamat + '</p>'+
+                 '<p>' + lurah + '</p>'+
+                 ''
+                 '<div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/damkar.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(mark, 'click', function(){
+      infoWindow.setContent(konten);
+      infoWindow.open(map, mark);
+    });
+    return mark;
+  }
+  else{
+    markers4[i].setMap(null);
+  }
+}
+}
+
+function kru(){
+  for(var i = 0; i < krukut.length; i++){
+    markers5[i] = addMarker(krukut[i]); 
+}
+function addMarker(krukut){
+  if(btn5.checked){
+    var nama = krukut.nama_kk;
+    var alamat = krukut.alamat;
+    var lurah = krukut.kelurahan;
+    var koordinat = krukut.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten = '<div>' + 
+                 '<h3>' + nama + '</h3>' +
+                 '<p>' + alamat + '</p>'+
+                 '<p>' + lurah + '</p>'+
+                 ''
+                 '<div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/klinik.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(mark, 'click', function(){
+      infoWindow.setContent(konten);
+      infoWindow.open(map, mark);
+    });
+    return mark;
+  }
+  else{
+    markers5[i].setMap(null);
+  }
+}
+}
+
+function kruts(){
+  for(var i = 0; i < krut.length; i++){
+    markers6[i] = addMarker(krut[i]); 
+}
+function addMarker(krut){
+  if(btn6.checked){
+    var nama = krut.nama_kk;
+    var alamat = krut.alamat;
+    var lurah = krut.kelurahan;
+    var koordinat = krut.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten = '<div>' + 
+                 '<h3>' + nama + '</h3>' +
+                 '<p>' + alamat + '</p>'+
+                 '<p>' + lurah + '</p>'+
+                 ''
+                 '<div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/klinik.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(mark, 'click', function(){
+      infoWindow.setContent(konten);
+      infoWindow.open(map, mark);
+    });
+    return mark;
+  }
+  else{
+    markers6[i].setMap(null);
+  }
+}
+}
+
+function mer(){
+  for(var i = 0; i < meruyung.length; i++){
+    markers7[i] = addMarker(meruyung[i]); 
+}
+function addMarker(meruyung){
+  if(btn7.checked){
+    var nama = meruyung.nama_kk;
+    var alamat = meruyung.alamat;
+    var lurah = meruyung.kelurahan;
+    var koordinat = meruyung.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten = '<div>' + 
+                 '<h3>' + nama + '</h3>' +
+                 '<p>' + alamat + '</p>'+
+                 '<p>' + lurah + '</p>'+
+                 ''
+                 '<div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/mall.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(mark, 'click', function(){
+      infoWindow.setContent(konten);
+      infoWindow.open(map, mark);
+    });
+    return mark;
+  }
+  else{
+    markers7[i].setMap(null);
+  }
+}
+}
+
+function merts(){
+  for(var i = 0; i < mert.length; i++){
+    markers8[i] = addMarker(mert[i]); 
+}
+function addMarker(mert){
+  if(btn8.checked){
+    var nama = mert.nama_kk;
+    var alamat = mert.alamat;
+    var lurah = mert.kelurahan;
+    var koordinat = mert.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten = '<div>' + 
+                 '<h3>' + nama + '</h3>' +
+                 '<p>' + alamat + '</p>'+
+                 '<p>' + lurah + '</p>'+
+                 ''
+                 '<div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/pln.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(mark, 'click', function(){
+      infoWindow.setContent(konten);
+      infoWindow.open(map, mark);
+    });
+    return mark;
+  }
+  else{
+    markers8[i].setMap(null);
+  }
+}
+}
+
+
 
 // Change style of navbar on scroll
 window.onscroll = function() {myFunction()};
