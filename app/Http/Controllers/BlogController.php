@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\models\Blog;
 use Excel;
-use Response;
+use Response; 
 
 class BlogController extends AppBaseController
 {

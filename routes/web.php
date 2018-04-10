@@ -31,16 +31,16 @@ Auth::routes();
 //===============================================================
 Route::get('/dashboard', 'HomeController@index');
 Route::get('dashboard2', 'Dashboard2Controller@total');
-Route::get('/dashboard3', function () {
-    return view('socmed/dashboard3');
-});
+// Route::get('/dashboard3', function () {
+//     return view('socmed/dashboard3');
+// });
 Route::get('/dashboard4', function () {
     return view('pages/dashboard4');
 });
 //##############################################################
 // Twitter
 Route::get('dashboard3', 'SocmedController@twitterUserTimeLine');
-Route::get('dashboard3/profile', 'SocmedController@profile');
+Route::get('dashboard3/profile', 'SocmedController@profile')->middleware('auth');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
 
 
@@ -200,21 +200,23 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 //===============================================================
 //                   TAMPILAN PUBLIC                            =
 //===============================================================
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('/', 'FeedController@berita');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/blog/{judul}', 'BlogController@error');
+
+Route::get('/', 'FeedController@berita');
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');
 Route::get('/blog/{judul}', 'BlogController@viewblog2');
-// Route::get('/blog/{judul}', 'BlogController@error');
 Route::get('/event', 'EventController@viewevent');
 Route::get('/event/{nama_event}', 'EventController@viewevent2');
 Route::resource('complaint', 'ComplainController');
-
-
 Route::get('/information', function () {
     return view('information');
+});
+Route::get('/faq', function () {
+    return view('faq');
 });
 Route::resource('/faqs', 'FaqController');
 #################################################################

@@ -18,27 +18,21 @@ body {font-family: "Open Sans"}
 @font-face {
   font-family: "Brandon_Grotesque_bold";
   src: url(../assets/font/Brandon_blk.otf);}
-
 @font-face {
   font-family: "Brandon_Grotesque_reg";
   src: url(../assets/font/Brandon_reg.otf);}
-
 .f_bold {
   font-family: "Brandon_Grotesque_bold";
 }
-
 .f_reg {
   font-family: "Brandon_Grotesque_reg";
 }
-
 .centerpagination {
     text-align: center;
 }
-
 .header-bg {
   background: #171717;
 }
-
 .orange-hd {
   background: #f8981d;
 }
@@ -50,7 +44,6 @@ body {font-family: "Open Sans"}
     color: white;
     border: 1px solid #4CAF50;
 }
-
 .pagination a:hover:not(.active) {background-color: #ddd;}
 .pagination li{
     display: inline;
@@ -140,7 +133,7 @@ body {font-family: "Open Sans"}
         @endforeach
        
   <div class="col-md-6" align="center" data-ix="scale-on-scroll">
-    <center>{{ $blogs->render() }}</center>
+    <center>{{$blogs->links()}}</center>
   </div>
     <!-- END BLOG ENTRIES -->
     </div>
@@ -232,7 +225,7 @@ body {font-family: "Open Sans"}
     </div>
   </div>
 </div> -->
-
+ 
 <!-- Footer -->
 <footer class="w3-center w3-padding w3-text-white" style="background-color: #2b2b2b">
   <div class="w3-row">
@@ -247,11 +240,11 @@ body {font-family: "Open Sans"}
       <a class="w3-text-white" href="/" style="text-decoration:none"><h3 class="w3-large w3-hover-opacity" style="letter-spacing:3px">HI-DEPOK</h3></a>
     </div>
     <div class="w3-third w3-container w3-large" style="padding:15px">
-      <a href="/hidepok/information" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none" onclick="toggleFunction()">Information</a>
-      <a href="/hidepok/maps" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none; padding-left: 1.7em">Maps</a>
-      <a href="/hidepok/blog" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding: 0em 1.7em;" onclick="toggleFunction()">Blog</a>
-      <a href="/hidepok/event" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding-right: 1.7em;">Event</a>
-      <a href="/hidepok/faq" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none">FAQ</a>
+      <a href="/information" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none" onclick="toggleFunction()">Information</a>
+      <a href="/maps" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none; padding-left: 1.7em">Maps</a>
+      <a href="/blog" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding: 0em 1.7em;" onclick="toggleFunction()">Blog</a>
+      <a href="/event" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding-right: 1.7em;">Event</a>
+      <a href="/faq" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none">FAQ</a>
 
     </div>
   </div>
@@ -287,7 +280,6 @@ body {font-family: "Open Sans"}
 //         x.className = x.className.replace(" w3-show", "");
 //     }
 // }
-
 </script>
 <script>
   // Change style of navbar on scroll
@@ -300,7 +292,6 @@ body {font-family: "Open Sans"}
       navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-padding header-bg w3-text-dark-gray", "");
       }
   }
-
   // Used to toggle the menu on small screens when clicking on the menu button
   function toggleFunction() {
   var x = document.getElementById("navDemo");
@@ -310,11 +301,9 @@ body {font-family: "Open Sans"}
       x.className = x.className.replace(" w3-show", "");
     }
   }
-
   // Automatic Slideshow - change image every 4 seconds
   var myIndex = 0;
   carousel();
-
   function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
