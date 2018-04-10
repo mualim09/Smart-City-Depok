@@ -122,4 +122,14 @@ class SippKlingController extends Controller
   public function totalJumlahByParameter(){
     return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan'));
   }
+
+  public function history(){
+    $getHistoryData = DB::table('historys')
+                        ->leftJoin('petugas_sikelings as p', 'p.id_petugas', '=', 'historys.id_petugas')
+                        ->limit(10)
+                        ->get();
+
+    return view('sipp-kling-pages/history/index', ['history' => $getHistoryData]);
+  }
+
 }

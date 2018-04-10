@@ -841,61 +841,32 @@
 				</div>
 			</div>
 			<div class="box-body chat" id="chat-box">
-				<div class="item">
-					<i class="fa fa-refresh history-icon-style history-update"></i>
+				@foreach($getHistoryData as $data)
+        <div class="item">
+          @if($data->aktivitas == 'UPDATE')
+            <i class="fa fa-refresh history-icon-style history-update"></i>
+          @else
+            <i class="fa fa-plus history-icon-style history-tambah"></i>
+          @endif
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-				<div class="item">
-					<i class="fa fa-plus-circle history-icon-style history-tambah"></i>
+          <p class="message">
+            <a href="#" class="name">
+              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ date('d-m-y, G:i:s', strtotime($data->waktu)) }}</small>
+              {{ $data->nama }}
+            </a>
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-				<div class="item">
-					<i class="fa fa-plus-circle history-icon-style history-tambah"></i>
+            @if($data->aktivitas == 'UPDATE')
+              {{ $data->nama }} telah mengupdate data
+            @else
+              {{ $data->nama }} telah menambah data
+            @endif
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-				<div class="item">
-					<i class="fa fa-refresh history-icon-style history-update"></i>
-
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
+          </p>
+        </div>
+        @endforeach
 			</div>
 			<div class="box-footer with-border text-center">
-				<button class="btn btn-default btn-flat">view all</button>
+				<a href="{{ url('sipp-kling/history') }}" class="btn btn-default btn-flat">view all</a>
 			</div>
 		</div>
 	</div>

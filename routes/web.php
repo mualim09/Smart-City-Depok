@@ -505,6 +505,6 @@ Route::get('/sipp-kling/pesan', function(){
     return view('sipp-kling-pages/pesan/tambah-pesan');
 });
 
-Route::get('sipp-kling/data-tempat', function(){
-    return view('sipp-kling-pages/data-tempat/index');
-});
+Route::get('/sipp-kling/data-tempat/', 'MapsSippklingController@maps');
+
+Route::get('/sipp-kling/history', 'SippKlingController@history');
