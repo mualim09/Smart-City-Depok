@@ -55,7 +55,7 @@
 </section>
 
 <!-- modal -->
-<div class="modal fade" id="kepala_keluarga">
+<div class="modal fade" id="rumahsehat">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-aqua">
@@ -66,60 +66,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$sehattpilih}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
-            <div class="col-xs-6 col-lg-3">
+           <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -133,6 +152,108 @@
   <!-- /.modal-dialog -->
 </div>
 
+
+<div class="modal fade" id="rumahtsehat">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-aqua">
+        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-white" align="center">Detail RW</h4>
+      </div>
+      <div class="modal-body overflow-hidden">
+        <div class="col-xs-12 no-padding">
+          <strong>Total</strong>
+          <h2 class="reset-heading">{{$rumahtsehat}}</h2>
+          <div class="margin-10"></div>
+          <hr/>
+          <div class="margin-10"></div>
+          <div class="more-occurs overflow-hidden">
+           <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 01 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw1}}</b></span><br>
+
+              <span class="progress-text">RW 02 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw2}}</b></span><br>
+            
+              <span class="progress-text">RW 03 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw3}}</b></span><br>
+            
+              <span class="progress-text">RW 04 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw4}}</b></span><br>
+
+              <span class="progress-text">RW 05 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw5}}</b></span><br>
+            </div>
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 06 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw6}}</b></span><br>
+
+              <span class="progress-text">RW 07 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw7}}</b></span><br>
+            
+              <span class="progress-text">RW 08 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw8}}</b></span><br>
+            
+              <span class="progress-text">RW 09 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw9}}</b></span><br>
+
+              <span class="progress-text">RW 10 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw15}}</b></span><br>
+            </div>
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw16}}</b></span><br>
+
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw17}}</b></span><br>
+            
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw18}}</b></span><br>
+            
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw19}}</b></span><br>
+
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$rumahtsehatrw20}}</b></span><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+<!-- ================================================================================================================================ -->
+
+
 <div class="modal fade" id="spal_terbuka">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -144,60 +265,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$spaltb}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltbrw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -222,60 +362,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$spaltp}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$spaltprw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -300,60 +459,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$sampahpilih}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
-            <div class="col-xs-6 col-lg-3">
+           <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahpilihrw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -378,60 +556,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$sampahtpilih}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$sampahtpilihrw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -445,7 +642,16 @@
   <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="koya">
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="ada_jentik">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-aqua">
@@ -456,60 +662,282 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$pjbya}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
-            <div class="col-xs-6 col-lg-3">
+        <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw15}}</b></span><br>
+            </div>
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw16}}</b></span><br>
+
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw17}}</b></span><br>
+            
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw18}}</b></span><br>
+            
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw19}}</b></span><br>
+
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbyarw20}}</b></span><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="tada_jentik">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-aqua">
+        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-white" align="center">Detail RW</h4>
+      </div>
+      <div class="modal-body overflow-hidden">
+        <div class="col-xs-12 no-padding">
+          <strong>Total</strong>
+          <h2 class="reset-heading">{{$pjbta}}</h2>
+          <div class="margin-10"></div>
+          <hr/>
+          <div class="margin-10"></div>
+          <div class="more-occurs overflow-hidden">
+           <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 01 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw1}}</b></span><br>
+
+              <span class="progress-text">RW 02 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw2}}</b></span><br>
+            
+              <span class="progress-text">RW 03 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw3}}</b></span><br>
+            
+              <span class="progress-text">RW 04 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw4}}</b></span><br>
+
+              <span class="progress-text">RW 05 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw15}}</b></span><br>
+            </div>
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw16}}</b></span><br>
+
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw17}}</b></span><br>
+            
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw18}}</b></span><br>
+            
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw19}}</b></span><br>
+
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$pjbtarw20}}</b></span><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="modal_koya">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-aqua">
+        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-white" align="center">Detail RW</h4>
+      </div>
+      <div class="modal-body overflow-hidden">
+        <div class="col-xs-12 no-padding">
+          <strong>Total</strong>
+          <h2 class="reset-heading">{{$koya}}</h2>
+          <div class="margin-10"></div>
+          <hr/>
+          <div class="margin-10"></div>
+          <div class="more-occurs overflow-hidden">
+<div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 01 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw1}}</b></span><br>
+
+              <span class="progress-text">RW 02 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw2}}</b></span><br>
+            
+              <span class="progress-text">RW 03 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw3}}</b></span><br>
+            
+              <span class="progress-text">RW 04 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw4}}</b></span><br>
+
+              <span class="progress-text">RW 05 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw5}}</b></span><br>
+            </div>
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 06 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw6}}</b></span><br>
+
+              <span class="progress-text">RW 07 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw7}}</b></span><br>
+            
+              <span class="progress-text">RW 08 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw8}}</b></span><br>
+            
+              <span class="progress-text">RW 09 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw9}}</b></span><br>
+
+              <span class="progress-text">RW 10 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw15}}</b></span><br>
+            </div>
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw16}}</b></span><br>
+
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw17}}</b></span><br>
+            
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw18}}</b></span><br>
+            
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw19}}</b></span><br>
+
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$koyarw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -534,60 +962,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$kali}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
-            <div class="col-xs-6 col-lg-3">
+           <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$kalirw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -601,83 +1048,7 @@
   <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="modal_kali">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-aqua">
-        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-white" align="center">Detail RW</h4>
-      </div>
-      <div class="modal-body overflow-hidden">
-        <div class="col-xs-12 no-padding">
-          <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
-          <div class="margin-10"></div>
-          <hr/>
-          <div class="margin-10"></div>
-          <div class="more-occurs overflow-hidden">
-            <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
 
-              <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            
-              <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            
-              <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-
-              <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            </div>
-
-            <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            </div>
-
-            <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Tutup</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
 
 <div class="modal fade" id="modal_helikopter">
   <div class="modal-dialog">
@@ -690,60 +1061,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$helikopter}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$helikopterrw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -768,60 +1158,79 @@
       <div class="modal-body overflow-hidden">
         <div class="col-xs-12 no-padding">
           <strong>Total</strong>
-          <h2 class="reset-heading">883</h2>
+          <h2 class="reset-heading">{{$septik}}</h2>
           <div class="margin-10"></div>
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
-            <div class="col-xs-6 col-lg-3">
+           <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw1}}</b></span><br>
 
               <span class="progress-text">RW 02 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw2}}</b></span><br>
             
               <span class="progress-text">RW 03 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw3}}</b></span><br>
             
               <span class="progress-text">RW 04 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw4}}</b></span><br>
 
               <span class="progress-text">RW 05 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw5}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw6}}</b></span><br>
 
               <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw7}}</b></span><br>
             
               <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw8}}</b></span><br>
             
               <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw9}}</b></span><br>
 
               <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw10}}</b></span><br>
+            </div>
+
+
+
+            <div class="col-xs-6 col-lg-3">
+              <span class="progress-text">RW 11 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw11}}</b></span><br>
+
+              <span class="progress-text">RW 12 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw12}}</b></span><br>
+            
+              <span class="progress-text">RW 13 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw13}}</b></span><br>
+            
+              <span class="progress-text">RW 14 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw14}}</b></span><br>
+
+              <span class="progress-text">RW 15 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw15}}</b></span><br>
             </div>
 
             <div class="col-xs-6 col-lg-3">
-              <span class="progress-text">RW 06 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 16 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw16}}</b></span><br>
 
-              <span class="progress-text">RW 07 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 17 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw17}}</b></span><br>
             
-              <span class="progress-text">RW 08 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 18 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw18}}</b></span><br>
             
-              <span class="progress-text">RW 09 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 19 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw19}}</b></span><br>
 
-              <span class="progress-text">RW 10 </span>
-              <span class="progress-number pull-right"><b id="grw1">0</b></span><br>
+              <span class="progress-text">RW 20 </span>
+              <span class="progress-number pull-right"><b id="grw1">{{$septikrw20}}</b></span><br>
             </div>
           </div>
         </div>
@@ -836,83 +1245,89 @@
 </div>
 
 
+
+
+
+
 <section class="content" style="overflow: hidden;">
-	<div class="col-xs-12">
-		<div class="box box-widget">
-			<div class="box-header with-border bg-light-blue green-background-main-color" style="padding: 15px">
-				<h3 class="box-title" style="color:#fff"><b>History</b></h3>
+  <div class="col-xs-12">
+    <div class="box box-widget">
+      <div class="box-header with-border bg-light-blue green-background-main-color" style="padding: 15px">
+        <h3 class="box-title" style="color:#fff"><b>History</b></h3>
 
-				<div class="box-tools pull-right">
-					<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i>
-					</button>
-					<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times font-white"></i></button>
-				</div>
-			</div>
-			<div class="box-body chat" id="chat-box">
-				<div class="item">
-					<i class="fa fa-refresh history-icon-style history-update"></i>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times font-white"></i></button>
+        </div>
+      </div>
+      <div class="box-body chat" id="chat-box">
+        <div class="item">
+          <i class="fa fa-refresh history-icon-style history-update"></i>
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-				<div class="item">
-					<i class="fa fa-plus-circle history-icon-style history-tambah"></i>
+          <p class="message">
+            <a href="#" class="name">
+              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+              Mike Doe
+            </a>
+            I would like to meet you to discuss the latest news about
+            the arrival of the new theme. They say it is going to be one the
+            best themes on the market
+          </p>
+        </div>
+        <div class="item">
+          <i class="fa fa-plus-circle history-icon-style history-tambah"></i>
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-				<div class="item">
-					<i class="fa fa-plus-circle history-icon-style history-tambah"></i>
+          <p class="message">
+            <a href="#" class="name">
+              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+              Mike Doe
+            </a>
+            I would like to meet you to discuss the latest news about
+            the arrival of the new theme. They say it is going to be one the
+            best themes on the market
+          </p>
+        </div>
+        <div class="item">
+          <i class="fa fa-plus-circle history-icon-style history-tambah"></i>
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-				<div class="item">
-					<i class="fa fa-refresh history-icon-style history-update"></i>
+          <p class="message">
+            <a href="#" class="name">
+              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+              Mike Doe
+            </a>
+            I would like to meet you to discuss the latest news about
+            the arrival of the new theme. They say it is going to be one the
+            best themes on the market
+          </p>
+        </div>
+        <div class="item">
+          <i class="fa fa-refresh history-icon-style history-update"></i>
 
-					<p class="message">
-						<a href="#" class="name">
-							<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-							Mike Doe
-						</a>
-						I would like to meet you to discuss the latest news about
-						the arrival of the new theme. They say it is going to be one the
-						best themes on the market
-					</p>
-				</div>
-			</div>
-			<div class="box-footer with-border text-center">
-				<button class="btn btn-default btn-flat">view all</button>
-			</div>
-		</div>
-	</div>
+          <p class="message">
+            <a href="#" class="name">
+              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+              Mike Doe
+            </a>
+            I would like to meet you to discuss the latest news about
+            the arrival of the new theme. They say it is going to be one the
+            best themes on the market
+          </p>
+        </div>
+      </div>
+      <div class="box-footer with-border text-center">
+        <button class="btn btn-default btn-flat">view all</button>
+      </div>
+    </div>
+  </div>
 
-	<div class="col-xs-12">
-		<div class="row">
-			<div class="col-md-12 col-lg-8">
-				<div class="box box-widget">
-					<div class="box-header with-border bg-light-blue">
+
+
+<div class="col-xs-12">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="box box-widget">
+          <div class="box-header with-border bg-light-blue">
             <span class="info-box-icon bg-light-blue"><i class="ion ion-home font-white"></i></span>
             <div class="info-box-content">
               <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4 class="font-white">Rumah Sehat</h4></span>
@@ -921,18 +1336,18 @@
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i></button>
             </div>
           </div>
-					<div class="box-body" style="padding: 20px 0px;">
-						<div class="nav-tabs-custom">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#rs" data-toggle="tab">RS</a></li>
-								<li><a href="#pjb" data-toggle="tab">PJB</a></li>
-								<li><a href="#spal" data-toggle="tab">SPAL</a></li>
-								<li><a href="#sab" data-toggle="tab">SAB</a></li>
-								<li><a href="#jbn" data-toggle="tab">Jamban</a></li>
-								<li><a href="#sampah" data-toggle="tab">Sampah</a></li>
-							</ul>
-						</div>
-						<div class="box-body border-radius-none" style="padding: 20px">
+          <div class="box-body" style="padding: 20px 0px;">
+            <div class="nav-tabs-custom">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#rs" data-toggle="tab">RS</a></li>
+                <li><a href="#pjb" data-toggle="tab">PJB</a></li>
+                <li><a href="#spal" data-toggle="tab">SPAL</a></li>
+                <li><a href="#sab" data-toggle="tab">SAB</a></li>
+                <li><a href="#jbn" data-toggle="tab">Jamban</a></li>
+                <li><a href="#sampah" data-toggle="tab">Sampah</a></li>
+              </ul>
+            </div>
+            <div class="box-body border-radius-none" style="padding: 20px">
                 <div class="tab-content">
                   <div class="tab-pane active" id="rs">
                     <div class="overflow-hidden">
@@ -947,7 +1362,8 @@
                         <div class="pull-right col-xs-7 no-padding">
                           <select core-angler="select-retrieve-data-rw" class="form-control">
                             <option value="0">- pilih kategori -</option>
-                            <option value="kepala_keluarga">Kepala Keluarga</option>
+                            <option value="rumahsehat">Rumah Sehat</option>
+                            <option value="rumahtsehat">Rumah Tidak Sehat</option>
                           </select>
                         </div>
                       </div>
@@ -1141,8 +1557,27 @@
                     </div>
                   </div>
                   <div class="tab-pane" id="pjb">
+                        <div class="overflow-hidden">
+                        <div class="col-xs-4 pull-left no-padding">
                     <b>Pemantauan Jentik Berkala</b>
                     <div class="line-height-box-body bg-light-blue"></div>
+</div>
+                        <div class="col-xs-8 no-padding">
+                          <div class="pull-left col-xs-5 rw-p-control">
+                            <p>Lihat detail rw</p>
+                          </div>
+                          <div class="pull-right col-xs-7 no-padding">
+                            <select core-angler="select-retrieve-data-rw" class="form-control">
+                              <option value="0">- pilih kategori -</option>
+                              <option value="ada_jentik">Ada jentik</option>
+                              <option value="tada_jentik">Tidak ada jentik</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
                     <div class="row">
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
@@ -1195,7 +1630,7 @@
                               <option value="modal_koya">Koya</option>
                               <option value="modal_kali">Kali</option>
                               <option value="modal_helikopter">Helikopter</option>
-                              <option value="modal_septic_tank">Septic Tank</option>
+                              <option value="modal_septic_tank">Septik Tank</option>
                             </select>
                           </div>
                         </div>
@@ -1261,51 +1696,23 @@
                 </div>
 
               </div>
-					</div>
-				</div>        
-			</div>
+          </div>
+        </div>        
+      </div>
 
-			<div class="col-md-12 col-lg-4">
-				<div class="box box-widget">
-					<div class="box-header with-border bg-orange orange-sipp-kling-main-color">
-						<span class="info-box-icon bg-orange orange-sipp-kling-main-color"><i class="ion ion-ios-star-outline"></i></span>
-						<div class="info-box-content">
-							<span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Reward</h4></span>
-						</div>
-						<div class="box-tools pull-right">
-							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i></button>
-						</div>
-					</div>
-					<div class="box-body" style="height: 320px; overflow: auto;">
-						<ul class="products-list product-list-in-box">
-							<li class="item">
-								<div class="product-img">
-									<img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-								</div>
-								<div class="product-info">
-									<a href="javascript:void(0)" class="product-title">
-										Petugas 1 <span class="label label-warning pull-right">90</span>
-									</a>
-									<span class="product-description">
-									Kecamatana Limo,<br>
-									Kelurahan Limo
-									</span>
-								</div>
-							</li>
-							<li class="item">
-								<div class="product-img">
-									<img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-								</div>
-								<div class="product-info">
-									<a href="javascript:void(0)" class="product-title">
-										Petugas 1 <span class="label label-warning pull-right">90</span>
-									</a>
-									<span class="product-description">
-									Kecamatana Limo,<br>
-									Kelurahan Limo
-									</span>
-								</div>
-							</li>
+      <div class="col-md-12 col-lg-4">
+        <div class="box box-widget">
+          <div class="box-header with-border bg-orange orange-sipp-kling-main-color">
+            <span class="info-box-icon bg-orange orange-sipp-kling-main-color"><i class="ion ion-ios-star-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Reward</h4></span>
+            </div>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i></button>
+            </div>
+          </div>
+          <div class="box-body" style="height: 320px; overflow: auto;">
+            <ul class="products-list product-list-in-box">
               <li class="item">
                 <div class="product-img">
                   <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
@@ -1348,13 +1755,41 @@
                   </span>
                 </div>
               </li>
-							<!-- /.item -->
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+              <li class="item">
+                <div class="product-img">
+                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
+                </div>
+                <div class="product-info">
+                  <a href="javascript:void(0)" class="product-title">
+                    Petugas 1 <span class="label label-warning pull-right">90</span>
+                  </a>
+                  <span class="product-description">
+                  Kecamatana Limo,<br>
+                  Kelurahan Limo
+                  </span>
+                </div>
+              </li>
+              <li class="item">
+                <div class="product-img">
+                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
+                </div>
+                <div class="product-info">
+                  <a href="javascript:void(0)" class="product-title">
+                    Petugas 1 <span class="label label-warning pull-right">90</span>
+                  </a>
+                  <span class="product-description">
+                  Kecamatan Limo,<br>
+                  Kelurahan Limo
+                  </span>
+                </div>
+              </li>
+              <!-- /.item -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="col-xs-12">
 
@@ -1497,7 +1932,6 @@
                         <div class="small-box bg-light-blue">
                           <div class="inner">
                             <h3>{{$jumlah_kullayak}}</h3>
-                            <h3>0</h3>
                               <p>Laik Hygiene Sanitasi</p>
                           </div>
                           <div class="icon">
@@ -1868,6 +2302,7 @@
         </div>
         <!-- end tempat umum -->
   </div>
+  
 
 </section>
 @endsection
