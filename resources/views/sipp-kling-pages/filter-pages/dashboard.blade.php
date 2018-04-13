@@ -1287,7 +1287,7 @@
         @endforeach
       </div>
       <div class="box-footer with-border text-center">
-        <button class="btn btn-default btn-flat">view all</button>
+        <a href="{{ url('sipp-kling/history') }}" class="btn btn-default btn-flat">view all</a>
       </div>
     </div>
   </div>
