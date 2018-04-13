@@ -1262,58 +1262,29 @@
         </div>
       </div>
       <div class="box-body chat" id="chat-box">
+        @foreach($getHistoryData as $data)
         <div class="item">
-          <i class="fa fa-refresh history-icon-style history-update"></i>
+          @if($data->aktivitas == 'UPDATE')
+            <i class="fa fa-refresh history-icon-style history-update"></i>
+          @else
+            <i class="fa fa-plus history-icon-style history-tambah"></i>
+          @endif
 
           <p class="message">
             <a href="#" class="name">
-              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-              Mike Doe
+              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ date('d-m-y, G:i:s', strtotime($data->waktu)) }}</small>
+              {{ $data->nama }}
             </a>
-            I would like to meet you to discuss the latest news about
-            the arrival of the new theme. They say it is going to be one the
-            best themes on the market
-          </p>
-        </div>
-        <div class="item">
-          <i class="fa fa-plus-circle history-icon-style history-tambah"></i>
 
-          <p class="message">
-            <a href="#" class="name">
-              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-              Mike Doe
-            </a>
-            I would like to meet you to discuss the latest news about
-            the arrival of the new theme. They say it is going to be one the
-            best themes on the market
-          </p>
-        </div>
-        <div class="item">
-          <i class="fa fa-plus-circle history-icon-style history-tambah"></i>
+            @if($data->aktivitas == 'UPDATE')
+              {{ $data->nama }} telah mengupdate data
+            @else
+              {{ $data->nama }} telah menambah data
+            @endif
 
-          <p class="message">
-            <a href="#" class="name">
-              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-              Mike Doe
-            </a>
-            I would like to meet you to discuss the latest news about
-            the arrival of the new theme. They say it is going to be one the
-            best themes on the market
           </p>
         </div>
-        <div class="item">
-          <i class="fa fa-refresh history-icon-style history-update"></i>
-
-          <p class="message">
-            <a href="#" class="name">
-              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-              Mike Doe
-            </a>
-            I would like to meet you to discuss the latest news about
-            the arrival of the new theme. They say it is going to be one the
-            best themes on the market
-          </p>
-        </div>
+        @endforeach
       </div>
       <div class="box-footer with-border text-center">
         <button class="btn btn-default btn-flat">view all</button>
