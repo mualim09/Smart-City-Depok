@@ -6,9 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\Repository;
+use App\Repositories\DataCountRepository;
 
 class MapsSippklingController extends Controller
 {
+  protected $repo;
+
+  public function __construct(DataCountRepository $repository){
+    $this->repo = $repository;
+  }
     public function maps()
     {
       $rss = DB::table('rumah_sehat')->join('petugas_sikelings', 'rumah_sehat.id_petugas', '=', 'petugas_sikelings.id_petugas')

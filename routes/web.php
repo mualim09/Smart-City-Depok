@@ -203,7 +203,7 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', 'FeedController@berita');
+// Route::get('/', 'FeedController@berita');/
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');
 Route::get('/blog/{judul}', 'BlogController@viewblog2');
