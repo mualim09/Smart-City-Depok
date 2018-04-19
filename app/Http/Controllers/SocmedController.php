@@ -16,10 +16,10 @@ class SocmedController extends Controller
 
     public function profile()
     {
-    // $data = Twitter::getHomeTimeline(['count' => 2, 'format' => 'array']);
+    // $data = Twitter::getDmsOut(['count' => 20, 'format' => 'array']);
     // return $data;
-    return view('socmed/socmedprofile',compact('data'));
-    }
+    return view('socmed/dashboard3',compact('data'));
+    } 
 
 
  

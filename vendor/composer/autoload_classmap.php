@@ -59,6 +59,7 @@ return array(
     'App\\Http\\Controllers\\SlbController' => $baseDir . '/app/Http/Controllers/SlbController.php',
     'App\\Http\\Controllers\\SmaController' => $baseDir . '/app/Http/Controllers/SmaController.php',
     'App\\Http\\Controllers\\SmpController' => $baseDir . '/app/Http/Controllers/SmpController.php',
+    'App\\Http\\Controllers\\SocmedController' => $baseDir . '/app/Http/Controllers/SocmedController.php',
     'App\\Http\\Controllers\\SpbuController' => $baseDir . '/app/Http/Controllers/SpbuController.php',
     'App\\Http\\Controllers\\SupermarketController' => $baseDir . '/app/Http/Controllers/SupermarketController.php',
     'App\\Http\\Controllers\\TamanController' => $baseDir . '/app/Http/Controllers/TamanController.php',

@@ -8,10 +8,10 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'bd9634f2d41831496de0d3dfe4c94881' => __DIR__ . '/..' . '/symfony/polyfill-php56/bootstrap.php',
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
@@ -432,6 +432,7 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'App\\Http\\Controllers\\SlbController' => __DIR__ . '/../..' . '/app/Http/Controllers/SlbController.php',
         'App\\Http\\Controllers\\SmaController' => __DIR__ . '/../..' . '/app/Http/Controllers/SmaController.php',
         'App\\Http\\Controllers\\SmpController' => __DIR__ . '/../..' . '/app/Http/Controllers/SmpController.php',
+        'App\\Http\\Controllers\\SocmedController' => __DIR__ . '/../..' . '/app/Http/Controllers/SocmedController.php',
         'App\\Http\\Controllers\\SpbuController' => __DIR__ . '/../..' . '/app/Http/Controllers/SpbuController.php',
         'App\\Http\\Controllers\\SupermarketController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupermarketController.php',
         'App\\Http\\Controllers\\TamanController' => __DIR__ . '/../..' . '/app/Http/Controllers/TamanController.php',

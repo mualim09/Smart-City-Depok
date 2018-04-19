@@ -116,13 +116,13 @@
           </div>
           <div class="w3-display-middle">
             <div class="w3-content" style="max-width:1100px">
-{{--             @foreach($beritas as $berita)
+            @foreach($beritas as $berita)
               <div class="mySlides w3-card-4 w3-round-large w3-black w3-animate-fading" style="border: 5px solid #f8981d; padding: 4em; opacity:0.7;">
                 <h3><b>{{ $berita->get_title() }}</b></h3>
                 <p class="w3-justify w3-medium">{!! $berita->get_description() !!}</p>
                 <p class="w3-medium"><a href="{{ $berita->get_permalink() }}" style="text-decoration: none;" class="w3-medium"><br><button class="w3-button w3-padding-large w3-gray"><b>READ MORE</b></button></a></p>
               </div>
-            @endforeach --}}
+            @endforeach
             </div>
           </div>
         </div>
@@ -252,7 +252,7 @@
     </section>
 
 
-{{--     <section class="w3-display-container" id="news" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg2.jpg'); ">
+    <section class="w3-display-container" id="news" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg2.jpg'); ">
       <div class="w3-display-middle">
       <div class="w3-content" style="max-width:1100px">
       @foreach($beritas as $berita)
@@ -265,7 +265,7 @@
       </div>
       </div>
       <a href="#features" class="scroll w3-display-bottommiddle" style="margin-bottom:2em"><span></span></a>
-    </section> --}}
+    </section>
 
     <section class="w3-display-container" id="features" style="background-position: center;background-repeat: no-repeat;background-size: cover; background-image: url('img/bg3.jpg');">
       <div style="position: absolute;top: 50%;transform: translate(12%,-50%);">

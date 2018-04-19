@@ -211,10 +211,10 @@
                     <td colspan="6">There are no data.</td>
                 </tr>
             @endif
-                --}}
+               
 
 
-            </div></p></div>
+            </div></p></div> --}}
 
         <div class="col-md-6">           
           <div class="user-block bg-aqua">  

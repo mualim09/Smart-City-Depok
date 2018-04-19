@@ -31,16 +31,16 @@ Auth::routes();
 //===============================================================
 Route::get('/dashboard', 'HomeController@index');
 Route::get('dashboard2', 'Dashboard2Controller@total');
-Route::get('/dashboard3', function () {
-    return view('socmed/dashboard3');
-});
+// Route::get('/dashboard3', function () {
+//     return view('socmed/dashboard3');
+// });
 Route::get('/dashboard4', function () {
     return view('pages/dashboard4');
 });
 //##############################################################
 // Twitter
 Route::get('dashboard3', 'SocmedController@twitterUserTimeLine');
-Route::get('dashboard3/profile', 'SocmedController@profile');
+Route::get('dashboard3/profile', 'SocmedController@profile')->middleware('auth');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
 
 
@@ -204,20 +204,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 // Route::get('/', 'FeedController@berita');/
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/blog/{judul}', 'BlogController@error');
+
+Route::get('/', 'FeedController@berita');
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');
 Route::get('/blog/{judul}', 'BlogController@viewblog2');
-// Route::get('/blog/{judul}', 'BlogController@error');
 Route::get('/event', 'EventController@viewevent');
 Route::get('/event/{nama_event}', 'EventController@viewevent2');
 Route::resource('complaint', 'ComplainController');
-
-
 Route::get('/information', function () {
     return view('information');
 });
+Route::get('/faq', function () {
+    return view('faq');
+});
 Route::resource('/faqs', 'FaqController');
-#################################################################
 
 
 
@@ -401,23 +406,17 @@ Route::delete('sipp-kling/hapus-rehat/{id_rumah_sehat}', 'SipklingtabelControlle
 // SAB
 Route::delete('sipp-kling/hapus-sab/{id_rumah_sehat}', 'SipklingtabelController@delete_sab')->name('dashboard-tabel');
 
-
-
 // JASA BOGA
 Route::post('/sipp-kling/input_jb', 'SipklingtabelController@input_jb')->name('dashboard-tabel');
 Route::delete('sipp-kling/hapus-jasaboga/{id_jasaboga}', 'SipklingtabelController@delete_jb')->name('dashboard-tabel');
-
-
 
 // Kuliner
 Route::post('/sipp-kling/input_kuliner', 'SipklingtabelController@input_kuliner')->name('dashboard-tabel');
 Route::delete('sipp-kling/hapus-kuliner/{id_kuliner}', 'SipklingtabelController@delete_kuliner')->name('dashboard-tabel');
 
-
 // DAM
 Route::post('/sipp-kling/input_dam', 'SipklingtabelController@input_dam')->name('dashboard-tabel');
 Route::delete('sipp-kling/hapus-dam/{id_dam}', 'SipklingtabelController@delete_dam')->name('dashboard-tabel');
-
 
 // TEMPAT IBADAH
 Route::post('/sipp-kling/input_ibadah', 'SipklingtabelController@input_ibadah')->name('dashboard-tabel');

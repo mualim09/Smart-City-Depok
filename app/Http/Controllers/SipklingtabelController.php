@@ -182,15 +182,8 @@ $jabos  = $this->viewdatatabel("jasa_bogas");
 
 	public function delete_rh($id_rumah_sehat)
     {
-
-
-        $rs = DB::table('rumah_sehat')
-                ->join('sabs', 'rumah_sehat.id_rumah_sehat', '=', 'sabs.id_rumah_sehat')                      
-                ->select('rumah_sehat.*', 'sabs.*')
-                ->get();
-
-
-
+    $rehats = DB::table('rumah_sehat')->where('id_rumah_sehat', $id_rumah_sehat)->delete();
+    
     // $rehats = DB::table('rumah_sehat')
     //                 ->join('sabs', 'rumah_sehat.id_rumah_sehat', 'sabs.id_rumah_sehat')
     //                 ->where('rumah_sehat.id_rumah_sehat', $id_rumah_sehat)
@@ -202,14 +195,9 @@ $jabos  = $this->viewdatatabel("jasa_bogas");
 // SAB
     public function delete_sab($id_rumah_sehat)
     {
-        // $sabs =     DB::table('sabs')
-        //             ->join('rumah_sehat', 'sabs.id_rumah_sehat', 'rumah_sehat.id_rumah_sehat')
-        //             ->where('rumah_sehat.id_rumah_sehat', $id_rumah_sehat)
-        //             ->delete();
+        
+        $sabs = DB::table('sabs')->where('id_rumah_sehat', $id_rumah_sehat)->delete();
 
-        // $sabs   =   DB::table('sabs')->foreign('id_rumah_sehat')
-        //             ->references('id_rumah_sehat')->on('rumah_sehat')
-        //             ->onDelete('cascade');
        
         return redirect('sipp-kling/dashboard-tabel')->with('delete', 'Data Sab telah dihapus');
     }
