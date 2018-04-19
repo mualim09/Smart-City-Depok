@@ -381,6 +381,8 @@ var btn5 = document.getElementById("krs");
 var btn6 = document.getElementById("kts");
 var btn7 = document.getElementById("mrs");
 var btn8 = document.getElementById("mts");
+var btn9 = document.getElementById("kec");
+var btn10 = document.getElementById("kel");
 
 var all = document.getElementById("semuakel");
 var kll = document.getElementById("cam");
