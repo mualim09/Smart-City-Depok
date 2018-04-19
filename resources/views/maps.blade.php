@@ -310,8 +310,8 @@
         </div>
       </div>
 
-      <a id="myBtn" onclick="myFunc('Demo8')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kemiskinan Publik </a>
-        <div id="Demo8" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+      <a id="myBtn" onclick="myFunc('Demo9')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kemiskinan Publik </a>
+        <div id="Demo9" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="krt" onclick="miskin()"> Angka Status Kesejahteraan Rumah Tangga <br>
         <div id="kemis">
           <select class="w3-select" id="search-string_4" onchange="changeMap_4(this.value);">
@@ -1039,6 +1039,7 @@ var markers33 =[];
         map: map,
         name: 'Styled Map'
       });
+    //kecamatan
       map.mapTypes.set('map-style', styledMapType);
       map.setMapTypeId('map-style');
       layer_0 = new google.maps.FusionTablesLayer({
@@ -1050,7 +1051,8 @@ var markers33 =[];
         styleId: 2,
         templateId: 2
       });
-      // layer_0.setMap(map);
+      //kelurahan
+      // layer_0.setMap(map); 
       layer_1 = new google.maps.FusionTablesLayer({
         query: {
           select: "col0",
