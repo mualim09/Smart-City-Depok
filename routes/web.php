@@ -200,6 +200,10 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 //===============================================================
 //                   TAMPILAN PUBLIC                            =
 //===============================================================
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('/', 'FeedController@berita');/
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -219,7 +223,6 @@ Route::get('/faq', function () {
     return view('faq');
 });
 Route::resource('/faqs', 'FaqController');
-#################################################################
 
 
 
