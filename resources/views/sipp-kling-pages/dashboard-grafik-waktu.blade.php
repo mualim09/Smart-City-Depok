@@ -50,8 +50,8 @@
 						</select>
 				</div>
 				<div class="rw col-xs-12 col-lg-3">
-					<button class="btn btn-primary col-xs-12"> <i class="fa fa-search"></i>  <strong>Search</strong> </button>
-				</div>
+		              <button type="submit" class="btn btn-flat col-xs-12 green-main-color font-white"> <i class="fa fa-filter"></i>  <strong>Filter</strong> </button>
+		          </div>
 			</div>
 		</div>
 	</div>

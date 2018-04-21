@@ -15,6 +15,8 @@ class SippKlingController extends Controller
   protected $repo;
 
   public function __construct(DataCountRepository $repository){
+    // $this->middleware('auth:sippKlingAuth');
+    $this->middleware('auth');
     $this->repo = $repository;
   }
 

@@ -56,19 +56,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Trident</td>
-									<td>Internet
-										Explorer 4.0
-									</td>
-									<td>Win 95+</td>
-									<td>
-										<button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-data-1"><i class="ion-eye"></i></button>
-
-										<button type="button" class="btn btn-flat btn-danger" data-toggle="modal"><i class="ion-ios-trash"></i></button>
-
-									</td>
-								</tr>
 								@foreach($data as $key)
 								<tr>
 									<td>{{ ++$loop->index }}</td>

@@ -17,6 +17,21 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        // switch ($guard) {
+        //     case 'sippKlingAuth':
+        //         if (Auth::guard($guard)->check()) {
+        //             // return redirect()->route('sippKlingAuth.dashboard');
+        //             return redirect('/sipp-kling');
+        //           }
+        //         break;
+            
+        //     default:
+        //         if (Auth::guard($guard)->check()) {
+        //             return redirect('/');
+        //         }
+        //         break;
+        // }
+        
         if (Auth::guard($guard)->check()) {
             return redirect('/dashboard');
         }

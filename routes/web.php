@@ -448,8 +448,13 @@ Route::post('/sipp-kling/input_pkl', 'SipklingtabelController@input_pkl')->name(
 Route::delete('sipp-kling/hapus-pkl/{id_pelayanan_kesling}', 'SipklingtabelController@delete_pkl')->name('dashboard-tabel');
 // |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-
-Route::get('/sipp-kling', 'SippKlingController@total_jumlah')->name('dashboard');
+Route::prefix('sipp-kling')->group(function() {
+    Route::get('/login', 'Auth\SippKlingLoginController@showLoginForm')->name('sipp-kling.login');
+    Route::post('/login', 'Auth\SippKlingLoginController@login');
+    //Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'SippKlingController@total_jumlah')->name('dashboard');
+    
+});
 Route::any('/sipp-kling/filter', 'SippKlingController@totalJumlahByParameter')->name('dashboard');
 
 
@@ -502,3 +507,7 @@ Route::get('/sipp-kling/pesan', function(){
 Route::get('/sipp-kling/data-tempat/', 'MapsSippklingController@maps');
 
 Route::get('/sipp-kling/history', 'SippKlingController@history');
+
+// Route::get('/login-sipp-kling', function(){
+//     return 1;
+// });

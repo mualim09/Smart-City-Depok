@@ -45,6 +45,16 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'sippKlingAuth' => [
+            'driver' => 'session',
+            'provider' => 'sippKlingAuths',
+        ],
+
+        'sippKlingAuth-api' => [
+            'driver' => 'token',
+            'provider' => 'sippKlingAuths',
+        ],
     ],
 
     /*
@@ -68,6 +78,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'sippKlingAuths' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SippKlingAdmin::class,
         ],
 
         // 'users' => [
@@ -96,6 +111,12 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+
+        'sippKlingAuths' => [
+            'provider' => 'sippKlingAuths',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 

@@ -34,7 +34,7 @@ class SipklingtabelController extends Controller
             ->select($tabel.'.*', 'petugas_sikelings.nama', 'petugas_sikelings.kelurahan')
             ->where('kecamatan', '=', $kecamatan)
             ->orderBy('waktu','desc')
-            // ->limit(20)
+            ->limit(20)
             ->get();     
           }
 
@@ -45,7 +45,7 @@ class SipklingtabelController extends Controller
             ->where('kecamatan', '=', $kecamatan)
             ->where('kelurahan', '=', $kelurahan)
             ->orderBy('waktu','desc')
-            // ->limit(20)
+            ->limit(20)
             ->get();  
           }
     }
