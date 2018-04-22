@@ -1,7 +1,6 @@
 @extends('sipp-kling-layouts.app')
 
 @section('content')
-
 <section class="content-header overflow-hidden">
   <div class="col-xs-12 title-dashboard">
     <h2>{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!}</h2>
@@ -233,8 +232,8 @@
 							<thead>
 								<tr>
 									<th>Nama KK</th>
-                  					<th style="display:none;">Kelurahan</th>                    
-                  					<th style="display:none;">Alamat</th>                    
+                  					<th style="display:none;">Kelurahan</th>
+                  					<th style="display:none;">Alamat</th>
 									<th>RT / RW</th>
 									<th>No Rumah</th>
 									<th>Sampah</th>
@@ -250,7 +249,7 @@
 							<tbody>
 								@foreach($rehats as $rehat)	
 								<tr>
-									<td>{{$rehat->id_rumah_sehat}}</td>
+									<!-- <td>{{$rehat->id_rumah_sehat}}</td> -->
 									<td>{{$rehat->nama_kk}}</td>
                   					<td style="display:none;">{{$rehat->kelurahan}}</td>            
                   					<td style="display:none;">{{$rehat->alamat}}</td>            
@@ -361,7 +360,7 @@
 </div>
 @endforeach
 {{-- ===================================================================================================================== --}}
-
+				
 				<div class="tab-pane" id="sab">
 					<div style="width: 100%;" class="overflow-hidden">
 						<h4 class="box-title col-xs-6">Data Sarana Air Bersih (SAB)</h4>

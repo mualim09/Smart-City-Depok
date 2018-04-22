@@ -55,7 +55,7 @@
 </section>
 
 <!-- modal -->
-<div class="modal fade" id="rumahsehat">
+<div class="modal fade" id="sehatrs">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-aqua">
@@ -71,7 +71,7 @@
           <hr/>
           <div class="margin-10"></div>
           <div class="more-occurs overflow-hidden">
-           <div class="col-xs-6 col-lg-3">
+            <div class="col-xs-6 col-lg-3">
               <span class="progress-text">RW 01 </span>
               <span class="progress-number pull-right"><b id="grw1">{{$sehattpilihrw1}}</b></span><br>
 
@@ -153,7 +153,8 @@
 </div>
 
 
-<div class="modal fade" id="rumahtsehat">
+
+<div class="modal fade" id="tsehatrs">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header bg-aqua">
@@ -251,7 +252,6 @@
 </div>
 
 
-<!-- ================================================================================================================================ -->
 
 
 <div class="modal fade" id="spal_terbuka">
@@ -1245,12 +1245,8 @@
 </div>
 
 
-
-
-
-
 <section class="content" style="overflow: hidden;">
-  <div class="col-xs-12">
+  <div class="col-md-12 col-lg-8">
     <div class="box box-widget">
       <div class="box-header with-border bg-light-blue green-background-main-color" style="padding: 15px">
         <h3 class="box-title" style="color:#fff"><b>History</b></h3>
@@ -1292,397 +1288,18 @@
     </div>
   </div>
 
-
-
-<div class="col-xs-12">
-    <div class="row">
-      <div class="col-md-12 col-lg-8">
+  <div class="col-md-12 col-lg-4">
         <div class="box box-widget">
-          <div class="box-header with-border bg-light-blue">
-            <span class="info-box-icon bg-light-blue"><i class="ion ion-home font-white"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4 class="font-white">Rumah Sehat</h4></span>
-            </div>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i></button>
-            </div>
-          </div>
-          <div class="box-body" style="padding: 20px 0px;">
-            <div class="nav-tabs-custom">
-              <ul class="nav nav-tabs">
-                <li class="active"><a href="#rs" data-toggle="tab">RS</a></li>
-                <li><a href="#pjb" data-toggle="tab">PJB</a></li>
-                <li><a href="#spal" data-toggle="tab">SPAL</a></li>
-                <li><a href="#sab" data-toggle="tab">SAB</a></li>
-                <li><a href="#jbn" data-toggle="tab">Jamban</a></li>
-                <li><a href="#sampah" data-toggle="tab">Sampah</a></li>
-              </ul>
-            </div>
-            <div class="box-body border-radius-none" style="padding: 20px">
-                <div class="tab-content">
-                  <div class="tab-pane active" id="rs">
-                    <div class="overflow-hidden">
-                      <div class="col-xs-4 pull-left no-padding">
-                        <b>Rumah Sehat</b>
-                        <div class="line-height-box-body bg-light-blue"></div>
-                      </div>
-                      <div class="col-xs-8 no-padding">
-                        <div class="pull-left col-xs-5 rw-p-control">
-                          <p>Lihat detail rw</p>
-                        </div>
-                        <div class="pull-right col-xs-7 no-padding">
-                          <select core-angler="select-retrieve-data-rw" class="form-control">
-                            <option value="0">- pilih kategori -</option>
-                            <option value="rumahsehat">Rumah Sehat</option>
-                            <option value="rumahtsehat">Rumah Tidak Sehat</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-green">
-                          <div class="inner">
-                            <h3 id="jumlah_rs">{{$jumlah_rs}}</h3>
-                            <p>Jumlah</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-stats-bars" style="color: white"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlah_rssehat">{{$jumlah_rssehat}}</h3>
-                              <p>Sehat </p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark" style="color: white"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlah_rstidaksehat">{{$jumlah_rstidaksehat}}</h3>
-                              <p>Tidak sehat</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close" style="color: white"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          <div class="box-header with-border bg-orange orange-sippkling-main-color" style="padding: 15px">
+        <h3 class="box-title" style="color:#fff"><b>Reward</b></h3>
 
-
-
-                  <div class="tab-pane" id="sab">
-                    <b>Sarana Air Bersih</b>
-                    <div class="line-height-box-body bg-light-blue"></div>
-                    <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-green">
-                          <div class="inner">
-                            <h3 id="jumlah_sab">0</h3>
-                            <p>Jumlah</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlah_sabsehat">0</h3>
-                              <p>Sehat </p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlah_sabtidaksehat">0</h3>
-                              <p>Tidak sehat</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="spal">
-                    <div class="overflow-hidden">
-                        <div class="col-xs-4 pull-left no-padding">
-                          <b>Sarana Pembuangan Air Limbah</b>
-                          <div class="line-height-box-body bg-light-blue"></div>
-                        </div>
-                        <div class="col-xs-8 no-padding">
-                          <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
-                          </div>
-                          <div class="pull-right col-xs-7 no-padding">
-                            <select core-angler="select-retrieve-data-rw" class="form-control">
-                              <option value="0">- pilih kategori -</option>
-                              <option value="spal_terbuka">Terbuka</option>
-                              <option value="spal_tertutup">Tertutup</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-green">
-                          <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_spal}}</h3>
-                            <p>Jumlah</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_spalterbuka}}</h3>
-                              <p>Terbuka</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_spaltertutup}}</h3>
-                              <p>Tertutup</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="sampah">
-                    <div class="overflow-hidden">
-                        <div class="col-xs-4 pull-left no-padding">
-                          <b>Sampah</b>
-                          <div class="line-height-box-body bg-light-blue"></div>
-                        </div>
-                        <div class="col-xs-8 no-padding">
-                          <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
-                          </div>
-                          <div class="pull-right col-xs-7 no-padding">
-                            <select core-angler="select-retrieve-data-rw" class="form-control">
-                              <option value="0">- pilih kategori -</option>
-                              <option value="sampah_dipilah">Dipilah/ Organik</option>
-                              <option value="sampah_tdipilah">Tidak Dipilah/ Dibuang</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-green">
-                          <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_tps}}</h3>
-                            <p>Jumlah</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_tpsorganik}}</h3>
-                              <p>Dipilah/ Organik </p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_tpsdibuang}}</h3>
-                              <p>Tidak Dipilah/ Dibuang</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="pjb">
-                        <div class="overflow-hidden">
-                        <div class="col-xs-4 pull-left no-padding">
-                    <b>Pemantauan Jentik Berkala</b>
-                    <div class="line-height-box-body bg-light-blue"></div>
-</div>
-                        <div class="col-xs-8 no-padding">
-                          <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
-                          </div>
-                          <div class="pull-right col-xs-7 no-padding">
-                            <select core-angler="select-retrieve-data-rw" class="form-control">
-                              <option value="0">- pilih kategori -</option>
-                              <option value="ada_jentik">Ada jentik</option>
-                              <option value="tada_jentik">Tidak ada jentik</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-
-
-
-                    <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-green">
-                          <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_pjb}}</h3>
-                            <p>Jumlah</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_adapjb}}</h3>
-                              <p>Ada Jentik </p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_tidakpjb}}</h3>
-                              <p>Tidak Ada Jentik</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane" id="jbn">
-                    <div class="overflow-hidden">
-                        <div class="col-xs-4 pull-left no-padding">
-                          <b>Jamban</b>
-                          <div class="line-height-box-body bg-light-blue"></div>
-                        </div>
-                        <div class="col-xs-8 no-padding">
-                          <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
-                          </div>
-                          <div class="pull-right col-xs-7 no-padding">
-                            <select core-angler="select-retrieve-data-rw" class="form-control">
-                              <option value="0">- pilih kategori -</option>
-                              <option value="modal_koya">Koya</option>
-                              <option value="modal_kali">Kali</option>
-                              <option value="modal_helikopter">Helikopter</option>
-                              <option value="modal_septic_tank">Septik Tank</option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    <div class="row">
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-green">
-                          <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_jamban}}</h3>
-                            <p>Jumlah</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_koya}}</h3>
-                              <p>Koya/Empang</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_kali}}</h3>
-                              <p>Kali</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                                            <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-light-blue">
-                          <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_helikopter}}</h3>
-                              <p>Helikopter</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-checkmark"></i>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-xs-6">
-                        <div class="small-box bg-red">
-                          <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_septik}}</h3>
-                              <p>Septik Tank</p>
-                          </div>
-                          <div class="icon">
-                            <i class="ion ion-close"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-          </div>
-        </div>        
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times font-white"></i></button>
+        </div>
       </div>
-
-      <div class="col-md-12 col-lg-4">
-        <div class="box box-widget">
-          <div class="box-header with-border bg-orange orange-sipp-kling-main-color">
-            <span class="info-box-icon bg-orange orange-sipp-kling-main-color"><i class="ion ion-ios-star-outline"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Reward</h4></span>
-            </div>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i></button>
-            </div>
-          </div>
-          <div class="box-body" style="height: 320px; overflow: auto;">
+          <div class="box-body" style="height: 235px; overflow: auto;">
             <ul class="products-list product-list-in-box">
               <li class="item">
                 <div class="product-img">
@@ -1759,6 +1376,428 @@
           </div>
         </div>
       </div>
+
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-widget">
+          <div class="box-header with-border bg-light-blue">
+            <span class="info-box-icon bg-light-blue"><i class="ion ion-home font-white"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4 class="font-white">Rumah Sehat</h4></span>
+            </div>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i></button>
+            </div>
+          </div>
+          <div class="box-body" style="padding: 20px 0px;">
+            <div class="nav-tabs-custom">
+              <ul class="nav nav-tabs">
+                <li class="active"><a href="#rs" data-toggle="tab">RS</a></li>
+                <li><a href="#pjb" data-toggle="tab">PJB</a></li>
+                <li><a href="#spal" data-toggle="tab">SPAL</a></li>
+                <li><a href="#sab" data-toggle="tab">SAB</a></li>
+                <li><a href="#jbn" data-toggle="tab">Jamban</a></li>
+                <li><a href="#sampah" data-toggle="tab">Sampah</a></li>
+              </ul>
+            </div>
+            <div class="box-body border-radius-none" style="padding: 20px">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="rs">
+                    <div class="overflow-hidden">
+                      <div class="col-xs-4 pull-left no-padding">
+                        <b>Rumah Sehat</b>
+                        <div class="line-height-box-body bg-light-blue"></div>
+                      </div>
+                      <div class="col-xs-8 no-padding">
+                        <div class="pull-left col-xs-5 rw-p-control">
+                          <p>Lihat detail /RW</p>
+                        </div>
+                        <div class="pull-right col-xs-7 no-padding">
+                          <select core-angler="select-retrieve-data-rw" class="form-control">
+                            <option value="0">- pilih kategori -</option>
+                            <option value="sehatrs">Rumah Sehat</option>
+                            <option value="tsehatrs">Rumah Tidak Sehat</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <p><strong>Total</strong></p>
+                            <h3 id="jumlah_rs">{{$jumlah_rs}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-stats-bars" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                            <p>Sehat </p>
+                            <h3 id="jumlah_rssehat">{{$jumlah_rssehat}} / <span style="font-size: 15px;">{{$jumlah_rs}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              
+                              number_format(
+                                ($jumlah_rssehat / $jumlah_rs) * 100, 2
+                              )
+                              
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <p>Tidak sehat</p>
+                            <h3 id="jumlah_rstidaksehat">{{$jumlah_rstidaksehat}} / <span style="font-size: 15px;">{{$jumlah_rs}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_rstidaksehat / $jumlah_rs) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <div class="tab-pane" id="sab">
+                    <b>Sarana Air Bersih</b>
+                    <div class="line-height-box-body bg-light-blue"></div>
+                    <div class="row">
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <h3 id="jumlah_sab">0</h3>
+                            <p>Jumlah</p>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-stats-bars" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                            <h3 id="jumlah_sabsehat">0</h3>
+                              <p>Sehat </p>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <h3 id="jumlah_sabtidaksehat">0</h3>
+                              <p>Tidak sehat</p>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="spal">
+                    <div class="overflow-hidden">
+                        <div class="col-xs-4 pull-left no-padding">
+                          <b>Sarana Pembuangan Air Limbah</b>
+                          <div class="line-height-box-body bg-light-blue"></div>
+                        </div>
+                        <div class="col-xs-8 no-padding">
+                          <div class="pull-left col-xs-5 rw-p-control">
+                            <p>Lihat detail /RW</p>
+                          </div>
+                          <div class="pull-right col-xs-7 no-padding">
+                            <select core-angler="select-retrieve-data-rw" class="form-control">
+                              <option value="0">- pilih kategori -</option>
+                              <option value="spal_terbuka">Terbuka</option>
+                              <option value="spal_tertutup">Tertutup</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <p>Jumlah</p>
+                            <h3 id="jumlah">{{$jumlah_spal}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-stats-bars" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                            <p>Terbuka</p>
+                            <h3 id="jumlahsehat">{{$jumlah_spalterbuka}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_spalterbuka / $jumlah_spal) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <p>Tertutup</p>
+                            <h3 id="jumlahtidaksehat">{{$jumlah_spaltertutup}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_spaltertutup / $jumlah_spal) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="sampah">
+                    <div class="overflow-hidden">
+                        <div class="col-xs-4 pull-left no-padding">
+                          <b>Sampah</b>
+                          <div class="line-height-box-body bg-light-blue"></div>
+                        </div>
+                        <div class="col-xs-8 no-padding">
+                          <div class="pull-left col-xs-5 rw-p-control">
+                            <p>Lihat detail /RW</p>
+                          </div>
+                          <div class="pull-right col-xs-7 no-padding">
+                            <select core-angler="select-retrieve-data-rw" class="form-control">
+                              <option value="0">- pilih kategori -</option>
+                              <option value="sampah_dipilah">Dipilah/ Organik</option>
+                              <option value="sampah_tdipilah">Tidak Dipilah/ Dibuang</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <p>Jumlah</p>
+                            <h3 id="jumlah">{{$jumlah_tps}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-stats-bars" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                            <p>Dipilah/ Organik</p>
+                            <h3 id="jumlahsehat">{{$jumlah_tpsorganik}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_tpsorganik / $jumlah_tps) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <p>Tidak Dipilah/ Dibuang</p>
+                            <h3 id="jumlahtidaksehat">{{$jumlah_tpsdibuang}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_tpsdibuang / $jumlah_tps) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="pjb">
+                        <div class="overflow-hidden">
+                        <div class="col-xs-4 pull-left no-padding">
+                    <b>Pemantauan Jentik Berkala</b>
+                    <div class="line-height-box-body bg-light-blue"></div>
+</div>
+                        <div class="col-xs-8 no-padding">
+                          <div class="pull-left col-xs-5 rw-p-control">
+                            <p>Lihat detail /RW</p>
+                          </div>
+                          <div class="pull-right col-xs-7 no-padding">
+                            <select core-angler="select-retrieve-data-rw" class="form-control">
+                              <option value="0">- pilih kategori -</option>
+                              <option value="ada_jentik">Ada jentik</option>
+                              <option value="tada_jentik">Tidak ada jentik</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    <div class="row">
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <p>Jumlah</p>
+                            <h3 id="jumlah_rssehat">{{$jumlah_pjb}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-stats-bars" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                              <p>Tidak Ada Jentik</p>
+                              <h3>{{$jumlah_tidakpjb}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_tidakpjb / $jumlah_pjb) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <p>Ada Jentik </p>
+                            <h3>{{$jumlah_adapjb}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_adapjb / $jumlah_pjb) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="jbn">
+                    <div class="overflow-hidden">
+                        <div class="col-xs-4 pull-left no-padding">
+                          <b>Jamban</b>
+                          <div class="line-height-box-body bg-light-blue"></div>
+                        </div>
+                        <div class="col-xs-8 no-padding">
+                          <div class="pull-left col-xs-5 rw-p-control">
+                            <p>Lihat detail /RW</p>
+                          </div>
+                          <div class="pull-right col-xs-7 no-padding">
+                            <select core-angler="select-retrieve-data-rw" class="form-control">
+                              <option value="0">- pilih kategori -</option>
+                              <option value="modal_koya">Koya</option>
+                              <option value="modal_kali">Kali</option>
+                              <option value="modal_helikopter">Helikopter</option>
+                              <option value="modal_septic_tank">Septik Tank</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <p>Total</p>
+                            <h3>{{$jumlah_jamban}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-stats-bars" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                            <h3>{{$jumlah_koya}}</h3>
+                              <p>Koya/Empang</p>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_koya / $jumlah_pjb) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <p>Kali</p>
+                            <h3 id="jumlahtidaksehat" style="color: white">{{$jumlah_kali}}</h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_kali / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-light-blue">
+                          <div class="inner">
+                            <p>Helikopter</p>
+                            <h3 id="jumlahsehat">{{$jumlah_helikopter}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_helikopter / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-checkmark" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-xs-6">
+                        <div class="small-box bg-red">
+                          <div class="inner">
+                            <p>Septik Tank</p>
+                            <h3>{{$jumlah_septik}}</h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_septik / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
+                          </div>
+                          <div class="icon">
+                            <i class="ion ion-close" style="color: white"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+          </div>
+        </div>        
+      </div>
     </div>
   </div>
 
@@ -1786,8 +1825,9 @@
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-green">
                         <div class="inner">
+                          <p>Total</p>
                           <h3 id="jumlah">{{$jumlah_pkl}}</h3>
-                          <p>Jumlah</p>
+                          <small><i><strong style="font-size: 16px;">-</strong></i></small>
                         </div>
                         <div class="icon">
                           <i class="ion ion-stats-bars"></i>
@@ -1797,8 +1837,11 @@
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-light-blue">
                         <div class="inner">
+                          <p>Dalam Gedung</p>
                           <h3 id="jumlahsehat">{{$jumlah_pkldalam}}</h3>
-                            <p>Dalam Gedung</p>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_pkldalam / $jumlah_pkl) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
                           <i class="ion ion-checkmark"></i>
@@ -1808,8 +1851,11 @@
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-red">
                         <div class="inner">
-                          <h3 id="jumlahtidaksehat">{{$jumlah_pklluar}}</h3>
-                            <p>Luar Gedung</p>
+                          <p>Luar Gedung</p>
+                          <h3>{{$jumlah_pklluar}}</h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_pklluar / $jumlah_pkl) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
                           <i class="ion ion-close"></i>
@@ -2273,7 +2319,6 @@
         </div>
         <!-- end tempat umum -->
   </div>
-  
 
 </section>
 @endsection
