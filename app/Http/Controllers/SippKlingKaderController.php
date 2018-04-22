@@ -18,6 +18,7 @@ class SippKlingKaderController extends Controller
 
     public function __construct(Repository $repository){
         $this->repo = $repository;
+        $this->middleware('auth:admin');
     }
 
     public function index()

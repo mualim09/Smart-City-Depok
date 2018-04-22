@@ -1,7 +1,5 @@
 <?php
-
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -12,12 +10,10 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -34,29 +30,24 @@ return [
     | Supported: "session", "token"
     |
     */
-
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
         ],
-
-        'sippKlingAuth' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'sippKlingAuths',
+            'provider' => 'admins',
         ],
-
-        'sippKlingAuth-api' => [
+        'admin-api' => [
             'driver' => 'token',
-            'provider' => 'sippKlingAuths',
+            'provider' => 'admins',
         ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -73,24 +64,20 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
-        'sippKlingAuths' => [
+        'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\SippKlingAdmin::class,
+            'model' => App\Admin::class,
         ],
-
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords
@@ -105,19 +92,16 @@ return [
     | they have less time to be guessed. You may change this as needed.
     |
     */
-
     'passwords' => [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
         ],
-
-        'sippKlingAuths' => [
-            'provider' => 'sippKlingAuths',
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 15,
         ],
     ],
-
 ];

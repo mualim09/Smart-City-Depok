@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Input;
 class SipklingtabelController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth:admin');
+    }
+
 // ===============================================================================================================================
     private function viewdatatabel ($tabel){
     return   DB::table($tabel)

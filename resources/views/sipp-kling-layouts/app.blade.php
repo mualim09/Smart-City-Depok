@@ -90,7 +90,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="{{ asset('dist/img/admin.png') }}
+                                    <img src="{{ asset('dist/img/admin.png') }}"
                                          class="img-circle" alt="User Image"/>
                                     <p>
                                         {!! Auth::user()->name !!}

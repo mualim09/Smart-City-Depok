@@ -200,10 +200,6 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 //===============================================================
 //                   TAMPILAN PUBLIC                            =
 //===============================================================
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('/', 'FeedController@berita');/
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -223,6 +219,7 @@ Route::get('/faq', function () {
     return view('faq');
 });
 Route::resource('/faqs', 'FaqController');
+#################################################################
 
 
 
@@ -375,9 +372,6 @@ Route::get('/broadcastform', function () {
 
 // Route::get('/sipp-kling/dashboard', 'SippKlingController@total_jumlah');
 
-
-Route::get('/sipp-kling/dashboard-tabel', 'SippKlingController@rehat')->name('dashboard-tabel');
-
 Route::get('/sipp-kling/dashboard-grafik-waktu', 'SippKlingController@grafik')->name('dashboard-grafik-waktu');
 
 
@@ -390,7 +384,6 @@ Route::get('/sipp-kling/dashboard-grafik-waktu', 'SippKlingController@grafik')->
 Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahan');
 
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-Route::get('/sipp-kling/dashboard-tabel', 'SipklingtabelController@view_tabel')->middleware('auth')->name('dashboard-tabel');
 
 // this is just for passing data
 // FILTER
@@ -453,17 +446,29 @@ Route::delete('sipp-kling/hapus-pkl/{id_pelayanan_kesling}', 'SipklingtabelContr
 
 Route::prefix('sipp-kling')->group(function() {
     Route::get('/login', 'Auth\SippKlingLoginController@showLoginForm')->name('sipp-kling.login');
-    Route::post('/login', 'Auth\SippKlingLoginController@login');
+    Route::post('/login', 'Auth\SippKlingLoginController@login')->name('sipp-kling.login.submit');
     //Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('/', 'SippKlingController@total_jumlah')->name('dashboard');
+    Route::get('/', 'SippKlingController@total_jumlah')->name('sipp-kling.dashboard');
+    // Route::get('/dashboard-tabel', 'SippKlingController@rehat')->name('dashboard-tabel');
+    Route::get('/dashboard-tabel', 'SipklingtabelController@view_tabel')->name('sipp-kling.dashboard');
+    Route::get('/dashboard-map', 'SippKlingController@getDashboardMap')->name('dashboard-map');
+    Route::any('/filter', 'SippKlingController@totalJumlahByParameter')->name('dashboard');
     
+    Route::resource('admin', 'SippKlingAdminController',['names' => [
+        'index' => 'admin',
+        'create' => 'admin'
+    ]]);
+
+    Route::resource('/kader', 'SippKlingKaderController',['names' => [
+        'index' => 'kader',
+        'create' => 'kader'
+    ]]);
+
+    Route::get('/jadwal', 'SippKlingController@getJadwalPage');
+    Route::get('/sipp-kling/pesan', 'SippKlingController@getPesanPage');
+    Route::get('/sipp-kling/data-tempat/', 'MapsSippklingController@maps');
+    Route::get('/sipp-kling/history', 'SippKlingController@history');
 });
-Route::any('/sipp-kling/filter', 'SippKlingController@totalJumlahByParameter')->name('dashboard');
-
-
-Route::get('/sipp-kling/dashboard-map', function(){
-    return view('sipp-kling-pages/dashboard-map');
-})->name('dashboard-map');
 
 
 Route::get('/sipp-kling/dashboard-grafik-waktu/{param_periode}', function($param){
@@ -471,46 +476,3 @@ Route::get('/sipp-kling/dashboard-grafik-waktu/{param_periode}', function($param
     return view('sipp-kling-pages/dashboard-periode-pendataan', ['param' => $param]);
 
 })->name('dashboard-periode-pendataan');
-
-
-Route::get('/sipp-kling/admin/tambah-admin', function(){
-    return view('sipp-kling-pages/admin/tambah-admin');
-});
-
-Route::get('/sipp-kling/admin', function(){
-    return view('sipp-kling-pages/admin/data-admin');
-})->name('data-admin');
-
-Route::get('/sipp-kling/kader/tambah-kader', function(){
-    return view('sipp-kling-pages/kader/tambah-kader');
-});
-
-Route::get('/sipp-kling/kader', function(){
-    return view('sipp-kling-pages/kader/data-kader');
-})->name('data-kader');
-
-Route::resource('/sipp-kling/admin', 'SippKlingAdminController',['names' => [
-    'index' => 'admin',
-    'create' => 'admin'
-]]);
-
-Route::resource('/sipp-kling/kader', 'SippKlingKaderController',['names' => [
-    'index' => 'kader',
-    'create' => 'kader'
-]]);
-
-Route::get('/sipp-kling/jadwal', function(){
-    return view('sipp-kling-pages/jadwal/tambah-jadwal');
-});
-
-Route::get('/sipp-kling/pesan', function(){
-    return view('sipp-kling-pages/pesan/tambah-pesan');
-});
-
-Route::get('/sipp-kling/data-tempat/', 'MapsSippklingController@maps');
-
-Route::get('/sipp-kling/history', 'SippKlingController@history');
-
-// Route::get('/login-sipp-kling', function(){
-//     return 1;
-// });

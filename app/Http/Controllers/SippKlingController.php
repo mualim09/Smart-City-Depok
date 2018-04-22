@@ -15,8 +15,7 @@ class SippKlingController extends Controller
   protected $repo;
 
   public function __construct(DataCountRepository $repository){
-    // $this->middleware('auth:sippKlingAuth');
-    $this->middleware('auth');
+    $this->middleware('auth:admin');
     $this->repo = $repository;
   }
 
@@ -132,6 +131,18 @@ class SippKlingController extends Controller
                         ->get();
 
     return view('sipp-kling-pages/history/index', ['history' => $getHistoryData]);
+  }
+
+  public function getDashboardMap(){
+    return view('sipp-kling-pages/dashboard-map');
+  }
+
+  public function getJadwalPage(){
+    return view('sipp-kling-pages/jadwal/tambah-jadwal');
+  }
+
+  public function getPesanPage(){
+    return view('sipp-kling-pages/pesan/tambah-pesan');
   }
 
 }

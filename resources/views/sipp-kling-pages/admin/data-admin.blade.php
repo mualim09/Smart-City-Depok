@@ -4,7 +4,7 @@
 
 
 @foreach($data as $key)
-<div class="modal fade" id="delete-action-{!! substr($key->id_admin_sikeling, 0, 15) !!}">
+<div class="modal fade" id="delete-action-{{ $key->id }}">
 	<div class="modal-dialog">
      <div class="modal-content">
       <div class="modal-header" style="background-color: #f56954">
@@ -16,7 +16,7 @@
       	Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
-      	<form action="/sipp-kling/admin/{{ $key->id_admin_sikeling }}" method="post">
+      	<form action="/sipp-kling/admin/{{ $key->id }}" method="post">
 	        <input type="submit" class="btn btn-danger" name="submit" value="YA">
 	        {{ csrf_field() }}
 	        <input type="hidden" name="_method" value="DELETE">
@@ -59,11 +59,11 @@
 								@foreach($data as $key)
 								<tr>
 									<td>{{ ++$loop->index }}</td>
-									<td>{{ $key->nama }}</td>
+									<td>{{ $key->name }}</td>
 									<td>{{ $key->email }}</td>
 									<td>{{ $key->password }}</td>
 									<td>
-										<button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#delete-action-{!! substr($key->id_admin_sikeling, 0, 15) !!}"><i class="ion-ios-trash"></i></button>
+										<button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#delete-action-{{ $key->id }}"><i class="ion-ios-trash"></i></button>
 
 									</td>
 								</tr>
