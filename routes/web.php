@@ -37,10 +37,14 @@ Route::get('dashboard2', 'Dashboard2Controller@total');
 Route::get('/dashboard4', function () {
     return view('pages/dashboard4');
 });
-//##############################################################
-// Twitter
-Route::get('dashboard3', 'SocmedController@twitterUserTimeLine');
-Route::get('dashboard3/profile', 'SocmedController@profile')->middleware('auth');
+
+
+//===============================================================
+//                          TWITTER                             =
+//===============================================================
+Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
+Route::get('dashboard-socmed/profile', 'SocmedController@profile')->middleware('auth')->name('profile');
+Route::get('dashboard-socmed/analysis', 'SocmedController@analysis')->middleware('auth')->name('analysis');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
 
 

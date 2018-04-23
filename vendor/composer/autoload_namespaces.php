@@ -11,6 +11,7 @@ return array(
     'SimplePie' => array($vendorDir . '/simplepie/simplepie/library'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
+    'PHPInsight' => array($vendorDir . '/jwhennessey/phpinsight/lib'),
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
