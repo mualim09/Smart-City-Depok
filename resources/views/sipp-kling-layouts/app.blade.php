@@ -43,7 +43,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="/dashboard" class="logo green-background-main-color">
+            <a href="{{ url('sipp-kling') }}" class="logo green-background-main-color">
                 <b>SIPP-KLING</b>
             </a>
 

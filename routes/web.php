@@ -376,7 +376,7 @@ Route::get('/broadcastform', function () {
 
 // Route::get('/sipp-kling/dashboard', 'SippKlingController@total_jumlah');
 
-Route::get('/sipp-kling/dashboard-grafik-waktu', 'SippKlingController@grafik')->name('dashboard-grafik-waktu');
+Route::get('/sipp-kling/dashboard-grafik', 'SippKlingController@grafik')->name('dashboard-grafik');
 
 
 
@@ -396,8 +396,6 @@ Route::any('/sipp-kling/dashboard-tabel/filter', 'SipklingtabelController@view_t
 
 
 // #######################################################################################################################
-
-// |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 Route::prefix('sipp-kling')->group(function() {
     Route::get('/login', 'Auth\SippKlingLoginController@showLoginForm')->name('sipp-kling.login');
@@ -478,8 +476,4 @@ Route::prefix('sipp-kling')->group(function() {
 });
 
 
-Route::get('/sipp-kling/dashboard-grafik-waktu/{param_periode}', function($param){
-
-    return view('sipp-kling-pages/dashboard-periode-pendataan', ['param' => $param]);
-
-})->name('dashboard-periode-pendataan');
+Route::get('/sipp-kling/dashboard-grafik/{param}','SippKlingController@dashboardGrafik')->name('dashboard-periode-pendataan');

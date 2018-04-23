@@ -11,6 +11,7 @@
 					<option value="{{ url('sipp-kling/dashboard-tabel') }}" {{ (\Request::route()->getName() == 'dashboard-tabel') ? 'selected' : ''}}>Dashboard Tabel</option>
 					<option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}" {{ (\Request::route()->getName() == 'dashboard-grafik-waktu') ? 'selected' : ''}} >Dashboard Grafik Waktu</option>
 					<option value="{{ url('sipp-kling/dashboard-map') }}" {{ (\Request::route()->getName() == 'dashboard-map') ? 'selected' : ''}} >Dashboard Map</option>
+					<option value="{{ url('sipp-kling/dashboard-detail') }}" {{ (\Request::route()->getName() == 'dashboard-detail') ? 'selected' : ''}}>Dashboard Detail</option>
 				</select>
 			</div>
 			<div class="col-xs-12 no-padding">

@@ -4,7 +4,7 @@
 
 <section class="content-header overflow-hidden">
 	<div class="col-xs-12 title-dashboard">
-		<h2>{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!}</h2>
+		<h2>Dashboard grafik</h2>
 		<div class="line-height"></div>
 	</div>
 
@@ -14,9 +14,9 @@
 				<select class="form-control" id="change-dashboard">
 					<option value="{{ url('sipp-kling') }}" {{ (\Request::route()->getName() == 'dashboard') ? 'selected' : ''}} >Dashboard Utama</option>
 					<option value="{{ url('sipp-kling/dashboard-tabel') }}" {{ (\Request::route()->getName() == 'dashboard-tabel') ? 'selected' : ''}}>Dashboard Tabel</option>
-					<option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}"
+					<option value="{{ url('sipp-kling/dashboard-grafik') }}"
 
-					@if(Request::route()->getName() == 'dashboard-grafik-waktu' || Request::route()->getName() == 'dashboard-periode-pendataan')
+					@if(Request::route()->getName() == 'dashboard-grafik' || Request::route()->getName() == 'dashboard-periode-pendataan')
 
 					selected
 
@@ -24,16 +24,18 @@
 
 
 					@endif
-					 >Dashboard Grafik Waktu</option>
+					 >Dashboard Grafik</option>
+					 <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+					<option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
 				</select>
 			</div>
 
 			<div class="col-xs-12 no-padding">
 				<div class="kecamatan col-xs-12 col-lg-3">
 					<select class="form-control" id="pendataan">
-						<option>- pilih periode -</option>
-						<option value="{{ url('sipp-kling/dashboard-grafik-waktu/periode-satu') }}">periode satu</option>
-						<option value="{{ url('sipp-kling/dashboard-grafik-waktu/periode-dua') }}">periode dua</option>
+						<option value="0">- pilih grafik -</option>
+						<option value="{{ url('sipp-kling/dashboard-grafik') }}">Grafik total</option>
+						<option value="{{ url('sipp-kling/dashboard-grafik/grafik-periode') }}">Grafik periode</option>
 					</select>
 				</div>
 				<div class="kelurahan col-xs-12 col-lg-3">

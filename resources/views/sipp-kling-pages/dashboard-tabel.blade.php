@@ -12,8 +12,9 @@
         <select class="form-control" id="change-dashboard">
           <option value="{{ url('sipp-kling') }}" >Dashboard Utama</option>
           <option value="{{ url('sipp-kling/dashboard-tabel') }}" selected="selected">Dashboard Tabel</option>
-          <option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">Dashboard Grafik Waktu</option>
+          <option value="{{ url('sipp-kling/dashboard-grafik') }}">Dashboard Grafik</option>
           <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
       <div class="col-xs-12 no-padding">
@@ -98,11 +99,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$rehat->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$rehat->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$rehat->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$rehat->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div style="background-color: #999;color: #fff;">
+	        		<span class="left">Petugas </span><strong class="right">{{$rehat->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$rehat->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$rehat->total_nilai}}</strong><br>
+		        </div>
+		        <div>
+		        	<span class="left">Update terakhir </span><br><strong class="left">{{$rehat->waktu}}</strong><br>
+		        </div> 	
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -114,22 +123,49 @@
 				</p>
 			</div>
 	        	<div class="more-occurs">
-		        	<span class="left">Nama KK </span><strong class="right">{{$rehat->nama_kk}}</strong><br>
-		        	<span class="left">Anggota Keluarga </span><strong class="right">{{$rehat->jumlah_anggota}}</strong><br>
-		        	<span class="left">Status Rumah </span><strong class="right">{{$rehat->status_rumah}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$rehat->no_telp}}</strong><br>
-		        	<span class="left">Jamban </span><strong class="right">{{$rehat->jamban}}</strong><br>
-		        	<span class="left">Sampah </span><strong class="right">{{$rehat->sampah}}</strong><br>
-		        	<span class="left">SPAL </span><strong class="right">{{$rehat->spal}}</strong><br>
-		        	<span class="left">PJB </span><strong class="right">{{$rehat->pjb}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$rehat->gambaran_umum}}</strong><br>		       	
+		        	<div>
+		        		<span class="left">Nama KK </span><strong class="right">{{$rehat->nama_kk}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Anggota Keluarga </span><strong class="right">{{$rehat->jumlah_anggota}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Status Rumah </span><strong class="right">{{$rehat->status_rumah}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$rehat->no_telp}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Jamban </span><strong class="right">{{$rehat->jamban}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Sampah </span><strong class="right">{{$rehat->sampah}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">SPAL </span><strong class="right">{{$rehat->spal}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">PJB </span><strong class="right">{{$rehat->pjb}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$rehat->gambaran_umum}}</strong><br>
+		        	</div>		       	
 	        	</div>
 	        	<div class="margin-10"></div>
 	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$rehat->alamat}}</strong><br>	        		
-		        	<span class="left">No Rumah </span><strong class="right">{{$rehat->no_rumah}}</strong><br>	        		
-	        		<span class="left">RT / RW </span><strong class="right">{{$rehat->rt}} / {{$rehat->rw}}</strong><br>
-		        	<span class="left">Kordinat </span><strong class="right">{{$rehat->koordinat}}</strong><br>	
+		        	
+		        	<div>	        		
+		        		<span class="left">No Rumah </span><strong class="right">{{$rehat->no_rumah}}</strong><br>
+		        	</div>
+		        	<div>	        		
+	        			<span class="left">RT / RW </span><strong class="right">{{$rehat->rt}} / {{$rehat->rw}}</strong><br>
+	        		</div>
+		        	<div>
+		        		<span class="left">Kordinat </span><strong class="right">{{$rehat->koordinat}}</strong><br>	
+		        	</div>
+		        	<div>
+		        		<span class="left">Alamat </span><br><strong class="left">{{$rehat->alamat}}</strong><br>
+		        	</div>
 	        	</div>
 	        </div>
     	</div>
