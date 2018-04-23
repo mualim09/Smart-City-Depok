@@ -15,6 +15,7 @@
         "unisharp/laravel-ckeditor": "^4.6",
         "thujohn/twitter": "~2.0",
         "willvincent/feeds": "1.1.*",
+        "antoineaugusti/laravel-sentiment-analysis": "~2.0",
         "maatwebsite/excel": "~2.1.0"
 
     },
