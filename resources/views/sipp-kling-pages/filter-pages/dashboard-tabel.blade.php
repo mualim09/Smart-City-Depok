@@ -15,6 +15,7 @@
           <option value="{{ url('sipp-kling/dashboard-tabel') }}" selected="selected">Dashboard Tabel</option>
           <option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">Dashboard Grafik Waktu</option>
           <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
       <div class="col-xs-12 no-padding">

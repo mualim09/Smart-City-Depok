@@ -4,18 +4,18 @@
 
 <section class="content-header overflow-hidden">
 	<div class="col-xs-12 title-dashboard">
-		<h2>{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!}</h2>
+		<h2>Dashboard grafik waktu</h2>
 		<div class="line-height"></div>
 	</div>
 	<div class="filter-group overflow-hidden col-xs-12">
 		<div class="row">
-			<div class="form-group col-xs-12 col-lg-6">
+			<div class="form-group col-xs-12">
 				<select class="form-control" id="change-dashboard">
 					<option value="{{ url('sipp-kling') }}" {{ (\Request::route()->getName() == 'dashboard') ? 'selected' : ''}} >Dashboard Utama</option>
 					<option value="{{ url('sipp-kling/dashboard-tabel') }}" {{ (\Request::route()->getName() == 'dashboard-tabel') ? 'selected' : ''}}>Dashboard Tabel</option>
-					<option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}" 
+					<option value="{{ url('sipp-kling/dashboard-grafik') }}" 
 
-					@if(Request::route()->getName() == 'dashboard-grafik-waktu' || Request::route()->getName() == 'dashboard-periode-pendataan')
+					@if(Request::route()->getName() == 'dashboard-grafik' || Request::route()->getName() == 'dashboard-periode-pendataan')
 
 					selected
 
@@ -24,17 +24,19 @@
 
 					@endif
 
-					>Dashboard Grafik Waktu</option>
+					>Dashboard Grafik</option>
+					<option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+					<option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
 				</select>
 			</div>
-
+<!-- 
 			<div class="kecamatan col-xs-12 col-lg-6">
 					<select class="form-control" id="pendataan">
-						<option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">- semua periode -</option>
+						<option value="{{ url('sipp-kling/dashboard-grafik') }}">- semua periode -</option>
 						<option {{ ($param == 'periode-satu') ? 'selected' : '' }}>periode satu</option>
 						<option {{ ($param == 'periode-dua') ? 'selected' : '' }}>periode dua</option>
 					</select>
-				</div>
+				</div> -->
 
 			<div class="col-xs-12 no-padding">
 				<div class="kelurahan col-xs-12 col-lg-3">

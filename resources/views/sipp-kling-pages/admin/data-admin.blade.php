@@ -32,7 +32,7 @@
 
 <section class="content-header overflow-hidden">
 	<div class="col-xs-12 title-dashboard">
-		<h2>Managemen Admin</h2>
+		<h2>Managemen Admin</h2> <a href="{{ url('sipp-kling/admin/create') }}" class="btn btn-flat green-main-color font-white">Tambah Admin</a>
 		<div class="line-height"></div>
 	</div>
 </section>

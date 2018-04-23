@@ -25,3 +25,8 @@
       <i class="fa fa-envelope"></i> <span>Pesan</span>
     </a>
   </li>
+  <li>
+    <a href="#">
+      <i class="fa fa-trash"></i> <span>Trash</span>
+    </a>
+  </li>

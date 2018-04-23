@@ -151,8 +151,17 @@
 }
 
 .more-occurs {
-	padding: 10px;
 	background-color: #f0f0f0 !important;
+}
+
+.more-occurs div {
+	padding: 2.5px;
+	border-bottom: 1px solid #ddd;
+}
+
+.more-occurs div:last-child {
+	border-bottom: 1px solid transparent;
+	
 }
 
 .left {

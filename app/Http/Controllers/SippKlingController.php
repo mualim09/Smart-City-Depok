@@ -145,4 +145,8 @@ class SippKlingController extends Controller
     return view('sipp-kling-pages/pesan/tambah-pesan');
   }
 
+  public function dashboardGrafik($param){
+    return view('sipp-kling-pages/dashboard-periode-pendataan', ['param' => $param]);
+  }
+
 }
