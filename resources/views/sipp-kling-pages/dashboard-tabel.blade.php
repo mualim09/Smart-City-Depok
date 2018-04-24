@@ -623,7 +623,7 @@
       <div class="modal-header green-background-main-color">
         <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-white" align="center">Detail Data Restoran</h4>
+        <h4 class="modal-title font-white" align="center">Detail Data Restoran {{$kuliner->id_kuliner}}</h4>
       </div>
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">

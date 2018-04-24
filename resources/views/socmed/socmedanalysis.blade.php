@@ -14,8 +14,8 @@
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#tweet">Chart 1</a></li>
     <li><a data-toggle="tab" href="#menu1">Chart 2</a></li>
-    {{-- <li><a data-toggle="tab" href="#menu2">Followers</a></li> --}}
-    {{-- <li><a data-toggle="tab" href="#menu3">Likes</a></li> --}}
+    <li><a data-toggle="tab" href="#menu2">Chart 3</a></li>
+    <li><a data-toggle="tab" href="#menu3">Chart 4</a></li>
   </ul>
 
   {{-- <h2>HOME</h2> --}}
@@ -27,7 +27,7 @@
 
                 <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="canvasrs" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="line-chart" width="800" height="450"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">
@@ -55,7 +55,7 @@
 
     <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="canvasrs" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="canvasbar" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">
@@ -80,14 +80,63 @@
   
     <div class="box-body">
 
+      <div class="line-height-box-body"></div>
+                  <div class="col-md-8">
+                    <canvas id="canvasline" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                  </div>
+                  <div class="col-md-4 bg-aqua-active box-keterangan">
+                    <p class="text-center">
+                      <i class="fa fa-info-circle fa-2x"></i><br>
+                      <strong>Keterangan</strong>
+                    </p>
+                    <div class="progress-group">
+                      <span class="progress-text">Total Keseluruhan</span>
+                      <span class="progress-number"><b>9</b></span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 box-detail-keterangan">
+                    <div class="progress-group">
+                    </div>
+                  </div>
+
+
 
     </div>
-
-
     </div>
 
 {{-- ================================================== --}}
 
+    <div id="menu3" class="tab-pane fade">
+  
+    <div class="box-body">
+
+      <div class="line-height-box-body"></div>
+                  <div class="col-md-8">
+                    <canvas id="bubble-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                  </div>
+                  <div class="col-md-4 bg-aqua-active box-keterangan">
+                    <p class="text-center">
+                      <i class="fa fa-info-circle fa-2x"></i><br>
+                      <strong>Keterangan</strong>
+                    </p>
+                    <div class="progress-group">
+                      <span class="progress-text">Total Keseluruhan</span>
+                      <span class="progress-number"><b>9</b></span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 box-detail-keterangan">
+                    <div class="progress-group">
+                    </div>
+                  </div>
+
+
+
+    </div>
+    </div>
+
+{{-- ================================================== --}}
     </div>
   </div>
 {{-- </div> --}}
