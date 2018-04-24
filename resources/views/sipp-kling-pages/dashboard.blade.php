@@ -1898,7 +1898,7 @@
                             <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1913,7 +1913,7 @@
                             !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1928,7 +1928,7 @@
                             !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1946,7 +1946,7 @@
                             <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1961,7 +1961,7 @@
                             !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1976,7 +1976,7 @@
                             !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -2025,7 +2025,7 @@
                           <small><i><strong style="font-size: 16px;">-</strong></i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="ion ion-stats-bars" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2039,7 +2039,7 @@
                             !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-checkmark"></i>
+                          <i class="ion ion-checkmark" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2054,7 +2054,7 @@
                             !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-close"></i>
+                          <i class="ion ion-close" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2073,7 +2073,7 @@
                           <small><i><strong style="font-size: 16px;">-</strong></i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="ion ion-stats-bars" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2088,7 +2088,7 @@
 
                         </div>
                         <div class="icon">
-                          <i class="ion ion-checkmark"></i>
+                          <i class="ion ion-checkmark" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2103,7 +2103,7 @@
                             !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-close"></i>
+                          <i class="ion ion-close" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2122,7 +2122,7 @@
                         <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2136,7 +2136,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2151,7 +2151,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2171,7 +2171,7 @@
                         <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2186,7 +2186,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2201,7 +2201,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2221,7 +2221,7 @@
                         <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2236,7 +2236,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2251,7 +2251,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2270,7 +2270,7 @@
                         <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2285,7 +2285,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2299,7 +2299,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2319,7 +2319,7 @@
                         <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2333,7 +2333,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2348,7 +2348,7 @@
                             !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>

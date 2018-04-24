@@ -13,7 +13,7 @@
           <option value="{{ url('sipp-kling') }}" >Dashboard Utama</option>
           <option value="{{ url('sipp-kling/dashboard-tabel') }}" selected="selected">Dashboard Tabel</option>
           <option value="{{ url('sipp-kling/dashboard-grafik') }}">Dashboard Grafik</option>
-          <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/data-tempat') }}">Dashboard Map</option>
           <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
