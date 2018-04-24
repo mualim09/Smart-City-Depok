@@ -14,7 +14,7 @@
           <option value="{{ url('sipp-kling/dashboard-utama') }}" selected="selected">Dashboard Utama</option>
           <option value="{{ url('sipp-kling/dashboard-tabel') }}">Dashboard Tabel</option>
           <option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">Dashboard Grafik Waktu</option>
-          <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/data-tempat') }}">Dashboard Map</option>
           <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
@@ -1856,23 +1856,58 @@
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-green">
                         <div class="inner">
-                          <p>Total</p>
-                          <h3 id="jumlah">{{$jumlah_pkl}}</h3>
-                          <small><i><strong style="font-size: 16px;">-</strong></i></small>
-                        </div>
-                        <div class="icon">
-                          <i class="ion ion-stats-bars" style="color: white"></i>
-                        </div>
+                        @if($param_kelurahan == '0')
+                            <p><strong>Total</strong></p>
+                            <h3 id="jumlah_rs">{{$jumlah_pkl}} / <span style="font-size: 15px;">{{$getTotal_pkl}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">
+                              {!!
+                              
+                              number_format(
+                                $jumlah_pkl == 0 ? 0 : ($jumlah_pkl / $getTotal_pkl) * 100, 2
+                              )
+                              
+                            !!}%
+                            </strong> dari total keseluruhan</i></small>
+                            @else
+                              <p><strong>Total</strong></p>
+                            <h3 id="jumlah_rs">{{$jumlah_pkl}} / <span style="font-size: 15px;">{{$getTotal_pkl}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">
+                              {!!
+                              
+                              number_format(
+                                $jumlah_pkl == 0 ? 0 : ($jumlah_pkl / $getTotal_pkl) * 100, 2
+                              )
+                              
+                            !!}%
+                            </strong> dari total keseluruhan</i></small>
+                            @endif
+                            <div class="icon">
+                              <i class="ion ion-stats-bars" style="color: white"></i>
+                            </div>
+                          </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-light-blue">
                         <div class="inner">
-                          <p>Dalam Gedung</p>
-                          <h3 id="jumlahsehat">{{$jumlah_pkldalam}} / <span style="font-size: 15px;">{{$jumlah_pkl}}</span></h3>
-                            <small><i><strong style="font-size: 16px;">{!!
-                              number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pkldalam / $jumlah_pkl) * 100, 2)
-                            !!}%</strong> dari total data</i></small>
+                          @if($param_kelurahan == '0')
+                            <p>Dalam Gedung</p>
+                            <h3 id="jumlahsehat">{{ $jumlah_pkldalam }} / <span style="font-size: 15px;">{{ $jumlah_pkl }}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                                number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pkldalam / $jumlah_pkl) * 100, 2)
+                              !!}%</strong> dari total data</i></small><br>
+                              <small><i><strong style="font-size: 16px;">{!!
+                                number_format($getTotal_pkl == 0 ? 0 : ($jumlah_pkldalam / $getTotal_pkl) * 100, 2)
+                              !!}%</strong> dari total data</i></small>
+                            @else
+                            <h3 id="jumlahsehat">{{ $jumlah_pkldalam }} / <span style="font-size: 15px;">{{ $jumlah_pkl }}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                                number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pkldalam / $jumlah_pkl) * 100, 2)
+                              !!}%</strong> dari total data</i></small><br>
+                              <small><i><strong style="font-size: 16px;">{!!
+                                number_format($getTotal_pkl == 0 ? 0 : ($jumlah_pkldalam / $getTotal_pkl) * 100, 2)
+                              !!}%</strong> dari total data</i></small>
+                            @endif
                         </div>
                         <div class="icon">
                           <i class="ion ion-checkmark" style="color: white"></i>
@@ -1882,11 +1917,27 @@
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-red">
                         <div class="inner">
-                          <p>Luar Gedung</p>
-                          <h3>{{$jumlah_pklluar}} / <span style="font-size: 15px;">{{$jumlah_pkl}}</span></h3>
+                          
+
+                          @if($param_kelurahan == '0')
+                            <p>Luar Gedung</p>
+                            <h3>{{$jumlah_pklluar}} / <span style="font-size: 15px;">{{$jumlah_pkl}}</span></h3>
                             <small><i><strong style="font-size: 16px;">{!!
                               number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pklluar / $jumlah_pkl) * 100, 2)
-                            !!}%</strong> dari total data</i></small>
+                            !!}%</strong> dari total data</i></small><br>
+                              <small><i><strong style="font-size: 16px;">{!!
+                                number_format($getTotal_pkl == 0 ? 0 : ($jumlah_pklluar / $getTotal_pkl) * 100, 2)
+                              !!}%</strong> dari total data</i></small>
+                            @else
+                            <p>Luar Gedung</p>
+                            <h3>{{$jumlah_pklluar}} / <span style="font-size: 15px;">{{$jumlah_pkl}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pklluar / $jumlah_pkl) * 100, 2)
+                            !!}%</strong> dari total data</i></small><br>
+                              <small><i><strong style="font-size: 16px;">{!!
+                                number_format($getTotal_pkl == 0 ? 0 : ($jumlah_pklluar / $getTotal_pkl) * 100, 2)
+                              !!}%</strong> dari total data</i></small>
+                            @endif
                         </div>
                         <div class="icon">
                           <i class="ion ion-close" style="color: white"></i>

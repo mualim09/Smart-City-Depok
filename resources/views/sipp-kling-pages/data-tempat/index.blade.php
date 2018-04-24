@@ -177,10 +177,10 @@
   .legend {
     height: 70%;
     margin: 9.5em 0.5em;
-    width: 200px;
-    background-color: #607d8bc2;
-    border: 1px #4083c0 solid;
-    color: white;
+    width: 400px;
+    background-color: white;
+    border: 1px solid #999;
+    color: #333;
   }
   .w3-table td {
     padding: 0;
@@ -325,37 +325,25 @@
 </div>
 
 <!-- Sidebar (hidden by default) -->
-<nav class="legend w3-sidebar w3-bar-block w3-card w3-top w3-small w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px; padding: 20px;" id="mySidebar">
+<nav class="legend w3-sidebar w3-bar-block w3-card style-7 w3-dropdown-content w3-top w3-small w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px; /*padding: 20px;*/" id="mySidebar">
   <div class="w3-bar">
-    <p> <b>Informasi Lengkap</b></p>
-    <table class="w3-table w3-text-white">
-      <tr>
-        <td>Nama Kepala Keluarga</td><td>:</td><td>Jaanih Narip</td>
-      </tr>
-      <tr>
-        <td>Alamat</td><td>:</td><td>Grogol, Limo, Kota Depok, Jawa</td>
-      </tr>
-      <tr>
-        <td>No. Rumah</td><td>:</td><td>31</td>
-      </tr>
-      <tr>
-        <td>RT</td><td>:</td><td>RT001</td>
-      </tr>
-      <tr>
-        <td>RW</td><td>:</td><td>RW04</td>
-      </tr>
-      <tr>
-        <td>Kelurahan</td><td>:</td><td>Limo</td>
-      </tr>
-      <tr>
-        <td>Jumlah Anggota</td><td>:</td><td>5</td>
-      </tr>
-      <tr>
-        <td>Status</td><td>:</td><td>Rumah Sehat</td>
-      </tr>
-    </table>
+    <a id="myBtn" onclick="myFunc('rumah-sehat')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"> Rumah Sehat</a>
+    <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+      asd
+    </div>
+    
   </div>  
 </nav>
+
+<!-- <nav class="legend w3-sidebar w3-card style-7 w3-dropdown-content w3-top w3-animate-left" style="display: block;z-index: 2;width: 300px;/* min-width: 300px; *//* padding: 20px; *//* text-align:  left; */" id="mySidebar">
+  <div class="w3-bar">
+    <a id="myBtn" onclick="myFunc('rumah-sehat')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-map-signs w3-medium" style="margin-right: 7px;"></i> Rumah Sehat</a>
+    <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+      asd
+    </div>
+    
+  </div>  
+</nav> -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAtFnKBeTAorl8rWoo066pk7pwimSpA-w"></script>
 <div id="map-canvas"></div>

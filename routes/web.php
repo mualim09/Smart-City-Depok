@@ -418,9 +418,9 @@ Route::prefix('sipp-kling')->group(function() {
     ]]);
 
     Route::get('/jadwal', 'SippKlingController@getJadwalPage');
-    Route::get('/sipp-kling/pesan', 'SippKlingController@getPesanPage');
-    Route::get('/sipp-kling/data-tempat/', 'MapsSippklingController@maps');
-    Route::get('/sipp-kling/history', 'SippKlingController@history');
+    Route::get('/pesan', 'SippKlingController@getPesanPage');
+    Route::get('/data-tempat/', 'MapsSippklingController@maps');
+    Route::get('/history', 'SippKlingController@history');
 
     // bang tegar
     // RUMAH SEHAT
