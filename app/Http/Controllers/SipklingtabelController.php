@@ -23,7 +23,7 @@ class SipklingtabelController extends Controller
             ->leftjoin('petugas_sikelings', $tabel.'.id_petugas', '=', 'petugas_sikelings.id_petugas')                      
             ->select($tabel.'.*', 'petugas_sikelings.nama', 'petugas_sikelings.kelurahan')
             ->orderBy('waktu','desc')
-            // ->limit(20)
+            ->limit(5000)
             ->get();  
 
     }
@@ -104,15 +104,15 @@ return view('sipp-kling-pages/filter-pages/dashboard-tabel', compact( 'jabos', '
 public function view_tabel(){
 
               
-
+$rehats  = $this->viewdatatabel("rumah_sehat");
 //RUMAH SEHAT       
-    $rehats  = DB::table('rumah_sehat')
-            ->leftjoin('petugas_sikelings', 'rumah_sehat.id_petugas', '=', 'petugas_sikelings.id_petugas')                      
-            ->select('rumah_sehat.id_rumah_sehat', 'rumah_sehat.nama_kk', 'rumah_sehat.alamat', 'rumah_sehat.rt', 'rumah_sehat.rw', 'rumah_sehat.no_rumah', 'rumah_sehat.sampah', 'rumah_sehat.spal', 'rumah_sehat.jamban', 'rumah_sehat.pjb', 'rumah_sehat.status_rumah', 'rumah_sehat.status', 'rumah_sehat.total_nilai', 'rumah_sehat.waktu', 'rumah_sehat.no_telp', 'rumah_sehat.gambaran_umum', 'rumah_sehat.jumlah_anggota', 'rumah_sehat.koordinat',  'petugas_sikelings.nama', 'petugas_sikelings.kelurahan')
-			      ->where('nama_kk', '=', 'NASITI')
-            ->orderBy('waktu','desc')
-            // ->limit(20)
-            ->get(); 
+    // $rehats  = DB::table('rumah_sehat')
+    //         ->leftjoin('petugas_sikelings', 'rumah_sehat.id_petugas', '=', 'petugas_sikelings.id_petugas')                      
+    //         ->select('rumah_sehat.id_rumah_sehat', 'rumah_sehat.nama_kk', 'rumah_sehat.alamat', 'rumah_sehat.rt', 'rumah_sehat.rw', 'rumah_sehat.no_rumah', 'rumah_sehat.sampah', 'rumah_sehat.spal', 'rumah_sehat.jamban', 'rumah_sehat.pjb', 'rumah_sehat.status_rumah', 'rumah_sehat.status', 'rumah_sehat.total_nilai', 'rumah_sehat.waktu', 'rumah_sehat.no_telp', 'rumah_sehat.gambaran_umum', 'rumah_sehat.jumlah_anggota', 'rumah_sehat.koordinat',  'petugas_sikelings.nama', 'petugas_sikelings.kelurahan')
+			 //      ->where('nama_kk', '=', 'NASITI')
+    //         ->orderBy('waktu','desc')
+    //         // ->limit(20)
+    //         ->get(); 
 
 //SABS
 $sabs  = $this->viewdatatabel("sabs");
