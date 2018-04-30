@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SIPP-KLING | Dashboard</title>
+    <link rel="shortcut icon" href="{{ asset('img/sipp-kling/favicon.ico') }}"/>
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -35,6 +36,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css"') }}>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/SippKling.css') }}">
 
+
+    <!-- jQuery 3.1.1 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+<script type="text/javascript">
+var base_url = {!! json_encode(url('/')) !!}
+</script>
+
+
+{{-- ====================================================================================================================== --}}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{ asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
+<script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
+<script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+    <!-- core js -->
+    <script type="text/javascript" src="{{ asset('js/initialize.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/sipp-kling.js') }}"></script>
+    @if(Request::route()->getName() == 'dashboard-grafik')
+        <script async="" src="{{ asset('plugins/bar_chart/analytics.js.download') }}"></script>
+        <script src="{{ asset('plugins/bar_chart/Chart.bundle.js.download')}}"></script>
+        <script src="{{ asset('plugins/bar_chart/utils.js.download') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/chart-sipp-kling.js') }}"></script>
+    @endif
+
 </head>
 <body class="skin-purple-light sidebar-mini">
 @if (!Auth::guest())
@@ -59,12 +90,13 @@
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                               <i class="fa fa-bell-o"></i>
-                              <span class="label label-warning">10</span>
+                              <!-- <span class="label label-warning">10</span> -->
                             </a>
+                            <!--
                             <ul class="dropdown-menu">
                               <li class="header">You have 10 notifications</li>
                               <li>
-                                <!-- inner menu: contains the actual data -->
+                                
                                 <ul class="menu">
                                   
                                   <li>
@@ -75,7 +107,7 @@
                                 </ul>
                               </li>
                               <li class="footer"><a href="#">View all</a></li>
-                            </ul>
+                            </ul>-->
                           </li>
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
@@ -164,14 +196,20 @@
 {{-- ============================================================================================================ --}}
 
 @endif
-<!-- jQuery 3.1.1 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-<script type="text/javascript">
-var base_url = {!! json_encode(url('/')) !!}
-</script>
+
+
+<!-- Slimscroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<script src="../../dist/js/app.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+
+<script src="../../js/UIPageScrolling.js"></script>
 
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
@@ -191,33 +229,6 @@ var base_url = {!! json_encode(url('/')) !!}
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/buttons/1.4.2/js/buttons.colVis.min.js"></script>
-
-
-
-
-
-<!-- Slimscroll -->
-<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="../../plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/app.min.js"></script>
-<script src="../../dist/js/app.js"></script>
-
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-
-<script src="../../js/UIPageScrolling.js"></script>
-
-
-{{-- ====================================================================================================================== --}}
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="{{ asset('plugins/fullcalendar/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
-<script src="{{ asset('plugins/pace/pace.min.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
 
 
 
@@ -257,17 +268,11 @@ $('.ajax').click(function(){
 <!-- tiny mce -->
 {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script> --}}
-
-
-<!-- core js -->
-<script type="text/javascript" src="{{ asset('js/initialize.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/sipp-kling.js') }}"></script>
 <!-- vue -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script>
+<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.15/dist/vue.js"></script> -->
 
 
-@if(Request::route()->getName() == 'dashboard-tabel' || Request::route()->getName() == 'data-admin' || Request::route()->getName() == 'admin' || Request::route()->getName() == 'kader')
+@if(Request::route()->getName() == 'dashboard-tabel' || Request::route()->getName() == 'data-admin' || Request::route()->getName() == 'admin' || Request::route()->getName() == 'kader' || Request::route()->getName() == 'trash' || Request::route()->getName() == 'dashboard-detail')
 
     <script type="text/javascript">
         $(function(){
@@ -307,475 +312,6 @@ $('.ajax').click(function(){
 
                     });
         });
-    </script>
-@endif
-
-
-
-@if(Request::route()->getName() == 'dashboard-grafik-waktu')
-    <script async="" src="{{ asset('plugins/bar_chart/analytics.js.download') }}"></script>
-    <script src="{{ asset('plugins/bar_chart/Chart.bundle.js.download')}}"></script>
-    <script src="{{ asset('plugins/bar_chart/utils.js.download') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/chart-sipp-kling.js') }}"></script>
-    <script type="text/javascript">
-        $(function(){
-          var color = Chart.helpers.color;
-              var rsChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Rumah Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['rts'][0]->total !!} , {!! $rumah_sehat['rts'][1]->total !!} , {!! $rumah_sehat['rts'][2]->total !!} , {!! $rumah_sehat['rts'][3]->total !!} ]
-                }, {
-                  label: 'Rumah Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['rs'][0]->total !!} , {!! $rumah_sehat['rs'][1]->total !!} , {!! $rumah_sehat['rs'][2]->total !!} , {!! $rumah_sehat['rs'][3]->total !!} ]
-                }]
-              };
-
-            $('#canvasrs').SippKlingCharts({
-                type        : 'bar',
-                chartData   : rsChartData,
-                titleText   : 'Data RS 2017',
-                ketId       : 'rs'
-            });
-
-            // pemantauan jentik berkala
-            var pjbChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [
-                {
-                  label: 'YA',
-                  backgroundColor: color(window.chartColors.red).alpha(0.9).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['pjby'][0]->total !!} , {!! $rumah_sehat['pjby'][1]->total !!} , {!! $rumah_sehat['pjby'][2]->total !!} , {!! $rumah_sehat['pjby'][3]->total !!}]
-                },
-                {
-                  label: 'TIDAK',
-                  backgroundColor: color(window.chartColors.green).alpha(0.9).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['pjbt'][0]->total !!} , {!! $rumah_sehat['pjbt'][1]->total !!} , {!! $rumah_sehat['pjbt'][2]->total !!} , {!! $rumah_sehat['pjbt'][3]->total !!} ]
-                }]
-            };
-
-            $('#canvaspjb').SippKlingCharts({
-                type        : 'bar',
-                chartData   : pjbChartData,
-                titleText   : 'Data PJB 2017',
-                ketId       : 'pjb'
-            });
-
-
-
- var color = Chart.helpers.color;
-              var jambanChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Kali',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['jambankali'][0]->total !!} , {!! $rumah_sehat['jambankali'][1]->total !!} , {!! $rumah_sehat['jambankali'][2]->total !!} , {!! $rumah_sehat['jambankali'][3]->total !!}  ]
-                },
-                {
-                  label: 'Koya / Empang',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['jambankoya'][0]->total !!} , {!! $rumah_sehat['jambankoya'][1]->total !!} , {!! $rumah_sehat['jambankoya'][2]->total !!} , {!! $rumah_sehat['jambankoya'][3]->total !!}]
-                },
-                {
-                  label: 'Helikopter',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['jambanheli'][0]->total !!} , {!! $rumah_sehat['jambanheli'][1]->total !!} , {!! $rumah_sehat['jambanheli'][2]->total !!} , {!! $rumah_sehat['jambanheli'][3]->total !!} ]
-                }, {
-                  label: 'Septik Tank',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['jambanseptik'][0]->total !!} , {!! $rumah_sehat['jambanseptik'][1]->total !!} , {!! $rumah_sehat['jambanseptik'][2]->total !!} , {!! $rumah_sehat['jambanseptik'][3]->total !!} ]
-                }]
-              };
-
-            $('#canvasjamban').SippKlingCharts({
-                type        : 'bar',
-                chartData   : jambanChartData,
-                titleText   : 'Data Jamban 2017',
-                ketId       : 'jamban'
-            });
-
-
-
-
-            var color = Chart.helpers.color;
-              var spalChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Terbuka',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['spaltb'][0]->total !!} , {!! $rumah_sehat['spaltb'][1]->total !!} , {!! $rumah_sehat['spaltb'][2]->total !!} , {!! $rumah_sehat['spaltb'][3]->total !!}]
-                }, {
-                  label: 'Tertutup',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['spaltt'][0]->total !!} , {!! $rumah_sehat['spaltt'][1]->total !!} , {!! $rumah_sehat['spaltt'][2]->total !!} , {!! $rumah_sehat['spaltt'][3]->total !!}]
-                }]
-              };
-
-            $('#canvasspal').SippKlingCharts({
-                type        : 'bar',
-                chartData   : spalChartData,
-                titleText   : 'Data SPAL 2017',
-                ketId       : 'spal'
-            });
-
-//SAMPAH
-              var color = Chart.helpers.color;
-              var sampahChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Dipilah / Organik',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['tpsor'][0]->total !!} , {!! $rumah_sehat['tpsor'][1]->total !!} , {!! $rumah_sehat['tpsor'][2]->total !!} , {!! $rumah_sehat['tpsor'][3]->total !!}]
-                }, {
-                  label: 'Tidak Dipilah / Dibuang',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $rumah_sehat['tpsdib'][0]->total !!} , {!! $rumah_sehat['tpsdib'][1]->total !!} ,
-                   {!! $rumah_sehat['tpsdib'][2]->total !!} , {!! $rumah_sehat['tpsdib'][3]->total !!}]
-                }]
-              };
-
-            $('#canvassampah').SippKlingCharts({
-                type        : 'bar',
-                chartData   : sampahChartData,
-                titleText   : 'Data Sampah 2017',
-                ketId       : 'sampah'
-            });
-
-//PKL
-var color = Chart.helpers.color;
-              var pklChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Luar Gedung',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $pelayanan_keslings['pklluar'][0]->total !!} , {!! $pelayanan_keslings['pklluar'][1]->total !!} ,
-                   {!! $pelayanan_keslings['pklluar'][2]->total !!} , {!! $pelayanan_keslings['pklluar'][3]->total !!}]
-                }, {
-                  label: 'Dalam Gedung',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $pelayanan_keslings['pkldalam'][0]->total !!} , {!! $pelayanan_keslings['pkldalam'][1]->total !!} , 
-                  {!! $pelayanan_keslings['pkldalam'][2]->total !!} , {!! $pelayanan_keslings['pkldalam'][3]->total !!}]
-                }]
-              };
-
-            $('#canvaspkl').SippKlingCharts({
-                type        : 'bar',
-                chartData   : pklChartData,
-                titleText   : 'Data PKL 2017',
-                ketId       : 'pkl'
-            });
-
-//////////////////////////////////////////////////////////////////////////////////////////DAM///////////////////////////////////////////////////////
-            var color = Chart.helpers.color;
-              var damChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Memenuhi Persyaratan',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $dam_sip_klings['depotlayak'][0]->total !!} , {!! $dam_sip_klings['depotlayak'][1]->total !!} , 
-                  {!! $dam_sip_klings['depotlayak'][2]->total !!} , {!! $dam_sip_klings['depotlayak'][3]->total !!}]
-                }, {
-                  label: 'Tidak Memenuhi Persyaratan',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $dam_sip_klings['depottlayak'][0]->total !!} , {!! $dam_sip_klings['depottlayak'][1]->total !!} ,
-                   {!! $dam_sip_klings['depottlayak'][2]->total !!} , {!! $dam_sip_klings['depottlayak'][3]->total !!}]
-                }]
-              };
-
-            $('#canvasdam').SippKlingCharts({
-                type        : 'bar',
-                chartData   : damChartData,
-                titleText   : 'Data DAM 2017',
-                ketId       : 'dam'
-            });
-
-
-//============================================================TMr===============================
-            var color = Chart.helpers.color;
-              var tmrChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Layak',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $kuliners['rmlayak'][0]->total !!} , {!! $kuliners['rmlayak'][1]->total !!} ,
-                   {!! $kuliners['rmlayak'][2]->total !!} , {!! $kuliners['rmlayak'][3]->total !!}]
-                }, {
-                  label: 'Tidak Layak',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $kuliners['rmtlayak'][0]->total !!} , {!! $kuliners['rmtlayak'][1]->total !!} ,
-                   {!! $kuliners['rmtlayak'][2]->total !!} , {!! $kuliners['rmtlayak'][3]->total !!} ]
-                }]
-              };
-
-            $('#canvastmr').SippKlingCharts({
-                type        : 'bar',
-                chartData   : tmrChartData,
-                titleText   : 'Data Kuliner 2017',
-                ketId       : 'tmr'
-            });
-
-
-//============================================================JASA BOGA===============================
-            var color = Chart.helpers.color;
-              var jbChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Layak',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $jasa_bogas['jblayak'][0]->total !!} , {!! $jasa_bogas['jblayak'][1]->total !!} ,
-                   {!! $jasa_bogas['jblayak'][2]->total !!} , {!! $jasa_bogas['jblayak'][3]->total !!}]
-                }, {
-                  label: 'Tidak Layak',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $jasa_bogas['jbtlayak'][0]->total !!} , {!! $jasa_bogas['jbtlayak'][1]->total !!} ,
-                   {!! $jasa_bogas['jbtlayak'][2]->total !!} , {!! $jasa_bogas['jbtlayak'][3]->total !!} ]
-                }]
-              };
-
-            $('#canvasjb').SippKlingCharts({
-                type        : 'bar',
-                chartData   : jbChartData,
-                titleText   : 'Data Kuliner 2017',
-                ketId       : 'jb'
-            });
-
-//============================================================TMPAT IBADAH===============================
-            var color = Chart.helpers.color;
-              var ibadahChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Layak',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $tempat_ibadahs['masjidlayak'][0]->total !!} , {!! $tempat_ibadahs['masjidlayak'][1]->total !!} ,
-                   {!! $tempat_ibadahs['masjidlayak'][2]->total !!} , {!! $tempat_ibadahs['masjidlayak'][3]->total !!} ]
-                }, {
-                  label: 'Tidak Layak',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $tempat_ibadahs['masjidtlayak'][0]->total !!} , {!! $tempat_ibadahs['masjidtlayak'][1]->total !!} ,
-                   {!! $tempat_ibadahs['masjidtlayak'][2]->total !!} , {!! $tempat_ibadahs['masjidtlayak'][3]->total !!} ]
-                }]
-              };
-
-            $('#canvasibadah').SippKlingCharts({
-                type        : 'bar',
-                chartData   : ibadahChartData,
-                titleText   : 'Data Tempat Ibadah 2017',
-                ketId       : 'ibadah'
-            });
-//=========================================================================Pasar
-            var color = Chart.helpers.color;
-              var pasarChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [ {!! $pasars['psrlayak'][0]->total !!} , {!! $pasars['psrlayak'][1]->total !!} ,
-                   {!! $pasars['psrlayak'][2]->total !!} , {!! $pasars['psrlayak'][3]->total !!}]
-                 },
-                 {
-                  label: 'Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $pasars['psrtlayak'][0]->total !!} , {!! $pasars['psrtlayak'][1]->total !!} ,
-                   {!! $pasars['psrtlayak'][2]->total !!} , {!! $pasars['psrtlayak'][3]->total !!}]
-                }]
-              };
-
-            $('#canvaspasar').SippKlingCharts({
-                type        : 'bar',
-                chartData   : pasarChartData,
-                titleText   : 'Data Pasar 2017',
-                ketId       : 'pasar'
-            });
-
-
-
-
-
-            //=========================================================================SEKOLAH
-            var color = Chart.helpers.color;
-              var sekolahChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [
-                {
-                  label: 'Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $sekolahs['sklayak'][0]->total !!} , {!! $sekolahs['sklayak'][1]->total !!} ,
-                   {!! $sekolahs['sklayak'][2]->total !!} , {!! $sekolahs['sklayak'][3]->total !!} ]
-              },
-              {
-                  label: 'Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $sekolahs['sktlayak'][0]->total !!} , {!! $sekolahs['sktlayak'][1]->total !!} ,
-                   {!! $sekolahs['sktlayak'][2]->total !!} , {!! $sekolahs['sktlayak'][3]->total !!}]
-               }]
-                };
-
-            $('#canvassekolah').SippKlingCharts({
-                type        : 'bar',
-                chartData   : sekolahChartData,
-                titleText   : 'Data Sekolah 2017',
-                ketId       : 'sekolah'
-            });
-
-
-
-
-
-
-            //=========================================================================PESANTREN
-            var color = Chart.helpers.color;
-              var pesantrenChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $pesantrens['pstlayak'][0]->total !!} , {!! $pesantrens['pstlayak'][1]->total !!} ,
-                   {!! $pesantrens['pstlayak'][2]->total !!} , {!! $pesantrens['pstlayak'][3]->total !!} ]
-              },
-              {
-                  label: 'Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $pesantrens['psttlayak'][0]->total !!} , {!! $pesantrens['psttlayak'][1]->total !!} ,
-                   {!! $pesantrens['psttlayak'][2]->total !!} , {!! $pesantrens['psttlayak'][3]->total !!}]
-              }]  
-            };
-
-            $('#canvaspesantren').SippKlingCharts({
-                type        : 'bar',
-                chartData   : pesantrenChartData,
-                titleText   : 'Data Pesantren 2017',
-                ketId       : 'pesantren'
-            });
-
-
-
-
-                        //=========================================================================HOTEL=======================================
-            var color = Chart.helpers.color;
-              var hotelChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [{
-                  label: 'Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [ {!! $hotels['hlayak'][0]->total !!} , {!! $hotels['hlayak'][1]->total !!} ,
-                   {!! $hotels['hlayak'][2]->total !!} , {!! $hotels['hlayak'][3]->total !!}]
-                },{
-                  label: 'Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [{!! $hotels['htlayak'][0]->total !!} , {!! $hotels['htlayak'][1]->total !!} ,
-                   {!! $hotels['htlayak'][2]->total !!} , {!! $hotels['htlayak'][3]->total !!} ]
-                }]
-              };
-
-            $('#canvashotel').SippKlingCharts({
-                type        : 'bar',
-                chartData   : hotelChartData,
-                titleText   : 'Data Hotel 2017',
-                ketId       : 'hotel'
-            });
-
-
-
-
-
-
-
-
-
-
-                        //=========================================================================HOTEL MELATI=======================================
-            var color = Chart.helpers.color;
-              var hotelmelatiChartData = {
-                labels: ["grogol", "krukut", "limo", "meruyung"],
-                datasets: [ {
-                  label: 'Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [{!! $hotel_melatis['hmlayak'][1]->total !!} , {!! $hotel_melatis['hmlayak'][1]->total !!} ,
-                   {!! $hotel_melatis['hmlayak'][1]->total !!} , {!! $hotel_melatis['hmlayak'][1]->total !!} ]
-                }, {
-                  label: 'Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [ {!! $hotel_melatis['hmtlayak'][1]->total !!} , {!! $hotel_melatis['hmtlayak'][1]->total !!} ,
-                   {!! $hotel_melatis['hmtlayak'][1]->total !!} , {!! $hotel_melatis['hmtlayak'][1]->total !!}]
-                }]
-              };
-
-            $('#canvashotelmelati').SippKlingCharts({
-                type        : 'bar',
-                chartData   : hotelmelatiChartData,
-                titleText   : 'Data Hotel Melati 2017',
-                ketId       : 'hotelmelati'
-            });
-
-
-      });
-
     </script>
 @endif
 

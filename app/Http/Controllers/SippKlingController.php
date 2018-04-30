@@ -99,7 +99,7 @@ class SippKlingController extends Controller
       'hmtlayak' => $this->repo->getSpesificCount('hotel_melatis', ['status', 'Tidak Sehat'])       
     ];
 
-    return view('sipp-kling-pages/dashboard-grafik-waktu', compact('dataKelurahan', 'rumah_sehat', 
+    return view('sipp-kling-pages/dashboard-grafik', compact('dataKelurahan', 'rumah_sehat', 
       'pelayanan_keslings', 'dam_sip_klings', 'kuliners',
       'jasa_bogas', 'tempat_ibadahs', 'sekolahs', 'pasars', 'pesantrens', 'hotels', 'hotel_melatis'));
   }
@@ -121,7 +121,16 @@ class SippKlingController extends Controller
   }
 
   public function totalJumlahByParameter(){
-    return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan'));
+    if(Input::get('kecamatan') == 0 && Input::get('kelurahan') == 0){
+
+      return redirect('sipp-kling');
+      // return 1;
+
+    } else {
+    
+      return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan'));
+    
+    }
   }
 
   public function history(){
@@ -145,8 +154,15 @@ class SippKlingController extends Controller
     return view('sipp-kling-pages/pesan/tambah-pesan');
   }
 
-  public function dashboardGrafik($param){
-    return view('sipp-kling-pages/dashboard-periode-pendataan', ['param' => $param]);
+  public function dashboardGrafik(){
+    return view('sipp-kling-pages/grafik/grafik-periode');
   }
 
+  public function trash(){
+    return view('sipp-kling-pages/trash/index');
+  }
+
+  public function dashboardDetail(){
+    return view('sipp-kling-pages/dashboard-detail');
+  }
 }

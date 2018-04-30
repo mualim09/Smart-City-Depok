@@ -26,7 +26,7 @@
     </a>
   </li>
   <li>
-    <a href="#">
+    <a href="{{ url('sipp-kling/trash') }}">
       <i class="fa fa-trash"></i> <span>Trash</span>
     </a>
   </li>

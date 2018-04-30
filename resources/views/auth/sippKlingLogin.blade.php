@@ -35,10 +35,21 @@
 			color: #fff;
 		}
 
-		.login-logo img {
+        .login-logo {
+            background-color: #fff;
+            margin-bottom: 0px !important;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .login-box {
+            margin: 8% auto;
+        }
+
+		/*.login-logo img {
 			border: 5px solid #fff;
 			border-radius: 50%;
-		}
+		}*/
     </style>
 </head>
 <body class="hold-transition login-page">

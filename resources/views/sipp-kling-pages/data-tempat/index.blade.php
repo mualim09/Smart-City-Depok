@@ -300,26 +300,39 @@
           </select>
         </div>
       </div>
-      <a id="myBtn" onclick="myFunc('data-angler-1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Limo</a>
+      <a id="myBtn" onclick="myFunc('data-angler-1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i>Modul</a>
       <div id="data-angler-1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 1em 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="sehat" onclick="rumahsehat()">Rumah Sehat<br>
-        <input type="checkbox" class="checkbox" id="rts" onclick="tidaksehat()">Rumah Tidak Sehat<br>
+        <input type="checkbox" class="checkbox" id="js" onclick="/*tidaksehat()*/">Jamban Sehat<br>
+        <input type="checkbox" class="checkbox" id="sab" onclick="/*tidaksehat()*/">Sarana Air Bersih<br>
+        <input type="checkbox" class="checkbox" id="spal" onclick="/*tidaksehat()*/">SPAL<br>
+        <input type="checkbox" class="checkbox" id="pjb" onclick="/*tidaksehat()*/">PJB<br>
+        <input type="checkbox" class="checkbox" id="sampah" onclick="/*tidaksehat()*/">Sampah<br>
+        <input type="checkbox" class="checkbox" id="pjboga" onclick="/*tidaksehat()*/">Pemeriksaan Jasa Boga<br>
+        <input type="checkbox" class="checkbox" id="rm" onclick="/*tidaksehat()*/">Rumah Makan<br>
+        <input type="checkbox" class="checkbox" id="dam" onclick="/*tidaksehat()*/">Depot Air Minum<br>
+        <input type="checkbox" class="checkbox" id="tempatibadah" onclick="/*tidaksehat()*/">Tempat Ibadah<br>
+        <input type="checkbox" class="checkbox" id="pasar" onclick="/*tidaksehat()*/">Pasar<br>
+        <input type="checkbox" class="checkbox" id="sekolah" onclick="/*tidaksehat()*/">Sekolah<br>
+        <input type="checkbox" class="checkbox" id="pesantren" onclick="/*tidaksehat()*/">Pesantren<br>
+        <input type="checkbox" class="checkbox" id="kolamrenang" onclick="/*tidaksehat()*/">Kolam Renang<br>
+        <input type="checkbox" class="checkbox" id="faskes" onclick="/*tidaksehat()*/">Faskes<br>
       </div>     
-      <a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Grogol</a>
+      <!-- <a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kelurahan Grogol</a>
       <div id="Demo2" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="grs" onclick="gro()">Rumah Sehat<br>
         <input type="checkbox" class="checkbox" id="gts" onclick="grots()">Rumah Tidak Sehat<br>
       </div>
-      <a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Krukut</a>
+      <a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kelurahan Krukut</a>
       <div id="Demo3" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="krs" onclick="kru()">Rumah Sehat<br>
         <input type="checkbox" class="checkbox" id="kts" onclick="kruts()">Rumah Tidak Sehat<br>
       </div>
-      <a id="myBtn" onclick="myFunc('Demo4')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Meruyung</a>
+      <a id="myBtn" onclick="myFunc('Demo4')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kelurahan Meruyung</a>
       <div id="Demo4" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="mrs" onclick="mer()">Rumah Sehat<br>
         <input type="checkbox" class="checkbox" id="mts" onclick="merts()">Rumah Tidak Sehat<br>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -846,7 +859,7 @@ $("#pet").hide();
 
 function rumahsehat(){
   if(btn.checked){
-    document.getElementById("mySidebar").style.width = "200px";
+    document.getElementById("mySidebar").style.width = "400px";
     document.getElementById("mySidebar").style.display = "block";
   }
   for(var i = 0; i < rs.length; i++){

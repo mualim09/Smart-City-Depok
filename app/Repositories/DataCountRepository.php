@@ -2445,6 +2445,11 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
     $jumlah_rstidaksehat = $this->viewcountparam('rumah_sehat', Input::get('kecamatan'), Input::get('kelurahan'), 'Rumah Tidak Sehat');;
     $jumlah_rs = $jumlah_rssehat + $jumlah_rstidaksehat;
 
+    // asd
+    $jumlah_rssehat_kec = $this->viewcountparam('rumah_sehat', Input::get('kecamatan'), 0, 'Rumah Sehat');;
+    $jumlah_rstidaksehat_kec = $this->viewcountparam('rumah_sehat', Input::get('kecamatan'), 0, 'Rumah Tidak Sehat');;
+    $jumlah_rs_kec = $jumlah_rssehat_kec + $jumlah_rstidaksehat_kec;
+
 
 
 // PJB
@@ -2452,12 +2457,22 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
     $jumlah_tidakpjb = $this->viewcountparampjb('rumah_sehat', Input::get('kecamatan'), Input::get('kelurahan'), 'TIDAK');;
     $jumlah_pjb = $jumlah_adapjb + $jumlah_tidakpjb;
 
+    // kec
+    $jumlah_adapjb_kec = $this->viewcountparampjb('rumah_sehat', Input::get('kecamatan'), 0, 'YA');;
+    $jumlah_tidakpjb_kec = $this->viewcountparampjb('rumah_sehat', Input::get('kecamatan'), 0, 'TIDAK');;
+    $jumlah_pjb_kec = $jumlah_adapjb_kec + $jumlah_tidakpjb_kec;
+
 
 
 //spal
     $jumlah_spalterbuka = $this->viewcountparamspal('rumah_sehat', Input::get('kecamatan'), Input::get('kelurahan'), 'Terbuka');;
     $jumlah_spaltertutup = $this->viewcountparamspal('rumah_sehat', Input::get('kecamatan'), Input::get('kelurahan'), 'Tertutup');;
     $jumlah_spal = $jumlah_spalterbuka + $jumlah_spaltertutup;
+
+    // kec
+    $jumlah_spalterbuka_kec = $this->viewcountparamspal('rumah_sehat', Input::get('kecamatan'), 0, 'Terbuka');;
+    $jumlah_spaltertutup_kec = $this->viewcountparamspal('rumah_sehat', Input::get('kecamatan'), 0, 'Tertutup');;
+    $jumlah_spal_kec = $jumlah_spalterbuka_kec + $jumlah_spaltertutup_kec;
 
 
 //TPS
@@ -2467,6 +2482,16 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
     $jumlah_tpsdibuang = $this->viewcountparamsampah('rumah_sehat', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Dipilah / Dibuang');;
     $jumlah_tps = $jumlah_tpsorganik + $jumlah_tpsdibuang;
+
+    // kec
+    $jumlah_tpsorganik_kec = $this->viewcountparamsampah('rumah_sehat', 
+        Input::get('kecamatan'), 0, 'Dipilah / Organik');;
+
+    $jumlah_tpsdibuang_kec = $this->viewcountparamsampah('rumah_sehat', 
+        Input::get('kecamatan'), 0, 'Tidak Dipilah / Dibuang');;
+    $jumlah_tps_kec = $jumlah_tpsorganik_kec + $jumlah_tpsdibuang_kec;
+
+
 
 //TPS
     $jumlah_koya = $this->viewcountparamjamban('rumah_sehat', 
@@ -2483,6 +2508,21 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
 
     $jumlah_jamban = $jumlah_koya + $jumlah_kali + $jumlah_helikopter + $jumlah_septik;
 
+    // kec
+    $jumlah_koya_kec = $this->viewcountparamjamban('rumah_sehat', 
+        Input::get('kecamatan'), 0, 'Koya / Empang');;
+
+    $jumlah_kali_kec = $this->viewcountparamjamban('rumah_sehat', 
+        Input::get('kecamatan'), 0, 'Kali');;
+
+    $jumlah_helikopter_kec = $this->viewcountparamjamban('rumah_sehat', 
+        Input::get('kecamatan'), 0, 'Helikopter');;
+
+    $jumlah_septik_kec = $this->viewcountparamjamban('rumah_sehat', 
+        Input::get('kecamatan'), 0, 'Septik Tank');;
+
+    $jumlah_jamban_kec = $jumlah_koya_kec + $jumlah_kali_kec + $jumlah_helikopter_kec + $jumlah_septik_kec;
+
 //PKL
 
     $jumlah_pkldalam = $this->viewcountparampkl('pelayanan_keslings', 
@@ -2492,6 +2532,15 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
         Input::get('kecamatan'), Input::get('kelurahan'), 'Luar Gedung');;
 
     $jumlah_pkl = $jumlah_pkldalam + $jumlah_pklluar;
+
+    //kec
+    $jumlah_pkldalam_kec = $this->viewcountparampkl('pelayanan_keslings', 
+        Input::get('kecamatan'), 0, 'Dalam Gedung');;
+
+    $jumlah_pklluar_kec = $this->viewcountparampkl('pelayanan_keslings', 
+        Input::get('kecamatan'), 0, 'Luar Gedung');;
+
+    $jumlah_pkl_kec = $jumlah_pkldalam_kec + $jumlah_pklluar_kec;
    
 
 //KULINER/TMR
@@ -2500,10 +2549,22 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
     $jumlah_kultlayak = $this->viewcountparam('kuliners', Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Laik Hygiene Sanitasi');;
     $jumlah_kuliner = $jumlah_kullayak + $jumlah_kultlayak;
 
+    // kec
+    $jumlah_kullayak_kec = $this->viewcountparam('kuliners', 
+        Input::get('kecamatan'), 0, 'Laik Hygiene Sanitasi');;
+    $jumlah_kultlayak_kec = $this->viewcountparam('kuliners', Input::get('kecamatan'), 0, 'Tidak Laik Hygiene Sanitasi');;
+    $jumlah_kuliner_kec = $jumlah_kullayak_kec + $jumlah_kultlayak_kec;
+
+
 //DAM
     $jumlah_damlayak = $this->viewcountparam('dam_sip_klings', Input::get('kecamatan'), Input::get('kelurahan'), 'Memenuhi Persyaratan');;
     $jumlah_damtlayak = $this->viewcountparam('dam_sip_klings', Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Memenuhi Persyaratan');;
-  $jumlah_dam = $jumlah_damlayak + $jumlah_damtlayak;
+    $jumlah_dam = $jumlah_damlayak + $jumlah_damtlayak;
+
+    // kec
+    $jumlah_damlayak_kec = $this->viewcountparam('dam_sip_klings', Input::get('kecamatan'), 0, 'Memenuhi Persyaratan');;
+    $jumlah_damtlayak_kec = $this->viewcountparam('dam_sip_klings', Input::get('kecamatan'), 0, 'Tidak Memenuhi Persyaratan');;
+    $jumlah_dam_kec = $jumlah_damlayak_kec + $jumlah_damtlayak_kec;
 
 
 //JASA BOGA
@@ -2512,6 +2573,13 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
     $jumlah_jbtlayak = $this->viewcountparam('jasa_bogas', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
     $jumlah_jb = $jumlah_jblayak + $jumlah_jbtlayak;
+
+    // kec
+    $jumlah_jblayak_kec = $this->viewcountparam('jasa_bogas', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_jbtlayak_kec = $this->viewcountparam('jasa_bogas', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_jb_kec = $jumlah_jblayak_kec + $jumlah_jbtlayak_kec;
 
 
 //MASJID 
@@ -2522,6 +2590,14 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Laik Hygiene Sanitasi');;
    $jumlah_masjid = $jumlah_masjidlayak + $jumlah_masjidtlayak;
 
+   // kec
+   $jumlah_masjidlayak_kec = $this->viewcountparam('tempat_ibadahs', 
+        Input::get('kecamatan'), 0, 'Laik Hygiene Sanitasi');;
+
+    $jumlah_masjidtlayak_kec = $this->viewcountparam('tempat_ibadahs', 
+        Input::get('kecamatan'), 0, 'Tidak Laik Hygiene Sanitasi');;
+   $jumlah_masjid_kec = $jumlah_masjidlayak_kec + $jumlah_masjidtlayak_kec;
+
 
 //SEKOLAH
     $jumlah_sekolahlayak = $this->viewcountparam('sekolahs', 
@@ -2530,6 +2606,13 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
     $jumlah_sekolah = $jumlah_sekolahlayak + $jumlah_sekolahtlayak;
 
+    //kec
+    $jumlah_sekolahlayak_kec = $this->viewcountparam('sekolahs', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_sekolahtlayak_kec = $this->viewcountparam('sekolahs', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_sekolah_kec = $jumlah_sekolahlayak_kec + $jumlah_sekolahtlayak_kec;
+
 //PESANTREN
     $jumlah_pesantrenlayak = $this->viewcountparam('pesantrens', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
@@ -2537,19 +2620,41 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
     $jumlah_pesantren = $jumlah_pesantrenlayak + $jumlah_pesantrentlayak;
 
+    //kec
+    $jumlah_pesantrenlayak_kec = $this->viewcountparam('pesantrens', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_pesantrentlayak_kec = $this->viewcountparam('pesantrens', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_pesantren_kec = $jumlah_pesantrenlayak + $jumlah_pesantrentlayak;
+
+
 //PUSKESMAS  
     $jumlah_pusklayak = $this->viewcountparam('puskesmass', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
     $jumlah_pusktlayak = $this->viewcountparam('puskesmass', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
-$jumlah_pusk = $jumlah_pusklayak + $jumlah_pusktlayak;
+    $jumlah_pusk = $jumlah_pusklayak + $jumlah_pusktlayak;
+
+    //kec
+    $jumlah_pusklayak_kec = $this->viewcountparam('puskesmass', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_pusktlayak_kec = $this->viewcountparam('puskesmass', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_pusk_kec = $jumlah_pusklayak_kec + $jumlah_pusktlayak_kec;
 
 //HOTEL
     $jumlah_hotellayak = $this->viewcountparam('hotels', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
     $jumlah_hoteltlayak = $this->viewcountparam('hotels', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
-$jumlah_hotel = $jumlah_hotellayak + $jumlah_hoteltlayak;
+    $jumlah_hotel = $jumlah_hotellayak + $jumlah_hoteltlayak;
+
+    // kec
+    $jumlah_hotellayak_kec = $this->viewcountparam('hotels', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_hoteltlayak_kec = $this->viewcountparam('hotels', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_hotel_kec = $jumlah_hotellayak_kec + $jumlah_hoteltlayak_kec;
 
 
 //HOTEL MELATI
@@ -2557,58 +2662,124 @@ $jumlah_hotel = $jumlah_hotellayak + $jumlah_hoteltlayak;
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
     $jumlah_hotelmtlayak = $this->viewcountparam('hotel_melatis', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
-$jumlah_hotelm = $jumlah_hotellayak + $jumlah_hoteltlayak;
+    $jumlah_hotelm = $jumlah_hotellayak + $jumlah_hoteltlayak;
 
+    //kec
+    $jumlah_hotelmlayak_kec = $this->viewcountparam('hotel_melatis', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_hotelmtlayak_kec = $this->viewcountparam('hotel_melatis', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_hotelm_kec = $jumlah_hotellayak_kec + $jumlah_hoteltlayak_kec;
 
-//PASAR
+    //PASAR
     $jumlah_pasarlayak = $this->viewcountparam('pasars', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
     $jumlah_pasartlayak = $this->viewcountparam('pasars', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
-$jumlah_pasar = $jumlah_pasarlayak + $jumlah_pasartlayak;
+    $jumlah_pasar = $jumlah_pasarlayak + $jumlah_pasartlayak;
 
+    // kec
+    $jumlah_pasarlayak_kec = $this->viewcountparam('pasars', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_pasartlayak_kec = $this->viewcountparam('pasars', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_pasar_kec = $jumlah_pasarlayak_kec + $jumlah_pasartlayak_kec;
 
-//KOLAM
+    //KOLAM
     $jumlah_kolamlayak = $this->viewcountparam('kolam_renangs', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
     $jumlah_kolamtlayak = $this->viewcountparam('kolam_renangs', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
-$jumlah_kolam = $jumlah_kolamlayak + $jumlah_kolamtlayak;
+    $jumlah_kolam = $jumlah_kolamlayak + $jumlah_kolamtlayak;
+
+    // kec
+    $jumlah_kolamlayak_kec = $this->viewcountparam('kolam_renangs', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_kolamtlayak_kec = $this->viewcountparam('kolam_renangs', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_kolam_kec = $jumlah_kolamlayak_kec + $jumlah_kolamtlayak_kec;
 
 
-//THE REAL RS
+    //THE REAL RS
     $jumlah_rslayak = $this->viewcountparam('rss', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Sehat');;
     $jumlah_rstlayak = $this->viewcountparam('rss', 
         Input::get('kecamatan'), Input::get('kelurahan'), 'Tidak Sehat');;
-$jumlah_rss = $jumlah_rslayak + $jumlah_rstlayak;
+    $jumlah_rss = $jumlah_rslayak + $jumlah_rstlayak;
 
+    // kec
+    $jumlah_rslayak_kec = $this->viewcountparam('rss', 
+        Input::get('kecamatan'), 0, 'Sehat');;
+    $jumlah_rstlayak_kec = $this->viewcountparam('rss', 
+        Input::get('kecamatan'), 0, 'Tidak Sehat');;
+    $jumlah_rss_kec = $jumlah_rslayak_kec + $jumlah_rstlayak_kec;
 
-   $getHistoryData = DB::table('historys')
+    $getHistoryData = DB::table('historys')
                        ->leftJoin('petugas_sikelings as p', 'p.id_petugas', '=', 'historys.id_petugas')
                        ->limit(10)
                        ->get();
 
 // return
- return view('sipp-kling-pages/filter-pages/dashboard', compact ('jumlah_rs', 'jumlah_rssehat', 'jumlah_rstidaksehat', 
+ return view('sipp-kling-pages/filter-pages/dashboard', compact(
+    'jumlah_rs', 'jumlah_rssehat', 'jumlah_rstidaksehat',
+    'jumlah_rs_kec', 'jumlah_rssehat_kec', 'jumlah_rstidaksehat_kec',
+
       'jumlah_pjb','jumlah_adapjb','jumlah_tidakpjb',
+      'jumlah_pjb_kec','jumlah_adapjb_kec','jumlah_tidakpjb_kec',
+
       'jumlah_spal', 'jumlah_spalterbuka','jumlah_spaltertutup',
+      'jumlah_spal_kec', 'jumlah_spalterbuka_kec','jumlah_spaltertutup_kec',
+
       'jumlah_tps', 'jumlah_tpsorganik','jumlah_tpsdibuang',
+      'jumlah_tps_kec', 'jumlah_tpsorganik_kec','jumlah_tpsdibuang_kec',
+
+
       'jumlah_jamban', 'jumlah_koya','jumlah_kali', 'jumlah_helikopter', 'jumlah_septik',
+      'jumlah_jamban_kec', 'jumlah_koya_kec','jumlah_kali_kec', 'jumlah_helikopter_kec', 'jumlah_septik_kec',
+
       'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar',
+      'jumlah_pkl_kec', 'jumlah_pkldalam_kec','jumlah_pklluar_kec',
+
       'jumlah_kuliner', 'jumlah_kullayak','jumlah_kultlayak',
+      'jumlah_kuliner_kec', 'jumlah_kullayak_kec','jumlah_kultlayak_kec',
+
       'jumlah_dam', 'jumlah_damlayak','jumlah_damtlayak',
+      'jumlah_dam_kec', 'jumlah_damlayak_kec','jumlah_damtlayak_kec',
+
       'jumlah_masjid', 'jumlah_masjidlayak','jumlah_masjidtlayak',
+      'jumlah_masjid_kec', 'jumlah_masjidlayak_kec','jumlah_masjidtlayak_kec',
+
       'jumlah_sekolah', 'jumlah_sekolahlayak','jumlah_sekolahtlayak',
+      'jumlah_sekolah_kec', 'jumlah_sekolahlayak_kec','jumlah_sekolahtlayak_kec',
+
       'jumlah_pesantren', 'jumlah_pesantrenlayak','jumlah_pesantrentlayak',
+      'jumlah_pesantren_kec', 'jumlah_pesantrenlayak_kec','jumlah_pesantrentlayak_kec',
+
       'jumlah_pusk', 'jumlah_pusklayak','jumlah_pusktlayak',
+      'jumlah_pusk_kec', 'jumlah_pusklayak_kec','jumlah_pusktlayak_kec',
+
       'jumlah_hotel', 'jumlah_hotellayak','jumlah_hoteltlayak',
+      'jumlah_hotel_kec', 'jumlah_hotellayak_kec','jumlah_hoteltlayak_kec',
+
       'jumlah_hotelm', 'jumlah_hotelmlayak','jumlah_hotelmtlayak',
+      'jumlah_hotelm_kec', 'jumlah_hotelmlayak_kec','jumlah_hotelmtlayak_kec',
+
       'jumlah_pasar', 'jumlah_pasarlayak','jumlah_pasartlayak',
+      'jumlah_pasar_kec', 'jumlah_pasarlayak_kec','jumlah_pasartlayak_kec',
+
       'jumlah_kolam', 'jumlah_kolamlayak','jumlah_kolamtlayak',
+      'jumlah_kolam_kec', 'jumlah_kolamlayak_kec','jumlah_kolamtlayak_kec',
+
       'jumlah_rss', 'jumlah_rslayak','jumlah_rstlayak',
+      'jumlah_rss_kec', 'jumlah_rslayak_kec','jumlah_rstlayak_kec',
+
       'jumlah_jb', 'jumlah_jblayak','jumlah_jbtlayak',
-      'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar', 'data_kelurahan', 'param_kecamatan', 'param_kelurahan', 'getHistoryData',
+      'jumlah_jb_kec', 'jumlah_jblayak_kec','jumlah_jbtlayak_kec',
+
+      'jumlah_pkl', 'jumlah_pkldalam','jumlah_pklluar',
+      'jumlah_pkl_kec', 'jumlah_pkldalam_kec','jumlah_pklluar_kec',
+
+       'data_kelurahan', 'param_kecamatan', 'param_kelurahan', 'getHistoryData',
 
 'sehattpilihrw1', 'sehattpilihrw2', 'sehattpilihrw3', 'sehattpilihrw4', 'sehattpilihrw5',
 'sehattpilihrw6', 'sehattpilihrw7','sehattpilihrw8','sehattpilihrw9','sehattpilihrw10',

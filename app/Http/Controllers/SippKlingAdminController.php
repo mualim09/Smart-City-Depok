@@ -49,7 +49,7 @@ class SippKlingAdminController extends Controller
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => md5($request->password)
+            'password' => Hash::make($request->password)
         ];
 
         DB::table('admins')->insert($data);
