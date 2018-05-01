@@ -548,103 +548,27 @@
         $(function(){
           var color = Chart.helpers.color;
               var rsChartData = {
-                labels: ["Limo", "Grogol", "Krukut", "Meruyung"],
-                datasets: [{
-                  label: 'Rumah Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [ 37, 19, 10, 22]
-                }, {
-                  label: 'Rumah Sehat',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [33, 9, 16, 23]
-                }]
+              	labels:["Jan 2017","Jun 2017","Jan 2018","Jun 2018","Jan 2019","Jun 2019"],
+              	datasets: [{
+              		label:"Rumah Sehat",
+              		data:[65,59,80,81,56,55],
+              		fill:false,
+              		borderColor:"rgb(75, 192, 192)",
+              		lineTension:0.1
+              	},{
+              		label:"Rumah Tidak Sehat",
+              		data:[35,49,90,51,76,25],
+              		fill:false,
+              		borderColor:"rgb(255, 50, 100)",
+              		lineTension:0.1}
+              	]
               };
 
             $('#canvasrs').SippKlingCharts({
-                type        : 'bar',
+                type        : 'line',
                 chartData   : rsChartData,
                 titleText   : 'Data RS 2017',
                 ketId       : 'rs'
-            });
-
-
-            var color = Chart.helpers.color;
-              var jbChartData = {
-                labels: ["Limo", "Grogol", "Krukut", "Meruyung"],
-                datasets: [{
-                  label: 'Layak',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [19, 10, 10, 22]
-                }, {
-                  label: 'Tidak Layak',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [33, 9, 16, 27]
-                }]
-              };
-
-            $('#canvasjb').SippKlingCharts({
-                type        : 'bar',
-                chartData   : jbChartData,
-                titleText   : 'Data Kuliner 2017',
-                ketId       : 'jb'
-            });
-
-            var color = Chart.helpers.color;
-              var ibadahChartData = {
-                labels: ["Limo", "Grogol", "Krukut", "Meruyung"],
-                datasets: [{
-                  label: 'Layak',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [14, 13, 37 ,31]
-                }, {
-                  label: 'Tidak Layak',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [28, 37, 26, 23]
-                }]
-              };
-
-            $('#canvasibadah').SippKlingCharts({
-                type        : 'bar',
-                chartData   : ibadahChartData,
-                titleText   : 'Data Tempat Ibadah 2017',
-                ketId       : 'ibadah'
-            });
-
-            var color = Chart.helpers.color;
-              var pklChartData = {
-                labels: ["Limo", "Grogol", "Krukut", "Meruyung"],
-                datasets: [{
-                  label: 'Luar Gedung',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [2, 27, 14, 13]
-                }, {
-                  label: 'Dalam Gedung',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [19, 10, 33, 9]
-                }]
-              };
-
-            $('#canvaspkl').SippKlingCharts({
-                type        : 'bar',
-                chartData   : pklChartData,
-                titleText   : 'Data PKL 2017',
-                ketId       : 'pkl'
             });
 
       });
