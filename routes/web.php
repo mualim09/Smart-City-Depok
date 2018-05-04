@@ -37,11 +37,16 @@ Route::get('dashboard2', 'Dashboard2Controller@total');
 Route::get('/dashboard4', function () {
     return view('pages/dashboard4');
 });
-//##############################################################
-// Twitter
-Route::get('dashboard3', 'SocmedController@twitterUserTimeLine');
-Route::get('dashboard3/profile', 'SocmedController@profile')->middleware('auth');
+
+
+//===============================================================
+//                          TWITTER                             =
+//===============================================================
+Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
+Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
+Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
+Route::get('dashboard-socmed/coba', 'SocmedTestingController@socmedcoba')->middleware('auth')->name('home');
 
 
 //===============================================================
@@ -373,11 +378,6 @@ Route::get('/broadcastform', function () {
 // Route::get('/sipp-kling/dashboard', 'SippKlingController@total_jumlah');
 
 
-Route::get('/sipp-kling/dashboard-tabel', 'SippKlingController@rehat')->name('dashboard-tabel');
-
-Route::get('/sipp-kling/dashboard-grafik-waktu', 'SippKlingController@grafik')->name('dashboard-grafik-waktu');
-
-
 
 // Route::get('/sipp-kling/dashboard-tabel', function(){
 
@@ -387,118 +387,99 @@ Route::get('/sipp-kling/dashboard-grafik-waktu', 'SippKlingController@grafik')->
 Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahan');
 
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-Route::get('/sipp-kling/dashboard-tabel', 'SipklingtabelController@view_tabel')->middleware('auth')->name('dashboard-tabel');
 
 // this is just for passing data
 // FILTER
-Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');
-Route::any('/sipp-kling/dashboard-tabel/filter', 'SipklingtabelController@view_tabel_param')->name('dashboard-tabel');
 
 
 // #######################################################################################################################
-// RUMAH SEHAT
-Route::post('/sipp-kling/input_rh', 'SipklingtabelController@input_rh')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-rehat/{id_rumah_sehat}', 'SipklingtabelController@delete_rh')->name('dashboard-tabel');
 
-// SAB
-Route::delete('sipp-kling/hapus-sab/{id_rumah_sehat}', 'SipklingtabelController@delete_sab')->name('dashboard-tabel');
+Route::prefix('sipp-kling')->group(function() {
+    Route::get('/login', 'Auth\SippKlingLoginController@showLoginForm')->name('sipp-kling.login');
+    Route::post('/login', 'Auth\SippKlingLoginController@login')->name('sipp-kling.login.submit');
+    //Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'SippKlingController@total_jumlah')->name('dashboard');
+    // Route::get('/dashboard-tabel', 'SippKlingController@rehat')->name('dashboard-tabel');
+    Route::get('/dashboard-tabel', 'SipklingtabelController@view_tabel')->name('dashboard-tabel');
+    Route::get('/dashboard-map', 'SippKlingController@getDashboardMap')->name('dashboard-map');
+    Route::any('/filter', 'SippKlingController@totalJumlahByParameter')->name('dashboard');
+    
+    Route::resource('admin', 'SippKlingAdminController',['names' => [
+        'index' => 'admin',
+        'create' => 'admin'
+    ]]);
 
-// JASA BOGA
-Route::post('/sipp-kling/input_jb', 'SipklingtabelController@input_jb')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-jasaboga/{id_jasaboga}', 'SipklingtabelController@delete_jb')->name('dashboard-tabel');
+    Route::resource('/kader', 'SippKlingKaderController',['names' => [
+        'index' => 'kader',
+        'create' => 'kader'
+    ]]);
 
-// Kuliner
-Route::post('/sipp-kling/input_kuliner', 'SipklingtabelController@input_kuliner')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-kuliner/{id_kuliner}', 'SipklingtabelController@delete_kuliner')->name('dashboard-tabel');
+    Route::get('/jadwal', 'SippKlingController@getJadwalPage');
+    Route::get('/pesan', 'SippKlingController@getPesanPage');
+    Route::get('/data-tempat/', 'MapsSippklingController@maps');
+    Route::get('/history', 'SippKlingController@history');
 
-// DAM
-Route::post('/sipp-kling/input_dam', 'SipklingtabelController@input_dam')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-dam/{id_dam}', 'SipklingtabelController@delete_dam')->name('dashboard-tabel');
+    // bang tegar
+    // RUMAH SEHAT
+    Route::post('/input_rh', 'SipklingtabelController@input_rh')->name('dashboard-tabel');
+    Route::delete('/hapus-rehat/{id_rumah_sehat}', 'SipklingtabelController@delete_rh')->name('dashboard-tabel');
 
-// TEMPAT IBADAH
-Route::post('/sipp-kling/input_ibadah', 'SipklingtabelController@input_ibadah')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-ibadah/{id_ibadah}', 'SipklingtabelController@delete_ibadah')->name('dashboard-tabel');
+    // SAB
+    Route::delete('/hapus-sab/{id_rumah_sehat}', 'SipklingtabelController@delete_sab')->name('dashboard-tabel');
 
-//PASAR
-Route::post('/sipp-kling/input_pasar', 'SipklingtabelController@input_pasar')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-pasar/{id_pasar}', 'SipklingtabelController@delete_pasar')->name('dashboard-tabel');
+    // JASA BOGA
+    Route::post('/input_jb', 'SipklingtabelController@input_jb')->name('dashboard-tabel');
+    Route::delete('/hapus-jasaboga/{id_jasaboga}', 'SipklingtabelController@delete_jb')->name('dashboard-tabel');
 
-// SEKOLAH
-Route::post('/sipp-kling/input_sekolah', 'SipklingtabelController@input_sekolah')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-sekolah/{id_sekolah}', 'SipklingtabelController@delete_sekolah')->name('dashboard-tabel');
+    // Kuliner
+    Route::post('/input_kuliner', 'SipklingtabelController@input_kuliner')->name('dashboard-tabel');
+    Route::delete('/hapus-kuliner/{id_kuliner}', 'SipklingtabelController@delete_kuliner')->name('dashboard-tabel');
 
-// PUSKESMAS
-Route::post('/sipp-kling/input_puskes', 'SipklingtabelController@input_puskes')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-puskes/{id_sekolah}', 'SipklingtabelController@delete_puskes')->name('dashboard-tabel');
+    // DAM
+    Route::post('/input_dam', 'SipklingtabelController@input_dam')->name('dashboard-tabel');
+    Route::delete('/hapus-dam/{id_dam}', 'SipklingtabelController@delete_dam')->name('dashboard-tabel');
 
-//Hotel
-Route::post('/sipp-kling/input_hotel', 'SipklingtabelController@input_hotel')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-hotel/{id_hotel}', 'SipklingtabelController@delete_hotel')->name('dashboard-tabel');
+    // TEMPAT IBADAH
+    Route::post('/input_ibadah', 'SipklingtabelController@input_ibadah')->name('dashboard-tabel');
+    Route::delete('/hapus-ibadah/{id_ibadah}', 'SipklingtabelController@delete_ibadah')->name('dashboard-tabel');
 
-//HOTEL Melati
-Route::post('/sipp-kling/input_melati', 'SipklingtabelController@input_melati')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-melati/{id_hotel_melati}', 'SipklingtabelController@delete_melati')->name('dashboard-tabel');
+    //PASAR
+    Route::post('/input_pasar', 'SipklingtabelController@input_pasar')->name('dashboard-tabel');
+    Route::delete('/hapus-pasar/{id_pasar}', 'SipklingtabelController@delete_pasar')->name('dashboard-tabel');
 
-// PESANTREN
-Route::post('/sipp-kling/input_pesantren', 'SipklingtabelController@input_pesantren')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-pesantren/{id_pesantren}', 'SipklingtabelController@delete_pesantren')->name('dashboard-tabel');
+    // SEKOLAH
+    Route::post('/input_sekolah', 'SipklingtabelController@input_sekolah')->name('dashboard-tabel');
+    Route::delete('/hapus-sekolah/{id_sekolah}', 'SipklingtabelController@delete_sekolah')->name('dashboard-tabel');
 
-// PKL
-Route::post('/sipp-kling/input_pkl', 'SipklingtabelController@input_pkl')->name('dashboard-tabel');
-Route::delete('sipp-kling/hapus-pkl/{id_pelayanan_kesling}', 'SipklingtabelController@delete_pkl')->name('dashboard-tabel');
-// |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    // PUSKESMAS
+    Route::post('/input_puskes', 'SipklingtabelController@input_puskes')->name('dashboard-tabel');
+    Route::delete('/hapus-puskes/{id_sekolah}', 'SipklingtabelController@delete_puskes')->name('dashboard-tabel');
 
+    //Hotel
+    Route::post('/input_hotel', 'SipklingtabelController@input_hotel')->name('dashboard-tabel');
+    Route::delete('/hapus-hotel/{id_hotel}', 'SipklingtabelController@delete_hotel')->name('dashboard-tabel');
 
-Route::get('/sipp-kling', 'SippKlingController@total_jumlah')->name('dashboard');
-Route::any('/sipp-kling/filter', 'SippKlingController@totalJumlahByParameter')->name('dashboard');
+    //HOTEL Melati
+    Route::post('/input_melati', 'SipklingtabelController@input_melati')->name('dashboard-tabel');
+    Route::delete('/hapus-melati/{id_hotel_melati}', 'SipklingtabelController@delete_melati')->name('dashboard-tabel');
 
+    // PESANTREN
+    Route::post('/input_pesantren', 'SipklingtabelController@input_pesantren')->name('dashboard-tabel');
+    Route::delete('/hapus-pesantren/{id_pesantren}', 'SipklingtabelController@delete_pesantren')->name('dashboard-tabel');
 
-Route::get('/sipp-kling/dashboard-map', function(){
-    return view('sipp-kling-pages/dashboard-map');
-})->name('dashboard-map');
+    // PKL
+    Route::post('/input_pkl', 'SipklingtabelController@input_pkl')->name('dashboard-tabel');
+    Route::delete('/hapus-pkl/{id_pelayanan_kesling}', 'SipklingtabelController@delete_pkl')->name('dashboard-tabel');
 
+    Route::any('/dashboard-tabel/filter', 'SipklingtabelController@view_tabel_param')->name('dashboard-tabel');
 
-Route::get('/sipp-kling/dashboard-grafik-waktu/{param_periode}', function($param){
+    Route::get('/dashboard-grafik/periode','SippKlingController@dashboardGrafik')->name('dashboard-grafik');
 
-    return view('sipp-kling-pages/dashboard-periode-pendataan', ['param' => $param]);
+    Route::get('/dashboard-grafik', 'SippKlingController@grafik')->name('dashboard-grafik');
 
-})->name('dashboard-periode-pendataan');
+    Route::get('/trash', 'SippKlingController@trash')->name('trash');
 
-
-Route::get('/sipp-kling/admin/tambah-admin', function(){
-    return view('sipp-kling-pages/admin/tambah-admin');
+    Route::get('/dashboard-detail', 'SippKlingController@dashboardDetail')->name('dashboard-detail');
 });
 
-Route::get('/sipp-kling/admin', function(){
-    return view('sipp-kling-pages/admin/data-admin');
-})->name('data-admin');
-
-Route::get('/sipp-kling/kader/tambah-kader', function(){
-    return view('sipp-kling-pages/kader/tambah-kader');
-});
-
-Route::get('/sipp-kling/kader', function(){
-    return view('sipp-kling-pages/kader/data-kader');
-})->name('data-kader');
-
-Route::resource('/sipp-kling/admin', 'SippKlingAdminController',['names' => [
-    'index' => 'admin',
-    'create' => 'admin'
-]]);
-
-Route::resource('/sipp-kling/kader', 'SippKlingKaderController',['names' => [
-    'index' => 'kader',
-    'create' => 'kader'
-]]);
-
-Route::get('/sipp-kling/jadwal', function(){
-    return view('sipp-kling-pages/jadwal/tambah-jadwal');
-});
-
-Route::get('/sipp-kling/pesan', function(){
-    return view('sipp-kling-pages/pesan/tambah-pesan');
-});
-
-Route::get('/sipp-kling/data-tempat/', 'MapsSippklingController@maps');
-
-Route::get('/sipp-kling/history', 'SippKlingController@history');
+Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');

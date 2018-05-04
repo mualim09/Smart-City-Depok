@@ -18,11 +18,12 @@ class SippKlingKaderController extends Controller
 
     public function __construct(Repository $repository){
         $this->repo = $repository;
+        $this->middleware('auth:admin');
     }
 
     public function index()
     {
-        $data = DB::table('petugas_sikelings')->limit(4)->get();
+        $data = DB::table('petugas_sikelings')->get();
         return view('sipp-kling-pages/kader/data-kader', ['data' => $data]);
     }
 

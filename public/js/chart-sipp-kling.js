@@ -60,7 +60,7 @@
  
                 for (var j = 0; j < settings.chartData.datasets.length; j++) {
 
-                    values += "<small class='label pull-right label-data-chart' style='background-color: "+settings.chartData.datasets[j].backgroundColor+"'>"+settings.chartData.datasets[j].data[i]+"</small>";
+                    values += "<small class='label pull-right label-data-chart' style='background-color: "+settings.chartData.datasets[j].borderColor+"'>"+settings.chartData.datasets[j].data[i]+"</small>";
                 
                 }
 

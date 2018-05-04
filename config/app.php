@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Jakarta',
 
     /*
     |--------------------------------------------------------------------------
@@ -171,6 +171,7 @@ return [
         willvincent\Feeds\FeedsServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Antoineaugusti\LaravelSentimentAnalysis\LaravelSentimentAnalysisServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -239,6 +240,7 @@ return [
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'SentimentAnalysis' => Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis::class,
     ],
 
 ];

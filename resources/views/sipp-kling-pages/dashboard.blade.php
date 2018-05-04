@@ -4,7 +4,7 @@
 
 <section class="content-header overflow-hidden">
   <div class="col-xs-12 title-dashboard">
-    <h2>{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!}</h2>
+    <h2>Dashboard</h2>
     <div class="line-height"></div>
   </div>
   <div class="filter-group overflow-hidden col-xs-12">
@@ -13,8 +13,9 @@
         <select class="form-control" id="change-dashboard">
           <option value="{{ url('sipp-kling/dashboard-utama') }}" selected="selected">Dashboard Utama</option>
           <option value="{{ url('sipp-kling/dashboard-tabel') }}">Dashboard Tabel</option>
-          <option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">Dashboard Grafik Waktu</option>
-          <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-grafik') }}">Dashboard Grafik</option>
+          <option value="{{ url('sipp-kling/data-tempat') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
       <div class="col-xs-12 no-padding">
@@ -1238,7 +1239,7 @@
 
 
 <section class="content" style="overflow: hidden;">
-  <div class="col-xs-12">
+  <div class="col-md-12 col-lg-8">
     <div class="box box-widget">
       <div class="box-header with-border bg-light-blue green-background-main-color" style="padding: 15px">
         <h3 class="box-title" style="color:#fff"><b>History</b></h3>
@@ -1250,29 +1251,33 @@
         </div>
       </div>
       <div class="box-body chat" id="chat-box">
-        @foreach($getHistoryData as $data)
-        <div class="item">
-          @if($data->aktivitas == 'UPDATE')
-            <i class="fa fa-refresh history-icon-style history-update"></i>
-          @else
-            <i class="fa fa-plus history-icon-style history-tambah"></i>
-          @endif
-
-          <p class="message">
-            <a href="#" class="name">
-              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ date('d-m-y, G:i:s', strtotime($data->waktu)) }}</small>
-              {{ $data->nama }}
-            </a>
-
+        @if(count($getHistoryData) == 0)
+          <div class="null-history"> - data tidak ditemukan - </div>
+        @else
+          @foreach($getHistoryData as $data)
+          <div class="item">
             @if($data->aktivitas == 'UPDATE')
-              {{ $data->nama }} telah mengupdate data
+              <i class="fa fa-refresh history-icon-style history-update"></i>
             @else
-              {{ $data->nama }} telah menambah data
+              <i class="fa fa-plus history-icon-style history-tambah"></i>
             @endif
 
-          </p>
-        </div>
-        @endforeach
+            <p class="message">
+              <a href="#" class="name">
+                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ date('d-m-y, G:i:s', strtotime($data->waktu)) }}</small>
+                {{ $data->nama }}
+              </a>
+
+              @if($data->aktivitas == 'UPDATE')
+                {{ $data->nama }} telah mengupdate data
+              @else
+                {{ $data->nama }} telah menambah data
+              @endif
+            </p>
+          </div>
+          @endforeach
+
+        @endif
       </div>
       <div class="box-footer with-border text-center">
         <a href="{{ url('sipp-kling/history') }}" class="btn btn-default btn-flat">view all</a>
@@ -1280,9 +1285,56 @@
     </div>
   </div>
 
+  <div class="col-md-12 col-lg-4">
+        <div class="box box-widget">
+          <div class="box-header with-border bg-orange orange-sippkling-main-color" style="padding: 15px">
+        <h3 class="box-title" style="color:#fff"><b>Reward</b></h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus font-white"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times font-white"></i></button>
+        </div>
+      </div>
+          <div class="box-body" style="height: 235px; overflow: auto;">
+            <ul class="products-list product-list-in-box">
+              <li class="item">
+                <div class="product-img">
+                  <img src="{{ asset('dist/img/avatar5.png') }}" class="img-circle" alt="Product Image">
+                </div>
+                <div class="product-info">
+                  <a href="javascript:void(0)" class="product-title">
+                    Handoko <span class="label label-warning pull-right">90</span>
+                  </a>
+                  <span class="product-description">
+                  Kecamatan Limo,<br>
+                  Kelurahan Limo
+                  </span>
+                </div>
+              </li>
+              <!-- /.item -->
+              <li class="item">
+                <div class="product-img">
+                  <img src="{{ asset('dist/img/avatar04.png') }}" class="img-circle" alt="Product Image">
+                </div>
+                <div class="product-info">
+                  <a href="javascript:void(0)" class="product-title">
+                    Sudirman <span class="label label-warning pull-right">80</span>
+                  </a>
+                  <span class="product-description">
+                  Kecamatan Limo,<br>
+                  Kelurahan Krukut
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
   <div class="col-xs-12">
     <div class="row">
-      <div class="col-md-12 col-lg-8">
+      <div class="col-xs-12">
         <div class="box box-widget">
           <div class="box-header with-border bg-light-blue">
             <span class="info-box-icon bg-light-blue"><i class="ion ion-home font-white"></i></span>
@@ -1314,7 +1366,7 @@
                       </div>
                       <div class="col-xs-8 no-padding">
                         <div class="pull-left col-xs-5 rw-p-control">
-                          <p>Lihat detail rw</p>
+                          <p>Lihat detail /RW</p>
                         </div>
                         <div class="pull-right col-xs-7 no-padding">
                           <select core-angler="select-retrieve-data-rw" class="form-control">
@@ -1329,8 +1381,9 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
+                            <p><strong>Total</strong></p>
                             <h3 id="jumlah_rs">{{$jumlah_rs}}</h3>
-                            <p>Jumlah</p>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-stats-bars" style="color: white"></i>
@@ -1340,8 +1393,15 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3 id="jumlah_rssehat">{{$jumlah_rssehat}}</h3>
-                              <p>Sehat </p>
+                            <p>Sehat </p>
+                            <h3 id="jumlah_rssehat">{{$jumlah_rssehat}} / <span style="font-size: 15px;">{{$jumlah_rs}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              
+                              number_format(
+                                $jumlah_rs == 0 ? 0 : ($jumlah_rssehat / $jumlah_rs) * 100, 2
+                              )
+                              
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-checkmark" style="color: white"></i>
@@ -1351,8 +1411,11 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3 id="jumlah_rstidaksehat">{{$jumlah_rstidaksehat}}</h3>
-                              <p>Tidak sehat</p>
+                            <p>Tidak sehat</p>
+                            <h3 id="jumlah_rstidaksehat">{{$jumlah_rstidaksehat}} / <span style="font-size: 15px;">{{$jumlah_rs}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_rs == 0 ? 0 : ($jumlah_rstidaksehat / $jumlah_rs) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-close" style="color: white"></i>
@@ -1375,7 +1438,7 @@
                             <p>Jumlah</p>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1386,7 +1449,7 @@
                               <p>Sehat </p>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1397,7 +1460,7 @@
                               <p>Tidak sehat</p>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1411,7 +1474,7 @@
                         </div>
                         <div class="col-xs-8 no-padding">
                           <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
+                            <p>Lihat detail /RW</p>
                           </div>
                           <div class="pull-right col-xs-7 no-padding">
                             <select core-angler="select-retrieve-data-rw" class="form-control">
@@ -1426,33 +1489,41 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_spal}}</h3>
                             <p>Jumlah</p>
+                            <h3 id="jumlah">{{$jumlah_spal}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_spalterbuka}}</h3>
-                              <p>Terbuka</p>
+                            <p>Terbuka</p>
+                            <h3 id="jumlahsehat">{{$jumlah_spalterbuka}}  / <span style="font-size: 15px;">{{$jumlah_spal}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format(
+                              $jumlah_spal == 0 ? 0 : ($jumlah_spalterbuka / $jumlah_spal) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_spaltertutup}}</h3>
-                              <p>Tertutup</p>
+                            <p>Tertutup</p>
+                            <h3 id="jumlahtidaksehat">{{$jumlah_spaltertutup}} / <span style="font-size: 15px;">{{$jumlah_spal}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_spal == 0 ? 0 : ($jumlah_spaltertutup / $jumlah_spal) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1466,7 +1537,7 @@
                         </div>
                         <div class="col-xs-8 no-padding">
                           <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
+                            <p>Lihat detail /RW</p>
                           </div>
                           <div class="pull-right col-xs-7 no-padding">
                             <select core-angler="select-retrieve-data-rw" class="form-control">
@@ -1481,33 +1552,40 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_tps}}</h3>
                             <p>Jumlah</p>
+                            <h3 id="jumlah">{{$jumlah_tps}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_tpsorganik}}</h3>
-                              <p>Dipilah/ Organik </p>
+                            <p>Dipilah/ Organik</p>
+                            <h3 id="jumlahsehat">{{$jumlah_tpsorganik}}   / <span style="font-size: 15px;">{{$jumlah_tps}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_tps == 0 ? 0 : ($jumlah_tpsorganik / $jumlah_tps) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_tpsdibuang}}</h3>
-                              <p>Tidak Dipilah/ Dibuang</p>
+                            <p>Tidak Dipilah/ Dibuang</p>
+                            <h3 id="jumlahtidaksehat">{{$jumlah_tpsdibuang}} / <span style="font-size: 15px;">{{$jumlah_tps}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_tps == 0 ? 0 : ($jumlah_tpsdibuang / $jumlah_tps) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1521,7 +1599,7 @@
 </div>
                         <div class="col-xs-8 no-padding">
                           <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
+                            <p>Lihat detail /RW</p>
                           </div>
                           <div class="pull-right col-xs-7 no-padding">
                             <select core-angler="select-retrieve-data-rw" class="form-control">
@@ -1539,33 +1617,40 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_pjb}}</h3>
                             <p>Jumlah</p>
+                            <h3 id="jumlah_rssehat">{{$jumlah_pjb}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_adapjb}}</h3>
-                              <p>Ada Jentik </p>
+                              <p>Tidak Ada Jentik</p>
+                              <h3>{{$jumlah_tidakpjb}} / <span style="font-size: 15px;">{{$jumlah_pjb}}</span> </h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pjb == 0 ? 0 : ($jumlah_tidakpjb / $jumlah_pjb) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_tidakpjb}}</h3>
-                              <p>Tidak Ada Jentik</p>
+                            <p>Ada Jentik </p>
+                            <h3>{{$jumlah_adapjb}} / <span style="font-size: 15px;">{{$jumlah_pjb}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pjb == 0 ? 0 : ($jumlah_adapjb / $jumlah_pjb) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1579,7 +1664,7 @@
                         </div>
                         <div class="col-xs-8 no-padding">
                           <div class="pull-left col-xs-5 rw-p-control">
-                            <p>Lihat detail rw</p>
+                            <p>Lihat detail /RW</p>
                           </div>
                           <div class="pull-right col-xs-7 no-padding">
                             <select core-angler="select-retrieve-data-rw" class="form-control">
@@ -1596,55 +1681,68 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
-                            <h3 id="jumlah">{{$jumlah_jamban}}</h3>
-                            <p>Jumlah</p>
+                            <p>Total</p>
+                            <h3>{{$jumlah_jamban}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_koya}}</h3>
+                            <h3>{{$jumlah_koya}}  / <span style="font-size: 15px;">{{$jumlah_jamban}}</span></h3>
                               <p>Koya/Empang</p>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_jamban == 0 ? 0 : ($jumlah_koya / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_kali}}</h3>
-                              <p>Kali</p>
+                            <p>Kali</p>
+                            <h3 id="jumlahtidaksehat" style="color: white">{{$jumlah_kali}} / <span style="font-size: 15px;">{{$jumlah_jamban}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_jamban == 0 ? 0 : ($jumlah_kali / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-close"></i>
                           </div>
                         </div>
                       </div>
-                                            <div class="col-lg-4 col-xs-6">
+                      <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3 id="jumlahsehat">{{$jumlah_helikopter}}</h3>
-                              <p>Helikopter</p>
+                            <p>Helikopter</p>
+                            <h3 id="jumlahsehat">{{$jumlah_helikopter}} / <span style="font-size: 15px;">{{$jumlah_jamban}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_jamban == 0 ? 0 : ($jumlah_helikopter / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3 id="jumlahtidaksehat">{{$jumlah_septik}}</h3>
-                              <p>Septik Tank</p>
+                            <p>Septik Tank</p>
+                            <h3>{{$jumlah_septik}} / <span style="font-size: 15px;">{{$jumlah_jamban}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_jamban == 0 ? 0 : ($jumlah_septik / $jumlah_jamban) * 100, 2)
+                            !!}%</strong> dari total jamban</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1656,102 +1754,10 @@
           </div>
         </div>        
       </div>
-
-      <div class="col-md-12 col-lg-4">
-        <div class="box box-widget">
-          <div class="box-header with-border bg-orange orange-sipp-kling-main-color">
-            <span class="info-box-icon bg-orange orange-sipp-kling-main-color"><i class="ion ion-ios-star-outline"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Reward</h4></span>
-            </div>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i></button>
-            </div>
-          </div>
-          <div class="box-body" style="height: 320px; overflow: auto;">
-            <ul class="products-list product-list-in-box">
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-                </div>
-                <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Petugas 1 <span class="label label-warning pull-right">90</span>
-                  </a>
-                  <span class="product-description">
-                  Kecamatana Limo,<br>
-                  Kelurahan Limo
-                  </span>
-                </div>
-              </li>
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-                </div>
-                <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Petugas 1 <span class="label label-warning pull-right">90</span>
-                  </a>
-                  <span class="product-description">
-                  Kecamatana Limo,<br>
-                  Kelurahan Limo
-                  </span>
-                </div>
-              </li>
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-                </div>
-                <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Petugas 1 <span class="label label-warning pull-right">90</span>
-                  </a>
-                  <span class="product-description">
-                  Kecamatana Limo,<br>
-                  Kelurahan Limo
-                  </span>
-                </div>
-              </li>
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-                </div>
-                <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Petugas 1 <span class="label label-warning pull-right">90</span>
-                  </a>
-                  <span class="product-description">
-                  Kecamatana Limo,<br>
-                  Kelurahan Limo
-                  </span>
-                </div>
-              </li>
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{ asset('dist/img/default-50x50.gif') }}" class="img-circle" alt="Product Image">
-                </div>
-                <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Petugas 1 <span class="label label-warning pull-right">90</span>
-                  </a>
-                  <span class="product-description">
-                  Kecamatan Limo,<br>
-                  Kelurahan Limo
-                  </span>
-                </div>
-              </li>
-              <!-- /.item -->
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
   <div class="col-xs-12">
-
-
-
     <div class="box box-widget">
           <div class="box-header with-border bg-light-blue">
                   <span class="info-box-icon bg-light-blue"><i class="ion ion-leaf" style="color: #fff"></i></span>
@@ -1772,33 +1778,40 @@
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-green">
                         <div class="inner">
+                          <p>Total</p>
                           <h3 id="jumlah">{{$jumlah_pkl}}</h3>
-                          <p>Jumlah</p>
+                          <small><i><strong style="font-size: 16px;">-</strong></i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="ion ion-stats-bars" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-light-blue">
                         <div class="inner">
-                          <h3 id="jumlahsehat">{{$jumlah_pkldalam}}</h3>
-                            <p>Dalam Gedung</p>
+                          <p>Dalam Gedung</p>
+                          <h3 id="jumlahsehat">{{$jumlah_pkldalam}} / <span style="font-size: 15px;">{{$jumlah_pkl}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pkldalam / $jumlah_pkl) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-checkmark"></i>
+                          <i class="ion ion-checkmark" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-red">
                         <div class="inner">
-                          <h3 id="jumlahtidaksehat">{{$jumlah_pklluar}}</h3>
-                            <p>Luar Gedung</p>
+                          <p>Luar Gedung</p>
+                          <h3>{{$jumlah_pklluar}} / <span style="font-size: 15px;">{{$jumlah_pkl}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pkl == 0 ? 0 : ($jumlah_pklluar / $jumlah_pkl) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-close"></i>
+                          <i class="ion ion-close" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -1838,8 +1851,9 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
-                            <h3>{{$jumlah_jb}}</h3>
                             <p>Jumlah</p>
+                            <h3>{{$jumlah_jb}}</h3>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-stats-bars" style="color: white"></i>
@@ -1849,8 +1863,11 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3>{{$jumlah_jblayak}}</h3>
-                              <p>Penyimpangan Sedikit</p>
+                            <p>Penyimpangan Sedikit</p>
+                            <h3>{{$jumlah_jblayak}} / <span style="font-size: 15px;">{{$jumlah_jb}}</span></h3>
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_jb == 0 ? 0 : ($jumlah_jblayak / $jumlah_jb) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-checkmark" style="color: white"></i>
@@ -1860,8 +1877,11 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3>{{$jumlah_jbtlayak}}</h3>
-                              <p>Penyimpangan Banyak</p>
+                            <p>Penyimpangan Banyak</p>
+                            <h3>{{$jumlah_jbtlayak}} / <span style="font-size: 15px;">{{$jumlah_jb}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_jb == 0 ? 0 : ($jumlah_jbtlayak / $jumlah_jb) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
                             <i class="ion ion-close" style="color: white"></i>
@@ -1877,33 +1897,42 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
+                            <p>Total</p>
                             <h3>{{$jumlah_kuliner}}</h3>
-                            <p>Jumlah</p>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3>{{$jumlah_kullayak}}</h3>
-                              <p>Laik Hygiene Sanitasi</p>
+                            <p>Laik Hygiene Sanitasi</p>
+                            <h3>{{$jumlah_kullayak}} / <span style="font-size: 15px;">{{$jumlah_kuliner}}</span></h3>
+                              
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_kuliner == 0 ? 0 : ($jumlah_kullayak / $jumlah_kuliner) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3>{{$jumlah_kultlayak}}</h3>
                             <p>Tidak Laik Hygiene Sanitasi</p>
+                            <h3>{{$jumlah_kultlayak}} / <span style="font-size: 15px;">{{$jumlah_kuliner}}</span></h3>
+                            
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format(($jumlah_kultlayak / $jumlah_kuliner) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1916,33 +1945,42 @@
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-green">
                           <div class="inner">
+                            <p>Total</p>
                             <h3 id="jumlah">{{$jumlah_dam}}</h3>
-                            <p>Jumlah</p>
+                            <small><i><strong style="font-size: 16px;">-</strong></i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="ion ion-stats-bars" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-light-blue">
                           <div class="inner">
-                            <h3>{{$jumlah_damlayak}}</h3>
-                              <p>Memenuhi Persyaratan</p>
+                            <p>Memenuhi Persyaratan</p>
+                            <h3>{{$jumlah_damlayak}} / <span style="font-size: 15px;">{{$jumlah_dam}}</span></h3>
+                              
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_dam == 0 ? 0 : ($jumlah_damlayak / $jumlah_dam) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-checkmark"></i>
+                            <i class="ion ion-checkmark" style="color: white"></i>
                           </div>
                         </div>
                       </div>
                       <div class="col-lg-4 col-xs-6">
                         <div class="small-box bg-red">
                           <div class="inner">
-                            <h3>{{$jumlah_damtlayak}}</h3>
-                              <p>Belum Memenuhi Persyaratan</p>
+                            <p>Belum Memenuhi Persyaratan</p>
+                            <h3>{{$jumlah_damtlayak}} / <span style="font-size: 15px;">{{$jumlah_dam}}</span></h3>
+                              
+                              <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_dam == 0 ? 0 : ($jumlah_damtlayak / $jumlah_dam) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                           </div>
                           <div class="icon">
-                            <i class="ion ion-close"></i>
+                            <i class="ion ion-close" style="color: white"></i>
                           </div>
                         </div>
                       </div>
@@ -1981,77 +2019,95 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="tibd">
                   <b>Tempat Ibadah</b>
+                  <div class="line-height-box-body bg-light-blue"></div>
                   <div class="row">
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-olive">
                         <div class="inner">
-                          <h3 id="jmlttuibadah">{{$jumlah_masjid}}</h3>
-                          <p>Jumlah</p>
+                          <p>Total</p>
+                          <h3>{{$jumlah_masjid}}</h3>
+                          <small><i><strong style="font-size: 16px;">-</strong></i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="ion ion-stats-bars" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-light-blue">
                         <div class="inner">
-                          <h3 id="ibadahsehat">{{$jumlah_masjidlayak}}</h3>
-                            <p>Layak</p>
+                          <p>Layak</p>
+                          <h3 id="ibadahsehat">{{$jumlah_masjidlayak}} / <span style="font-size: 15px;">{{$jumlah_masjid}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_masjid == 0 ? 0 : ($jumlah_masjidlayak / $jumlah_masjid) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-checkmark"></i>
+                          <i class="ion ion-checkmark" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-red">
                         <div class="inner">
-                          <h3 id="ibadahnosehat">{{$jumlah_masjidtlayak}}</h3>
-                            <p>Tidak Layak</p>
+                          <p>Tidak Layak</p>
+                          <h3 id="ibadahnosehat">{{$jumlah_masjidtlayak}} / <span style="font-size: 15px;">{{$jumlah_masjid}}</span></h3>
+                            
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_masjid == 0 ? 0 : ($jumlah_masjidtlayak / $jumlah_masjid) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-close"></i>
+                          <i class="ion ion-close" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                
                 <div class="tab-pane" id="psr">
                   <b>Pasar</b>
+                  <div class="line-height-box-body bg-light-blue"></div>
                   <div class="row">
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-olive">
                         <div class="inner">
+                          <p>Total</p>
                           <h3 id="jmlttupasar">{{$jumlah_pasar}}</h3>
-                          <p>Jumlah</p>
+                          <small><i><strong style="font-size: 16px;">-</strong></i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="ion ion-stats-bars" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-light-blue">
                         <div class="inner">
-                          <h3 id="pasarsehat">{{$jumlah_pasarlayak}}</h3>
-                            <p>Sehat </p>
+                          <p>Sehat </p>
+                          <h3 id="pasarsehat">{{$jumlah_pasarlayak}} / <span style="font-size: 15px;">{{$jumlah_pasar}}</span></h3>
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pasar == 0 ? 0 : ($jumlah_pasarlayak / 1) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
+
                         </div>
                         <div class="icon">
-                          <i class="ion ion-checkmark"></i>
+                          <i class="ion ion-checkmark" style="color: white"></i>
                         </div>
                       </div>
                     </div>
                     <div class="col-lg-4 col-xs-6">
                       <div class="small-box bg-red">
                         <div class="inner">
-                          <h3 id="pasarnosehat">{{$jumlah_pasartlayak}}</h3>
-                            <p>Tidak sehat</p>
+                          <p>Tidak sehat</p>
+                          <h3 id="pasarnosehat">{{$jumlah_pasartlayak}} / <span style="font-size: 15px;">{{$jumlah_pasar}}</span></h3>
+                            
+                            <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pasar == 0 ? 0 : ($jumlah_pasartlayak / $jumlah_pasar) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-close"></i>
+                          <i class="ion ion-close" style="color: white"></i>
                         </div>
                       </div>
                     </div>
@@ -2060,115 +2116,146 @@
 
                 <div class="tab-pane" id="sklh">
                 <b>Sekolah</b>
+                <div class="line-height-box-body bg-light-blue"></div>
                 <div class="row">
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-olive">
                       <div class="inner">
+                        <p>Total</p>
                         <h3 id="jmlttusekolah">{{$jumlah_sekolah}}</h3>
-                        <p>Jumlah</p>
+                        <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-light-blue">
                       <div class="inner">
-                        <h3 id="sekolahsehat">{{$jumlah_sekolahlayak}}</h3>
-                          <p>Sehat </p>
+                        <p>Sehat</p>
+                        <h3 id="sekolahsehat">{{$jumlah_sekolahlayak}} / <span style="font-size: 15px;">{{$jumlah_sekolah}}</span></h3>
+                        <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_sekolah == 0 ? 0 : ($jumlah_sekolahlayak / $jumlah_sekolah) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-red">
                       <div class="inner">
-                        <h3 id="sekolahnosehat">{{$jumlah_sekolahtlayak}}</h3>
-                          <p>Tidak sehat</p>
+                        <p>Tidak sehat</p>
+                        <h3 id="sekolahnosehat">{{$jumlah_sekolahtlayak}} / <span style="font-size: 15px;">{{$jumlah_sekolah}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_sekolah == 0 ? 0 : ($jumlah_sekolahtlayak / $jumlah_sekolah) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
 
               <div class="tab-pane" id="psntrn">
                 <b>Pesantren</b>
+                <div class="line-height-box-body bg-light-blue"></div>
                 <div class="row">
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-olive">
                       <div class="inner">
+                        <p>Total</p>
                         <h3 id="jmlttupesantren">{{$jumlah_pesantren}}</h3>
-                        <p>Jumlah</p>
+                        <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-light-blue">
                       <div class="inner">
-                        <h3 id="pesantrensehat">{{$jumlah_pesantrenlayak}}</h3>
-                          <p>Sehat </p>
+                        <p>Sehat </p>
+                        <h3 id="pesantrensehat">{{$jumlah_pesantrenlayak}} / <span style="font-size: 15px;">{{$jumlah_pesantren}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pesantren == 0 ? 0 : ($jumlah_pesantrenlayak / $jumlah_pesantren) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-red">
                       <div class="inner">
-                        <h3 id="pesantrennosehat">{{$jumlah_pesantrentlayak}}</h3>
-                          <p>Tidak sehat</p>
+                        <p>Tidak sehat</p>
+                        <h3 id="pesantrennosehat">{{$jumlah_pesantrentlayak}} / <span style="font-size: 15px;">{{$jumlah_pesantren}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pesantren == 0 ? 0 : ($jumlah_pesantrentlayak / $jumlah_pesantren) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
+
               <div class="tab-pane" id="puskesmas">
                 <b>Puskesmas</b>
+                <div class="line-height-box-body bg-light-blue"></div>
                 <div class="row">
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-olive">
                       <div class="inner">
+                        <p>Total</p>
                         <h3 id="jmlttupuskesmas">{{$jumlah_pusk}}</h3>
-                        <p>Jumlah</p>
+                        <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-light-blue">
                       <div class="inner">
-                        <h3 id="puskesmassehat">{{$jumlah_pusklayak}}</h3>
-                          <p>Sehat </p>
+                        <p>Sehat </p>
+                        <h3 id="puskesmassehat">{{$jumlah_pusklayak}} / <span style="font-size: 15px;">{{$jumlah_pusk}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pusk == 0 ? 0 : ($jumlah_pusklayak / $jumlah_pusk) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-red">
                       <div class="inner">
-                        <h3 id="puskesmasnosehat">{{$jumlah_pusktlayak}}</h3>
-                          <p>Tidak sehat</p>
+                        <p>Tidak sehat</p>
+                        <h3 id="puskesmasnosehat">{{$jumlah_pusktlayak}} / <span style="font-size: 15px;">{{$jumlah_pusk}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_pusk == 0 ? 0 : ($jumlah_pusktlayak / $jumlah_pusk) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
@@ -2177,82 +2264,100 @@
 
                 <div class="tab-pane" id="hotel">
                 <b>Hotel</b>
+                <div class="line-height-box-body bg-light-blue"></div>
                 <div class="row">
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-olive">
                       <div class="inner">
+                        <p>Total</p>
                         <h3 id="jmlttuhotel">{{$jumlah_hotel}}</h3>
-                        <p>Jumlah</p>
+                        <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-light-blue">
                       <div class="inner">
-                        <h3 id="hotelsehat">{{$jumlah_hotellayak}}</h3>
-                          <p>Layak </p>
+                        <p>Layak </p>
+                        <h3 id="hotelsehat">{{$jumlah_hotellayak}} / <span style="font-size: 15px;">{{$jumlah_hotel}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_hotel == 0 ? 0 : ($jumlah_hotellayak / $jumlah_hotel) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-red">
                       <div class="inner">
-                        <h3 id="hotelnosehat">{{$jumlah_hotelmlayak}}</h3>
-                          <p>Tidak Layak</p>
+                        <p>Tidak Layak</p>
+                        <h3 id="hotelnosehat">{{$jumlah_hotelmlayak}} / <span style="font-size: 15px;">{{$jumlah_hotel}}</span></h3>
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_hotel == 0 ? 0 : ($jumlah_hotelmlayak / $jumlah_hotel) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+
 
               <div class="tab-pane" id="melati">
                 <b>Hotel Melati</b>
+                <div class="line-height-box-body bg-light-blue"></div>
                 <div class="row">
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-olive">
                       <div class="inner">
+                        <p>Total</p>
                         <h3 id="jmlttuhotelm">{{$jumlah_hotelm}}</h3>
-                        <p>Jumlah</p>
+                        <small><i><strong style="font-size: 16px;">-</strong></i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
+                        <i class="ion ion-stats-bars" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-light-blue">
                       <div class="inner">
-                        <h3 id="hotelmsehat">{{$jumlah_hotelmlayak}}</h3>
-                          <p>Layak </p>
+                        <p>Layak </p>
+                        <h3 id="hotelmsehat">{{$jumlah_hotelmlayak}} / <span style="font-size: 15px;">{{$jumlah_hotelm}}</span></h3>
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_hotelm == 0 ? 0 : ($jumlah_hotelmlayak / $jumlah_hotelm) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-checkmark"></i>
+                        <i class="ion ion-checkmark" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-4 col-xs-6">
                     <div class="small-box bg-red">
                       <div class="inner">
-                        <h3 id="hotelmnosehat">{{$jumlah_hotelmtlayak}}</h3>
-                          <p>Tidak Layak</p>
+                        <p>Tidak Layak</p>
+                        <h3 id="hotelmnosehat">{{$jumlah_hotelmtlayak}} / <span style="font-size: 15px;">{{$jumlah_hotelm}}</span></h3>
+                          
+                          <small><i><strong style="font-size: 16px;">{!!
+                              number_format($jumlah_hotelm == 0 ? 0 : ($jumlah_hotelmtlayak / $jumlah_hotelm) * 100, 2)
+                            !!}%</strong> dari total data</i></small>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-close"></i>
+                        <i class="ion ion-close" style="color: white"></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
                 </div>
               </div>
           </div>

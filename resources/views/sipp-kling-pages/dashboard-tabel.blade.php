@@ -1,7 +1,6 @@
 @extends('sipp-kling-layouts.app')
 
 @section('content')
-
 <section class="content-header overflow-hidden">
   <div class="col-xs-12 title-dashboard">
     <h2>{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!}</h2>
@@ -13,8 +12,9 @@
         <select class="form-control" id="change-dashboard">
           <option value="{{ url('sipp-kling') }}" >Dashboard Utama</option>
           <option value="{{ url('sipp-kling/dashboard-tabel') }}" selected="selected">Dashboard Tabel</option>
-          <option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">Dashboard Grafik Waktu</option>
-          <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-grafik') }}">Dashboard Grafik</option>
+          <option value="{{ url('sipp-kling/data-tempat') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
       <div class="col-xs-12 no-padding">
@@ -96,14 +96,22 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ asset('dist/img/avatar2.png') }}" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$rehat->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$rehat->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$rehat->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$rehat->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div style="background-color: #999;color: #fff;">
+	        		<span class="left">Petugas </span><strong class="right">{{$rehat->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$rehat->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$rehat->total_nilai}}</strong><br>
+		        </div>
+		        <div>
+		        	<span class="left">Update terakhir </span><br><strong class="left">{{$rehat->waktu}}</strong><br>
+		        </div> 	
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -115,22 +123,49 @@
 				</p>
 			</div>
 	        	<div class="more-occurs">
-		        	<span class="left">Nama KK </span><strong class="right">{{$rehat->nama_kk}}</strong><br>
-		        	<span class="left">Anggota Keluarga </span><strong class="right">{{$rehat->jumlah_anggota}}</strong><br>
-		        	<span class="left">Status Rumah </span><strong class="right">{{$rehat->status_rumah}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$rehat->no_telp}}</strong><br>
-		        	<span class="left">Jamban </span><strong class="right">{{$rehat->jamban}}</strong><br>
-		        	<span class="left">Sampah </span><strong class="right">{{$rehat->sampah}}</strong><br>
-		        	<span class="left">SPAL </span><strong class="right">{{$rehat->spal}}</strong><br>
-		        	<span class="left">PJB </span><strong class="right">{{$rehat->pjb}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$rehat->gambaran_umum}}</strong><br>		       	
+		        	<div>
+		        		<span class="left">Nama KK </span><strong class="right">{{$rehat->nama_kk}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Anggota Keluarga </span><strong class="right">{{$rehat->jumlah_anggota}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Status Rumah </span><strong class="right">{{$rehat->status_rumah}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$rehat->no_telp}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Jamban </span><strong class="right">{{$rehat->jamban}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Sampah </span><strong class="right">{{$rehat->sampah}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">SPAL </span><strong class="right">{{$rehat->spal}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">PJB </span><strong class="right">{{$rehat->pjb}}</strong><br>
+		        	</div>
+		        	<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$rehat->gambaran_umum}}</strong><br>
+		        	</div>		       	
 	        	</div>
 	        	<div class="margin-10"></div>
 	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$rehat->alamat}}</strong><br>	        		
-		        	<span class="left">No Rumah </span><strong class="right">{{$rehat->no_rumah}}</strong><br>	        		
-	        		<span class="left">RT / RW </span><strong class="right">{{$rehat->rt}} / {{$rehat->rw}}</strong><br>
-		        	<span class="left">Kordinat </span><strong class="right">{{$rehat->koordinat}}</strong><br>	
+		        	
+		        	<div>	        		
+		        		<span class="left">No Rumah </span><strong class="right">{{$rehat->no_rumah}}</strong><br>
+		        	</div>
+		        	<div>	        		
+	        			<span class="left">RT / RW </span><strong class="right">{{$rehat->rt}} / {{$rehat->rw}}</strong><br>
+	        		</div>
+		        	<div>
+		        		<span class="left">Kordinat </span><strong class="right">{{$rehat->koordinat}}</strong><br>	
+		        	</div>
+		        	<div>
+		        		<span class="left">Alamat </span><br><strong class="left">{{$rehat->alamat}}</strong><br>
+		        	</div>
 	        	</div>
 	        </div>
     	</div>
@@ -233,8 +268,8 @@
 							<thead>
 								<tr>
 									<th>Nama KK</th>
-                  					<th style="display:none;">Kelurahan</th>                    
-                  					<th style="display:none;">Alamat</th>                    
+                  					<th style="display:none;">Kelurahan</th>
+                  					<th style="display:none;">Alamat</th>
 									<th>RT / RW</th>
 									<th>No Rumah</th>
 									<th>Sampah</th>
@@ -250,7 +285,7 @@
 							<tbody>
 								@foreach($rehats as $rehat)	
 								<tr>
-									<td>{{$rehat->id_rumah_sehat}}</td>
+									<!-- <td>{{$rehat->id_rumah_sehat}}</td> -->
 									<td>{{$rehat->nama_kk}}</td>
                   					<td style="display:none;">{{$rehat->kelurahan}}</td>            
                   					<td style="display:none;">{{$rehat->alamat}}</td>            
@@ -290,14 +325,22 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ asset('dist/img/avatar2.png') }}" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$sab->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$sab->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$sab->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$sab->waktu}}</strong><br> 	
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$sab->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$sab->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$sab->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$sab->waktu}}</strong><br>
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -309,16 +352,29 @@
 				</p>
 			</div>
 	        	<div class="more-occurs">
-		        	<span class="left">Nama Pemilik </span><strong class="right">{{$sab->pemilik_sarana}}</strong><br>
-		        	<span class="left">Golongan </span><strong class="right">{{$sab->golongan}}</strong><br>
-		        	<span class="left">Sudah diambil</span><strong class="right">{{$sab->sudah_diambil}}</strong><br>
-		        	<span class="left">Kode Sampel</span><strong class="right">{{$sab->kode_sampel}}</strong><br>
-		        	<span class="left">Kode Sarana </span><strong class="right">{{$sab->kode_sarana}}</strong><br>
+	        		<div>
+		        		<span class="left">Nama Pemilik </span><strong class="right">{{$sab->pemilik_sarana}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Golongan </span><strong class="right">{{$sab->golongan}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sudah diambil</span><strong class="right">{{$sab->sudah_diambil}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Kode Sampel</span><strong class="right">{{$sab->kode_sampel}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Kode Sarana </span><strong class="right">{{$sab->kode_sarana}}</strong><br>
+		        	</div>
 	        	</div>
 	        	<div class="margin-10"></div>
 	        	<div class="more-occurs">
-		        	<span class="left">Alamat</span><strong class="right">{{$sab->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat</span><strong class="right">{{$sab->koordinat}}</strong><br>	        		
+	        		<div>
+		        	<span class="left">Alamat</span><strong class="right">{{$sab->alamat}}</strong><br>	        
+		        	</div>
+		        	<div>	
+		        	<span class="left">Koordinat</span><strong class="right">{{$sab->koordinat}}</strong><br>	</div>        		
 	        	</div>
 	        </div>
     	</div>
@@ -361,7 +417,7 @@
 </div>
 @endforeach
 {{-- ===================================================================================================================== --}}
-
+				
 				<div class="tab-pane" id="sab">
 					<div style="width: 100%;" class="overflow-hidden">
 						<h4 class="box-title col-xs-6">Data Sarana Air Bersih (SAB)</h4>
@@ -588,7 +644,7 @@
       <div class="modal-header green-background-main-color">
         <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-white" align="center">Detail Data Restoran</h4>
+        <h4 class="modal-title font-white" align="center">Detail Data Restoran {{$kuliner->id_kuliner}}</h4>
       </div>
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
@@ -597,10 +653,17 @@
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs">
+	        	<div>
 	        	<span class="left">Petugas </span><strong class="right">{{$kuliner->nama}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Status </span><strong class="right">{{$kuliner->status}}</i></strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Skor Akhir </span><strong class="right">{{$kuliner->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$kuliner->waktu}}</strong><br> 	
+	        	</div>
+	        	<div>
+		        <span class="left">Update terakhir </span><strong class="right">{{$kuliner->waktu}}</strong><br> </div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">

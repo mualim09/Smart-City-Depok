@@ -21,7 +21,7 @@
 		                  <label for="nama" class="col-sm-2 control-label">Nama</label>
 
 		                  <div class="col-sm-10">
-		                    <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama" required>
+		                    <input type="text" name="name" class="form-control" id="nama" placeholder="Nama" required>
 		                  </div>
 		                </div>
 		                <div class="form-group overflow-hidden">

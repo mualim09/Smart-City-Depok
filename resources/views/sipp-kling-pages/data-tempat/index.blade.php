@@ -177,10 +177,10 @@
   .legend {
     height: 70%;
     margin: 9.5em 0.5em;
-    width: 200px;
-    background-color: #607d8bc2;
-    border: 1px #4083c0 solid;
-    color: white;
+    width: 400px;
+    background-color: white;
+    border: 1px solid #999;
+    color: #333;
   }
   .w3-table td {
     padding: 0;
@@ -206,7 +206,7 @@
       <div class="w3-bar-item w3-large">
         <button class="w3-btn float-btn w3-circle w3-green w3-text-white" id="all" onclick="hapus()"><i class="fa fa-refresh w3-hover-opacity"></i></button>
         <button onclick="dropdown()" class="w3-btn float-btn w3-circle w3-blue-gray w3-text-white"><i class="fa fa-bars w3-hover-opacity"></i></button>
-        <a href="/"><button class="w3-btn float-btn w3-circle w3-orange w3-text-white"><i class="fa fa-home w3-hover-opacity"></i></button></a>
+        <a href="/sipp-kling"><button class="w3-btn float-btn w3-circle w3-orange w3-text-white"><i class="fa fa-home w3-hover-opacity"></i></button></a>
       </div>
     </div>
   </div>
@@ -214,65 +214,149 @@
     <div class="w3-bar">
       <a id="myBtn" onclick="myFunc('Demo1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-map-signs w3-medium" style="margin-right: 7px;"></i> Batas Administrasi</a>
       <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
-        <input type="checkbox" class="checkbox" id="kec" onclick="camat()"> Kantor Kecamatan <br>
-        <input type="checkbox" class="checkbox" id="kel" onclick="klrhn()"> Kantor Kelurahan <br>
+        <input type="checkbox" class="checkbox" id="cam" onclick="petacam()"> Peta Kecamatan <br>
+        <div id="pet">
+        <select class="w3-select" id="search-string_0" onchange="changeMap_0(this.value);">
+          <option value="--Select--">Cari Kecamatan</option>
+          <option value="BEJI">BEJI</option>
+          <option value="BOJONGSARI">BOJONGSARI</option>
+          <option value="CILODONG">CILODONG</option>
+          <option value="CIMANGGIS">CIMANGGIS</option>
+          <option value="CINERE">CINERE</option>
+          <option value="CIPAYUNG">CIPAYUNG</option>
+          <option value="LIMO">LIMO</option>
+          <option value="PANCORAN MAS">PANCORAN MAS</option>
+          <option value="SAWANGAN">SAWANGAN</option>
+          <option value="SUKMA JAYA">SUKMA JAYA</option>
+          <option value="TAPOS">TAPOS</option>
+        </select><br><br>
+        </div>
+        <input type="checkbox" class="checkbox" id="semuakel" onclick="semua()"> Peta Kelurahan <br>
+        <div id="lur">
+          <select class="w3-select" id="search-string_1" onchange="changeMap_1(this.value);">
+            <option value="--Select--">Cari Kelurahan</option>
+            <option value="ABADIJAYA">ABADIJAYA</option>
+            <option value="BAKTI JAYA">BAKTI JAYA</option>
+            <option value="BEDAHAN">BEDAHAN</option>
+            <option value="BEJI">BEJI</option>
+            <option value="BEJI TIMUR">BEJI TIMUR</option>
+            <option value="BOJONG PONDOK TERONG">BOJONG PONDOK TERONG</option>
+            <option value="BOJONGSARI BARU">BOJONGSARI BARU</option>
+            <option value="BOJONGSARI LAMA">BOJONGSARI LAMA</option>
+            <option value="CILANGKAP">CILANGKAP</option>
+            <option value="CILODONG">CILODONG</option>
+            <option value="CIMPAEUN">CIMPAEUN</option>
+            <option value="CINANGKA">CINANGKA</option>
+            <option value="CINERE">CINERE</option>
+            <option value="CIPAYUNG">CIPAYUNG</option>
+            <option value="CIPAYUNG JAYA">CIPAYUNG JAYA</option>
+            <option value="CISALAK">CISALAK</option>
+            <option value="CISALAK PASAR">CISALAK PASAR</option>
+            <option value="CURUG">CURUG</option>
+            <option value="DEPOK">DEPOK</option>
+            <option value="DEPOK JAYA">DEPOK JAYA</option>
+            <option value="DUREN MEKAR">DUREN MEKAR</option>
+            <option value="DUREN SERIBU">DUREN SERIBU</option>
+            <option value="GANDUL">GANDUL</option>
+            <option value="GROGOL">GROGOL</option>
+            <option value="HARJAMUKTI">HARJAMUKTI</option>
+            <option value="JATIJAJAR">JATIJAJAR</option>
+            <option value="JATIMULYA">JATIMULYA</option>
+            <option value="KALIBARU">KALIBARU</option>
+            <option value="KALIMULYA">KALIMULYA</option>
+            <option value="KEDAUNG">KEDAUNG</option>
+            <option value="KEMIRIMUKA">KEMIRIMUKA</option>
+            <option value="KRUKUT">KRUKUT</option>
+            <option value="KUKUSAN">KUKUSAN</option>
+            <option value="LEUWINAGGUNG">LEUWINAGGUNG</option>
+            <option value="LIMO">LIMO</option>
+            <option value="MAMPANG">MAMPANG</option>
+            <option value="MEKAR JAYA">MEKAR JAYA</option>
+            <option value="MEKARSARI">MEKARSARI</option>
+            <option value="MERUYUNG">MERUYUNG</option>
+            <option value="PANCORAN MAS">PANCORAN MAS</option>
+            <option value="PANGKALANJATI">PANGKALANJATI</option>
+            <option value="PANGKALANJATI BARU">PANGKALANJATI BARU</option>
+            <option value="PASIR GUNUNG SELATAN">PASIR GUNUNG SELATAN</option>
+            <option value="PASIR PUTIH">PASIR PUTIH</option>
+            <option value="PENGASINAN">PENGASINAN</option>
+            <option value="PONDOK CINA">PONDOK CINA</option>
+            <option value="PONDOK JAYA">PONDOK JAYA</option>
+            <option value="PONDOK PETIR">PONDOK PETIR</option>
+            <option value="RANGKAPAN JAYA">RANGKAPAN JAYA</option>
+            <option value="RANGKAPAN JAYA BARU">RANGKAPAN JAYA BARU</option>
+            <option value="RATUJAYA">RATUJAYA</option>
+            <option value="SAWANGAN BARU">SAWANGAN BARU</option>
+            <option value="SAWANGAN LAMA">SAWANGAN LAMA</option>
+            <option value="SERUA">SERUA</option>
+            <option value="SUKAMAJU">SUKAMAJU</option>
+            <option value="SUKAMAJU BARU">SUKAMAJU BARU</option>
+            <option value="SUKATANI">SUKATANI</option>
+            <option value="SUKMAJAYA">SUKMAJAYA</option>
+            <option value="TANAH BARU">TANAH BARU</option>
+            <option value="TAPOS">TAPOS</option>
+            <option value="TIRTAJAYA">TIRTAJAYA</option>
+            <option value="TUGU">TUGU</option>
+          </select>
+        </div>
       </div>
-      <a id="myBtn" onclick="myFunc('data-angler-1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Limo</a>
+      <a id="myBtn" onclick="myFunc('data-angler-1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i>Modul</a>
       <div id="data-angler-1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 1em 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="sehat" onclick="rumahsehat()">Rumah Sehat<br>
-        <input type="checkbox" class="checkbox" id="rts" onclick="tidaksehat()">Rumah Tidak Sehat<br>
+        <input type="checkbox" class="checkbox" id="js" onclick="/*tidaksehat()*/">Jamban Sehat<br>
+        <input type="checkbox" class="checkbox" id="sab" onclick="/*tidaksehat()*/">Sarana Air Bersih<br>
+        <input type="checkbox" class="checkbox" id="spal" onclick="/*tidaksehat()*/">SPAL<br>
+        <input type="checkbox" class="checkbox" id="pjb" onclick="/*tidaksehat()*/">PJB<br>
+        <input type="checkbox" class="checkbox" id="sampah" onclick="/*tidaksehat()*/">Sampah<br>
+        <input type="checkbox" class="checkbox" id="pjboga" onclick="/*tidaksehat()*/">Pemeriksaan Jasa Boga<br>
+        <input type="checkbox" class="checkbox" id="rm" onclick="/*tidaksehat()*/">Rumah Makan<br>
+        <input type="checkbox" class="checkbox" id="dam" onclick="/*tidaksehat()*/">Depot Air Minum<br>
+        <input type="checkbox" class="checkbox" id="tempatibadah" onclick="/*tidaksehat()*/">Tempat Ibadah<br>
+        <input type="checkbox" class="checkbox" id="pasar" onclick="/*tidaksehat()*/">Pasar<br>
+        <input type="checkbox" class="checkbox" id="sekolah" onclick="/*tidaksehat()*/">Sekolah<br>
+        <input type="checkbox" class="checkbox" id="pesantren" onclick="/*tidaksehat()*/">Pesantren<br>
+        <input type="checkbox" class="checkbox" id="kolamrenang" onclick="/*tidaksehat()*/">Kolam Renang<br>
+        <input type="checkbox" class="checkbox" id="faskes" onclick="/*tidaksehat()*/">Faskes<br>
       </div>     
-      <a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Grogol</a>
+      <!-- <a id="myBtn" onclick="myFunc('Demo2')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kelurahan Grogol</a>
       <div id="Demo2" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="grs" onclick="gro()">Rumah Sehat<br>
         <input type="checkbox" class="checkbox" id="gts" onclick="grots()">Rumah Tidak Sehat<br>
       </div>
-      <a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Krukut</a>
+      <a id="myBtn" onclick="myFunc('Demo3')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kelurahan Krukut</a>
       <div id="Demo3" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="krs" onclick="kru()">Rumah Sehat<br>
         <input type="checkbox" class="checkbox" id="kts" onclick="kruts()">Rumah Tidak Sehat<br>
       </div>
-      <a id="myBtn" onclick="myFunc('Demo4')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kecamatan Meruyung</a>
+      <a id="myBtn" onclick="myFunc('Demo4')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i> Kelurahan Meruyung</a>
       <div id="Demo4" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="mrs" onclick="mer()">Rumah Sehat<br>
         <input type="checkbox" class="checkbox" id="mts" onclick="merts()">Rumah Tidak Sehat<br>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 
 <!-- Sidebar (hidden by default) -->
-<nav class="legend w3-sidebar w3-bar-block w3-card w3-top w3-small w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px; padding: 20px;" id="mySidebar">
+<nav class="legend w3-sidebar w3-bar-block w3-card style-7 w3-dropdown-content w3-top w3-small w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px; /*padding: 20px;*/" id="mySidebar">
   <div class="w3-bar">
-    <p> <b>Informasi Lengkap</b></p>
-    <table class="w3-table w3-text-white">
-      <tr>
-        <td>Nama Kepala Keluarga</td><td>:</td><td>Jaanih Narip</td>
-      </tr>
-      <tr>
-        <td>Alamat</td><td>:</td><td>Grogol, Limo, Kota Depok, Jawa</td>
-      </tr>
-      <tr>
-        <td>No. Rumah</td><td>:</td><td>31</td>
-      </tr>
-      <tr>
-        <td>RT</td><td>:</td><td>RT001</td>
-      </tr>
-      <tr>
-        <td>RW</td><td>:</td><td>RW04</td>
-      </tr>
-      <tr>
-        <td>Kelurahan</td><td>:</td><td>Limo</td>
-      </tr>
-      <tr>
-        <td>Jumlah Anggota</td><td>:</td><td>5</td>
-      </tr>
-      <tr>
-        <td>Status</td><td>:</td><td>Rumah Sehat</td>
-      </tr>
-    </table>
+    <a id="myBtn" onclick="myFunc('rumah-sehat')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"> Rumah Sehat</a>
+    <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+      asd
+    </div>
+    
   </div>  
 </nav>
+
+<!-- <nav class="legend w3-sidebar w3-card style-7 w3-dropdown-content w3-top w3-animate-left" style="display: block;z-index: 2;width: 300px;/* min-width: 300px; *//* padding: 20px; *//* text-align:  left; */" id="mySidebar">
+  <div class="w3-bar">
+    <a id="myBtn" onclick="myFunc('rumah-sehat')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-map-signs w3-medium" style="margin-right: 7px;"></i> Rumah Sehat</a>
+    <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
+      asd
+    </div>
+    
+  </div>  
+</nav> -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAtFnKBeTAorl8rWoo066pk7pwimSpA-w"></script>
 <div id="map-canvas"></div>
@@ -301,6 +385,9 @@ var btn8 = document.getElementById("mts");
 var btn9 = document.getElementById("kec");
 var btn10 = document.getElementById("kel");
 
+var all = document.getElementById("semuakel");
+var kll = document.getElementById("cam");
+
 var map;
 
 var markers = [];
@@ -314,7 +401,12 @@ var markers8 = [];
 var markers9 = [];
 var markers10 = [];
 
+var layer_0;
+var layer_1;
 var layer_7;
+
+$("#lur").hide();
+$("#pet").hide();
 
       function initMap() {
         // Create a map object and specify the DOM element for display.
@@ -683,6 +775,26 @@ var layer_7;
       });
       map.mapTypes.set('map-style', styledMapType);
       map.setMapTypeId('map-style');
+      layer_0 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col0",
+          from: "1i4bNWnxrAqpCEs9XCT7-7_JFkGVzE97ekDvdIz-E"
+        },
+        // map: map,
+        styleId: 2,
+        templateId: 2
+      });
+      //kelurahan
+      // layer_0.setMap(map); 
+      layer_1 = new google.maps.FusionTablesLayer({
+        query: {
+          select: "col0",
+          from: "1h0wJn8wO-uhXB_bwO_QBs6BZZQnr-2S9EDAl9NsY"
+        },
+        // map: map,
+        styleId: 2,
+        templateId: 2
+      }); 
       layer_7 = new google.maps.FusionTablesLayer({
         query: {
           select: "col0",
@@ -694,11 +806,60 @@ var layer_7;
       });
       layer_7.setMap(map); 
       }
-      google.maps.event.addDomListener(window, 'load', initMap);
+
+    function semua(){
+      if(all.checked){
+        $("#lur").show();
+        layer_1.setMap(map);
+      }
+      else{
+        $("#lur").hide();
+        layer_1.setMap(null);
+      }
+    }
+    function petacam(){
+      if(kll.checked){
+        $("#pet").show();
+        layer_0.setMap(map);
+      }
+      else{
+        $("#pet").hide();
+        layer_0.setMap(null);
+      }
+    }
+    function changeMap_0() {
+      var whereClause;
+      var searchString = document.getElementById('search-string_0').value.replace(/'/g, "\\'");
+      if (searchString != '--Select--') {
+        whereClause = "'kecamatan' = '" + searchString + "'";
+      }
+      layer_0.setOptions({
+        query: {
+          select: "col0",
+          from: "1i4bNWnxrAqpCEs9XCT7-7_JFkGVzE97ekDvdIz-E",
+          where: whereClause
+        }
+      });
+    }
+    function changeMap_1() {
+      var whereClause;
+      var searchString = document.getElementById('search-string_1').value.replace(/'/g, "\\'");
+      if (searchString != '--Select--') {
+        whereClause = "'desa' = '" + searchString + "'";
+      }
+      layer_1.setOptions({
+        query: {
+          select: "col0",
+          from: "1h0wJn8wO-uhXB_bwO_QBs6BZZQnr-2S9EDAl9NsY",
+          where: whereClause
+        }
+      });
+    }
+    google.maps.event.addDomListener(window, 'load', initMap);
 
 function rumahsehat(){
   if(btn.checked){
-    document.getElementById("mySidebar").style.width = "200px";
+    document.getElementById("mySidebar").style.width = "400px";
     document.getElementById("mySidebar").style.display = "block";
   }
   for(var i = 0; i < rs.length; i++){
@@ -1688,20 +1849,15 @@ if(btn2.checked){
     markers8[i].setMap(null);
   }
 }
-
-  if(btn9.checked){
-    document.getElementById("mySidebar").style.display = "none";
-    for(var i = 0; i < kecamatan.length; i++){
-      btn9.checked = false;
-    markers9[i].setMap(null);
-  }
+  if(all.checked){
+    all.checked = false;
+    $("#lur").hide();
+    layer_1.setMap(null);
 }
-  if(btn10.checked){
-    document.getElementById("mySidebar").style.display = "none";
-    for(var i = 0; i < kelurahan.length; i++){
-      btn10.checked = false;
-    markers10[i].setMap(null);
-  }
+  if(kll.checked){
+    kll.checked = false;
+    $("#pet").hide();
+    layer_0.setMap(null);
 }
 }
 

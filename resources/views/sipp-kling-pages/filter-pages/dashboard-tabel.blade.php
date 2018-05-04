@@ -14,7 +14,8 @@
           <option value="{{ url('sipp-kling') }}" >Dashboard Utama</option>
           <option value="{{ url('sipp-kling/dashboard-tabel') }}" selected="selected">Dashboard Tabel</option>
           <option value="{{ url('sipp-kling/dashboard-grafik-waktu') }}">Dashboard Grafik Waktu</option>
-          <option value="{{ url('sipp-kling/dashboard-map') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/data-tempat') }}">Dashboard Map</option>
+          <option value="{{ url('sipp-kling/dashboard-detail') }}">Dashboard Detail</option>
         </select>
       </div>
       <div class="col-xs-12 no-padding">
@@ -259,7 +260,7 @@
 							<tbody>
 								@foreach($rehats as $rehat)	
 								<tr>
-									<td>{{$rehat->id_rumah_sehat}}</td>
+									<!-- <td>{{$rehat->id_rumah_sehat}}</td> -->
 									<td>{{$rehat->nama_kk}}</td>
                   					<td style="display:none;">{{$rehat->kelurahan}}</td>            
                   					<td style="display:none;">{{$rehat->alamat}}</td>            

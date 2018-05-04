@@ -1039,6 +1039,7 @@ var markers33 =[];
         map: map,
         name: 'Styled Map'
       });
+    //kecamatan
       map.mapTypes.set('map-style', styledMapType);
       map.setMapTypeId('map-style');
       layer_0 = new google.maps.FusionTablesLayer({
@@ -1050,7 +1051,8 @@ var markers33 =[];
         styleId: 2,
         templateId: 2
       });
-      // layer_0.setMap(map);
+      //kelurahan
+      // layer_0.setMap(map); 
       layer_1 = new google.maps.FusionTablesLayer({
         query: {
           select: "col0",

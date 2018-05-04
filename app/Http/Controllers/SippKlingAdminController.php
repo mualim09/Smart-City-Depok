@@ -19,11 +19,12 @@ class SippKlingAdminController extends Controller
 
     public function __construct(Repository $repository){
         $this->repo = $repository;
+        $this->middleware('auth:admin');
     }
 
     public function index()
     {
-        $data = DB::table('admin_sikelings')->get();
+        $data = DB::table('admins')->get();
         return view('sipp-kling-pages/admin/data-admin', ['data' => $data]);
     }
 
@@ -46,13 +47,12 @@ class SippKlingAdminController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'id_admin_sikeling' => $this->repo->getString(),
-            'nama' => $request->nama,
+            'name' => $request->name,
             'email' => $request->email,
-            'password' => md5($request->password)
+            'password' => Hash::make($request->password)
         ];
 
-        DB::table('admin_sikelings')->insert($data);
+        DB::table('admins')->insert($data);
         return redirect('sipp-kling/admin')->with('success', 'Data admin berhasil ditambah !!');
     }
 

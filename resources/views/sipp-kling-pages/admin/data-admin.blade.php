@@ -4,7 +4,7 @@
 
 
 @foreach($data as $key)
-<div class="modal fade" id="delete-action-{!! substr($key->id_admin_sikeling, 0, 15) !!}">
+<div class="modal fade" id="delete-action-{{ $key->id }}">
 	<div class="modal-dialog">
      <div class="modal-content">
       <div class="modal-header" style="background-color: #f56954">
@@ -16,7 +16,7 @@
       	Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
-      	<form action="/sipp-kling/admin/{{ $key->id_admin_sikeling }}" method="post">
+      	<form action="/sipp-kling/admin/{{ $key->id }}" method="post">
 	        <input type="submit" class="btn btn-danger" name="submit" value="YA">
 	        {{ csrf_field() }}
 	        <input type="hidden" name="_method" value="DELETE">
@@ -32,7 +32,7 @@
 
 <section class="content-header overflow-hidden">
 	<div class="col-xs-12 title-dashboard">
-		<h2>Managemen Admin</h2>
+		<h2>Managemen Admin</h2> <a href="{{ url('sipp-kling/admin/create') }}" class="btn btn-flat green-main-color font-white">Tambah Admin</a>
 		<div class="line-height"></div>
 	</div>
 </section>
@@ -56,27 +56,14 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Trident</td>
-									<td>Internet
-										Explorer 4.0
-									</td>
-									<td>Win 95+</td>
-									<td>
-										<button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-data-1"><i class="ion-eye"></i></button>
-
-										<button type="button" class="btn btn-flat btn-danger" data-toggle="modal"><i class="ion-ios-trash"></i></button>
-
-									</td>
-								</tr>
 								@foreach($data as $key)
 								<tr>
 									<td>{{ ++$loop->index }}</td>
-									<td>{{ $key->nama }}</td>
+									<td>{{ $key->name }}</td>
 									<td>{{ $key->email }}</td>
 									<td>{{ $key->password }}</td>
 									<td>
-										<button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#delete-action-{!! substr($key->id_admin_sikeling, 0, 15) !!}"><i class="ion-ios-trash"></i></button>
+										<button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#delete-action-{{ $key->id }}"><i class="ion-ios-trash"></i></button>
 
 									</td>
 								</tr>

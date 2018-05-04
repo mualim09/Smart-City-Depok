@@ -1,25 +1,87 @@
 <?php
 
+
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
+use Illuminate\Support\Facades\DB;
+use PHPInsight\Sentiment;
 use Twitter;
 use File;
-use Illuminate\Http\Request;
+use App\Repositories\SocmedRepository;
 
 class SocmedController extends Controller
 {
-        public function twitterUserTimeLine()
+// Inisialisasi awal
+    protected $sentiment;
+    protected $SentimentAnalysis;
+    protected $GetTweet;
+
+        
+    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $gettweet)
     {
-    // $data = Twitter::getHomeTimeline(['count' => 10, 'format' => 'array']);
-    // return $data;
-    return view('socmed/dashboard3',compact('data'));
+        $this->middleware('auth');
+        $this->sentiment = $sentiment;
+        $this->SentimentAnalysis = $SentimentAnalysis;
+        $this->GetTweet = $gettweet;
+
+     // global $gambar;
+     // global $data1;
     }
 
-    public function profile()
+    // ===============================================================================================================================
+
+
+
+        public function twitterUserTimeLine(Request $request)
     {
-    // $data = Twitter::getDmsOut(['count' => 20, 'format' => 'array']);
-    // return $data;
-    return view('socmed/dashboard3',compact('data'));
-    } 
+    $get_home       = Twitter::getHomeTimeline([
+                        'widget_type' => 'video', 
+                        'count' => 25, 
+                        'since_id' => 5, 
+                        'tweet_mode' => 'extended', 
+                        'format' => 'array']);
+
+    $get_mention    =  Twitter::getMentionsTimeline([
+                        'widget_type' => 'video', 
+                        'count' => 10,
+                        'tweet_mode' => 'extended',
+                        'format' => 'array']);
+
+    $data1          = $this->GetTweet->gettweet($get_home);
+    $data1_mention  =$this->GetTweet->gettweet($get_mention);
+// ============================================================================================
+        // Get current page form url e.x. &page=1
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+ 
+        // Create a new Laravel collection from the array data
+        $itemCollection = collect($data1);
+ 
+        // Define how many items we want to be visible in each page
+        $perPage = 5;
+ 
+        // Slice the collection to get the items to display in current page
+        $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+ 
+        // Create our paginator and pass it to the view
+        $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
+ 
+        // set url path for generted links
+        $paginatedItems->setPath($request->url());
+
+
+
+  
+
+
+
+        // return $data1;
+    return view('socmed/dashboard3', compact('data1_mention'), ['data1' => $paginatedItems]);
+    }
+
+
+
 
 
  
@@ -33,8 +95,6 @@ class SocmedController extends Controller
     $this->validate($request, [
         'tweet' => 'required'
         ]);
-
-
     $newTwitte = ['status' => $request->tweet];
 
     
@@ -46,11 +106,18 @@ class SocmedController extends Controller
                 }
     }
     }
-
-
     $twitter = Twitter::postTweet($newTwitte);
-
-    
     return back();
     }
+
+
+
+
+
+
+
+
+
+
+
 }

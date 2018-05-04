@@ -151,8 +151,17 @@
 }
 
 .more-occurs {
-	padding: 10px;
 	background-color: #f0f0f0 !important;
+}
+
+.more-occurs div {
+	padding: 2.5px;
+	border-bottom: 1px solid #ddd;
+}
+
+.more-occurs div:last-child {
+	border-bottom: 1px solid transparent;
+	
 }
 
 .left {
@@ -177,13 +186,15 @@
 
 .rw-p-control p {
 	margin: 0;
-<<<<<<< HEAD
-=======
 }
 
 #history-chat-retrieve {
 	padding: 20px;
 	height: 700px;
 	overflow: auto;
->>>>>>> 9619dfd894eb60be1bf8381531e8a1cb0188e4cd
+}
+
+.null-history {
+	width: 100%;
+	text-align: center;
 }
