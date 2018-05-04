@@ -311,20 +311,26 @@ $('.ajax').click(function(){
         $(function(){
               var color = Chart.helpers.color;
               var rsChartData = {
-                labels: ["januari", "februaru", "maret", "april"],
+                labels: ["januari", "februari", "maret", "april"],
                 datasets: [{
-                  label: 'Rumah Tidak Sehat',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  label: 'Positif',
+                  backgroundColor: color(window.chartColors.blue).alpha(1).rgbString(),
                   borderColor: window.chartColors.red,
                   borderWidth: 1,
-                  data: [10 , 20 , 30 , 40]
+                  data: [15 , 20 , 30 , 40]
                 }, {
-                  label: 'Rumah Sehat',
+                  label: 'Netral',
                   backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
                   borderColor: window.chartColors.green,
                   borderWidth: 1,
-                  data: [40 , 30 , 20 , 10]
-                }]
+                  data: [40 , 30 , 20 , 15]
+                }, {
+                  label: 'Negatif',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: [20 , 20 , 18 , 12]
+                },]
               };
 
             $('#canvasbar').SippKlingCharts({
@@ -445,6 +451,41 @@ $('.ajax').click(function(){
             labelString: "GDP (PPP)"
           }
         }]
+      }
+    }
+});
+
+
+
+new Chart(document.getElementById("radar"), {
+    type: 'radar',
+    data: {
+      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      datasets: [
+        {
+          label: "1950",
+          fill: true,
+          backgroundColor: "rgba(179,181,198,0.2)",
+          borderColor: "rgba(179,181,198,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(179,181,198,1)",
+          data: [8.77,55.61,21.69,6.62,6.82]
+        }, {
+          label: "2050",
+          fill: true,
+          backgroundColor: "rgba(255,99,132,0.2)",
+          borderColor: "rgba(255,99,132,1)",
+          pointBorderColor: "#fff",
+          pointBackgroundColor: "rgba(255,99,132,1)",
+          pointBorderColor: "#fff",
+          data: [25.48,54.16,7.61,8.06,4.45]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Distribution in % of world population'
       }
     }
 });

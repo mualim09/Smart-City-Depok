@@ -27,7 +27,9 @@
           {{-- ==== --}}
 	<div class="box-body">
 		<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">  
-		<div class="create-post">
+<form method="POST" action="{{ route('post.tweet') }}" enctype="multipart/form-data">
+        {{ csrf_field() }}
+    <div class="create-post">
             	<div class="row">
             		<div class="col-md-8 col-sm-8">
                  <div class="row">
@@ -47,84 +49,71 @@
                   </div>
                 </div>
             	</div>
-            </div><!-- Post Create Box End-->
+            </div>
+</form>
+            <!-- Post Create Box End-->
 		</div>
 	</div>
 
-	<div class="box-body">
-		<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
-
-            <!-- Post Create Box
-            ================================================= -->
-            <!-- Post Create Box End-->
-
-            <!-- Post Content
-            ================================================= -->
-            <br>
+  <div class="box-body">
+    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
+            <br><br>
+            {{-- ================================================= --}}
+           @foreach($data1 as $datas)
             <div class="post-content">
               <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
+                <img src="{{$datas['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 3 mins ago</p>
+                    <h5><a href="{!!$datas['nama_akun_url']!!}" class="profile-link">{{$datas['nama']}}</a> 
+                    <span class="following">
+                      <a href="{!!$datas['nama_akun_url']!!}"> @ {{$datas['nama_akun']}} </a>
+                    </span>
+                  </h5>
+                    <p class="text-muted">{{$datas['created_at']}}</p>
                   </div>
-                </div>
+                  <div class="reaction">
+                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
+                    <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>
+                    <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas['favorite_count']}}</a>
+                  </div>
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
+                    {{-- {!!$datas['tweet1']!!} --}}
+                      @if($datas['url'] != [])
+                      {!!$datas['url']!!}
+                      @endif
+                  </div>
+              @if($datas['pictvid'] == '')
+              
+              @elseif($datas['video'] == '') 
+              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
+
+              @elseif($datas['video'] != '')
+            <video width=100%; top: -0px; loop controls>
+               <source src="{!!$datas['pictvid']!!}" type="video/mp4">
+               {{-- <source src="{!!$datas['pictvid']!!}" type="application/x-mpegURL"> --}}
+            </video>
+
+              @endif 
+
               </div>
             </div>
 
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Sophia Lee</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Updated her status about 33 mins ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Linda Lohan</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 1 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">John Doe</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 2 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-
-            <!-- Post Content
-            ================================================= -->
           </div>
-		          {{-- ==== --}}
+           @endforeach
+            {{-- ================================================= --}}
+          <div style="text-align: right;">
+          {{ $data1->links() }}              
+          </div>
+          </div>
+              {{-- ==== --}}
         </div>
     </div> {{-- box didalam tab--}}
-	</div>
+  </div>
+
+
 {{-- ================================================== --}}
     
 
@@ -135,73 +124,37 @@
 		<div class="container">
 		{{-- <div class="row justify-content-center"> --}}
 		<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
-
-            <!-- Post Create Box
-            ================================================= -->
-            <!-- Post Create Box End-->
-
-            <!-- Post Content
-            ================================================= -->
-            <br>
+            <br>  
+           @foreach($data1_mention as $datas_mention)
             <div class="post-content">
               <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
+                <img src="{{$datas_mention['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 3 mins ago</p>
+                    <h5><a href="{!!$datas_mention['nama_akun_url']!!}" class="profile-link">{{$datas_mention['nama']}}</a> 
+                      <span class="following">
+                      <a href="{!!$datas_mention['nama_akun_url']!!}"> @ {!!$datas_mention['nama_akun']!!} </a>
+                      </span>
+                    </h5>
+                    <p class="text-muted">{{$datas_mention['created_at']}}</p>
                   </div>
-                </div>
+                  <div class="reaction">
+                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
+                    <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas_mention['retweet_count']}}</a>
+                    <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas_mention['favorite_count']}}</a>
+                  </div>
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                    <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i>{!!$datas_mention['tweet']!!}</p>
+                  </div>
+               @if(!empty($datas_mention['gambar']))
+              <img src="{!!$datas_mention['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
+              @endif 
               </div>
             </div>
 
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Sophia Lee</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Updated her status about 33 mins ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Linda Lohan</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 1 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">John Doe</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 2 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-
-            <!-- Post Content
-            ================================================= -->
+          </div>
+           @endforeach
           </div>
 		</div>
           {{-- ==== --}}

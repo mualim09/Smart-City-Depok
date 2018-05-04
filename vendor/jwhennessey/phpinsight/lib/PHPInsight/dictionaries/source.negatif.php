@@ -2183,7 +2183,7 @@ $neg = array(
 'tawar-menawar',
 'tebal',
 'tegang',
-'tegar',
+'tega',
 'teguran',
 'tekanan',
 'telanjang',

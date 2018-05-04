@@ -32,67 +32,53 @@
 
             <!-- Post Create Box
             ================================================= -->
-            <!-- Post Create Box End-->
 
-            <!-- Post Content
-            ================================================= -->
-            <br>
+           @foreach($get_tweets as $datas)
             <div class="post-content">
               <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
+                <img src="{{$datas['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
                 <div class="post-detail">
                   <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 3 mins ago</p>
+                    <h5><a href="{!!$datas['nama_akun_url']!!}" class="profile-link">{{$datas['nama']}}</a> 
+                    <span class="following">
+                      <a href="{!!$datas['nama_akun_url']!!}"> @ {{$datas['nama_akun']}} </a>
+                    </span>
+                  </h5>
+                    <p class="text-muted">{{$datas['created_at']}}</p>
                   </div>
-                </div>
+                  <div class="reaction">
+                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
+                    <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>
+                    <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas['favorite_count']}}</a>
+                  </div>
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
+                    {{-- {!!$datas['tweet1']!!} --}}
+                      @if($datas['url'] != [])
+                      {!!$datas['url']!!}
+                      @endif
+                  </div>
+              @if($datas['pictvid'] == '')
+              
+              @elseif($datas['video'] == '') 
+              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
+
+              @elseif($datas['video'] != '')
+            <video width=100%; top: -0px; loop controls>
+               <source src="{!!$datas['pictvid']!!}" type="video/mp4">
+               {{-- <source src="{!!$datas['pictvid']!!}" type="application/x-mpegURL"> --}}
+            </video>
+
+              @endif 
+
               </div>
             </div>
 
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Sophia Lee</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Updated her status about 33 mins ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          </div>
+           @endforeach
 
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Linda Lohan</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 1 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">John Doe</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 2 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
 
             <!-- Post Content
             ================================================= -->
@@ -114,110 +100,28 @@
                     <div class="block-title">
                     <div class="friend-list">
                       <div class="row">
+                        {{-- ===================================================================================================== --}}
+                        @foreach ($get_following  as $following)
+                          {{-- expr --}}
                         <div class="col-md-3 col-sm-3">
                           <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
+                            @if (!empty($following ['gambar_banner']))        
+                    <img src="{!!$following['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=auto; />
+
+                            @endif
                             <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
+                              <img src="{!!$following['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
                               <div class="friend-info">
                                  <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
+                                <h5><a href="jobprof.php" class="profile-link">{{$following['nama']}}</a></h5>
+                                <h7><a href="jobprof.php" class="profile-link">@ {{$following['nama_akun']}}</a></h7>
+                                <h6 class="grey">{!!$following['deskripsi']!!}</h6>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        @endforeach
+                        {{-- ===================================================================================================== --}}
                       </div>
                     </div>
                 </div>
@@ -241,110 +145,31 @@
                     <div class="block-title">
                     <div class="friend-list">
                       <div class="row">
+                        
+
+{{-- ===================================================================================================== --}}
+                        @foreach ($get_followers  as $followers)
+                          {{-- expr --}}
                         <div class="col-md-3 col-sm-3">
                           <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
+                            @if (!empty($followers['gambar_banner']))        
+                    <img src="{!!$followers['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=auto; />
+
+                            @endif
                             <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
+                              <img src="{!!$followers['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
                               <div class="friend-info">
                                  <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
+                                <h5><a href="jobprof.php" class="profile-link">{{$followers['nama']}}</a></h5>
+                                <h6><a href="jobprof.php" class="profile-link">@ {{$followers['nama_akun']}}</a></h6>
+                                <h6 class="grey">{!!$followers['deskripsi']!!}</h6>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            <img src="http://placehold.it/1030x360" alt="profile-cover" class="img-responsive cover" />
-                            <div class="card-info">
-                              <img src="http://placehold.it/300x300" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                                <h5><a href="jobprof.php" class="profile-link">Senior Information Technology Business Analyst</a></h5>
-                                <h6 class="grey">iZeno Pte Ltd : Greater Jakarta Area, Indonesia</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        @endforeach
+{{-- ===================================================================================================== --}}
+                       
                       </div>
                     </div>
                 </div>

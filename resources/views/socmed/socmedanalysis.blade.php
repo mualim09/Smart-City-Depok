@@ -82,7 +82,7 @@
 
       <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="canvasline" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="radar" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">
@@ -159,6 +159,8 @@
         <!-- /.box-body -->
           <div class="line-height-box-body"></div>
           <div class="table-responsive">
+            
+              {{-- expr --}}
             <table class="table table-bordered table-hover example2" style="overflow-x:auto;width: 100%">
               <thead>
                 <tr>
@@ -175,17 +177,19 @@
                 </tr>
               </thead>
               <tbody>
-                {{-- @foreach($rehats as $rehat)  --}}
+
+
+                @foreach ($dbtweets as $no => $dbtweet)
                 <tr>
-                  <td>1</td>
-                  <td>2312312312</td>
-                  <td>tejo menawan</td>
-                  <td>Jalan di Margonda Raya massih suka macet</td>
-                  <td>negatif</td>
-                  <td style="display:none;">0.25</td>
-                  <td style="display:none;">0.25</td>
-                  <td style="display:none;">0.5</td>
-                  <td>9 mei 2018</td>
+                  <td><?php echo ($no + 1); ?></td>
+                  <td>{{$dbtweet->id_twitter}}</td>
+                  <td>{{$dbtweet->nama_akun}}</td>
+                  <td>{!!$dbtweet->tweet!!}</td>
+                  <td>{{$dbtweet->sentiment}}</td>
+                  <td style="display:none;">{{$dbtweet->score_positif}}</td>
+                  <td style="display:none;">{{$dbtweet->score_netral}}</td>
+                  <td style="display:none;">{{$dbtweet->score_negatif}}</td>
+                  <td>{{$dbtweet->created_at}}</td>
                   <td style="white-space: nowrap;" align="center">
                     <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" {{-- data-target="#modal-rumah-sehat-{{$rehat->id_rumah_sehat}}" --}}><i class="ion-eye"></i></button>
 
@@ -193,9 +197,10 @@
 
                   </td>
                 </tr>
-                {{-- @endforeach  --}}
+                @endforeach
               </tbody>
             </table>
+            
           </div>
 
 
