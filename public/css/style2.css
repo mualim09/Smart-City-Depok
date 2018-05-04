@@ -194,6 +194,27 @@
 
 .feat_content {
   position: absolute; top: 50%; transform: translate(16%,-50%);
+  margin: auto;
+  max-width: 980px;
+}
+
+.feat_intro1 {
+  font-size: 24px;
+}
+.feat_intro2 {
+  font-size: 15px;
+}
+
+.modal_subs {
+  background-image: url('../../img/city.png');
+  background-size: cover;
+  padding: 40px!important;
+  width: 500px;
+}
+
+/*Informasi*/
+.inform_hamburger {
+  margin-right:7em;letter-spacing:1px;
 }
 
 @-webkit-keyframes zoomin {
@@ -219,153 +240,183 @@
 }
 
 @media only screen and (max-width: 1250px) {
-    .ftagr {
-      font-size: 65pt;
-      line-height: normal;
-      margin-bottom: 10px;
-    }
-    .f_nav {
-      font-size: 25pt;
-    }
-    .w-container {
-      max-width: 1170px;
-    }
-    .works-row {
-      width: auto;
-    }
-    .works-column {
-      width: 25%;
-    }
+  .ftagr {
+    font-size: 65pt;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .f_nav {
+    font-size: 25pt;
+  }
+  .w-container {
+    max-width: 1170px;
+  }
+  .works-row {
+    width: auto;
+  }
+  .works-column {
+    width: 25%;
+  }
+  .feat_img {
+    width: 90%;
+  }
+  .feat_content {
+    position: absolute; top: 50%; transform: translate(5%,-50%);
+  }
 }
 
 @media only screen and (max-width: 1050px) {
-    .ftagr {
-      font-size: 40pt;
-      line-height: normal;
-      margin-bottom: 10px;
-    }
-    .fresponsive {
-      font-size: 13pt;
-      line-height: normal;
-    }
-    .about_isi {
-      margin: 0 -27px;
-    }
-    .f_nav {
-      font-size: 20pt;
-    }
-    .blog_content {
-      padding: 0 1em;
-    }
-    .blog_news {
-      font-size: 13px;
-    }
+  .ftagr {
+    font-size: 40pt;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .fresponsive {
+    font-size: 13pt;
+    line-height: normal;
+  }
+  .about_isi {
+    margin: 0 -27px;
+  }
+  .f_nav {
+    font-size: 20pt;
+  }
+  .blog_content {
+    padding: 0 1em;
+  }
+  .feat_img {
+    width: 80%;
+  }
+  .blog_news {
+    font-size: 13px;
+  }
+  .feat_intro1 {
+    font-size: 18px;
+  }
+  .feat_intro2 {
+    font-size: 12px;
+  }
+  .feat_content {
+    transform: translate(-5%,-50%);
+  }
 }
 
 @media only screen and (max-width: 750px) {
-    .fresponsive {
-      font-size: 11pt;
-      text-align: justify;
-    }
-    .ftagr {
-      font-size: 21pt;
-      margin: 0 3px;
-      line-height: normal;
-      margin-bottom: 10px;
-    }
-    .f_nav {
-      font-size: 15pt;
-    }
-    .f_nav2 {
-      font-size: 7pt;
-    }
-    .sponsor1 {
-      width: 30px; height: 40px;
-    }
-    .sponsor2 {
-      width: 85px; height: 35px;
-    }
-    .sponsor3 {
-      width: 48px; height: 45px;
-    }
-    .about {
-      font-family: "Brandon_Grotesque_bold";
-      font-size: 23px;
-    }
-    .complaint {
-      font-size: 10pt;
-    }
-    .judul_news{
-      font-size: 15px;
-    }
-    .card_news {
-      padding: 1.4em;
-      margin: 0 -35px;
-    }
-    .prev_news {
-      left: -14%;
-    }
-    .next_news {
-      right: -14%;
-    }
-    .intro_awal {
-      margin: 0 -46px 0 -9px;
-    }
-    .btn_close {
-      padding: 10px 27px;
-      font-size: 38px!important;
-    }
-    .hidepok_logo {
-      width: 40px;
-      height: 40px;
-      margin: 4px 25px 0;
-    }
-    .blog_contentjudul {
-      font-size: 18px;
-    }
-    .blog_contenttime {
-      font-size: 13px;
-    }
-    .blog_contentbtn {
-      font-size: 9pt;
-      font-weight: bold;
-      padding: 3px 8px;
-    }
-    .hamburger {
-      margin-right: 1em;
-    }
-    .logo {
-      margin-left: 0.5em;
-    }
-    .blog_headerjudul {
-      font-size: 38pt;
-    }
-    .blog_news {
-      font-size: 12px;
-    }
-    .blog_scroll {
-      top: 215%;
-    }
-    .blog_headerjudul2 {
-      font-size: 13px;
-    }
-    .blog_btn {
-      width: 25%;
-    }
-    .event_content {
-      padding: 0;
-      margin-bottom: 0;
-    }
-    .feat_img {
-      width: 70%;
-    }
-    .feat_content {
-      margin-right: 12em;
-    }
+  .fresponsive {
+    font-size: 11pt;
+    text-align: justify;
+  }
+  .ftagr {
+    font-size: 21pt;
+    margin: 0 3px;
+    line-height: normal;
+    margin-bottom: 10px;
+  }
+  .f_nav {
+    font-size: 15pt;
+  }
+  .f_nav2 {
+    font-size: 7pt;
+  }
+  .sponsor1 {
+    width: 30px; height: 40px;
+  }
+  .sponsor2 {
+    width: 85px; height: 35px;
+  }
+  .sponsor3 {
+    width: 48px; height: 45px;
+  }
+  .about {
+    font-family: "Brandon_Grotesque_bold";
+    font-size: 23px;
+  }
+  .complaint {
+    font-size: 10pt;
+  }
+  .judul_news{
+    font-size: 15px;
+  }
+  .card_news {
+    padding: 1.4em;
+    margin: 0 -35px;
+  }
+  .prev_news {
+    left: -14%;
+  }
+  .next_news {
+    right: -14%;
+  }
+  .intro_awal {
+    margin: 0 -46px 0 -9px;
+  }
+  .btn_close {
+    padding: 10px 27px;
+    font-size: 38px!important;
+  }
+  .hidepok_logo {
+    width: 40px;
+    height: 40px;
+    margin: 4px 25px 0;
+  }
+  .blog_contentjudul {
+    font-size: 18px;
+  }
+  .blog_contenttime {
+    font-size: 13px;
+  }
+  .blog_contentbtn {
+    font-size: 9pt;
+    font-weight: bold;
+    padding: 3px 8px;
+  }
+  .hamburger {
+    margin-right: 1em;
+  }
+  .logo {
+    margin-left: 0.5em;
+  }
+  .blog_headerjudul {
+    font-size: 38pt;
+  }
+  .blog_news {
+    font-size: 12px;
+  }
+  .blog_scroll {
+    top: 215%;
+  }
+  .blog_headerjudul2 {
+    font-size: 13px;
+  }
+  .blog_btn {
+    width: 25%;
+  }
+  .event_content {
+    padding: 0;
+    margin-bottom: 0;
+  }
+  .feat_img {
+    width: 70%;
+  }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 600px) {
+  .feat_content {
+    transform: translate(0%,-50%);
+    margin: 0 53px;
+  }
+  /*Informasi*/
+  .inform_hamburger {
+    margin-right:4em;
+  }
+}
+
+@media only screen and (max-width: 550px) {
   .blog_scroll {
     top: 190%;
+  }
+  .modal_subs {
+    padding: 25px!important;
+    width: 100%;
   }
 }

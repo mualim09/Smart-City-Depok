@@ -75,7 +75,7 @@
         </p>
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Supported by 
-        <img src="{{ URL::asset('img/depok.png') }}" style="width: 16px; height: 20px;">
+        <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
         <img src="{{ URL::asset('img/depokfriendly_fontPutih.png')}}" style="width: 45px; height: 20px;">
         <img src="{{ URL::asset('img/logoopendata.png')}}" style="width: 25px; height: 25px;">
       </div>
@@ -88,7 +88,7 @@
         @foreach($beritas as $berita)
           <div class="card_news mySlides w3-card-4 w3-round-large w3-black">
             <div class="judul_news"><b>{{ $berita->get_title() }}</b></div>
-            <p class="w3-justify complaint">{!! $berita->get_description() !!}</p>
+            <p class="w3-justify complaint">{!! str_limit ($berita->get_description(), 150) !!}</p>
             <p class="w3-medium"><a href="{{ $berita->get_permalink() }}" style="text-decoration: none;" class="w3-medium"><br><button class="w3-button w3-gray complaint"><b>Read More</b></button></a></p>
           </div>
         @endforeach
@@ -96,7 +96,7 @@
         <div class="w3-text-white next_news" onclick="plusDivs(1)">&#10095;</div>
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Supported by 
-        <img src="{{ URL::asset('img/depok.png') }}" style="width: 16px; height: 20px;">
+        <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
         <img src="{{ URL::asset('img/depokfriendly_fontPutih.png')}}" style="width: 45px; height: 20px;">
         <img src="{{ URL::asset('img/logoopendata.png')}}" style="width: 25px; height: 25px;">
       </div>
@@ -104,37 +104,37 @@
 
     <!-- Features -->
     <div class="page page3">
-      <div class="w3-row w3-content feat_content">
+      <div class="w3-row feat_content">
         <div class="about w3-center w3-hide-large w3-hide-medium w3-text-white" style="margin-bottom: 0.4em;"> FEATURES </div>
         <div class="w3-twothird w3-center">
           <img class="feat_img" src="{{ URL::asset('img/pc1.png') }}">
         </div>
         <div class="w3-third">
-          <p class="w3-xlarge" style="color: #f8981d">Now, you can do what you need in one application!</p><br>
+          <p class="feat_intro1" style="color: #f8981d">Now, you can do what you need in one application!</p><br>
           <div class="w3-text-white">
-            <label class="w3-medium"><b> Search Data </b><br class="w3-hide-large w3-hide-medium">
+            <label class="feat_intro2"><b> Search Data </b><br class="w3-hide-large w3-hide-medium">
               <p class="w3-hide-small">Tersedia semua data tentang Depok.</p>
             </label>
-            <label class="w3-medium"><b> Faskes </b><br class="w3-hide-large w3-hide-medium">
+            <label class="feat_intro2"><b> Faskes </b><br class="w3-hide-large w3-hide-medium">
               <p class="w3-hide-small">Pelayanan, pendaftaran fasilitas kesehatan, diagnosa dan ensiklopedi penyakit.</p>
             </label>
-            <label class="w3-medium"><b> Volunteer </b><br class="w3-hide-large w3-hide-medium">
+            <label class="feat_intro2"><b> Volunteer </b><br class="w3-hide-large w3-hide-medium">
               <p class="w3-hide-small">Pendaftaran relawan untuk warga Depok.</p>
             </label>
-            <label class="w3-medium"><b> Ruang Publik </b><br class="w3-hide-large w3-hide-medium">
+            <label class="feat_intro2"><b> Ruang Publik </b><br class="w3-hide-large w3-hide-medium">
               <p class="w3-hide-small">Pendaftaran  pemakaian ruang publik dan NTPD.</p>
             </label>
-            <label class="w3-medium"><b> Karya Warga Depok </b><br class="w3-hide-large w3-hide-medium">
+            <label class="feat_intro2"><b> Karya Warga Depok </b><br class="w3-hide-large w3-hide-medium">
               <p class="w3-hide-small"> Seluruh karya warga Depok.</p>
             </label>
-            <label class="w3-medium"><b> Portal Berita </b><br class="w3-hide-large w3-hide-medium">
+            <label class="feat_intro2"><b> Portal Berita </b><br class="w3-hide-large w3-hide-medium">
               <p class="w3-hide-small">Informasi dan kejadian di Kota Depok.</p>
             </label>
           </div>
         </div>
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Supported by 
-        <img src="{{ URL::asset('img/depok.png') }}" style="width: 16px; height: 20px;">
+        <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
         <img src="{{ URL::asset('img/depokfriendly_fontPutih.png')}}" style="width: 45px; height: 20px;">
         <img src="{{ URL::asset('img/logoopendata.png')}}" style="width: 25px; height: 25px;">
       </div>
@@ -147,7 +147,7 @@
           <div class="about"> ABOUT </div>
           <p class="w3-justify tagline fresponsive"> Berkembang sejak tahun 2017 oleh komunitas, aplikasi yang berkembang dan bertujuan untuk melayani kebutuhan publik Kota Depok. Hi-Depok kini tumbuh menjadi aplikasi pendukung smart city Kota Depok dalam berbagai aspek pelayanan. Aplikasi ini didukung oleh :</p><br> 
           <div class="w3-center">
-            <img class="sponsor1" src="{{ URL::asset('img/depok.png')}}">
+            <img class="sponsor1" src="{{ URL::asset('img/logodepok.png')}}">
             <img class="sponsor2" src="{{ URL::asset('img/depokfriendly_fontPutih.png')}}">
             <img class="sponsor3" src="{{ URL::asset('img/logoopendata.png')}}">
           </div><br>
@@ -193,6 +193,16 @@
           {!! Form::close() !!}
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="id02" class="w3-modal" style="display: block;">
+    <div class="w3-display-topmiddle modal_subs w3-border w3-round-large w3-animate-top w3-card-4" style="animation: animatetop 8s;">
+        <p class="f_reg w3-justify">Apakah Anda ingin berlangganan aplikasi Hi-Depok? Untuk mendapatkan informasi Kota Depok lebih banyak lagi. Klik tombol Subscribe di bawah ini ya.</p><br>
+        <center>
+        <button class="f_reg w3-button w3-black w3-border w3-round-large w3-border-white"> Subscribe</button>
+        <button class="f_reg w3-button w3-black w3-border w3-round-large w3-border-white" onclick="document.getElementById('id02').style.display='none'"> Cancel </button>
+        </center>
     </div>
   </div>
 

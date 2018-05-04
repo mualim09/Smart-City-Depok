@@ -22,6 +22,7 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'a28599dc506da421718fad75955a4b9d' => __DIR__ . '/..' . '/infyomlabs/laravel-generator/src/helpers.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
+        '6292c1671f9440c89e0af20a0f78754a' => __DIR__ . '/..' . '/laracasts/utilities/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -91,6 +92,7 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         array (
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'Laracasts\\Utilities\\JavaScript\\' => 31,
         ),
         'I' => 
         array (
@@ -260,6 +262,10 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'Laracasts\\Utilities\\JavaScript\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laracasts/utilities/src',
+        ),
         'InfyOm\\Generator\\' => 
         array (
             0 => __DIR__ . '/..' . '/infyomlabs/laravel-generator/src',
@@ -411,7 +417,9 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'App\\Http\\Controllers\\KulinerController' => __DIR__ . '/../..' . '/app/Http/Controllers/KulinerController.php',
         'App\\Http\\Controllers\\MallController' => __DIR__ . '/../..' . '/app/Http/Controllers/MallController.php',
         'App\\Http\\Controllers\\MapsController' => __DIR__ . '/../..' . '/app/Http/Controllers/MapsController.php',
+        'App\\Http\\Controllers\\MapsSippklingController' => __DIR__ . '/../..' . '/app/Http/Controllers/MapsSippklingController.php',
         'App\\Http\\Controllers\\MasterpieceController' => __DIR__ . '/../..' . '/app/Http/Controllers/MasterpieceController.php',
+        'App\\Http\\Controllers\\NotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotificationController.php',
         'App\\Http\\Controllers\\OlahragaController' => __DIR__ . '/../..' . '/app/Http/Controllers/OlahragaController.php',
         'App\\Http\\Controllers\\OpdController' => __DIR__ . '/../..' . '/app/Http/Controllers/OpdController.php',
         'App\\Http\\Controllers\\PantiController' => __DIR__ . '/../..' . '/app/Http/Controllers/PantiController.php',
@@ -1853,6 +1861,17 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'Laracasts\\Flash\\Message' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Message.php',
         'Laracasts\\Flash\\OverlayMessage' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/OverlayMessage.php',
         'Laracasts\\Flash\\SessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/SessionStore.php',
+        'Laracasts\\Utilities\\JavaScript\\JavaScriptFacade' => __DIR__ . '/..' . '/laracasts/utilities/src/JavaScriptFacade.php',
+        'Laracasts\\Utilities\\JavaScript\\JavaScriptServiceProvider' => __DIR__ . '/..' . '/laracasts/utilities/src/JavaScriptServiceProvider.php',
+        'Laracasts\\Utilities\\JavaScript\\LaravelViewBinder' => __DIR__ . '/..' . '/laracasts/utilities/src/LaravelViewBinder.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\ArrayTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/ArrayTransformer.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\BooleanTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/BooleanTransformer.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\NullTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/NullTransformer.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\NumericTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/NumericTransformer.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\ObjectTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/ObjectTransformer.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\StringTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/StringTransformer.php',
+        'Laracasts\\Utilities\\JavaScript\\Transformers\\Transformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/Transformer.php',
+        'Laracasts\\Utilities\\JavaScript\\ViewBinder' => __DIR__ . '/..' . '/laracasts/utilities/src/ViewBinder.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
