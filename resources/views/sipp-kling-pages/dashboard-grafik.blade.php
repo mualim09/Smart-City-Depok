@@ -33,9 +33,8 @@
 			<div class="col-xs-12 no-padding">
 				<div class="kecamatan col-xs-12 col-lg-3">
 					<select class="form-control" id="pendataan">
-						<option value="0">- pilih grafik -</option>
-						<option value="{{ url('sipp-kling/dashboard-grafik') }}">Grafik total</option>
-						<option value="{{ url('sipp-kling/dashboard-grafik/grafik-periode') }}">Grafik periode</option>
+						<option value="{{ url('sipp-kling/dashboard-grafik') }}" selected="selected">Grafik total</option>
+						<option value="{{ url('sipp-kling/dashboard-grafik/periode') }}">Grafik periode</option>
 					</select>
 				</div>
 				<div class="kelurahan col-xs-12 col-lg-3">
@@ -48,7 +47,7 @@
 				<div class="rw col-xs-12 col-lg-3">
 						<select class="form-control" id="perbandingan-kelurahan-di-kecamatan" disabled>
 							<option value="0">- pilih kecamatan -</option>
-							<option>ini kecamatan</option>
+							<option>Limo</option>
 						</select>
 				</div>
 				<div class="rw col-xs-12 col-lg-3">
@@ -546,4 +545,59 @@
 		<!-- </div> -->
 	</div>
 </section>
+<script type="text/javascript">
+        $(function(){
+        	function getMaps(param){
+        		var fixMaps = [];
+        		for (var a = 0; a < param.length; a++) {
+        			fixMaps[a] = param[a]['kecamatan'];
+        		}
+
+        		return fixMaps;
+        	}
+
+        	function getValidDataWithoutTotal(param){
+        		var fixData = [];
+        		for (var i = 0; i < param.length; i++) {
+        			fixData[i] = Number(param[i]['total']);
+        		}
+
+        		return fixData;
+        	}
+
+        	var maps = getMaps({!! json_encode($rumah_sehat['rts']) !!});
+
+
+        	// scope
+        	var dataRts = getValidDataWithoutTotal({!! json_encode($rumah_sehat['rts']) !!});
+        	var dataRs = getValidDataWithoutTotal({!! json_encode($rumah_sehat['rs']) !!});
+
+        	var color = Chart.helpers.color;
+              var rsChartData = {
+                labels: maps,
+                datasets: [{
+                  label: 'Rumah Tidak Sehat',
+                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
+                  borderColor: window.chartColors.red,
+                  borderWidth: 1,
+                  data: dataRts
+                }, {
+                  label: 'Rumah Sehat',
+                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
+                  borderColor: window.chartColors.green,
+                  borderWidth: 1,
+                  data: dataRs
+                }]
+              };
+
+            $('#canvasrs').SippKlingCharts({
+                type        : 'bar',
+                chartData   : rsChartData,
+                titleText   : 'Data RS 2017',
+                ketId       : 'rs'
+            });
+
+        });
+
+    </script>
 @endsection

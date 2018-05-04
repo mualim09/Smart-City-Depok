@@ -260,7 +260,7 @@
 							<tbody>
 								@foreach($rehats as $rehat)	
 								<tr>
-									<td>{{$rehat->id_rumah_sehat}}</td>
+									<!-- <td>{{$rehat->id_rumah_sehat}}</td> -->
 									<td>{{$rehat->nama_kk}}</td>
                   					<td style="display:none;">{{$rehat->kelurahan}}</td>            
                   					<td style="display:none;">{{$rehat->alamat}}</td>            

@@ -377,8 +377,6 @@ Route::get('/broadcastform', function () {
 
 // Route::get('/sipp-kling/dashboard', 'SippKlingController@total_jumlah');
 
-Route::get('/sipp-kling/dashboard-grafik', 'SippKlingController@grafik')->name('dashboard-grafik');
-
 
 
 // Route::get('/sipp-kling/dashboard-tabel', function(){
@@ -392,8 +390,6 @@ Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahan'
 
 // this is just for passing data
 // FILTER
-Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');
-Route::any('/sipp-kling/dashboard-tabel/filter', 'SipklingtabelController@view_tabel_param')->name('dashboard-tabel');
 
 
 // #######################################################################################################################
@@ -474,7 +470,16 @@ Route::prefix('sipp-kling')->group(function() {
     // PKL
     Route::post('/input_pkl', 'SipklingtabelController@input_pkl')->name('dashboard-tabel');
     Route::delete('/hapus-pkl/{id_pelayanan_kesling}', 'SipklingtabelController@delete_pkl')->name('dashboard-tabel');
+
+    Route::any('/dashboard-tabel/filter', 'SipklingtabelController@view_tabel_param')->name('dashboard-tabel');
+
+    Route::get('/dashboard-grafik/periode','SippKlingController@dashboardGrafik')->name('dashboard-grafik');
+
+    Route::get('/dashboard-grafik', 'SippKlingController@grafik')->name('dashboard-grafik');
+
+    Route::get('/trash', 'SippKlingController@trash')->name('trash');
+
+    Route::get('/dashboard-detail', 'SippKlingController@dashboardDetail')->name('dashboard-detail');
 });
 
-
-Route::get('/sipp-kling/dashboard-grafik/{param}','SippKlingController@dashboardGrafik')->name('dashboard-periode-pendataan');
+Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');

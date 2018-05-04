@@ -1251,29 +1251,33 @@
         </div>
       </div>
       <div class="box-body chat" id="chat-box">
-        @foreach($getHistoryData as $data)
-        <div class="item">
-          @if($data->aktivitas == 'UPDATE')
-            <i class="fa fa-refresh history-icon-style history-update"></i>
-          @else
-            <i class="fa fa-plus history-icon-style history-tambah"></i>
-          @endif
-
-          <p class="message">
-            <a href="#" class="name">
-              <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ date('d-m-y, G:i:s', strtotime($data->waktu)) }}</small>
-              {{ $data->nama }}
-            </a>
-
+        @if(count($getHistoryData) == 0)
+          <div class="null-history"> - data tidak ditemukan - </div>
+        @else
+          @foreach($getHistoryData as $data)
+          <div class="item">
             @if($data->aktivitas == 'UPDATE')
-              {{ $data->nama }} telah mengupdate data
+              <i class="fa fa-refresh history-icon-style history-update"></i>
             @else
-              {{ $data->nama }} telah menambah data
+              <i class="fa fa-plus history-icon-style history-tambah"></i>
             @endif
 
-          </p>
-        </div>
-        @endforeach
+            <p class="message">
+              <a href="#" class="name">
+                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{ date('d-m-y, G:i:s', strtotime($data->waktu)) }}</small>
+                {{ $data->nama }}
+              </a>
+
+              @if($data->aktivitas == 'UPDATE')
+                {{ $data->nama }} telah mengupdate data
+              @else
+                {{ $data->nama }} telah menambah data
+              @endif
+            </p>
+          </div>
+          @endforeach
+
+        @endif
       </div>
       <div class="box-footer with-border text-center">
         <a href="{{ url('sipp-kling/history') }}" class="btn btn-default btn-flat">view all</a>

@@ -96,7 +96,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ asset('dist/img/avatar2.png') }}" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -325,14 +325,22 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ asset('dist/img/avatar2.png') }}" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$sab->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$sab->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$sab->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$sab->waktu}}</strong><br> 	
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$sab->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$sab->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$sab->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$sab->waktu}}</strong><br>
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -344,16 +352,29 @@
 				</p>
 			</div>
 	        	<div class="more-occurs">
-		        	<span class="left">Nama Pemilik </span><strong class="right">{{$sab->pemilik_sarana}}</strong><br>
-		        	<span class="left">Golongan </span><strong class="right">{{$sab->golongan}}</strong><br>
-		        	<span class="left">Sudah diambil</span><strong class="right">{{$sab->sudah_diambil}}</strong><br>
-		        	<span class="left">Kode Sampel</span><strong class="right">{{$sab->kode_sampel}}</strong><br>
-		        	<span class="left">Kode Sarana </span><strong class="right">{{$sab->kode_sarana}}</strong><br>
+	        		<div>
+		        		<span class="left">Nama Pemilik </span><strong class="right">{{$sab->pemilik_sarana}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Golongan </span><strong class="right">{{$sab->golongan}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sudah diambil</span><strong class="right">{{$sab->sudah_diambil}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Kode Sampel</span><strong class="right">{{$sab->kode_sampel}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Kode Sarana </span><strong class="right">{{$sab->kode_sarana}}</strong><br>
+		        	</div>
 	        	</div>
 	        	<div class="margin-10"></div>
 	        	<div class="more-occurs">
-		        	<span class="left">Alamat</span><strong class="right">{{$sab->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat</span><strong class="right">{{$sab->koordinat}}</strong><br>	        		
+	        		<div>
+		        	<span class="left">Alamat</span><strong class="right">{{$sab->alamat}}</strong><br>	        
+		        	</div>
+		        	<div>	
+		        	<span class="left">Koordinat</span><strong class="right">{{$sab->koordinat}}</strong><br>	</div>        		
 	        	</div>
 	        </div>
     	</div>
@@ -632,10 +653,17 @@
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs">
+	        	<div>
 	        	<span class="left">Petugas </span><strong class="right">{{$kuliner->nama}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Status </span><strong class="right">{{$kuliner->status}}</i></strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Skor Akhir </span><strong class="right">{{$kuliner->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$kuliner->waktu}}</strong><br> 	
+	        	</div>
+	        	<div>
+		        <span class="left">Update terakhir </span><strong class="right">{{$kuliner->waktu}}</strong><br> </div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
