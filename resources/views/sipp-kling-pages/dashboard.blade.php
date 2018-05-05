@@ -21,6 +21,7 @@
       <div class="col-xs-12 no-padding">
         <form class="form" role="search" method="post" action="{{ url('sipp-kling/filter') }}">
           {{ csrf_field() }}
+          <input type="hidden" name="kelurahan" value="0" id="remove-this-stuff">
           <div class="col-xs-12 col-lg-4">
               <select class="form-control kecamatan" name="kecamatan" id="filter-kecamatan">
                 <option value="0">- semua kecamatan -</option>
@@ -1298,35 +1299,21 @@
       </div>
           <div class="box-body" style="height: 235px; overflow: auto;">
             <ul class="products-list product-list-in-box">
+              @foreach($reward as $data)
               <li class="item">
                 <div class="product-img">
-                  <img src="{{ asset('dist/img/avatar5.png') }}" class="img-circle" alt="Product Image">
+                  <img src="{{ asset('img/sipp-kling/photos/avatar01.png') }}" class="img-circle" alt="Photos">
                 </div>
                 <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Handoko <span class="label label-warning pull-right">90</span>
-                  </a>
+                  <!-- <a href="javascript:void(0)" class="product-title"> -->
+                    <strong style="color: #ff851b;">{{ $data->nama }}</strong> <span class="label label-warning pull-right" style="font-size: 19px;">{{ $data->total }}</span>
                   <span class="product-description">
-                  Kecamatan Limo,<br>
-                  Kelurahan Limo
+                  Kecamatan {{ $data->kecamatan }},<br>
+                  Kelurahan {{ $data->kelurahan }}
                   </span>
                 </div>
               </li>
-              <!-- /.item -->
-              <li class="item">
-                <div class="product-img">
-                  <img src="{{ asset('dist/img/avatar04.png') }}" class="img-circle" alt="Product Image">
-                </div>
-                <div class="product-info">
-                  <a href="javascript:void(0)" class="product-title">
-                    Sudirman <span class="label label-warning pull-right">80</span>
-                  </a>
-                  <span class="product-description">
-                  Kecamatan Limo,<br>
-                  Kelurahan Krukut
-                  </span>
-                </div>
-              </li>
+              @endforeach
             </ul>
           </div>
         </div>

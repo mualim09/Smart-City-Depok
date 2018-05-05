@@ -20,6 +20,7 @@
       <div class="col-xs-12 no-padding">
         <form class="form" role="search" method="post" action="{{ url('sipp-kling/dashboard-tabel/filter') }}">
           {{ csrf_field() }}
+          <input type="hidden" name="kelurahan" value="0" id="remove-this-stuff">
           <div class="col-xs-12 col-lg-4">
               <select class="form-control kecamatan" name="kecamatan" id="filter-kecamatan">
                 <option value="0">- semua kecamatan -</option>
@@ -122,7 +123,7 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
+	        	<div class="more-occurs overflow-hidden">
 		        	<div>
 		        		<span class="left">Nama KK </span><strong class="right">{{$rehat->nama_kk}}</strong><br>
 		        	</div>
@@ -152,8 +153,7 @@
 		        	</div>		       	
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	
+	        	<div class="more-occurs overflow-hidden">
 		        	<div>	        		
 		        		<span class="left">No Rumah </span><strong class="right">{{$rehat->no_rumah}}</strong><br>
 		        	</div>
@@ -328,7 +328,7 @@
 	        	<img src="{{ asset('dist/img/avatar2.png') }}" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
+	        <div class="more-occurs overflow-hidden">
 	        	<div>
 	        		<span class="left">Petugas </span><strong class="right">{{$sab->nama}}</strong><br>
 	        	</div>
@@ -351,7 +351,7 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
+	        	<div class="more-occurs overflow-hidden">
 	        		<div>
 		        		<span class="left">Nama Pemilik </span><strong class="right">{{$sab->pemilik_sarana}}</strong><br>
 		        	</div>
@@ -369,7 +369,7 @@
 		        	</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
+	        	<div class="more-occurs overflow-hidden">
 	        		<div>
 		        	<span class="left">Alamat</span><strong class="right">{{$sab->alamat}}</strong><br>	        
 		        	</div>
@@ -473,11 +473,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$jabo->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$jabo->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$jabo->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$jabo->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$jabo->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$jabo->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$jabo->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$jabo->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -488,19 +496,37 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Nama Pengusaha </span><strong class="right">{{$jabo->nama_pengusaha}}</strong><br>
-		        	<span class="left">Nama Tempat </span><strong class="right">{{$jabo->nama_tempat}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$jabo->no_telp}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$jabo->jam_operasional}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$jabo->gambaran_umum}}</strong><br>		       	
-		        	<span class="left">Website </span><strong class="right">{{$jabo->website}}</strong><br>
-		        	<span class="left">Sumber </span><strong class="right">{{$jabo->sumber}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+		        	<div>
+		        		<span class="left">Nama Pengusaha </span><strong class="right">{{$jabo->nama_pengusaha}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Tempat </span><strong class="right">{{$jabo->nama_tempat}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$jabo->no_telp}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$jabo->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$jabo->gambaran_umum}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Website </span><strong class="right">{{$jabo->website}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sumber </span><strong class="right">{{$jabo->sumber}}</strong><br>
+	        		</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$jabo->alamat}}</strong><br>	        		
-		        	<span class="left">Alamat </span><strong class="right">{{$jabo->koordinat}}</strong><br>	        		
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Alamat </span><strong class="right">{{$jabo->alamat}}</strong><br>	        		
+		        	</div>
+	        		<div>
+		        		<span class="left">Alamat </span><strong class="right">{{$jabo->koordinat}}</strong><br>	        		
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -644,7 +670,7 @@
       <div class="modal-header green-background-main-color">
         <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-white" align="center">Detail Data Restoran {{$kuliner->id_kuliner}}</h4>
+        <h4 class="modal-title font-white" align="center">Detail Data Restoran</h4>
       </div>
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
@@ -652,7 +678,7 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
+	        <div class="more-occurs overflow-hidden">
 	        	<div>
 	        	<span class="left">Petugas </span><strong class="right">{{$kuliner->nama}}</strong><br>
 	        	</div>
@@ -674,19 +700,37 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Nama Pengusaha </span><strong class="right">{{$kuliner->nama_pemilik}}</strong><br>
-		        	<span class="left">Nama Tempat </span><strong class="right">{{$kuliner->nama_tempat}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$kuliner->no_telp}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$kuliner->jam_operasional}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$kuliner->gambaran_umum}}</strong><br>		       	
-		        	<span class="left">Website </span><strong class="right">{{$kuliner->website}}</strong><br>
-		        	<span class="left">Sumber </span><strong class="right">{{$kuliner->sumber}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+		        	<div>
+		        		<span class="left">Nama Pengusaha </span><strong class="right">{{$kuliner->nama_pemilik}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Tempat </span><strong class="right">{{$kuliner->nama_tempat}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$kuliner->no_telp}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$kuliner->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$kuliner->gambaran_umum}}</strong><br>
+		        	</div>
+	        		<div>       	
+		        		<span class="left">Website </span><strong class="right">{{$kuliner->website}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sumber </span><strong class="right">{{$kuliner->sumber}}</strong><br>
+	        		</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$kuliner->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat </span><strong class="right">{{$kuliner->koordinat}}</strong><br>	        		
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Alamat </span><strong class="right">{{$kuliner->alamat}}</strong><br>	        		
+		        	</div>
+	        		<div>
+		        		<span class="left">Koordinat </span><strong class="right">{{$kuliner->koordinat}}</strong><br>	        	
+		        	</div>	
 	        	</div>
 	        </div>
     	</div>
@@ -843,11 +887,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$dam->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$dam->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$dam->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$dam->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$dam->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$dam->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$dam->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$dam->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -858,19 +910,35 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Nama Pemilik </span><strong class="right">{{$dam->nama_pemilik}}</strong><br>
-		        	<span class="left">Nama Depot </span><strong class="right">{{$dam->nama_depot}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$dam->no_telp}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$dam->jam_operasional}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$dam->gambaran_umum}}</strong><br>		       	
-		        	<span class="left">Website </span><strong class="right">{{$dam->website}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+		        	<div>
+		        		<span class="left">Nama Pemilik </span><strong class="right">{{$dam->nama_pemilik}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Depot </span><strong class="right">{{$dam->nama_depot}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$dam->no_telp}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$dam->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$dam->gambaran_umum}}</strong><br>		       	
+		        	</div>
+	        		<div>
+		        		<span class="left">Website </span><strong class="right">{{$dam->website}}</strong><br>
 		        	{{-- <span class="left">Sumber </span><strong class="right">{{$dam->sumber}}</strong><br> --}}
+	        		</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$dam->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat </span><strong class="right">{{$dam->koordinat}}</strong><br>	        		
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Alamat </span><strong class="right">{{$dam->alamat}}</strong><br>	        		
+		        	</div>
+		        	<div>
+		        		<span class="left">Koordinat </span><strong class="right">{{$dam->koordinat}}</strong><br>	        		
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -1024,11 +1092,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$ibadah->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$ibadah->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$ibadah->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$ibadah->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$ibadah->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$ibadah->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$ibadah->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$ibadah->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -1039,20 +1115,40 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Nama Pengurus </span><strong class="right">{{$ibadah->nama_pengurus}}</strong><br>
-		        	<span class="left">Nama Tempat </span><strong class="right">{{$ibadah->nama_tempat}}</strong><br>
-		        	<span class="left">Jumlah Jamaah </span><strong class="right">{{$ibadah->jumlah_jamaah}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$ibadah->no_telp}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$ibadah->jam_operasional}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$ibadah->gambaran_umum}}</strong><br>		       	
-		        	<span class="left">Website </span><strong class="right">{{$ibadah->website}}</strong><br>
-		        	<span class="left">Sumber </span><strong class="right">{{$ibadah->sumber}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Nama Pengurus </span><strong class="right">{{$ibadah->nama_pengurus}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Tempat </span><strong class="right">{{$ibadah->nama_tempat}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jumlah Jamaah </span><strong class="right">{{$ibadah->jumlah_jamaah}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$ibadah->no_telp}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$ibadah->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$ibadah->gambaran_umum}}</strong><br>		       
+		        	</div>
+	        		<div>
+		        		<span class="left">Website </span><strong class="right">{{$ibadah->website}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sumber </span><strong class="right">{{$ibadah->sumber}}</strong><br>
+	        		</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$ibadah->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat </span><strong class="right">{{$ibadah->koordinat}}</strong><br>	        		
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Alamat </span><strong class="right">{{$ibadah->alamat}}</strong><br>	        		
+		        	</div>
+		        	<div>
+		        		<span class="left">Koordinat </span><strong class="right">{{$ibadah->koordinat}}</strong><br>
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -1200,11 +1296,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$pasar->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$pasar->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$pasar->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$pasar->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$pasar->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$pasar->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$pasar->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$pasar->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -1215,18 +1319,34 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Nama Penegelola </span><strong class="right">{{$pasar->nama_pengelola}}</strong><br>
-		        	<span class="left">Nama Pasar </span><strong class="right">{{$pasar->nama_tempat}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$pasar->jam_operasional}}</strong><br>
-		        	<span class="left">Jumlah Asosiasi</span><strong class="right">{{$pasar->jumlah_asosiasi}}</strong><br>
-		        	<span class="left">Jumlah Kios</span><strong class="right">{{$pasar->jumlah_kios}}</strong><br>
-		        	<span class="left">Jumlah Pedagang </span><strong class="right">{{$pasar->jumlah_pedagang}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+		        	<div>
+		        		<span class="left">Nama Penegelola </span><strong class="right">{{$pasar->nama_pengelola}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Pasar </span><strong class="right">{{$pasar->nama_tempat}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$pasar->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jumlah Asosiasi</span><strong class="right">{{$pasar->jumlah_asosiasi}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jumlah Kios</span><strong class="right">{{$pasar->jumlah_kios}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jumlah Pedagang </span><strong class="right">{{$pasar->jumlah_pedagang}}</strong><br>
+	        		</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	<span class="left">Alamat</span><strong class="right">{{$pasar->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat</span><strong class="right">{{$pasar->koordinat}}</strong><br>	        		
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Alamat</span><strong class="right">{{$pasar->alamat}}</strong><br>	        		
+		        	</div>
+		        	<div>
+		        		<span class="left">Koordinat</span><strong class="right">{{$pasar->koordinat}}</strong><br>	        		
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -1380,11 +1500,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$sekolah->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$sekolah->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$sekolah->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$sekolah->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$sekolah->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$sekolah->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$sekolah->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$sekolah->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -1395,24 +1523,51 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Kepala Sekolah </span><strong class="right">{{$sekolah->nama_kepala_sekolah}}</strong><br>
-		        	<span class="left">Nama Tempat </span><strong class="right">{{$sekolah->nama_tempat}}</strong><br>
-		        	<span class="left">Kategori </span><strong class="right">{{$sekolah->kategori}}</strong><br>
-		        	<span class="left">Murid Per Tahun </span></span><strong class="right">{{$sekolah->jumlah_murid_pertahun}}</strong><br>
-		        	<span class="left">Luas Bangunan </span><strong class="right">{{$sekolah->luas_bangunan}}</strong><br>
-		        	<span class="left">Luas Tanah </span><strong class="right">{{$sekolah->luas_tanah}}</strong><br>
-		        	<span class="left">Tahun Berdiri </span><strong class="right">{{$sekolah->tahun_berdiri}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$sekolah->no_telp}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$sekolah->jam_operasional}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$sekolah->gambaran_umum}}</strong><br>		       	
-		        	<span class="left">Website </span><strong class="right">{{$sekolah->website}}</strong><br>
-		        	<span class="left">Sumber </span><strong class="right">{{$sekolah->sumber}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Kepala Sekolah </span><strong class="right">{{$sekolah->nama_kepala_sekolah}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Tempat </span><strong class="right">{{$sekolah->nama_tempat}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Kategori </span><strong class="right">{{$sekolah->kategori}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Murid Per Tahun </span></span><strong class="right">{{$sekolah->jumlah_murid_pertahun}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Luas Bangunan </span><strong class="right">{{$sekolah->luas_bangunan}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Luas Tanah </span><strong class="right">{{$sekolah->luas_tanah}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Tahun Berdiri </span><strong class="right">{{$sekolah->tahun_berdiri}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$sekolah->no_telp}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$sekolah->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$sekolah->gambaran_umum}}</strong><br>		       </div>
+	        		<div>
+		        		<span class="left">Website </span><strong class="right">{{$sekolah->website}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sumber </span><strong class="right">{{$sekolah->sumber}}</strong><br>
+		        	</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
+	        	<div class="more-occurs overflow-hidden">
+		        	<div>
 		        	<span class="left">Alamat </span><strong class="right">{{$sekolah->alamat}}</strong><br>	        		
+		        	</div>
+	        		<div>
 		        	<span class="left">Koordinat </span><strong class="right">{{$sekolah->koordinat}}</strong><br>	        		
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -1571,11 +1726,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$puskes->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$puskes->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$puskes->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$puskes->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$puskes->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$puskes->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$puskes->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$puskes->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -1586,19 +1749,37 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-	        	<div class="more-occurs">
-		        	<span class="left">Kepala Puskesmas </span><strong class="right">{{$puskes->nama_pimpinan}}</strong><br>
-		        	<span class="left">Nama Tempat </span><strong class="right">{{$puskes->nama_tempat}}</strong><br>
-		        	<span class="left">No Telp </span><strong class="right">{{$puskes->no_telp}}</strong><br>
-		        	<span class="left">Jam Operasional </span><strong class="right">{{$puskes->jam_operasional}}</strong><br>
-		        	<span class="left">Gambaran Umum </span><strong class="right">{{$puskes->gambaran_umum}}</strong><br>		       	
-		        	<span class="left">Website </span><strong class="right">{{$puskes->website}}</strong><br>
-		        	<span class="left">Sumber </span><strong class="right">{{$puskes->sumber}}</strong><br>
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Kepala Puskesmas </span><strong class="right">{{$puskes->nama_pimpinan}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Nama Tempat </span><strong class="right">{{$puskes->nama_tempat}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">No Telp </span><strong class="right">{{$puskes->no_telp}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Jam Operasional </span><strong class="right">{{$puskes->jam_operasional}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Gambaran Umum </span><strong class="right">{{$puskes->gambaran_umum}}</strong><br>		      
+		        	</div>
+	        		<div>
+		        		<span class="left">Website </span><strong class="right">{{$puskes->website}}</strong><br>
+		        	</div>
+	        		<div>
+		        		<span class="left">Sumber </span><strong class="right">{{$puskes->sumber}}</strong><br>
+	        		</div>
 	        	</div>
 	        	<div class="margin-10"></div>
-	        	<div class="more-occurs">
-		        	<span class="left">Alamat </span><strong class="right">{{$puskes->alamat}}</strong><br>	        		
-		        	<span class="left">Koordinat </span><strong class="right">{{$puskes->koordinat}}</strong><br>	        		
+	        	<div class="more-occurs overflow-hidden">
+	        		<div>
+		        		<span class="left">Alamat </span><strong class="right">{{$puskes->alamat}}</strong><br>	        		
+		        	</div>
+	        		<div>
+		        		<span class="left">Koordinat </span><strong class="right">{{$puskes->koordinat}}</strong><br>	        		
+	        		</div>
 	        	</div>
 	        </div>
     	</div>
@@ -1748,11 +1929,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$pesantren->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$pesantren->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$pesantren->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$pesantren->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$pesantren->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$pesantren->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$pesantren->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$pesantren->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -1763,20 +1952,38 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-        	<div class="more-occurs">
+        	<div class="more-occurs overflow-hidden">
+        		<div>
 	        	<span class="left">Nama Pengelola </span><strong class="right">{{$pesantren->nama_pengelola}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Nama Tempat </span><strong class="right">{{$pesantren->nama_tempat}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Jumlah Santri </span><strong class="right">{{$pesantren->jumlah_santri}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">No Telp </span><strong class="right">{{$pesantren->no_telp}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Jam Operasional </span><strong class="right">{{$pesantren->jam_operasional}}</strong><br>
+	        	</div>
+	        	<div>
 	        	<span class="left">Gambaran Umum </span><strong class="right">{{$pesantren->gambaran_umum}}</strong><br>    	
+	        	</div>
+	        	<div>
 	        	<span class="left">Website </span><strong class="right">{{$pesantren->website}}</strong><br>
 	        	{{-- <span class="left">Sumber </span><strong class="right">{{$pesantren->sumber}}</strong><br> --}}
 	        	</div>
+	        </div>
         	<div class="margin-10"></div>
-        	<div class="more-occurs">
+        	<div class="more-occurs overflow-hidden">
+        		<div>
 	        	<span class="left">Alamat </span><strong class="right">{{$pesantren->alamat}}</strong><br>	        		
+	        	</div>
+	        	<div>
 	        	<span class="left">Koordinat </span><strong class="right">{{$pesantren->koordinat}}</strong><br>	        		
+        		</div>
         	</div>
 	        </div>
     	</div>
@@ -1925,11 +2132,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$hotel->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$hotel->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$hotel->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$hotel->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$hotel->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$hotel->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$hotel->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$hotel->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -1940,21 +2155,41 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-        	<div class="more-occurs">
-	        	<span class="left">Nama Pemilik </span><strong class="right">{{$hotel->nama_pemilik}}</strong><br>
-	        	<span class="left">Nama Hotel </span><strong class="right">{{$hotel->nama_tempat}}</strong><br>
-	        	<span class="left">No Izin Usaha </span><strong class="right">{{$hotel->no_izin_usaha}}</strong><br>
-	        	<span class="left">Jumlah Karyawan </span><strong class="right">{{$hotel->jumlah_karyawan}}</strong><br>
-	        	<span class="left">No Telp </span><strong class="right">{{$hotel->no_telp}}</strong><br>
-	        	<span class="left">Jam Operasional </span><strong class="right">{{$hotel->jam_operasional}}</strong><br>
-	        	<span class="left">Gambaran Umum </span><strong class="right">{{$hotel->gambaran_umum}}</strong><br>    	
-	        	<span class="left">Website </span><strong class="right">{{$hotel->website}}</strong><br>
+        	<div class="more-occurs overflow-hidden">
+        		<div>
+	        		<span class="left">Nama Pemilik </span><strong class="right">{{$hotel->nama_pemilik}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Nama Hotel </span><strong class="right">{{$hotel->nama_tempat}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">No Izin Usaha </span><strong class="right">{{$hotel->no_izin_usaha}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jumlah Karyawan </span><strong class="right">{{$hotel->jumlah_karyawan}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">No Telp </span><strong class="right">{{$hotel->no_telp}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jam Operasional </span><strong class="right">{{$hotel->jam_operasional}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Gambaran Umum </span><strong class="right">{{$hotel->gambaran_umum}}</strong><br>    	
+	        	</div>
+	        	<div>
+	        		<span class="left">Website </span><strong class="right">{{$hotel->website}}</strong><br>
 	        	{{-- <span class="left">Sumber </span><strong class="right">{{$hotel->sumber}}</strong><br> --}}
 	        	</div>
+	        </div>
         	<div class="margin-10"></div>
-        	<div class="more-occurs">
-	        	<span class="left">Alamat </span><strong class="right">{{$hotel->alamat}}</strong><br>	        		
-	        	<span class="left">Koordinat </span><strong class="right">{{$hotel->koordinat}}</strong><br>	        		
+        	<div class="more-occurs overflow-hidden">
+        		<div>
+	        		<span class="left">Alamat </span><strong class="right">{{$hotel->alamat}}</strong><br>	        		
+	        	</div>
+	        	<div>
+	        		<span class="left">Koordinat </span><strong class="right">{{$hotel->koordinat}}</strong><br>	        		
+        		</div>
         	</div>
 	        </div>
     	</div>
@@ -2136,11 +2371,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$hotel_melati->nama}}</strong><br>
-	        	<span class="left">Status </span><strong class="right">{{$hotel_melati->status}}</i></strong><br>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$hotel_melati->total_nilai}}</strong><br>
-		        <span class="left">Update terakhir </span><strong class="right">{{$hotel_melati->waktu}}</strong><br> 	
+	        <div class="more-occurs overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$hotel_melati->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Status </span><strong class="right">{{$hotel_melati->status}}</i></strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$hotel_melati->total_nilai}}</strong><br>
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$hotel_melati->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -2151,21 +2394,41 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-        	<div class="more-occurs">
-	        	<span class="left">Nama Pemilik </span><strong class="right">{{$hotel_melati->nama_pemilik}}</strong><br>
-	        	<span class="left">Nama Hotel Melati </span><strong class="right">{{$hotel_melati->nama_tempat}}</strong><br>
-	        	<span class="left">No Izin Usaha </span><strong class="right">{{$hotel_melati->no_izin_usaha}}</strong><br>
-	        	<span class="left">Jumlah Karyawan </span><strong class="right">{{$hotel_melati->jumlah_karyawan}}</strong><br>
-	        	<span class="left">No Telp </span><strong class="right">{{$hotel_melati->no_telp}}</strong><br>
-	        	<span class="left">Jam Operasional </span><strong class="right">{{$hotel_melati->jam_operasional}}</strong><br>
-	        	<span class="left">Gambaran Umum </span><strong class="right">{{$hotel_melati->gambaran_umum}}</strong><br>    	
-	        	<span class="left">Website </span><strong class="right">{{$hotel_melati->website}}</strong><br>
+        	<div class="more-occurs overflow-hidden">
+        		<div>
+	        		<span class="left">Nama Pemilik </span><strong class="right">{{$hotel_melati->nama_pemilik}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Nama Hotel Melati </span><strong class="right">{{$hotel_melati->nama_tempat}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">No Izin Usaha </span><strong class="right">{{$hotel_melati->no_izin_usaha}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jumlah Karyawan </span><strong class="right">{{$hotel_melati->jumlah_karyawan}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">No Telp </span><strong class="right">{{$hotel_melati->no_telp}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jam Operasional </span><strong class="right">{{$hotel_melati->jam_operasional}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Gambaran Umum </span><strong class="right">{{$hotel_melati->gambaran_umum}}</strong><br>    	
+	        	</div>
+	        	<div>
+	        		<span class="left">Website </span><strong class="right">{{$hotel_melati->website}}</strong><br>
 	        	{{-- <span class="left">Sumber </span><strong class="right">{{$hotel_melati->sumber}}</strong><br> --}}
 	        	</div>
+	        </div>
         	<div class="margin-10"></div>
-        	<div class="more-occurs">
-	        	<span class="left">Alamat </span><strong class="right">{{$hotel_melati->alamat}}</strong><br>	        		
-	        	<span class="left">Koordinat </span><strong class="right">{{$hotel_melati->koordinat}}</strong><br>	        		
+        	<div class="more-occurs overflow-hidden">
+        		<div>
+	        		<span class="left">Alamat </span><strong class="right">{{$hotel_melati->alamat}}</strong><br>	        		
+	        	</div>
+	        	<div>
+	        		<span class="left">Koordinat </span><strong class="right">{{$hotel_melati->koordinat}}</strong><br>	        		
+        		</div>
         	</div>
 	        </div>
     	</div>
@@ -2281,11 +2544,19 @@
 	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
 	        </div>
 	        <div class="margin-10"></div>
-	        <div class="more-occurs">
-	        	<span class="left">Petugas </span><strong class="right">{{$pkl->nama}}</strong><br>
-	        	{{-- <span class="left">Status </span><strong class="right">{{$pkl->status}}</i></strong><br> --}}
-	        	{{-- <span class="left">Skor Akhir </span><strong class="right">{{$pkl->total_nilai}}</strong><br> --}}
-		        <span class="left">Update terakhir </span><strong class="right">{{$pkl->waktu}}</strong><br> 	
+	        <div class="more-occur overflow-hidden">
+	        	<div>
+	        		<span class="left">Petugas </span><strong class="right">{{$pkl->nama}}</strong><br>
+	        	</div>
+	        	<div>
+	        		{{-- <span class="left">Status </span><strong class="right">{{$pkl->status}}</i></strong><br> --}}
+	        	</div>
+	        	<div>
+	        		{{-- <span class="left">Skor Akhir </span><strong class="right">{{$pkl->total_nilai}}</strong><br> --}}
+		        </div>
+	        	<div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$pkl->waktu}}</strong><br> 	
+	        	</div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -2296,22 +2567,46 @@
 					<strong>Keterangan</strong>
 				</p>
 			</div>
-        	<div class="more-occurs">
-	        	<span class="left">Nama</span><strong class="right">{{$pkl->nama_pkl}}</strong><br>
-	        	<span class="left">Umur </span><strong class="right">{{$pkl->umur}}</strong><br>
-	        	<span class="left">Jenis Kelamin </span><strong class="right">{{$pkl->jenis_kelamin}}</strong><br>
-	        	<span class="left">Nama Tempat </span><strong class="right">{{$pkl->nama_tempat}}</strong><br>
-	        	<span class="left">Jenis </span><strong class="right">{{$pkl->jenis}}</strong><br>
-	        	{{-- <span class="left">No Telp </span><strong class="right">{{$pkl->no_telp}}</strong><br>
-	        	<span class="left">Jam Operasional </span><strong class="right">{{$pkl->jam_operasional}}</strong><br>
-	        	<span class="left">Gambaran Umum </span><strong class="right">{{$pkl->gambaran_umum}}</strong><br>    	
-	        	<span class="left">Website </span><strong class="right">{{$pkl->website}}</strong><br> --}}
-	        	{{-- <span class="left">Sumber </span><strong class="right">{{$pkl->sumber}}</strong><br> --}}
+        	<div class="more-occurs overflow-hidden">
+        		<div>
+	        		<span class="left">Nama</span><strong class="right">{{$pkl->nama_pkl}}</strong><br>
 	        	</div>
+	        	<div>
+	        		<span class="left">Umur </span><strong class="right">{{$pkl->umur}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jenis Kelamin </span><strong class="right">{{$pkl->jenis_kelamin}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Nama Tempat </span><strong class="right">{{$pkl->nama_tempat}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jenis </span><strong class="right">{{$pkl->jenis}}</strong><br>
+	        	</div>
+	        	<div>
+	        		{{-- <span class="left">No Telp </span><strong class="right">{{$pkl->no_telp}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Jam Operasional </span><strong class="right">{{$pkl->jam_operasional}}</strong><br>
+	        	</div>
+	        	<div>
+	        		<span class="left">Gambaran Umum </span><strong class="right">{{$pkl->gambaran_umum}}</strong><br>    	
+	        	</div>
+	        	<div>
+	        		<span class="left">Website </span><strong class="right">{{$pkl->website}}</strong><br> --}}
+	        	</div>
+	        	<div>
+	        		{{-- <span class="left">Sumber </span><strong class="right">{{$pkl->sumber}}</strong><br> --}}
+	        	</div>
+	        </div>
         	<div class="margin-10"></div>
-        	<div class="more-occurs">
-	        	<span class="left">Alamat </span><strong class="right">{{$pkl->alamat}}</strong><br>	        		
-	        	<span class="left">Koordinat </span><strong class="right">{{$pkl->koordinat}}</strong><br>	        		
+        	<div class="more-occurs overflow-hidden">
+        		<div>
+	        		<span class="left">Alamat </span><strong class="right">{{$pkl->alamat}}</strong><br>	        		
+	        	</div>
+	        	<div>
+	        		<span class="left">Koordinat </span><strong class="right">{{$pkl->koordinat}}</strong><br>	        		
+        		</div>
         	</div>
 	        </div>
     	</div>

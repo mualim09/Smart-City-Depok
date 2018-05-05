@@ -67,15 +67,16 @@ var base_url = {!! json_encode(url('/')) !!}
     @endif
 
 </head>
-<body class="skin-purple-light sidebar-mini">
 @if (!Auth::guest())
+<body class="skin-purple-light sidebar-mini">
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
-
             <!-- Logo -->
             <a href="{{ url('sipp-kling') }}" class="logo green-background-main-color">
-                <b>SIPP-KLING</b>
+                <span class="logo-mini"><b>S</b>KL</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>SIPP KLING</b></span>
             </a>
 
             <!-- Header Navbar -->
@@ -174,13 +175,52 @@ var base_url = {!! json_encode(url('/')) !!}
 
 @else
 {{-- ============================================================================================================ --}}
+<body class="hold-transition lockscreen">
+<!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="/"><b>HI-DEPOK</b></a>
+    <a href="{{ url('sipp-kling') }}"><b>SIPP KLING</b></a>
   </div>
+  <!-- User name -->
+  <div class="lockscreen-name">Input Password</div>
 
   <!-- START LOCK SCREEN ITEM -->
+  <div class="lockscreen-item">
     <!-- lockscreen image -->
+    <div class="lockscreen-image">
+      <img src="{{ asset('dist/img/admin.png') }}" alt="User Image">
+    </div>
+    <!-- /.lockscreen-image -->
+
+    <!-- lockscreen credentials (contains the form) -->
+    <form class="lockscreen-credentials">
+      <div class="input-group">
+        <input type="password" class="form-control" placeholder="password">
+
+        <div class="input-group-btn">
+          <button type="button" class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+        </div>
+      </div>
+    </form>
+    <!-- /.lockscreen credentials -->
+
+  </div>
+  <!-- /.lockscreen-item -->
+  <div class="help-block text-center">
+    Enter your password to retrieve your session
+  </div>
+  <div class="lockscreen-footer text-center">
+    Copyright &copy; 2017-2018 <b><a href="http://hi.depok.go.id" class="text-black">TIREGDEV</a></b><br>
+    All rights reserved
+  </div>
+</div>
+<!-- <div class="lockscreen-wrapper">
+  <div class="lockscreen-logo">
+    <a href="/sipp-kling"><b>SIPP-KLING</b></a>
+  </div>
+
+   START LOCK SCREEN ITEM
+    lockscreen image
     <div class="callout callout-warning" align="center">
                 <h4><i class="icon fa fa-warning"></i> I am a danger callout <i class="icon fa fa-warning"></i></h4>
                 <p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul,
@@ -192,7 +232,7 @@ var base_url = {!! json_encode(url('/')) !!}
     Copyright &copy; 2017-2018 <b><a href="http://hi.depok.go.id" class="text-black">TIREGDEV</a></b><br>
     All rights reserved
   </div>
-</div>
+</div> -->
 {{-- ============================================================================================================ --}}
 
 @endif
