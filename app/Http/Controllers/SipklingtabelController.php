@@ -23,7 +23,7 @@ class SipklingtabelController extends Controller
             ->leftjoin('petugas_sikelings', $tabel.'.id_petugas', '=', 'petugas_sikelings.id_petugas')                      
             ->select($tabel.'.*', 'petugas_sikelings.nama', 'petugas_sikelings.kelurahan')
             ->orderBy('waktu','desc')
-            ->limit(5000)
+            ->limit(10)
             ->get();  
 
     }
@@ -72,7 +72,7 @@ class SipklingtabelController extends Controller
 
 // Filter step 2
 public function view_tabel_param(){
-    if(Input::get('kecamatan') == 0 && Input::get('kelurahan') == 0){
+    if(Input::get('kecamatan') == '0' && Input::get('kelurahan') == '0'){
         return redirect('sipp-kling/dashboard-tabel');
     }
 

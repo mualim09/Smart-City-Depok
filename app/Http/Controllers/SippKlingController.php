@@ -100,9 +100,6 @@ class SippKlingController extends Controller
     ];
 
     return view('sipp-kling-pages/dashboard-grafik', compact('rumah_sehat'));
-    // return view('sipp-kling-pages/dashboard-grafik', compact('dataKelurahan', 'rumah_sehat', 
-    //   'pelayanan_keslings', 'dam_sip_klings', 'kuliners',
-    //   'jasa_bogas', 'tempat_ibadahs', 'sekolahs', 'pasars', 'pesantrens', 'hotels', 'hotel_melatis'));
   }
 
 //punya db tabel
@@ -122,15 +119,11 @@ class SippKlingController extends Controller
   }
 
   public function totalJumlahByParameter(){
-    if(Input::get('kecamatan') == 0 && Input::get('kelurahan') == 0){
-
+    // return Input::get('kecamatan').'.'.Input::get('kelurahan');
+    if(Input::get('kecamatan') == '0' && Input::get('kelurahan') == '0'){
       return redirect('sipp-kling');
-      // return 1;
-
     } else {
-    
-      return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan'));
-    
+      return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan')); 
     }
   }
 

@@ -39,8 +39,7 @@
 				</div>
 				<div class="kelurahan col-xs-12 col-lg-3">
 						<select class="form-control" id="perbandingan">
-							<option value="0">- pilih perbandingan -</option>
-							<option value="1">bandingkan semua kecamatan</option>
+							<option value="0">bandingkan semua kecamatan</option>
 							<option value="2">bandingkan kelurahan</option>
 						</select>
 				</div>
