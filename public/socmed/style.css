@@ -43,6 +43,11 @@
     - Scroll Down Arrow
     - Preloader
 ==================================================*/
+.box-ketsocmed {
+  padding: 20px;
+  background: #3B3B98 !important;
+}
+/*================================================*/
 
 html, body {
   height: 100%;

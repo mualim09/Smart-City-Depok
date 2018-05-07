@@ -27,9 +27,9 @@
 
                 <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="line-chart" width="800" height="450"></canvas>
+                    <canvas id="pie-chart" width="800" height="450"></canvas>
                   </div>
-                  <div class="col-md-4 bg-aqua-active box-keterangan">
+                  <div class="col-md-4 bg-maroon box-ketsocmed">
                     <p class="text-center">
                       <i class="fa fa-info-circle fa-2x"></i><br>
                       <strong>Keterangan</strong>
@@ -113,7 +113,7 @@
 
       <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="bubble-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="line-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">

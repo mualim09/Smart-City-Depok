@@ -28,7 +28,7 @@
           {{-- ==== --}}
     <div class="container">
     {{-- <div class="row justify-content-center"> --}}
-    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
+    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
 
             <!-- Post Create Box
             ================================================= -->
@@ -106,16 +106,17 @@
                         <div class="col-md-3 col-sm-3">
                           <div class="friend-card sh">
                             @if (!empty($following ['gambar_banner']))        
-                    <img src="{!!$following['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=auto; />
-
+                    <img src="{!!$following['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=70px; />
+                            @else 
+                            <div style="height: 70px; background-color: #eee"></div>
                             @endif
                             <div class="card-info">
+                                 <button class="btn btn-primary1 pull-right ">Following</button>
                               <img src="{!!$following['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
                               <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
                                 <h5><a href="jobprof.php" class="profile-link">{{$following['nama']}}</a></h5>
-                                <h7><a href="jobprof.php" class="profile-link">@ {{$following['nama_akun']}}</a></h7>
-                                <h6 class="grey">{!!$following['deskripsi']!!}</h6>
+                                <p style="font-size: 7pt"><a href="jobprof.php" class="profile-link">@ {{$following['nama_akun']}}</a></p>
+                                <h6 class="grey">{!! str_limit ($following['deskripsi'], 100) !!}</h6>
                               </div>
                             </div>
                           </div>
@@ -129,8 +130,6 @@
           {{-- </div> --}}
           {{-- ==== --}}
       </div>
-
-
     </div>
     
 {{-- ================================================== --}}
@@ -145,31 +144,29 @@
                     <div class="block-title">
                     <div class="friend-list">
                       <div class="row">
-                        
-
 {{-- ===================================================================================================== --}}
                         @foreach ($get_followers  as $followers)
                           {{-- expr --}}
                         <div class="col-md-3 col-sm-3">
                           <div class="friend-card sh">
                             @if (!empty($followers['gambar_banner']))        
-                    <img src="{!!$followers['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=auto; />
-
+                          <img src="{!!$followers['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=70px; />
+                            @else 
+                            <div style="height: 70px; background-color: #eee"></div>
                             @endif
                             <div class="card-info">
+                                 <button class="btn btn-primary1 pull-right ">Following</button>
                               <img src="{!!$followers['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
                               <div class="friend-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
                                 <h5><a href="jobprof.php" class="profile-link">{{$followers['nama']}}</a></h5>
-                                <h6><a href="jobprof.php" class="profile-link">@ {{$followers['nama_akun']}}</a></h6>
-                                <h6 class="grey">{!!$followers['deskripsi']!!}</h6>
+                                <p style="font-size: 7pt"><a href="jobprof.php" class="profile-link">@ {{$followers['nama_akun']}}</a></p>
+                                <h6 class="grey">{!! str_limit ($followers['deskripsi'], 100) !!}</h6>
                               </div>
                             </div>
                           </div>
                         </div>
                         @endforeach
-{{-- ===================================================================================================== --}}
-                       
+{{-- ===================================================================================================== --}}   
                       </div>
                     </div>
                 </div>
@@ -177,8 +174,6 @@
           {{-- </div> --}}
           {{-- ==== --}}
       </div>
-
-
     </div>
 
 {{-- ================================================== --}}

@@ -34,7 +34,7 @@ class SocmedController extends Controller
 
 
 
-        public function twitterUserTimeLine(Request $request)
+        public function twitterUserTimeLine()
     {
     $get_home       = Twitter::getHomeTimeline([
                         'widget_type' => 'video', 
@@ -52,32 +52,10 @@ class SocmedController extends Controller
     $data1          = $this->GetTweet->gettweet($get_home);
     $data1_mention  =$this->GetTweet->gettweet($get_mention);
 // ============================================================================================
-        // Get current page form url e.x. &page=1
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
- 
-        // Create a new Laravel collection from the array data
-        $itemCollection = collect($data1);
- 
-        // Define how many items we want to be visible in each page
-        $perPage = 5;
- 
-        // Slice the collection to get the items to display in current page
-        $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
- 
-        // Create our paginator and pass it to the view
-        $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
- 
-        // set url path for generted links
-        $paginatedItems->setPath($request->url());
-
-
-
-  
-
 
 
         // return $data1;
-    return view('socmed/dashboard3', compact('data1_mention'), ['data1' => $paginatedItems]);
+    return view('socmed/dashboard3', compact('data1_mention', 'data1'));
     }
 
 

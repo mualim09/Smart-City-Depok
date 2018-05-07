@@ -56,8 +56,8 @@
 	</div>
 
   <div class="box-body">
-    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
-            <br><br>
+    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
+          
             {{-- ================================================= --}}
            @foreach($data1 as $datas)
             <div class="post-content">
@@ -80,10 +80,6 @@
                   <div class="line-divider"></div>
                   <div class="post-text">
                   {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
-                    {{-- {!!$datas['tweet1']!!} --}}
-                      @if($datas['url'] != [])
-                      {!!$datas['url']!!}
-                      @endif
                   </div>
               @if($datas['pictvid'] == '')
               
@@ -123,8 +119,8 @@
       	<div class="box-body">
 		<div class="container">
 		{{-- <div class="row justify-content-center"> --}}
-		<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
-            <br>  
+    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
+          
            @foreach($data1_mention as $datas_mention)
             <div class="post-content">
               <div class="post-container">
