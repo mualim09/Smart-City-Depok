@@ -45,6 +45,22 @@ class DataCountRepository
         ->get();
     }
 
+    public function getSpesificCountWithKecamatanParam($table, $where, $param_kecamatan){
+        $subQuery = DB::table('petugas_sikelings')
+        ->selectRaw('petugas_sikelings.kelurahan, petugas_sikelings.id_petugas')
+        ->join($table, 'petugas_sikelings.id_petugas', '=', $table.'.id_petugas')
+        ->where($where[0], $where[1]);
+
+        return DB::table('petugas_sikelings')
+        ->selectRaw('COUNT(a.kelurahan) as total, petugas_sikelings.kelurahan')
+        ->leftJoin(DB::raw('('.$subQuery->toSql().') as a'), 'petugas_sikelings.id_petugas', '=', 'a.id_petugas')
+        ->groupBy('petugas_sikelings.kelurahan')
+        ->orderBy('petugas_sikelings.kelurahan', 'asc')
+        ->mergeBindings($subQuery)
+        ->where('petugas_sikelings.kecamatan',$param_kecamatan)
+        ->get();
+    }
+
     public function getDataCountDashboard(){
 
         $reward = DB::table('rumah_sehat')

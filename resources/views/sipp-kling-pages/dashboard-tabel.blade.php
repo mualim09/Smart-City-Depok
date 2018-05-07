@@ -97,7 +97,8 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="{{ asset('dist/img/avatar2.png') }}" alt="images" />
+	        	<!-- avatar -->
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -325,7 +326,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="{{ asset('dist/img/avatar2.png') }}" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -470,7 +471,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -675,21 +676,22 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
 	        	<div>
-	        	<span class="left">Petugas </span><strong class="right">{{$kuliner->nama}}</strong><br>
+	        		<span class="left">Petugas </span><strong class="right">{{$kuliner->nama}}</strong><br>
 	        	</div>
 	        	<div>
-	        	<span class="left">Status </span><strong class="right">{{$kuliner->status}}</i></strong><br>
+	        		<span class="left">Status </span><strong class="right">{{$kuliner->status}}</i></strong><br>
 	        	</div>
 	        	<div>
-	        	<span class="left">Skor Akhir </span><strong class="right">{{$kuliner->total_nilai}}</strong><br>
+	        		<span class="left">Skor Akhir </span><strong class="right">{{$kuliner->total_nilai}}</strong><br>
 	        	</div>
 	        	<div>
-		        <span class="left">Update terakhir </span><strong class="right">{{$kuliner->waktu}}</strong><br> </div>
+		        	<span class="left">Update terakhir </span><strong class="right">{{$kuliner->waktu}}</strong><br>
+		        </div>
 	        </div>
     	</div>
     	<div class="col-xs-12 col-lg-7">
@@ -884,7 +886,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -1089,7 +1091,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -1293,7 +1295,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -1723,7 +1725,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -1926,7 +1928,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -2129,7 +2131,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -2368,7 +2370,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occurs overflow-hidden">
@@ -2541,7 +2543,7 @@
       <div class="modal-body overflow-hidden">
       	<div class="col-xs-12 col-lg-5 no-padding">
 	        <div class="images-modal">
-	        	<img src="https://i2.wp.com/tutorialaplikasi.com/wp-content/uploads/2016/06/Meme-keren.jpg" alt="images" />
+	        	<img src="{{ url('img/sipp-kling/photos/no-available-photos.png') }}" alt="no photos available" />
 	        </div>
 	        <div class="margin-10"></div>
 	        <div class="more-occur overflow-hidden">

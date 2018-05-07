@@ -38,19 +38,19 @@
 					</select>
 				</div>
 				<div class="kelurahan col-xs-12 col-lg-3">
-					<select class="form-control" id="perbandingan">
-						<option value="0">bandingkan semua kecamatan</option>
-						<option value="2">bandingkan kelurahan</option>
-					</select>
+						<select class="form-control" id="perbandingan">
+							<option value="0">bandingkan semua kecamatan</option>
+							<option value="2" selected="selected">bandingkan kelurahan</option>
+						</select>
 				</div>
 				<form role="form" class="form" method="post" action="{{ url('sipp-kling/dashboard-grafik/filter') }}">
 					{{ csrf_field() }}
 					<div class="rw col-xs-12 col-lg-3">
-							<select class="form-control" name="kecamatan" id="perbandingan-kelurahan-di-kecamatan" disabled>
+							<select class="form-control" name="kecamatan" id="perbandingan-kelurahan-di-kecamatan">
 								<option value="0">- pilih kecamatan -</option>
 								@foreach($kecamatans as $datas)
 	                
-				                  <option value="{{ $datas->kecamatan }}"> {{ $datas->kecamatan }}</option>
+				                  <option value="{{ $datas->kecamatan }}" {{ ($datas->kecamatan == $param_kecamatan) ? 'selected' : '' }}> {{ $datas->kecamatan }}</option>
 				                
 				                @endforeach
 							</select>
@@ -556,7 +556,7 @@
         	function getMaps(param){
         		var fixMaps = [];
         		for (var a = 0; a < param.length; a++) {
-        			fixMaps[a] = param[a]['kecamatan'];
+        			fixMaps[a] = param[a]['kelurahan'];
         		}
 
         		return fixMaps;
