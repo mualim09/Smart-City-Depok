@@ -386,7 +386,7 @@
 
           <strong>Kelurahan Grogol: 3281</strong><br>
           <small>Rumah Sehat: <b>2054 <i>(62.60% dari total kelurahan grogol)</i></b></small><br>
-          <small>Rumah Tidak Sehat: <b>3882 <i>(37.40% dari total kelurahan grogol)</i></b></small>
+          <small>Rumah Tidak Sehat: <b>1227 <i>(37.40% dari total kelurahan grogol)</i></b></small>
         </div><br><br><br><br>
 
       </div>
