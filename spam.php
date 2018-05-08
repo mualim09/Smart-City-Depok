@@ -1,3 +1,5 @@
+
+
             // pemantauan jentik berkala
             var pjbChartData = {
                 labels: ["grogol", "krukut", "limo", "meruyung"],
@@ -120,7 +122,6 @@
             });
 
 //PKL
-var color = Chart.helpers.color;
               var pklChartData = {
                 labels: ["grogol", "krukut", "limo", "meruyung"],
                 datasets: [{

@@ -45,7 +45,32 @@ class DataCountRepository
         ->get();
     }
 
+    public function getSpesificCountWithKecamatanParam($table, $where, $param_kecamatan){
+        $subQuery = DB::table('petugas_sikelings')
+        ->selectRaw('petugas_sikelings.kelurahan, petugas_sikelings.id_petugas')
+        ->join($table, 'petugas_sikelings.id_petugas', '=', $table.'.id_petugas')
+        ->where($where[0], $where[1]);
+
+        return DB::table('petugas_sikelings')
+        ->selectRaw('COUNT(a.kelurahan) as total, petugas_sikelings.kelurahan')
+        ->leftJoin(DB::raw('('.$subQuery->toSql().') as a'), 'petugas_sikelings.id_petugas', '=', 'a.id_petugas')
+        ->groupBy('petugas_sikelings.kelurahan')
+        ->orderBy('petugas_sikelings.kelurahan', 'asc')
+        ->mergeBindings($subQuery)
+        ->where('petugas_sikelings.kecamatan',$param_kecamatan)
+        ->get();
+    }
+
     public function getDataCountDashboard(){
+
+        $reward = DB::table('rumah_sehat')
+                    ->selectRaw('COUNT(*) as total, ps.nama, ps.kecamatan, ps.kelurahan')
+                    ->leftJoin('petugas_sikelings as ps', 'ps.id_petugas','=','rumah_sehat.id_petugas')
+                    ->groupBy('ps.id_petugas')
+                    ->orderBy('total','desc')
+                    ->limit(5)
+                    ->get();
+
         $jumlah_rs  = DB::table('rumah_sehat')
         ->where('total_nilai', '!=', null)
         ->count();
@@ -1719,12 +1744,13 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
 'septikrw1', 'septikrw2', 'septikrw3', 'septikrw4', 'septikrw5',
 'septikrw6', 'septikrw7','septikrw8','septikrw9','septikrw10',
 'septikrw11', 'septikrw12','septikrw13', 'septikrw14','septikrw15',
-'septikrw16', 'septikrw17', 'septikrw18', 'septikrw19','septikrw20', 'septik','getHistoryData'
+'septikrw16', 'septikrw17', 'septikrw18', 'septikrw19','septikrw20', 'septik','getHistoryData','reward'
 
 
 
 
 ));
+// return $reward;
     }
 
     private function viewcountparamsampah ($table, $kecamatan, $kelurahan, $sampah){
@@ -1992,6 +2018,14 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
     }
 
     public function getDataCountDashboardByParameter($param_kecamatan, $param_kelurahan){
+        $reward = DB::table('rumah_sehat')
+                    ->selectRaw('COUNT(*) as total, ps.nama, ps.kecamatan, ps.kelurahan')
+                    ->leftJoin('petugas_sikelings as ps', 'ps.id_petugas','=','rumah_sehat.id_petugas')
+                    ->groupBy('ps.id_petugas')
+                    ->orderBy('total','desc')
+                    ->limit(5)
+                    ->get();
+
     $getTotal_rs  = DB::table('rumah_sehat')
         ->where('total_nilai', '!=', null)
         ->count();
@@ -2862,7 +2896,7 @@ $septikrw16 + $septikrw17 + $septikrw18 + $septikrw19 + $septikrw20;
 'septikrw16', 'septikrw17', 'septikrw18', 'septikrw19','septikrw20', 'septik',
 
 
-'getTotal_rs','getTotal_pjb', 'getTotal_spal', 'getTotal_tps', 'getTotal_jamban','getTotal_pkl','getTotal_kuliner','getTotal_dam','getTotal_jb','getTotal_masjid','getTotal_sekolah','getTotal_pesantren','getTotal_pusk','getTotal_hotel','getTotal_hotelm','getTotal_pasar','getTotal_kolam','getTotal_rss'
+'getTotal_rs','getTotal_pjb', 'getTotal_spal', 'getTotal_tps', 'getTotal_jamban','getTotal_pkl','getTotal_kuliner','getTotal_dam','getTotal_jb','getTotal_masjid','getTotal_sekolah','getTotal_pesantren','getTotal_pusk','getTotal_hotel','getTotal_hotelm','getTotal_pasar','getTotal_kolam','getTotal_rss','reward'
 ));
     }
 

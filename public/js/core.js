@@ -26,6 +26,7 @@
                     }
                 );
 
+
             } else {
 
 
@@ -53,6 +54,7 @@
             if(value == 0)
             {
                 self.setDefaultKelurahan();
+
             } else {
                 $.ajax({
                     url: base_url + '/sipp-kling-data-kelurahan',
@@ -65,13 +67,15 @@
                     }).done(function(){
                         self.openFilterKelurahan($(this).attr('class'), $(this).attr('id'));
                     }).fail(function() {
-                        alert( "error" );
+                        alert( "error 403" );
+                        // abort_404();
                     });
             }
         });
     }
 
     SippKling.prototype.addDataKelurahanIntoOption = function(args) {
+        this.filterKelurahan.find('option[data-core="this"]').remove();
         for (var i = 0; i < args.length; i++) {
             $(this.filterKelurahan).append('<option data-core="this" value='+ args[i].kelurahan +'>'+ args[i].kelurahan +'</option>');
         }
@@ -85,6 +89,7 @@
         var self = this;
 
         $(this.filterKelurahan).prop("disabled", false);
+        $('#remove-this-stuff').attr('name', 'disable-kelurahan');
     };
 
     SippKling.prototype.setDefaultKelurahan = function() {
@@ -95,8 +100,8 @@
                 'disabled' : true
             }
         );
-
-        this.filterKelurahan.find('option[data-core="this"]').remove()
+        $('#remove-this-stuff').attr('name', 'kelurahan');
+        this.filterKelurahan.find('option[data-core="this"]').remove();
 
     };
 

@@ -477,6 +477,9 @@ Route::prefix('sipp-kling')->group(function() {
 
     Route::get('/dashboard-grafik', 'SippKlingController@grafik')->name('dashboard-grafik');
 
+    Route::any('/dashboard-grafik/filter', 'SippKlingController@grafikWithParam')->name('dashboard-grafik');
+    // Route::any('/search',['uses' => 'SippKlingController@grafikWithParam','as' => 'search']);
+
     Route::get('/trash', 'SippKlingController@trash')->name('trash');
 
     Route::get('/dashboard-detail', 'SippKlingController@dashboardDetail')->name('dashboard-detail');

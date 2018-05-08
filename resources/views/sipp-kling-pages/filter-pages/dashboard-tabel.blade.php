@@ -21,6 +21,7 @@
       <div class="col-xs-12 no-padding">
         <form class="form" role="search" method="post" action="{{ url('sipp-kling/dashboard-tabel/filter') }}">
           {{ csrf_field() }}
+          <input type="hidden" name="disable-kelurahan" value="0" id="remove-this-stuff">
           <div class="col-xs-12 col-lg-4">
               <select class="form-control kecamatan" name="kecamatan" id="filter-kecamatan">
                 <option value="0">- semua kecamatan -</option>

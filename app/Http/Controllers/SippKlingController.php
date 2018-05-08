@@ -9,6 +9,7 @@ use DateTime;
 use App\Repositories\DataCountRepository;
 use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 
 
 class SippKlingController extends Controller
@@ -34,7 +35,7 @@ class SippKlingController extends Controller
   public function grafik(){
     $dataKelurahan = $this->repo->getDataKelurahan();
 
-    $rumah_sehat = [
+    $data = [
       'rts' => $this->repo->getSpesificCount('rumah_sehat', ['status', 'Rumah Tidak Sehat']),
       'rs' => $this->repo->getSpesificCount('rumah_sehat', ['status', 'Rumah Sehat']),
       'pjby' => $this->repo->getSpesificCount('rumah_sehat', ['pjb', 'YA']),
@@ -46,63 +47,97 @@ class SippKlingController extends Controller
       'jambankali' => $this->repo->getSpesificCount('rumah_sehat', ['jamban', 'Kali']),
       'jambankoya' => $this->repo->getSpesificCount('rumah_sehat', ['jamban', 'Koya / Empang']),
       'jambanheli' => $this->repo->getSpesificCount('rumah_sehat', ['jamban', 'Helikopter']),
-      'jambanseptik' => $this->repo->getSpesificCount('rumah_sehat', ['jamban', 'Septik Tank']),   
-    ];
-    $pelayanan_keslings = [
+      'jambanseptik' => $this->repo->getSpesificCount('rumah_sehat', ['jamban', 'Septik Tank']),
+
       'pklluar' => $this->repo->getSpesificCount('pelayanan_keslings', ['jenis', 'Luar Gedung']),
-      'pkldalam' => $this->repo->getSpesificCount('pelayanan_keslings', ['jenis', 'Dalam Gedung'])       
-    ];
-    $dam_sip_klings = [
+      'pkldalam' => $this->repo->getSpesificCount('pelayanan_keslings', ['jenis', 'Dalam Gedung']),
+
       'depotlayak' => $this->repo->getSpesificCount('dam_sip_klings', ['status', 'Memenuhi Persyaratan']),
-      'depottlayak' => $this->repo->getSpesificCount('dam_sip_klings', ['status', 'Tidak Memenuhi Persyaratan'])       
-    ];
+      'depottlayak' => $this->repo->getSpesificCount('dam_sip_klings', ['status', 'Tidak Memenuhi Persyaratan']),
 
-    $kuliners = [
       'rmlayak' => $this->repo->getSpesificCount('kuliners', ['status', 'Laik Hygiene Sanitasi']),
-      'rmtlayak' => $this->repo->getSpesificCount('kuliners', ['status', 'Tidak Laik Hygiene Sanitasi'])       
-    ];
+      'rmtlayak' => $this->repo->getSpesificCount('kuliners', ['status', 'Tidak Laik Hygiene Sanitasi']),
 
-    $jasa_bogas = [
       'jblayak' => $this->repo->getSpesificCount('jasa_bogas', ['status', 'Sehat']),
-      'jbtlayak' => $this->repo->getSpesificCount('jasa_bogas', ['status', 'Tidak Sehat'])       
-    ];
+      'jbtlayak' => $this->repo->getSpesificCount('jasa_bogas', ['status', 'Tidak Sehat']),
 
-
-    $tempat_ibadahs = [
       'masjidlayak' => $this->repo->getSpesificCount('tempat_ibadahs', ['status', 'Laik Hygiene Sanitasi']),
-      'masjidtlayak' => $this->repo->getSpesificCount('tempat_ibadahs', ['status', 'Tidak Laik Hygiene Sanitasi'])       
-    ];
+      'masjidtlayak' => $this->repo->getSpesificCount('tempat_ibadahs', ['status', 'Tidak Laik Hygiene Sanitasi']),
 
-    $sekolahs = [
       'sklayak' => $this->repo->getSpesificCount('sekolahs', ['status', 'Sehat']),
-      'sktlayak' => $this->repo->getSpesificCount('sekolahs', ['status', 'Tidak Sehat'])       
-    ];
+      'sktlayak' => $this->repo->getSpesificCount('sekolahs', ['status', 'Tidak Sehat']),
 
-    $pasars = [
       'psrlayak' => $this->repo->getSpesificCount('pasars', ['status', 'Sehat']),
-      'psrtlayak' => $this->repo->getSpesificCount('pasars', ['status', 'Tidak Sehat'])       
-    ];
+      'psrtlayak' => $this->repo->getSpesificCount('pasars', ['status', 'Tidak Sehat']),
 
-
-    $pesantrens = [
       'pstlayak' => $this->repo->getSpesificCount('pesantrens', ['status', 'Sehat']),
-      'psttlayak' => $this->repo->getSpesificCount('pesantrens', ['status', 'Tidak Sehat'])       
-    ];
+      'psttlayak' => $this->repo->getSpesificCount('pesantrens', ['status', 'Tidak Sehat']),
 
-    $hotels = [
       'hlayak' => $this->repo->getSpesificCount('hotels', ['status', 'Sehat']),
-      'htlayak' => $this->repo->getSpesificCount('hotels', ['status', 'Tidak Sehat'])       
-    ];
+      'htlayak' => $this->repo->getSpesificCount('hotels', ['status', 'Tidak Sehat']),
 
-    $hotel_melatis = [
       'hmlayak' => $this->repo->getSpesificCount('hotel_melatis', ['status', 'Sehat']),
-      'hmtlayak' => $this->repo->getSpesificCount('hotel_melatis', ['status', 'Tidak Sehat'])       
+      'hmtlayak' => $this->repo->getSpesificCount('hotel_melatis', ['status', 'Tidak Sehat'])
     ];
 
-    return view('sipp-kling-pages/dashboard-grafik', compact('rumah_sehat'));
-    // return view('sipp-kling-pages/dashboard-grafik', compact('dataKelurahan', 'rumah_sehat', 
-    //   'pelayanan_keslings', 'dam_sip_klings', 'kuliners',
-    //   'jasa_bogas', 'tempat_ibadahs', 'sekolahs', 'pasars', 'pesantrens', 'hotels', 'hotel_melatis'));
+    return view('sipp-kling-pages/dashboard-grafik', compact('data'));
+    // return $data['rts'];
+  }
+
+  public function grafikWithParam(){
+    if(Input::get('kecamatan') == ''){
+      return redirect('sipp-kling/dashboard-grafik');
+    } else {
+      $data = [
+      'rts' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['status', 'Rumah Tidak Sehat'],Input::get('kecamatan')),
+      'rs' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['status', 'Rumah Sehat'],Input::get('kecamatan')),
+      'pjby' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['pjb', 'YA'],Input::get('kecamatan')),
+      'pjbt' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['pjb', 'TIDAK'],Input::get('kecamatan')),
+      'spaltb' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['spal', 'Terbuka'],Input::get('kecamatan')),
+      'spaltt' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['spal', 'Tertutup'],Input::get('kecamatan')),
+      'tpsor' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['sampah', 'Dipilah / Organik'],Input::get('kecamatan')),
+      'tpsdib' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['sampah', 'Tidak Dipilah / Dibuang'],Input::get('kecamatan')),
+      'jambankali' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['jamban', 'Kali'],Input::get('kecamatan')),
+      'jambankoya' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['jamban', 'Koya / Empang'],Input::get('kecamatan')),
+      'jambanheli' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['jamban', 'Helikopter'],Input::get('kecamatan')),
+      'jambanseptik' => $this->repo->getSpesificCountWithKecamatanParam('rumah_sehat', ['jamban', 'Septik Tank'],Input::get('kecamatan')),
+
+      'pklluar' => $this->repo->getSpesificCountWithKecamatanParam('pelayanan_keslings', ['jenis', 'Luar Gedung'],Input::get('kecamatan')),
+      'pkldalam' => $this->repo->getSpesificCountWithKecamatanParam('pelayanan_keslings', ['jenis', 'Dalam Gedung'],Input::get('kecamatan')),
+
+      'depotlayak' => $this->repo->getSpesificCountWithKecamatanParam('dam_sip_klings', ['status', 'Memenuhi Persyaratan'],Input::get('kecamatan')),
+      'depottlayak' => $this->repo->getSpesificCountWithKecamatanParam('dam_sip_klings', ['status', 'Tidak Memenuhi Persyaratan'],Input::get('kecamatan')),
+
+      'rmlayak' => $this->repo->getSpesificCountWithKecamatanParam('kuliners', ['status', 'Laik Hygiene Sanitasi'],Input::get('kecamatan')),
+      'rmtlayak' => $this->repo->getSpesificCountWithKecamatanParam('kuliners', ['status', 'Tidak Laik Hygiene Sanitasi'],Input::get('kecamatan')),
+
+      'jblayak' => $this->repo->getSpesificCountWithKecamatanParam('jasa_bogas', ['status', 'Sehat'],Input::get('kecamatan')),
+      'jbtlayak' => $this->repo->getSpesificCountWithKecamatanParam('jasa_bogas', ['status', 'Tidak Sehat'],Input::get('kecamatan')),
+
+      'masjidlayak' => $this->repo->getSpesificCountWithKecamatanParam('tempat_ibadahs', ['status', 'Laik Hygiene Sanitasi'],Input::get('kecamatan')),
+      'masjidtlayak' => $this->repo->getSpesificCountWithKecamatanParam('tempat_ibadahs', ['status', 'Tidak Laik Hygiene Sanitasi'],Input::get('kecamatan')),
+
+      'sklayak' => $this->repo->getSpesificCountWithKecamatanParam('sekolahs', ['status', 'Sehat'],Input::get('kecamatan')),
+      'sktlayak' => $this->repo->getSpesificCountWithKecamatanParam('sekolahs', ['status', 'Tidak Sehat'],Input::get('kecamatan')),
+
+      'psrlayak' => $this->repo->getSpesificCountWithKecamatanParam('pasars', ['status', 'Sehat'],Input::get('kecamatan')),
+      'psrtlayak' => $this->repo->getSpesificCountWithKecamatanParam('pasars', ['status', 'Tidak Sehat'],Input::get('kecamatan')),
+
+      'pstlayak' => $this->repo->getSpesificCountWithKecamatanParam('pesantrens', ['status', 'Sehat'],Input::get('kecamatan')),
+      'psttlayak' => $this->repo->getSpesificCountWithKecamatanParam('pesantrens', ['status', 'Tidak Sehat'],Input::get('kecamatan')),
+
+      'hlayak' => $this->repo->getSpesificCountWithKecamatanParam('hotels', ['status', 'Sehat'],Input::get('kecamatan')),
+      'htlayak' => $this->repo->getSpesificCountWithKecamatanParam('hotels', ['status', 'Tidak Sehat'],Input::get('kecamatan')),
+
+      'hmlayak' => $this->repo->getSpesificCountWithKecamatanParam('hotel_melatis', ['status', 'Sehat'],Input::get('kecamatan')),
+      'hmtlayak' => $this->repo->getSpesificCountWithKecamatanParam('hotel_melatis', ['status', 'Tidak Sehat'],Input::get('kecamatan'))
+    ];
+
+    $param_kecamatan = Input::get('kecamatan');
+
+    return view('sipp-kling-pages/filter-pages/grafik-total-filter', compact('data','param_kecamatan'));
+    }
+    
   }
 
 //punya db tabel
@@ -122,15 +157,11 @@ class SippKlingController extends Controller
   }
 
   public function totalJumlahByParameter(){
-    if(Input::get('kecamatan') == 0 && Input::get('kelurahan') == 0){
-
+    // return Input::get('kecamatan').'.'.Input::get('kelurahan');
+    if(Input::get('kecamatan') == '0' && Input::get('kelurahan') == '0'){
       return redirect('sipp-kling');
-      // return 1;
-
     } else {
-    
-      return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan'));
-    
+      return $this->repo->getDataCountDashboardByParameter(Input::get('kecamatan'), Input::get('kelurahan')); 
     }
   }
 
