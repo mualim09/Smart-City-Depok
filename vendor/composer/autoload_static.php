@@ -22,7 +22,6 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'a28599dc506da421718fad75955a4b9d' => __DIR__ . '/..' . '/infyomlabs/laravel-generator/src/helpers.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
-        '6292c1671f9440c89e0af20a0f78754a' => __DIR__ . '/..' . '/laracasts/utilities/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -92,7 +91,6 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         array (
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
-            'Laracasts\\Utilities\\JavaScript\\' => 31,
         ),
         'I' => 
         array (
@@ -261,10 +259,6 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
-        ),
-        'Laracasts\\Utilities\\JavaScript\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laracasts/utilities/src',
         ),
         'InfyOm\\Generator\\' => 
         array (
@@ -546,6 +540,7 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_22_034745_create_admins_table.php',
         'CreateSocmedAnalysesTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_29_125702_create_socmed_analyses_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
@@ -1880,17 +1875,6 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'Laracasts\\Flash\\Message' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/Message.php',
         'Laracasts\\Flash\\OverlayMessage' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/OverlayMessage.php',
         'Laracasts\\Flash\\SessionStore' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/SessionStore.php',
-        'Laracasts\\Utilities\\JavaScript\\JavaScriptFacade' => __DIR__ . '/..' . '/laracasts/utilities/src/JavaScriptFacade.php',
-        'Laracasts\\Utilities\\JavaScript\\JavaScriptServiceProvider' => __DIR__ . '/..' . '/laracasts/utilities/src/JavaScriptServiceProvider.php',
-        'Laracasts\\Utilities\\JavaScript\\LaravelViewBinder' => __DIR__ . '/..' . '/laracasts/utilities/src/LaravelViewBinder.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\ArrayTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/ArrayTransformer.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\BooleanTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/BooleanTransformer.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\NullTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/NullTransformer.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\NumericTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/NumericTransformer.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\ObjectTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/ObjectTransformer.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\StringTransformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/StringTransformer.php',
-        'Laracasts\\Utilities\\JavaScript\\Transformers\\Transformer' => __DIR__ . '/..' . '/laracasts/utilities/src/Transformers/Transformer.php',
-        'Laracasts\\Utilities\\JavaScript\\ViewBinder' => __DIR__ . '/..' . '/laracasts/utilities/src/ViewBinder.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',

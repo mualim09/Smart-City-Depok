@@ -42,7 +42,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="/dashboard" class="logo blue-background-main-color">
+            <a href="/dashboard" class="logo blue-background-main-color" style="height: 56px;">
                 <b>SOCMED</b>
             </a>
 
