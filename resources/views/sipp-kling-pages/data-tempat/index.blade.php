@@ -308,8 +308,8 @@
       </div>
       <a id="myBtn" onclick="myFunc('data-angler-1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i>Modul</a>
       <div id="data-angler-1" class="getModulName w3-hide w3-animate-left w3-text-gray" style="padding: 1em 2em 1em; border-bottom: 1px solid #ccc;">
-        <input type="checkbox" class="checkbox" id="sehat" onclick="getModule(this)">Rumah Sehat<br>
-        <input type="checkbox" class="checkbox" id="js" onclick="getModule(this)">Jamban Sehat<br>
+        <input type="checkbox" class="checkbox" id="sehat" onclick="rumahsehat()">Rumah Sehat<br>
+        <input type="checkbox" class="checkbox" id="js" onclick="/*getModule(this)*/">Jamban Sehat<br>
         <input type="checkbox" class="checkbox" id="sab" onclick="/*tidaksehat()*/">Sarana Air Bersih<br>
         <input type="checkbox" class="checkbox" id="spal" onclick="/*tidaksehat()*/">SPAL<br>
         <input type="checkbox" class="checkbox" id="pjb" onclick="/*tidaksehat()*/">PJB<br>
@@ -346,7 +346,50 @@
 <!-- Sidebar (hidden by default) -->
 <nav class="legend w3-sidebar w3-bar-block w3-card style-7 w3-dropdown-content w3-top w3-small w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px; /*padding: 20px;*/" id="mySidebar">
   <div class="w3-bar">
+    <a id="myBtn" onclick="myFunc('rumah-sehat')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"> Rumah Sehat</a>
+      <div id="rumah-sehat" class="w3-hide w3-animate-left w3-text-gray" style="padding: 15px 2em 5px; border-bottom: 1px solid #ccc;overflow: auto">
+        <strong>Total: 9854</strong><br>
+        <small>Rumah Sehat: <b>5125 <i>(52.01% dari total data)</i></b></small><br>
+        <small>Rumah Tidak Sehat: <b>4129 <i>(41.90% dari total data)</i></b></small><br>
 
+        <div class="generate-style-legend">
+          <select class="w3-select" id="search-string_0" onchange="myFunc(this.value)">
+            <option value="--Select--">Cari Kecamatan</option>
+            <option value="Beji">BEJI</option>
+            <option value="Bojongsari">BOJONGSARI</option>
+            <option value="Cilodong">CILODONG</option>
+            <option value="Cimanggis">CIMANGGIS</option>
+            <option value="Cinere">CINERE</option>
+            <option value="Cipayung">CIPAYUNG</option>
+            <option value="Limo">LIMO</option>
+            <option value="Pancoran Mas">PANCORAN MAS</option>
+            <option value="Sawangan">SAWANGAN</option>
+            <option value="Sukma Jaya">SUKMA JAYA</option>
+            <option value="Tapos">TAPOS</option>
+          </select>
+        </div>
+
+        <div id="Limo" class="generate-style-legend w3-hide w3-animate">
+          <select class="w3-select" onchange="myFunc(this.value)">
+            <option value="--Select--">Cari Kelurahan</option>
+            <option value="grogol">GROGOL</option>
+            <option value="limo">LIMO</option>
+            <option value="krukut">KRUKUT</option>
+            <option value="meruyung">MERUYUNG</option>
+          </select>
+        </div>
+
+        <div id="grogol" class="w3-hide w3-animate">
+          <strong>Kecamatan Limo: 8969</strong><br>
+          <small>Rumah Sehat: <b>5087 <i>(56.72% dari total kecamatan limo)</i></b></small><br>
+          <small>Rumah Tidak Sehat: <b>3882 <i>(43.28% dari total kecamatan limo)</i></b></small><br><br>
+
+          <strong>Kelurahan Grogol: 3281</strong><br>
+          <small>Rumah Sehat: <b>2054 <i>(62.60% dari total kelurahan grogol)</i></b></small><br>
+          <small>Rumah Tidak Sehat: <b>3882 <i>(37.40% dari total kelurahan grogol)</i></b></small>
+        </div><br><br><br><br>
+
+      </div>
   </div>  
 </nav>
 
@@ -865,98 +908,99 @@ $("#pet").hide();
 
     function initDialogExists(){
       console.log($('.getModulName input:checked').length);
-      // if(btn.checked){
-      //   document.getElementById("mySidebar").style.width = "400px";
-      //   document.getElementById("mySidebar").style.display = "block";
-      // } else {
-      //   document.getElementById("mySidebar").style.width = "0px";
-      //   document.getElementById("mySidebar").style.display = "none";
-      // }
-    }
-function getModule(param){
-  initDialogExists();
-
-  for(var i = 0; i < rs.length; i++){
-    markers[i] = addMarker(rs[i]); 
-  }
-  function addMarker(rs){
-    if(btn.checked){
-      var nama = rs.nama_kk;
-      var alamat = rs.alamat;
-      var lurah = rs.kelurahan;
-      var koordinat = rs.koordinat;
-      var latitude = parseFloat(koordinat.split(',')[0]);
-      var longitude = parseFloat(koordinat.split(',')[1]);
-
-      var konten =  '<div id="iw-container"class="w3-animate-zoom">' +
-                    '<div class="iw-title">' + 'Rumah Sehat' + '</div>' +
-                    '<div class="iw-content scrollbar style-7">' +
-                    '<p><b> Nama Pemilik : </b>' + nama +
-                    '<br><b> Alamat : </b>' + alamat +
-                    '<br><b> Kelurahan : </b>' + lurah + '</p>'+
-                    '<div class="iw-bottom-gradient"></div>' +
-                    '</div>' +
-                    '</div>';
-
-      var mark = new google.maps.Marker({
-                map: map,
-                position: {lat: latitude, lng: longitude},
-                icon: "{{ asset('img/marker/gor.png') }}"
-      });
       
-      var infoWindow = new google.maps.InfoWindow({
-        konten: konten,
-        maxWidth: 350
-      });
+    }
 
-      google.maps.event.addListener(infoWindow, 'domready', function() {
-        var iwOuter = $('.gm-style-iw');
-        iwOuter.css({top: '17px'});
-
-        var iwBackground = iwOuter.prev();
-        iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-        iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-        iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 317px !important;'});
-        iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 193px !important;'});
-        iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
-
-        var iwCloseBtn = iwOuter.next();
-        iwCloseBtn.css({opacity: '1', right: '27px', top: '8px', border: '7px solid #5684c4', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
-        if($('.iw-content').height() < 140){
-          $('.iw-bottom-gradient').css({display: 'none'});
-        }
-        iwCloseBtn.mouseout(function(){
-          $(this).css({opacity: '1'});
-        });
-      });
-
-      var infoWnd = new google.maps.InfoWindow();
-          // infoWnd.setContent('<div class="scrollFix">' +  nama + '</div>');
-          var infoWnd = new google.maps.InfoWindow();           
-          infoWnd.setContent(nama)
-          var activeInfoWindow ;
-
-          google.maps.event.addListener(mark, 'mouseover', function() {              
-            if(activeInfoWindow != null) activeInfoWindow.close();
-            infoWindow.close();
-            infoWnd.open(map, mark);
-            activeInfoWindow = infoWnd;       
-          });   
-
-          google.maps.event.addListener(mark, 'mouseout', function() {
-            infoWnd.close();  
-          });
-
-          google.maps.event.addListener(mark, 'click', function(){
-            infoWindow.setContent(konten);
-            infoWindow.open(map, mark);
-            if(activeInfoWindow != null) activeInfoWindow.close();
-            infoWindow.open(map, mark);
-            infoWnd.close();
-            activeInfoWindow = infoWindow;
-          });
-          return mark;
+    function rumahsehat(param){
+      if(btn.checked){
+        document.getElementById("mySidebar").style.width = "400px";
+        document.getElementById("mySidebar").style.display = "block";
+      } else {
+        document.getElementById("mySidebar").style.width = "0px";
+        document.getElementById("mySidebar").style.display = "none";
       }
+      for(var i = 0; i < rs.length; i++){
+      markers[i] = addMarker(rs[i]); 
+    }
+
+function addMarker(rs){
+  if(btn.checked){
+    var nama = rs.nama_kk;
+    var alamat = rs.alamat;
+    var lurah = rs.kelurahan;
+    var koordinat = rs.koordinat;
+    var latitude = parseFloat(koordinat.split(',')[0]);
+    var longitude = parseFloat(koordinat.split(',')[1]);
+
+    var konten =  '<div id="iw-container"class="w3-animate-zoom">' +
+                  '<div class="iw-title">' + 'Rumah Sehat' + '</div>' +
+                  '<div class="iw-content scrollbar style-7">' +
+                  '<p><b> Nama Pemilik : </b>' + nama +
+                  '<br><b> Alamat : </b>' + alamat +
+                  '<br><b> Kelurahan : </b>' + lurah + '</p>'+
+                  '<div class="iw-bottom-gradient"></div>' +
+                  '</div>' +
+                  '</div>';
+
+    var mark = new google.maps.Marker({
+              map: map,
+              position: {lat: latitude, lng: longitude},
+              icon: "{{ asset('img/marker/gor.png') }}"
+    });
+    
+    var infoWindow = new google.maps.InfoWindow({
+      konten: konten,
+      maxWidth: 350
+    });
+
+    google.maps.event.addListener(infoWindow, 'domready', function() {
+      var iwOuter = $('.gm-style-iw');
+      iwOuter.css({top: '17px'});
+
+      var iwBackground = iwOuter.prev();
+      iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+      iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+      iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 317px !important;'});
+      iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 193px !important;'});
+      iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
+
+      var iwCloseBtn = iwOuter.next();
+      iwCloseBtn.css({opacity: '1', right: '27px', top: '8px', border: '7px solid #5684c4', 'border-radius': '13px', 'box-shadow': '0 0 5px #3990B9'});
+      if($('.iw-content').height() < 140){
+        $('.iw-bottom-gradient').css({display: 'none'});
+      }
+      iwCloseBtn.mouseout(function(){
+        $(this).css({opacity: '1'});
+      });
+    });
+
+    var infoWnd = new google.maps.InfoWindow();
+        // infoWnd.setContent('<div class="scrollFix">' +  nama + '</div>');
+        var infoWnd = new google.maps.InfoWindow();           
+        infoWnd.setContent(nama)
+        var activeInfoWindow ;
+
+        google.maps.event.addListener(mark, 'mouseover', function() {              
+          if(activeInfoWindow != null) activeInfoWindow.close();
+          infoWindow.close();
+          infoWnd.open(map, mark);
+          activeInfoWindow = infoWnd;       
+        });   
+
+        google.maps.event.addListener(mark, 'mouseout', function() {
+          infoWnd.close();  
+        });
+
+        google.maps.event.addListener(mark, 'click', function(){
+          infoWindow.setContent(konten);
+          infoWindow.open(map, mark);
+          if(activeInfoWindow != null) activeInfoWindow.close();
+          infoWindow.open(map, mark);
+          infoWnd.close();
+          activeInfoWindow = infoWindow;
+        });
+        return mark;
+    }
     else{
       markers[i].setMap(null);
     }
