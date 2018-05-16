@@ -21,10 +21,32 @@
     <script src="../../plugins/chartjs/Chart.min.js"></script>
     <script src="../../plugins/chartjs/Chart.js"></script>
 
+    <?php
+      function hitungwilayah($kota)
+      {
+        $wilayah = DB::table('visitors')
+        ->where('city_name', $kota)
+        ->count();
 
-	<section class="content-header">
+        return $wilayah;
+      }
+
+      function persenwilayah($kota)
+      {
+        $jumlahkota = DB::table('visitors')
+        ->where('city_name', $kota)
+        ->count();
+        $jumlahvisitor = DB::table('visitors')
+        ->count();
+        $persen = $jumlahkota/$jumlahvisitor*100;
+        return $persen;
+      }
+    ?>
+
+
+  <section class="content-header">
       <h1 style="color:#807e7d"> 
-       <b> DASHBOARD APLIKASI</b>       
+       <b> DASHBOARD DATA ANALITIK</b>       
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
@@ -32,7 +54,7 @@
       </ol>
     </section>    
 
- 	<!--<section class="content-header">
+  <!--<section class="content-header">
       <h1 style="color:#807e7d"> 
        <b> DASHBOARD <small>APLIKASI</small> </b>
         <small class="pull-right"><i class="ion ion-ios-clock-outline" style="margin-right: 5px"></i>21 Agustus 2017 10:45</small>
@@ -45,7 +67,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3 style="color: white">150</h3>
+              <h3 style="color: white">{{ $jumlahuser }}</h3>
               <p>Jumlah User</p>
             </div>
             <div class="icon">
@@ -57,7 +79,7 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
-              <h3 style="color: white">65</h3>
+              <h3 style="color: white">{{ $visitor }}</h3>
 
               <p style="color:white">Jumlah Visitors</p>
             </div>
@@ -71,7 +93,7 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3 style="color: white">65</h3>
+              <h3 style="color: white">{{ $complaint }}</h3>
 
               <p style="color:white">Kritik dan Saran</p>
             </div>
@@ -99,7 +121,7 @@
 
     <div class="row">
         <div class="col-md-6">
-
+          
           <div class="box box-widget">
             <div class="box-header with-border bg-yellow">
               <span class="info-box-icon bg-yellow"><i class="ion ion-ios-location"></i></span>
@@ -133,23 +155,6 @@
             </div>
             <div class="chart">
                 <canvas id="areaChart" style="height:250px"></canvas>
-              </div>
-          </div>
-
-          <div class="box box-widget">
-            <div class="box-header with-border bg-purple">
-              <span class="info-box-icon bg-purple" style="background-color: white"><i class="ion ion-ios-heart"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Interest</h4></span>
-              </div>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times" style="color:white"></i></button>
-              </div>
-            </div>
-            <div class="chart">
-                <canvas id="interest" style="height:250px"></canvas>
               </div>
           </div>
 
@@ -190,48 +195,7 @@
         </div>
 
 
-
-
         <div class="col-md-6">
-
-          <div class="box box-widget">
-             <div class="box-header with-border bg-blue">
-              <span class="info-box-icon bg-blue" style="background-color: white"><i class="ion ion-ios-monitor"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Info Admin</h4></span>
-              </div>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times" style="color:white"></i>
-                </button>
-              </div>
-            </div>
-              <div class="box-body" style="background-color: white">
-                <div class="box-body box-profile">
-                  <center>
-                    <img class="img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
-                  </center>
-                  <div class="text-center"><b>Admin1</b></div>
-                    <p class="text-muted text-center">admin1@gmail.com</p>
-                    <ul class="list-group list-group-unbordered">
-                      <li class="list-group-item">
-                        <b>NIP</b> <a class="pull-right">19589641 191258 7 005 </a>
-                      </li>
-                      <li class="list-group-item">
-                        <b>Asal OPD</b> <a class="pull-right">Dinas Komunikasi dan Informatika</a>
-                      </li>
-                      <li class="list-group-item">
-                        <b>Nomor Telepon</b> <a class="pull-right">085746952841</a>
-                      </li>
-                      <li class="list-group-item">
-                        <b>Alamat</b> <a class="pull-right">Beji Timur</a>
-                      </li>
-                    </ul>
-                    <a href="#" class="btn btn-primary btn-block btn-flat"><b>Lihat</b></a>
-                  </div>
-                </div>
-              </div>
 
           <div class="box box-widget">
             <div class="box-header with-border bg-red">
@@ -252,18 +216,26 @@
                   <!-- Progress bars -->
                   <div class="clearfix">
                     <span class="pull-left">Jakarta</span>
-                    <small class="pull-right">90</small>
+                    <small class="pull-right">{{hitungwilayah('Jakarta')}}</small>
                   </div>
                   <div class="progress xs">
-                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: 90%;"></div>
+                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: {{persenwilayah('Jakarta')}}%;"></div>
                   </div>
 
                   <div class="clearfix">
                     <span class="pull-left">Depok</span>
-                    <small class="pull-right">500</small>
+                    <small class="pull-right">{{hitungwilayah('Depok')}}</small>
                   </div>
                   <div class="progress xs">
-                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: 70%;"></div>
+                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: {{persenwilayah('Depok')}}%;"></div>
+                  </div>
+
+                  <div class="clearfix">
+                    <span class="pull-left">Tangerang</span>
+                    <small class="pull-right">{{hitungwilayah('Tangerang')}}</small>
+                  </div>
+                  <div class="progress xs">
+                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: {{persenwilayah('Tangerang')}}%;"></div>
                   </div>
                 </div>
                 <!-- /.col -->
@@ -271,25 +243,31 @@
                   <!-- Progress bars -->
                   <div class="clearfix">
                     <span class="pull-left">Bogor</span>
-                    <small class="pull-right">140</small>
+                    <small class="pull-right">{{hitungwilayah('Bogor')}}</small>
                   </div>
                   <div class="progress xs">
-                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: 90%;"></div>
+                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: {{persenwilayah('Bogor')}}%;"></div>
                   </div>
 
                   <div class="clearfix">
                     <span class="pull-left">Bekasi</span>
+                    <small class="pull-right">{{hitungwilayah('Bekasi')}}</small>
+                  </div>
+                  <div class="progress xs">
+                    <div class="progress-bar progress-bar-Disabled bg-red" style="width: {{persenwilayah('Bekasi')}}%;"></div>
+                  </div>
+
+                  <!-- <div class="clearfix">
+                    <span class="pull-left">Luar Jabodetabek</span>
                     <small class="pull-right">50</small>
                   </div>
                   <div class="progress xs">
                     <div class="progress-bar progress-bar-Disabled bg-red" style="width: 70%;"></div>
-                  </div>
+                  </div> -->
                 </div>
-                <!-- /.col -->
               </div>
               </font>
-            </div><!--row-->
-            <!-- /.box-body-->
+            </div>
           </div>
 
           <div class="box box-widget">
@@ -308,47 +286,14 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
-                  <ul class="users-list clearfix">
+                  <ul class="users-list clearfix" style="padding: 1em 0">
+                    @foreach($user as $users)
                     <li>
-                      <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Alexander Pierce</a>
-                      <span class="users-list-date">Today</span>
+                      <img src="{{ $users->foto }}" alt="User Image" width="70px">
+                      <a class="users-list-name" href="#">{{ $users->username }}</a>
+                      <span class="users-list-date">{{ str_limit ($users->bio, 10) }}</span>
                     </li>
-                    <li>
-                      <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Norman</a>
-                      <span class="users-list-date">Yesterday</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Jane</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">John</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user2-160x160.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Alexander</a>
-                      <span class="users-list-date">13 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Sarah</a>
-                      <span class="users-list-date">14 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Nora</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Nadia</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
+                    @endforeach
                   </ul>
                   <!-- /.users-list -->
                 </div>

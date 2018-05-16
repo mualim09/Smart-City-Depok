@@ -210,6 +210,7 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 // });
 // Route::get('/blog/{judul}', 'BlogController@error');
 
+// Route::get('/', 'VisitorController@visitor');
 Route::get('/', 'FeedController@berita');
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');

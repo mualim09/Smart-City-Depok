@@ -31,7 +31,15 @@ class HomeController extends Controller
          
          $user     = DB::table('user_android')
          ->orderBY('id_user', 'dsc')
+         ->limit(8)
          ->get();
-         return view('dashboard', compact('user'));
+         $jumlahuser = DB::table('user_android')->count();
+         $complaint = DB::table('complaints')->count();
+         $visitor = DB::table('visitors')->count(); //untuk menghitung jumlah visitor
+         $wilayah = DB::table('visitors')->select('*')->get();
+         $angka = 90;
+         $persen = "width: ".$angka."%;";
+
+         return view('dashboard', compact('user', 'visitor', 'angka', 'persen', 'jumlahuser', 'complaint'));
     }
 } 

@@ -73,6 +73,7 @@
         <p class="tagline fresponsive">
           Hi-Depok merupakan wujud peningkatan pelayanan pemerintah Kota Depok kepada warganya. Aplikasi ini dapat membantu warga Kota Depok dalam berbagai aspek pelayanan seperti pelayanan kesehatan, keamanan, sosial dan juga kebutuhan akan informasi
         </p>
+        <a href="#"  id="notificationButton" class="button">Notification</a>
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Supported by 
         <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
@@ -212,7 +213,8 @@
   <script  src="{{ URL::asset('js/loader.js') }}"></script>
   <script src="{{ URL::asset('js/nav.js') }}"></script>
   <script src="{{ URL::asset('js/news2.js') }}"></script>
-  <script src="{{ URL::asset('js/notification.js') }}"></script>
+
+  <!-- <script src="{{ URL::asset('js/notification.js') }}"></script> -->
 
 </body>
 </html>
