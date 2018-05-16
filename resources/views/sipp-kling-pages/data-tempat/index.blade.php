@@ -185,6 +185,12 @@
   .w3-table td {
     padding: 0;
   }
+
+  .generate-style-legend {
+    background: #ececec;
+    padding: 20px;
+    margin: 15px 0px;
+  }
   @media  only screen and (max-width: 500px) {
     .responsive {
       width: 100%;
@@ -301,9 +307,9 @@
         </div>
       </div>
       <a id="myBtn" onclick="myFunc('data-angler-1')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"><i class="fa fa-line-chart w3-medium" style="margin-right: 7px;"></i>Modul</a>
-      <div id="data-angler-1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 1em 2em 1em; border-bottom: 1px solid #ccc;">
+      <div id="data-angler-1" class="getModulName w3-hide w3-animate-left w3-text-gray" style="padding: 1em 2em 1em; border-bottom: 1px solid #ccc;">
         <input type="checkbox" class="checkbox" id="sehat" onclick="rumahsehat()">Rumah Sehat<br>
-        <input type="checkbox" class="checkbox" id="js" onclick="/*tidaksehat()*/">Jamban Sehat<br>
+        <input type="checkbox" class="checkbox" id="js" onclick="/*getModule(this)*/">Jamban Sehat<br>
         <input type="checkbox" class="checkbox" id="sab" onclick="/*tidaksehat()*/">Sarana Air Bersih<br>
         <input type="checkbox" class="checkbox" id="spal" onclick="/*tidaksehat()*/">SPAL<br>
         <input type="checkbox" class="checkbox" id="pjb" onclick="/*tidaksehat()*/">PJB<br>
@@ -341,10 +347,49 @@
 <nav class="legend w3-sidebar w3-bar-block w3-card style-7 w3-dropdown-content w3-top w3-small w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px; /*padding: 20px;*/" id="mySidebar">
   <div class="w3-bar">
     <a id="myBtn" onclick="myFunc('rumah-sehat')" href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom" style="padding: 12px 1.5em;"> Rumah Sehat</a>
-    <div id="Demo1" class="w3-hide w3-animate-left w3-text-gray" style="padding: 5px 2em 1em; border-bottom: 1px solid #ccc;">
-      asd
-    </div>
-    
+      <div id="rumah-sehat" class="w3-hide w3-animate-left w3-text-gray" style="padding: 15px 2em 5px; border-bottom: 1px solid #ccc;overflow: auto">
+        <strong>Total: 9854</strong><br>
+        <small>Rumah Sehat: <b>5125 <i>(52.01% dari total data)</i></b></small><br>
+        <small>Rumah Tidak Sehat: <b>4129 <i>(41.90% dari total data)</i></b></small><br>
+
+        <div class="generate-style-legend">
+          <select class="w3-select" id="search-string_0" onchange="myFunc(this.value)">
+            <option value="--Select--">Cari Kecamatan</option>
+            <option value="Beji">BEJI</option>
+            <option value="Bojongsari">BOJONGSARI</option>
+            <option value="Cilodong">CILODONG</option>
+            <option value="Cimanggis">CIMANGGIS</option>
+            <option value="Cinere">CINERE</option>
+            <option value="Cipayung">CIPAYUNG</option>
+            <option value="Limo">LIMO</option>
+            <option value="Pancoran Mas">PANCORAN MAS</option>
+            <option value="Sawangan">SAWANGAN</option>
+            <option value="Sukma Jaya">SUKMA JAYA</option>
+            <option value="Tapos">TAPOS</option>
+          </select>
+        </div>
+
+        <div id="Limo" class="generate-style-legend w3-hide w3-animate">
+          <select class="w3-select" onchange="myFunc(this.value)">
+            <option value="--Select--">Cari Kelurahan</option>
+            <option value="grogol">GROGOL</option>
+            <option value="limo">LIMO</option>
+            <option value="krukut">KRUKUT</option>
+            <option value="meruyung">MERUYUNG</option>
+          </select>
+        </div>
+
+        <div id="grogol" class="w3-hide w3-animate">
+          <strong>Kecamatan Limo: 8969</strong><br>
+          <small>Rumah Sehat: <b>5087 <i>(56.72% dari total kecamatan limo)</i></b></small><br>
+          <small>Rumah Tidak Sehat: <b>3882 <i>(43.28% dari total kecamatan limo)</i></b></small><br><br>
+
+          <strong>Kelurahan Grogol: 3281</strong><br>
+          <small>Rumah Sehat: <b>2054 <i>(62.60% dari total kelurahan grogol)</i></b></small><br>
+          <small>Rumah Tidak Sehat: <b>1227 <i>(37.40% dari total kelurahan grogol)</i></b></small>
+        </div><br><br><br><br>
+
+      </div>
   </div>  
 </nav>
 
@@ -362,6 +407,10 @@
 <div id="map-canvas"></div>
 
 <script>
+// scope base_url
+var base_url = {!! json_encode(url('/')) !!}
+
+
 var rs = <?php print_r(json_encode($rss)) ?>;
 var trs = <?php print_r(json_encode($trss)) ?>;
 var grogol =<?php print_r(json_encode($grogols)) ?>;
@@ -857,14 +906,23 @@ $("#pet").hide();
     }
     google.maps.event.addDomListener(window, 'load', initMap);
 
-function rumahsehat(){
-  if(btn.checked){
-    document.getElementById("mySidebar").style.width = "400px";
-    document.getElementById("mySidebar").style.display = "block";
-  }
-  for(var i = 0; i < rs.length; i++){
-  markers[i] = addMarker(rs[i]); 
-}
+    function initDialogExists(){
+      console.log($('.getModulName input:checked').length);
+      
+    }
+
+    function rumahsehat(param){
+      if(btn.checked){
+        document.getElementById("mySidebar").style.width = "400px";
+        document.getElementById("mySidebar").style.display = "block";
+      } else {
+        document.getElementById("mySidebar").style.width = "0px";
+        document.getElementById("mySidebar").style.display = "none";
+      }
+      for(var i = 0; i < rs.length; i++){
+      markers[i] = addMarker(rs[i]); 
+    }
+
 function addMarker(rs){
   if(btn.checked){
     var nama = rs.nama_kk;
@@ -1141,6 +1199,7 @@ function grots(){
   for(var i = 0; i < grot.length; i++){
     markers4[i] = addMarker(grot[i]); 
 }
+
 function addMarker(grot){
   if(btn4.checked){
     var nama = grot.nama_kk;
@@ -1918,6 +1977,27 @@ function anglerWithParam(param){
     target.toggle();
     target.find('input:checkbox').removeAttr('checked');
   }
+}
+
+function showKelurahan(param){
+  $.ajax({
+      url: base_url + '/sipp-kling-data-kelurahan',
+      type: 'GET',
+      dataType: 'json',
+      data: {'kecamatan': param},
+      success: function(result){
+          // self.addDataKelurahanIntoOption(result);
+          console.log(result);
+      }
+      }).done(function(){
+          console.log('done');
+          // self.openFilterKelurahan($(this).attr('class'), $(this).attr('id'));
+      }).fail(function() {
+          alert( "error 403" );
+          // abort_404();
+  });
+
+
 }
 </script>
 
