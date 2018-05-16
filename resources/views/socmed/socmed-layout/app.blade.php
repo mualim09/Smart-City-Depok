@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>SOCMED- | Dashboard</title>
@@ -35,47 +36,49 @@
 
 
 </head>
-<body class="skin-purple-light sidebar-mini">
+<body class="skin-blue-light sidebar-mini">
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
 
             <!-- Logo -->
+<
             <a href="/dashboard" class="logo blue-background-main-color" style="height: 56px;">
+
                 <b>SOCMED</b>
             </a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top blue-background-main-color" role="navigation">
                 <!-- Sidebar toggle button-->
-                <a href="#" class="sidebar-toggle hover-changed" data-toggle="offcanvas" role="button">
+                 <a href="#" class="sidebar-toggle hover-changed" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
-                </a>
+                </a> --}}
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <i class="fa fa-bell-o"></i>
-                              <span class="label label-warning">10</span>
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li class="header">You have 10 notifications</li>
-                              <li>
+                        <!--<li class="dropdown notifications-menu">-->
+                        <!--    <a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
+                        <!--      <i class="fa fa-bell-o"></i>-->
+                        <!--      <span class="label label-warning">10</span>-->
+                        <!--    </a>-->
+                        <!--    <ul class="dropdown-menu">-->
+                        <!--      <li class="header">You have 10 notifications</li>-->
+                        <!--      <li>-->
                                 <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
+                        <!--        <ul class="menu">-->
                                   
-                                  <li>
-                                    <a href="#">
-                                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                    </a>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li class="footer"><a href="#">View all</a></li>
-                            </ul>
-                          </li>
+                        <!--          <li>-->
+                        <!--            <a href="#">-->
+                        <!--              <i class="fa fa-users text-aqua"></i> 5 new members joined today-->
+                        <!--            </a>-->
+                        <!--          </li>-->
+                        <!--        </ul>-->
+                        <!--      </li>-->
+                        <!--      <li class="footer"><a href="#">View all</a></li>-->
+                        <!--    </ul>-->
+                        <!--  </li>-->
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
@@ -303,80 +306,32 @@ $('.ajax').click(function(){
 
 
 @if(Request::route()->getName() == 'analysis')
-    <script async="" src="{{ asset('plugins/bar_chart/analytics.js.download') }}"></script>
-    <script src="{{ asset('plugins/bar_chart/Chart.bundle.js.download')}}"></script>
-    <script src="{{ asset('plugins/bar_chart/utils.js.download') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/chart-sipp-kling.js') }}"></script>
-    <script type="text/javascript">
-        $(function(){
-              var color = Chart.helpers.color;
-              var rsChartData = {
-                labels: ["januari", "februari", "maret", "april"],
-                datasets: [{
-                  label: 'Positif',
-                  backgroundColor: color(window.chartColors.blue).alpha(1).rgbString(),
-                  borderColor: window.chartColors.red,
-                  borderWidth: 1,
-                  data: [15 , 20 , 30 , 40]
-                }, {
-                  label: 'Netral',
-                  backgroundColor: color(window.chartColors.green).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [40 , 30 , 20 , 15]
-                }, {
-                  label: 'Negatif',
-                  backgroundColor: color(window.chartColors.red).alpha(1).rgbString(),
-                  borderColor: window.chartColors.green,
-                  borderWidth: 1,
-                  data: [20 , 20 , 18 , 12]
-                },]
-              };
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>-->
 
-            $('#canvasbar').SippKlingCharts({
-                type        : 'bar',
-                chartData   : rsChartData,
-                titleText   : 'Data RS 2017',
-                ketId       : 'rs'
-            });
+<script src="{{ asset('socmed/Chart-Socmed.min.js') }}"></script>
 
+    
+<script type="text/javascript">
 
-            $('#canvasline').SippKlingCharts({
-                type        : 'bubble',
-                chartData   : rsChartData,
-                titleText   : 'Data RS 2017',
-                ketId       : 'rs'
-            });
-          });
 
             new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+    labels: ["Jan-Feb", "Mar-Apr", "Mei-Jun", "Jul-Ags", "Sep-Oktr", "Nov-Des"],
     datasets: [{ 
-        data: [86,114,106,106,107,111,133,221,783,2478],
-        label: "Africa",
-        borderColor: "#3e95cd",
+        data: [{{$janfeb_positif}},{{$marap_positif}},{{$meijun_positif}},{{$julag_positif}},{{$sepok_positif}},{{$novdes_positif}}],
+        label: "Positif",
+        borderColor: "#2ed573",
         fill: false
       }, { 
-        data: [282,350,411,502,635,809,947,1402,3700,5267],
-        label: "Asia",
-        borderColor: "#8e5ea2",
+        data: [{{$janfeb_netral}},{{$marap_netral}},{{$meijun_netral}},{{$julag_netral}},{{$sepok_netral}},{{$novdes_netral}}],
+        label: "Netal",
+        borderColor: "#ffcc66",
         fill: false
       }, { 
-        data: [168,170,178,190,203,276,408,547,675,734],
-        label: "Europe",
-        borderColor: "#3cba9f",
-        fill: false
-      }, { 
-        data: [40,20,10,16,24,38,74,167,508,784],
-        label: "Latin America",
-        borderColor: "#e8c3b9",
-        fill: false
-      }, { 
-        data: [6,3,2,2,7,26,82,172,312,433],
-        label: "North America",
-        borderColor: "#c45850",
+        data: [{{$janfeb_negatif}},{{$marap_negatif}},{{$meijun_negatif}},{{$julag_negatif}},{{$sepok_negatif}},{{$novdes_negatif}}],
+        label: "Negatif",
+        borderColor: "#ff4757",
         fill: false
       }
     ]
@@ -384,108 +339,59 @@ $('.ajax').click(function(){
   options: {
     title: {
       display: true,
-      text: 'World population per region (in millions)'
+      text: 'Sentiment analysis Kepuasan Masyarakat Depok Pada Tahun 2018'
     }
   }
 });
 
 
-            new Chart(document.getElementById("bubble-chart"), {
-    type: 'bubble',
+new Chart(document.getElementById("pie-chart"), {
+    type: 'pie',
     data: {
-      labels: "Africa",
-      datasets: [
-        {
-          label: ["China"],
-          backgroundColor: "rgba(255,221,50,0.2)",
-          borderColor: "rgba(255,221,50,1)",
-          data: [{
-            x: 21269017,
-            y: 5.245,
-            r: 15
-          }]
-        }, {
-          label: ["Denmark"],
-          backgroundColor: "rgba(60,186,159,0.2)",
-          borderColor: "rgba(60,186,159,1)",
-          data: [{
-            x: 258702,
-            y: 7.526,
-            r: 10
-          }]
-        }, {
-          label: ["Germany"],
-          backgroundColor: "rgba(0,0,0,0.2)",
-          borderColor: "#000",
-          data: [{
-            x: 3979083,
-            y: 6.994,
-            r: 15
-          }]
-        }, {
-          label: ["Japan"],
-          backgroundColor: "rgba(193,46,12,0.2)",
-          borderColor: "rgba(193,46,12,1)",
-          data: [{
-            x: 4931877,
-            y: 5.921,
-            r: 15
-          }]
-        }
-      ]
+      labels: ["Positif", "Netal", "Negatif"],
+      datasets: [{
+        // label: "Population (millions)",
+        backgroundColor: ["#2ed573","#ffcc66","#ff4757"],
+        data: [{{$total_positif}},{{$total_netral}},{{$total_negatif}}]
+      }]
     },
     options: {
       title: {
         display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }, scales: {
-        yAxes: [{ 
-          scaleLabel: {
-            display: true,
-            labelString: "Happiness"
-          }
-        }],
-        xAxes: [{ 
-          scaleLabel: {
-            display: true,
-            labelString: "GDP (PPP)"
-          }
-        }]
+        text: 'CHART TOTAL KEPUASAN MASYARAKAT DEPOK'
       }
     }
 });
 
 
 
-new Chart(document.getElementById("radar"), {
-    type: 'radar',
+new Chart(document.getElementById("bar-chart"), {
+    type: 'bar',
     data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+      labels: ["Jan-Feb", "Mar-Apr", "Mei-Jun", "Jul-Ags", "Sep-Oktr", "Nov-Des"],
       datasets: [
         {
-          label: "1950",
-          fill: true,
-          backgroundColor: "rgba(179,181,198,0.2)",
-          borderColor: "rgba(179,181,198,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(179,181,198,1)",
-          data: [8.77,55.61,21.69,6.62,6.82]
-        }, {
-          label: "2050",
-          fill: true,
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          pointBackgroundColor: "rgba(255,99,132,1)",
-          pointBorderColor: "#fff",
-          data: [25.48,54.16,7.61,8.06,4.45]
-        }
+        data: [{{$janfeb_positif}},{{$marap_positif}},{{$meijun_positif}},{{$julag_positif}},{{$sepok_positif}},{{$novdes_positif}}],
+        label: "Positif",
+        backgroundColor: "#2ed573",
+        fill: false
+      }, { 
+        data: [{{$janfeb_netral}},{{$marap_netral}},{{$meijun_netral}},{{$julag_netral}},{{$sepok_netral}},{{$novdes_netral}}],
+        label: "Netal",
+        backgroundColor: "#ffcc66",
+        fill: false
+      }, { 
+        data: [{{$janfeb_negatif}},{{$marap_negatif}},{{$meijun_negatif}},{{$julag_negatif}},{{$sepok_negatif}},{{$novdes_negatif}}],
+        label: "Negatif",
+        backgroundColor: "#ff4757",
+        fill: false
+      }
       ]
     },
     options: {
       title: {
         display: true,
-        text: 'Distribution in % of world population'
+        text: 'Sentiment Mayarakat Kota Depok'
       }
     }
 });

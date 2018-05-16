@@ -16,48 +16,48 @@
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#timeline">Timeline</a></li>
     <li><a data-toggle="tab" href="#menu1">Mention</a></li>
-    <li><a data-toggle="tab" href="#menu2">Direct Messages</a></li>
-    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+    {{-- <li><a data-toggle="tab" href="#menu2">Direct Messages</a></li> --}}
+    {{-- <li><a data-toggle="tab" href="#menu3">Menu 3</a></li> --}}
   </ul>
 
   <div class="tab-content">
   <div id="timeline" class="tab-pane fade in active">
 {{-- ISI Timeline --}}
-	<div class="box-body">
+  <div class="box-body">
           {{-- ==== --}}
-	<div class="box-body">
-		<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">  
+  <div class="box-body">
+    <div class="col-md-7 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">  
 <form method="POST" action="{{ route('post.tweet') }}" enctype="multipart/form-data">
         {{ csrf_field() }}
     <div class="create-post">
-            	<div class="row">
-            		<div class="col-md-8 col-sm-8">
+              <div class="row">
+                <div class="col-md-8 col-sm-8">
                  <div class="row">
                       <div class="form-group col-xs-12">
-                        <textarea name="tweet" class="form-control" placeholder="What's happening?" rows="4" cols="200" maxlength="280" required></textarea>
+                        <textarea name="tweet" class="form-control" placeholder="What's happening?" rows="4" cols="300" maxlength="280" required></textarea>
                       </div>
                     </div>
                 </div>
-            		<div class="col-md-4 col-sm-4">
+                <div class="col-md-4 col-sm-4">
                   <div class="tools">
-                    <ul class="publishing-tools list-inline">
-            		  <li><a href="#"><label class="ion-images"><input type="file" name="images[]" multiple class="form-control" style="display:none;"></label></a></li>
+                    <ul class="publishing-tools list-inline pull-right">
+                  <li><a href="#"><label class="ion-images"><input type="file" name="images[]" multiple class="form-control" style="display:none;"></label></a></li>
                       <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
                       <li><a href="#"><i class="ion-map"></i></a></li>
                     </ul>
-                    <button class="btn btn-primary pull-middle">Tweet</button>
+                    <button class="btn btn-primary pull-right">Tweet</button>
                   </div>
                 </div>
-            	</div>
+              </div>
             </div>
 </form>
             <!-- Post Create Box End-->
-		</div>
-	</div>
+    </div>
+  </div>
 
   <div class="box-body">
-    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
-            <br><br>
+    <div class="col-md-7 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
+          
             {{-- ================================================= --}}
            @foreach($data1 as $datas)
             <div class="post-content">
@@ -73,22 +73,18 @@
                     <p class="text-muted">{{$datas['created_at']}}</p>
                   </div>
                   <div class="reaction">
-                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
+                    <a class="btn text-blue" data-toggle="modal" data-target="#modal-reply-{{$datas['id_twitter']}}"><i class="fa fa-reply-all"></i></a>
                     <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>
                     <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas['favorite_count']}}</a>
                   </div>
                   <div class="line-divider"></div>
                   <div class="post-text">
                   {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
-                    {{-- {!!$datas['tweet1']!!} --}}
-                      @if($datas['url'] != [])
-                      {!!$datas['url']!!}
-                      @endif
                   </div>
               @if($datas['pictvid'] == '')
               
               @elseif($datas['video'] == '') 
-              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
+              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 50%; height= 50%; top: -0px;>
 
               @elseif($datas['video'] != '')
             <video width=100%; top: -0px; loop controls>
@@ -112,19 +108,75 @@
         </div>
     </div> {{-- box didalam tab--}}
   </div>
+{{-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
 
+@foreach($data1 as $datas)
+<div class="modal fade" id="modal-reply-{{$datas['id_twitter']}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="{{ url('sipp-kling/input_pesantren') }}">
+          {{ csrf_field() }}
+      <div class="modal-header bg-aqua-active">
+        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-white" align="center">Reply</h4>
+      </div>
+      <div class="modal-body overflow-hidden">
+          
+        <div class="post-container center">
+                <img src="{{$datas['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
+                <div class="post-detail">
+                  <div class="user-info">
+                    <h5><a href="{!!$datas['nama_akun_url']!!}" class="profile-link">{{$datas['nama']}}</a> 
+                    <span class="following">
+                      <a href="{!!$datas['nama_akun_url']!!}"> @ {{$datas['nama_akun']}} </a>
+                    </span>
+                  </h5>
+                  </div>
+  
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
+                  </div>
+              @if($datas['pictvid'] == '')
+              
+              @elseif($datas['video'] == '') 
+              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 50%; height= 50%; top: -0px;>
 
-{{-- ================================================== --}}
+              @elseif($datas['video'] != '')
+            <video width=100%; top: -0px; loop controls>
+               <source src="{!!$datas['pictvid']!!}" type="video/mp4">
+               {{-- <source src="{!!$datas['pictvid']!!}" type="application/x-mpegURL"> --}}
+            </video>
+
+              @endif 
+
+              </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-right">Retweet</button>
+      </div>
+     </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endforeach
+{{-- ====================================================================================================================================== --}}
+
+{{-- ====================================================================================================================================== --}}
     
-
     <div id="menu1" class="tab-pane fade">
       
       <div class="box-body">
-      	<div class="box-body">
-		<div class="container">
-		{{-- <div class="row justify-content-center"> --}}
-		<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
-            <br>  
+        <div class="box-body">
+    <div class="container">
+    {{-- <div class="row justify-content-center"> --}}
+    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
+          
            @foreach($data1_mention as $datas_mention)
             <div class="post-content">
               <div class="post-container">
@@ -132,44 +184,120 @@
                 <div class="post-detail">
                   <div class="user-info">
                     <h5><a href="{!!$datas_mention['nama_akun_url']!!}" class="profile-link">{{$datas_mention['nama']}}</a> 
-                      <span class="following">
-                      <a href="{!!$datas_mention['nama_akun_url']!!}"> @ {!!$datas_mention['nama_akun']!!} </a>
-                      </span>
-                    </h5>
+                    <span class="following">
+                      <a href="{!!$datas_mention['nama_akun_url']!!}"> @ {{$datas_mention['nama_akun']}} </a>
+                    </span>
+                  </h5>
                     <p class="text-muted">{{$datas_mention['created_at']}}</p>
                   </div>
                   <div class="reaction">
-                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
+                    <a class="btn text-blue" data-toggle="modal" data-target="#modal-reply-{{$datas_mention['id_twitter']}}"><i class="fa fa-reply-all"></i></a>
                     <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas_mention['retweet_count']}}</a>
                     <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas_mention['favorite_count']}}</a>
                   </div>
                   <div class="line-divider"></div>
                   <div class="post-text">
-                    <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i>{!!$datas_mention['tweet']!!}</p>
+                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas_mention['tweet']!!}{{-- </p> --}}
                   </div>
-               @if(!empty($datas_mention['gambar']))
-              <img src="{!!$datas_mention['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
+              @if($datas_mention['pictvid'] == '')
+              
+              @elseif($datas_mention['video'] == '') 
+              <img src="{!!$datas_mention['pictvid']!!}" class="img-thumbnail" width= 50%; height= 50%; top: -0px;>
+
+              @elseif($datas_mention['video'] != '')
+            <video width=100%; top: -0px; loop controls>
+               <source src="{!!$datas_mention['pictvid']!!}" type="video/mp4">
+               {{-- <source src="{!!$datas_mention['pictvid']!!}" type="application/x-mpegURL"> --}}
+            </video>
+
               @endif 
+
               </div>
             </div>
 
           </div>
            @endforeach
+
+           <div style="text-align: right;">
+          {{ $data1_mention->links() }}              
           </div>
-		</div>
+
+      </div>
+    </div>
           {{-- ==== --}}
         </div>
       </div>
+</div>
 
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
 
+@foreach($data1_mention as $datas_mention)
+<div class="modal fade" id="modal-reply-{{$datas_mention['id_twitter']}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="POST" action="{{ url('sipp-kling/input_pesantren') }}">
+          {{ csrf_field() }}
+      <div class="modal-header bg-aqua-active">
+        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-white" align="center">Reply</h4>
+      </div>
+      <div class="modal-body overflow-hidden">
+          
+        <div class="post-container center">
+                <img src="{{$datas_mention['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
+                <div class="post-detail">
+                  <div class="user-info">
+                    <h5><a href="{!!$datas_mention['nama_akun_url']!!}" class="profile-link">{{$datas_mention['nama']}}</a> 
+                    <span class="following">
+                      <a href="{!!$datas_mention['nama_akun_url']!!}"> @ {{$datas_mention['nama_akun']}} </a>
+                    </span>
+                  </h5>
+                  </div>
+  
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas_mention['tweet']!!}{{-- </p> --}}
+                  </div>
+              @if($datas_mention['pictvid'] == '')
+              
+              @elseif($datas_mention['video'] == '') 
+              <img src="{!!$datas_mention['pictvid']!!}" class="img-thumbnail" width= 50%; height= 50%; top: -0px;>
+
+              @elseif($datas_mention['video'] != '')
+            <video width=100%; top: -0px; loop controls>
+               <source src="{!!$datas_mention['pictvid']!!}" type="video/mp4">
+               {{-- <source src="{!!$datas_mention['pictvid']!!}" type="application/x-mpegURL"> --}}
+            </video>
+
+              @endif 
+
+              </div>
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary pull-right">Retweet</button>
+      </div>
+     </form>
     </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endforeach
+
+
+
+
+
     
 {{-- ================================================== --}}
 
     <div id="menu2" class="tab-pane fade">
-	<div class="box-body">
+  <div class="box-body">
       
-		            <!-- Chat Room
+                <!-- Chat Room
             ================================================= -->
             <div class="chat-room" >
               <div  class="row">
@@ -260,7 +388,7 @@
                 </div>
                 <div class="col-md-7">
 
-					 <div class="send-message">
+           <div class="send-message">
                     <div class="input-group">
                       <input type="text" class="form-control" placeholder="Type your message">
                       <span class="input-group-btn">
@@ -544,7 +672,7 @@
     <div id="menu3" class="tab-pane fade">
       
       <div class="box-body">
-      	
+        
 
 
       </div>
@@ -562,7 +690,7 @@
         <!-- /.box-footer-->
       </div>
 
-    		
+        
 
 
 @endsection

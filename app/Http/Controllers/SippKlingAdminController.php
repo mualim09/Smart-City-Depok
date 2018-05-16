@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Repositories\Repository;
+use Hash;
 
 class SippKlingAdminController extends Controller
 {
@@ -98,7 +99,7 @@ class SippKlingAdminController extends Controller
      */
     public function destroy(Request $req, $id)
     {   
-        $query = DB::delete('DELETE FROM admin_sikelings WHERE id_admin_sikeling = ?' , [$id]);
+        $query = DB::delete('DELETE FROM admins WHERE id = ?' , [$id]);
         return redirect('/sipp-kling/admin')->with('delete', 'Data admin telah dihapus');
     }
 }
