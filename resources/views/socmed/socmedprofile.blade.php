@@ -3,9 +3,10 @@
 @section('content')
 
 <div class="box">
+
 <section class="content-header overflow-hidden">
   <div class="col-xs-12 title-dashboard">
-    <h3 style="margin-top: 0;">{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!}</h3>
+    <h3 style="margin-top: 0;">{!! str_replace('-', ' ', ucfirst(Request::route()->getName())) !!} </h3>
     <div class="line-height"></div>
   </div>
 </section>
@@ -77,9 +78,9 @@
 
           </div>
            @endforeach
-
-
-
+          <div style="text-align: right;">
+          {{ $get_tweets->links() }}              
+          </div>
             <!-- Post Content
             ================================================= -->
           </div>
@@ -124,6 +125,11 @@
                         @endforeach
                         {{-- ===================================================================================================== --}}
                       </div>
+
+                        <div style="text-align: right;">
+                          {{$get_following->links()}}              
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -168,6 +174,11 @@
                         @endforeach
 {{-- ===================================================================================================== --}}   
                       </div>
+
+                      <div style="text-align: right;">
+                          {{$get_followers->links()}}              
+                      </div>
+
                     </div>
                 </div>
             </div>

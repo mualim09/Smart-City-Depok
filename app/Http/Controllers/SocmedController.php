@@ -17,14 +17,17 @@ class SocmedController extends Controller
     protected $sentiment;
     protected $SentimentAnalysis;
     protected $GetTweet;
+    protected $GetProfile;
 
         
-    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $gettweet)
+    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $gettweet,
+            SocmedRepository $getprofile)
     {
         $this->middleware('auth');
         $this->sentiment = $sentiment;
         $this->SentimentAnalysis = $SentimentAnalysis;
         $this->GetTweet = $gettweet;
+        $this->GetProfile = $getprofile;
 
      // global $gambar;
      // global $data1;
@@ -36,26 +39,34 @@ class SocmedController extends Controller
 
         public function twitterUserTimeLine()
     {
+    $profile       = Twitter::getUsers([
+                    'user_id' => '171893613', 
+                    'screen_name' => 'Tegar09',
+                    'format' => 'array' 
+                    ]);
+
     $get_home       = Twitter::getHomeTimeline([
                         'widget_type' => 'video', 
-                        'count' => 25, 
+                        'count' => '50', 
                         'since_id' => 5, 
                         'tweet_mode' => 'extended', 
                         'format' => 'array']);
 
     $get_mention    =  Twitter::getMentionsTimeline([
                         'widget_type' => 'video', 
-                        'count' => 10,
+                        'count' => '50',
                         'tweet_mode' => 'extended',
                         'format' => 'array']);
 
     $data1          = $this->GetTweet->gettweet($get_home);
     $data1_mention  =$this->GetTweet->gettweet($get_mention);
+    $get_profile             = $this->GetProfile->getprofile($profile);
+
 // ============================================================================================
 
 
         // return $data1;
-    return view('socmed/dashboard3', compact('data1_mention', 'data1'));
+    return view('socmed/dashboard3', compact('get_profile', 'data1_mention', 'data1'));
     }
 
 

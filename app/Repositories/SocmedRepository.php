@@ -22,7 +22,32 @@ class SocmedRepository
     }
 
 
+    public function getprofile($data){
 
+    $profile = [];
+
+    $gambarprofile = str_replace("_normal", "", $data['profile_image_url_https']);
+
+        $profile =
+        [
+            'id_akun'           => $data['id_str'],
+            'nama'              => $data['name'],
+            'nama_akun'         => $data['screen_name'],
+            'deskripsi'         => $data['description'],
+            'gambar_akun'       => $gambarprofile,
+            'gambar_banner'     => $data['profile_banner_url'],
+            'location'          => $data['location'],
+            'url'               => $data['url'],
+            'followers_count'   => $data['followers_count'],
+            'friends_count'     => $data['friends_count'],
+            'tweets'            => $data['statuses_count'],
+            'created_at'        => $data['created_at'],
+        ];    
+    
+    
+    return $profile;
+
+    }   
 
 
 	public function gettweet($data){
@@ -146,9 +171,62 @@ class SocmedRepository
 
     return $paginatedItems; 
 	}
+// #########################################################################################################################
+public function getfollow($flw){
+
+    $data = []; $profile_banner_url = [];
+
+    $data = $flw['users'];
+
+        for ($i=0; $i < count($data); $i++) { 
+
+        if (!empty($data[$i]['profile_banner_url'])) {
+            $profile_banner_url = $data[$i]['profile_banner_url'];
+        }
+
+        else{
+            $profile_banner_url = '';
+        }
 
 
+        $follow[$i] =
+        [
+            'id_akun'           => $data[$i]['id_str'],
+            'following'         => $data[$i]['following'],
+            'nama'              => $data[$i]['name'],
+            'nama_akun'         => $data[$i]['screen_name'],
+            'deskripsi'         => $data[$i]['description'],
+            'gambar_akun'       => $data[$i]['profile_image_url_https'],
+            'gambar_banner'     => $profile_banner_url,
+            'location'          => $data[$i]['location'],
+            'url'               => $data[$i]['url'],
+            'followers_count'   => $data[$i]['followers_count'],
+            'friends_count'     => $data[$i]['friends_count'],
+            'created_at'        => $data[$i]['created_at'],
+        ];    
+    }
 
+    // Get current page form url e.x. &page=1
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+ 
+        // Create a new Laravel collection from the array data
+        $itemCollection = collect($follow);
+ 
+        // Define how many items we want to be visible in each page
+        $perPage = 8;
+ 
+        // Slice the collection to get the items to display in current page
+        $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+ 
+        // Create our paginator and pass it to the view
+        $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
+ 
+        // set url path for generted links
+        $paginatedItems->setPath(Request::url());
+
+    return $paginatedItems;
+    }
+// ########################################################################################################################
 
 
     public function charttotal($sentiment){
@@ -159,5 +237,16 @@ class SocmedRepository
             ->count();
 
     }
+
+    public function chartperbulan($sentiment, $tglawal, $tglakhir ){
+
+
+    return  DB::table('socmed_analysis')
+            ->where('sentiment', $sentiment)
+            ->whereBetween('created_at', [$tglawal, $tglakhir])
+            ->count();
+
+    }
+
 
 }
