@@ -29,11 +29,9 @@
           {{-- ==== --}}
     <div class="container">
     {{-- <div class="row justify-content-center"> --}}
-<<<<<<< HEAD
+
     <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
-=======
-    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
->>>>>>> 6bcda17a698f44dde488414e5ab43eaa80dac3b8
+
 
             <!-- Post Create Box
             ================================================= -->
@@ -120,11 +118,9 @@
                               <img src="{!!$following['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
                               <div class="friend-info">
                                 <h5><a href="jobprof.php" class="profile-link">{{$following['nama']}}</a></h5>
-<<<<<<< HEAD
+
                                 <p style="font-size: 10pt"><a href="jobprof.php" class="profile-link">@ {{$following['nama_akun']}}</a></p>
-=======
-                                <p style="font-size: 7pt"><a href="jobprof.php" class="profile-link">@ {{$following['nama_akun']}}</a></p>
->>>>>>> 6bcda17a698f44dde488414e5ab43eaa80dac3b8
+
                                 <h6 class="grey">{!! str_limit ($following['deskripsi'], 100) !!}</h6>
                               </div>
                             </div>

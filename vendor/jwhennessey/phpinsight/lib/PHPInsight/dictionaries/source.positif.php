@@ -1218,4 +1218,5 @@ $pos = array(
 'yay',
 'yeah',
 'yihaa',
+'yuhuu'
 );

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Event | Hi-Depok</title>
+  <title>Acara | Hi-Depok</title>
   <link rel="shortcut icon" href="{{ URL::asset('img/logo.png') }}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,7 @@
         <div class="f_bold w3-text-white w3-display-left w3-large w3-hide-small" style="margin-left:6.5em">HI-DEPOK</div>
       </a>
       <div class="hamburger w3-text-white w3-right w3-display-right">
-        <div class="w3-bar-item w3-hide-small" style="padding-top:1em; margin-top: 10px;">EVENT</div>
+        <div class="w3-bar-item w3-hide-small" style="padding-top:1em; margin-top: 10px;">ACARA</div>
         <div onclick="openNav()" class="w3-bar-item w3-hover-text-blue w3-xxlarge" style="cursor: pointer;"> <i class="fa fa-bars"></i> </div>
       </div>
     </div>
@@ -48,16 +48,16 @@
       <i class="fa fa-remove"></i>
     </a>
     <div class="f_bold w3-display-middle w3-bar-block w3-center">
-      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">HOME</a>
-      <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">INFORMATION</a>
-      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">MAPS</a>
+      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BERANDA</a>
+      <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">INFORMASI</a>
+      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">PETA</a>
       <a href="/blog" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BLOG</a>
-      <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">EVENT</a>
+      <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">ACARA</a>
       <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">OPEN DATA</a>
       <a href="/faq" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">FAQ</a>
     </div>
     <div class="w3-display-bottommiddle f_nav2" style="margin-bottom:2em">
-      design by <a class="w3-text-blue" href="http://www.tireg-dev.com" style="text-decoration:none;"><b> Tireg Dev </b></a> <img src="{{ URL::asset('img/tireg_wh.png') }}" style="width:30px; height:30px">
+      desain oleh <a class="w3-text-blue" href="http://www.tireg-dev.com" style="text-decoration:none;"><b> Tireg Dev </b></a> <img src="{{ URL::asset('img/tireg_wh.png') }}" style="width:30px; height:30px">
     </div>
   </nav>
 
@@ -67,7 +67,7 @@
     </div>
     <div class="w-container contents w3-display-middle" style="top: 43%;">
       <div class="main-heading-wrapper w3-center">
-        <h1 class="blog_headerjudul f_bold w3-wide w3-text-white" data-ix="fade-in-heading">EVENT</h1><BR>
+        <div class="blog_headerjudul f_bold w3-wide w3-text-white" data-ix="fade-in-heading">ACARA</div><BR>
         <h4 class="blog_headerjudul2 w3-text-white" data-ix="fade-in-heading-2">Mari lihat acara apa saja yang ada di Kota Depok</h4>
       </div>
       <a href="#more" class="scroll w-inline-blxock down-arrow" data-ix="down-arrow"><span class="down-inner" data-ix="down-arrow-on-load" style="top: 140%;"></span></a>
@@ -107,10 +107,10 @@
         <a class="w3-text-white" href="/" style="text-decoration:none"><h3 class="w3-large w3-hover-opacity" style="letter-spacing:3px">HI-DEPOK</h3></a>
       </div>
       <div class="w3-third w3-container w3-large w3-hide-small" style="padding:15px">
-        <a href="/hidepok/information" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none" onclick="toggleFunction()">Information</a>
-        <a href="/hidepok/maps" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none; padding-left: 1.7em">Maps</a>
+        <a href="/hidepok/information" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none" onclick="toggleFunction()">Informasi</a>
+        <a href="/hidepok/maps" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none; padding-left: 1.7em">Peta</a>
         <a href="/hidepok/blog" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding: 0em 1.7em;" onclick="toggleFunction()">Blog</a>
-        <a href="/hidepok/event" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding-right: 1.7em;">Event</a>
+        <a href="/hidepok/event" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none;padding-right: 1.7em;">Acara</a>
         <a href="/hidepok/faq" class="w3-bar-item w3-text-white w3-hover-opacity w3-small" style="text-decoration:none">FAQ</a>
       </div>
     </div>
@@ -118,21 +118,21 @@
     <div class="w3-row w3-small w3-padding">
       <div class="w3-content" style="max-width:700px">
         <div class="w3-third w3-container">
-          <h5 class="w3-hide-small">MAIL</h5>
+          <h5 class="w3-hide-small">E-MAIL</h5>
           <p>humas@hidepok.id</p>
         </div>
         <div class="w3-third w3-container">
-          <h5 class="w3-hide-small">CALL</h5>
+          <h5 class="w3-hide-small">HUBUNGI KAMI</h5>
           <p>+62 811 222 333 11</p>
         </div>
         <div class="w3-third w3-container">
-          <h5 class="w3-hide-small">FIND US</h5>
+          <h5 class="w3-hide-small">LOKASI</h5>
           <p>Jalan Margonda No.54, Depok</p>
         </div>
       </div>
     </div>
     <hr style="margin: 0em 6em; border-top:1px solid rgba(255, 255, 255, 0.35)">
-    <p class="w3-small" style="margin-top: 1.2em">Supported by TiregDev © 2017</p>
+    <p class="w3-small" style="margin-top: 1.2em">Didukung oleh TiregDev © 2017</p>
   </footer>
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

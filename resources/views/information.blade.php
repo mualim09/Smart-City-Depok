@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Information | Hi-Depok</title>
+  <title>Informasi | Hi-Depok</title>
 <link rel="shortcut icon" href="{{ URL::asset('img/logo.png') }}">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
           <div class="f_bold w3-text-white w3-display-left w3-large" style="margin-left:6.5em">HI-DEPOK</div>
         </a>
         <div class="inform_hamburger w3-text-white w3-right w3-display-right">
-          <div class="w3-bar-item w3-hide-small" style="padding-top:1em; margin-top: 10px;">INFORMATION</div>
+          <div class="w3-bar-item w3-hide-small" style="padding-top:1em; margin-top: 10px;">INFORMASI</div>
           <div onclick="openNav()" class="w3-bar-item w3-hover-text-blue w3-xxlarge" style="cursor: pointer;"> <i class="fa fa-bars"></i> </div>
         </div>
       </div>
@@ -54,16 +54,16 @@
       <i class="fa fa-remove"></i>
     </a>
     <div class="f_bold w3-display-middle w3-bar-block w3-center">
-      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">HOME</a>
-      <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">INFORMATION</a>
-      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">MAPS</a>
+      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">BERANDA</a>
+      <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">INFORMASI</a>
+      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">PETA</a>
       <a href="/blog" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">BLOG</a>
-      <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">EVENT</a>
+      <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">ACARA</a>
       <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">OPEN DATA</a>
       <a href="/faq" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">FAQ</a>
     </div>
     <div class="w3-display-bottommiddle f_nav2" style="margin-bottom:2em">
-      design by <a class="w3-text-blue" href="http://www.tireg-dev.com" style="text-decoration:none;"><b> Tireg Dev </b></a> <img src="{{ URL::asset('img/tireg_wh.png') }}" style="width:30px; height:30px">
+      desain oleh <a class="w3-text-blue" href="http://www.tireg-dev.com" style="text-decoration:none;"><b> Tireg Dev </b></a> <img src="{{ URL::asset('img/tireg_wh.png') }}" style="width:30px; height:30px">
     </div>
   </nav>
 
@@ -73,31 +73,31 @@
     <section class="com__section com__section--text">
       <h1 class="animate slideInLeft ">Struktur Pemerintahan Kota Depok</h1>
       <p class="animate slideInLeft delay-3">Struktur Organisasi Perangkat Daerah Kota Depok berdasarkan Peraturan Daerah Kota Depok Nomor 19 Tahun 2012 Tentang Perubahan Ketiga atas Peraturan Daerah Kota Depok Nomor 08 Tahun 2008...<br><br>
-      <a href="https://www.depok.go.id/instansi/struktur-organisasi-perangkat-daerah"><button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> See More </button></a>
+      <a href="https://www.depok.go.id/instansi/struktur-organisasi-perangkat-daerah"><button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> Baca Selengkapnya </button></a>
       </p>
     </section>
     <section class="com__section com__section--text">
       <h1 class="animate slideInLeft">Infrastruktur</h1>
       <p class="animate slideInLeft delay-2">Pembangunan infrastruktur yang dilakukan Pemerintah Kota (Pemkot) Depok Jawa Barat bertujuan untuk meningkatkan perekonomian warga Depok...<br><br>
-      <button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> See More </button>
+      <button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> Baca Selengkapnya </button>
       </p>
     </section>
     <section class="com__section com__section--text">
       <h1 class="animate slideInLeft">Aplikasi</h1>
       <p class="animate slideInLeft delay-2">Pesatnya perkembangan teknologi, Pemkot Depok mengembangangkan aplikasi-aplikasi yang membantu sistem kerja Pemerintahan dalam berbagai bidang...<br><br>
-      <button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> See More </button>
+      <button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> Baca Selengkapnya </button>
       </p>
     </section>
     <section class="com__section com__section--text">
       <h1 class="animate slideInLeft">Organisasi</h1>
       <p class="animate slideInLeft delay-2">Organisasi Pemerintahan Daerah (OPD) sesuai lampiran Perda Kota Depok No 19 TH. 2012 terdiri dari beberapa organisasi yang berkaitan dalam pembangunan Kota Depok...<br><br>
-      <a href="/organisasi"><button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> See More </button></a>
+      <a href="/organisasi"><button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> Baca Selengkapnya </button></a>
       </p>
     </section>
     <section class="com__section com__section--text">
       <h1 class="animate slideInLeft">Dashboard</h1>
       <p class="animate slideInLeft delay-2">Organisasi Pemerintahan Daerah (OPD) sesuai lampiran Perda Kota Depok No 19 TH. 2012 terdiri dari beberapa organisasi yang berkaitan dalam pembangunan Kota Depok...<br><br>
-      <a href="/organisasi"><button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> See More </button></a>
+      <a href="/organisasi"><button class="w3-btn orange-hd w3-text-white w3-round-large w3-padding w3-medium"> Baca Selengkapnya </button></a>
       </p>
     </section>
   </div>

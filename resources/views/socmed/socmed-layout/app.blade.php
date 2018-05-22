@@ -43,7 +43,7 @@
         <header class="main-header">
 
             <!-- Logo -->
-<
+
             <a href="/dashboard" class="logo blue-background-main-color" style="height: 56px;">
 
                 <b>SOCMED</b>
@@ -54,7 +54,7 @@
                 <!-- Sidebar toggle button-->
                  <a href="#" class="sidebar-toggle hover-changed" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
-                </a> --}}
+                </a>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
