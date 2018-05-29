@@ -14,7 +14,7 @@ class FeedController extends Controller
     public function berita()
     {
     	$ip= \Request::ip();
-	    $data = Location::get('103.47.132.55');
+	    $data = Location::get('182.23.86.44');
 
 
 		ModelVisitor::create([

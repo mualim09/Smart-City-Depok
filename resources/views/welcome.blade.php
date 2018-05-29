@@ -95,6 +95,7 @@
         @endforeach
         <div class="w3-text-white prev_news" onclick="plusDivs(-1)">&#10094;</div>
         <div class="w3-text-white next_news" onclick="plusDivs(1)">&#10095;</div>
+        <a href="/blog"><button class="w3-right w3-button w3-orange w3-border w3-border-white w3-round-large w3-text-white" style="margin-top: 1em"> Ingin Melihat Berita Lebih Banyak Lagi? </button></a>
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Didukung oleh 
         <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
