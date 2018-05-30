@@ -10,7 +10,7 @@
               <h4 class="text-center" style="margin-top: -5px;">{{strtoupper($get_profile['nama'])}}</h4>
               <img class="profile-user-img img-responsive img-circle" style="border: 0px solid black" src="{{$get_profile['gambar_akun']}}" alt="User profile picture">
               <p class="text-muted text-center">@ {{$get_profile['nama_akun']}}</p>
-              <h4 class="text-center">{{$get_profile['deskripsi']}}</h4>
+              <h6 class="text-center">{{$get_profile['deskripsi']}}</h6>
               <div class="row" style="padding: 2px">
                 <div class="col-md-4" style="padding:0px">
                   <div class="description-block text-center border-right">

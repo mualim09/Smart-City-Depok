@@ -51,8 +51,8 @@ class SocmedProfilController extends Controller
                         'format' => 'array']);
 
     $profile       = Twitter::getUsers([
-                        'user_id' => '171893613', 
-                        'screen_name' => 'Tegar09',
+                        'user_id' => '1000962488739885056', 
+                        'screen_name' => 'DepokHi',
                         'format' => 'array' 
                         ]);
 
@@ -62,7 +62,10 @@ class SocmedProfilController extends Controller
     $get_profile             = $this->GetProfile->getprofile($profile);
 
 
-    // return $get_profile;
+
+
+
+    // return $mytweet;
     return view('socmed/socmedprofile',compact('get_profile', 'get_following', 'get_followers', 'get_tweets'));
     } 
 

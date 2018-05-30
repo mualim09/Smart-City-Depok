@@ -74,6 +74,18 @@ class SocmedRepository
     if (!empty($data[$i]['full_text'])) {
         $text_full = $data[$i]['full_text'];
     }
+    else{
+        $text_full = $data[$i]['text'];
+    }
+//=============================================================
+//
+   if (!empty($data[$i]['retweeted_status'])) {
+        $retweet_status = $data[$i]['retweeted_status'];
+    }
+    else{
+        $retweet_status = '';
+    }
+
 //=============================================================
     if (!empty($data[$i]['entities']['urls'])) {
         $urls = $data[$i]['entities']['urls'];
@@ -147,6 +159,7 @@ class SocmedRepository
             'in_reply_to_status_id'     => $statusid,
             'in_reply_to_user_id_str'    => $reply_userid,
             'in_reply_to_screen_name'     => $reply_userakun,
+            'retweet_status'     => $retweet_status
         ];    
     } 
 
@@ -158,7 +171,7 @@ class SocmedRepository
         $itemCollection = collect($data1);
  
         // Define how many items we want to be visible in each page
-        $perPage = 5;
+        $perPage = 15;
  
         // Slice the collection to get the items to display in current page
         $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();

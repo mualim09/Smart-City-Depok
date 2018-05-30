@@ -35,48 +35,9 @@
             ================================================= -->
 
            @foreach($get_tweets as $datas)
-            <div class="post-content">
-              <div class="post-container">
-                <img src="{{$datas['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="{!!$datas['nama_akun_url']!!}" class="profile-link">{{$datas['nama']}}</a> 
-                    <span class="following">
-                      <a href="{!!$datas['nama_akun_url']!!}"> @ {{$datas['nama_akun']}} </a>
-                    </span>
-                  </h5>
-                    <p class="text-muted">{{$datas['created_at']}}</p>
-                  </div>
-                  <div class="reaction">
-                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
-                    <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>
-                    <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas['favorite_count']}}</a>
-                  </div>
-                  <div class="line-divider"></div>
-                  <div class="post-text">
-                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
-                    {{-- {!!$datas['tweet1']!!} --}}
-                      @if($datas['url'] != [])
-                      {!!$datas['url']!!}
-                      @endif
-                  </div>
-              @if($datas['pictvid'] == '')
-              
-              @elseif($datas['video'] == '') 
-              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
 
-              @elseif($datas['video'] != '')
-            <video width=100%; top: -0px; loop controls>
-               <source src="{!!$datas['pictvid']!!}" type="video/mp4">
-               {{-- <source src="{!!$datas['pictvid']!!}" type="application/x-mpegURL"> --}}
-            </video>
+          @include('socmed.inc.timelinetweet')
 
-              @endif 
-
-              </div>
-            </div>
-
-          </div>
            @endforeach
           <div style="text-align: right;">
           {{ $get_tweets->links() }}              

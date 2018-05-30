@@ -82,10 +82,10 @@ return $data1;
     {
 
     $profile       = Twitter::getUsers([
-                    'user_id' => '171893613', 
-                    'screen_name' => 'Tegar09',
-                    'format' => 'array' 
-                    ]);
+                        'user_id' => '1000962488739885056', 
+                        'screen_name' => 'DepokHi',
+                        'format' => 'array' 
+                        ]);
 
     $data_search = Twitter::getSearch([
     	'q'				=> 'pemkotdepok',

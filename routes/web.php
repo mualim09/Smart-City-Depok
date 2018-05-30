@@ -45,7 +45,12 @@ Route::get('/dashboard4', function () {
 Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
 Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
 Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
+
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
+Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
+Route::post('retweet', ['as'=>'post.retweet','uses'=>'SocmedController@retweet']);
+
+
 Route::get('dashboard-socmed/coba', 'SocmedTestingController@trend')->middleware('auth')->name('home');
 
 
