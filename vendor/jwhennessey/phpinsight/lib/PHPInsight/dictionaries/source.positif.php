@@ -618,7 +618,7 @@ $pos = array(
 'memanggil',
 'memantapkan',
 'memastikan',
-'membandingikeindahanpuisi',
+'membersihkan',
 'membantu',
 'membara',
 'membayar',
@@ -1218,4 +1218,5 @@ $pos = array(
 'yay',
 'yeah',
 'yihaa',
+'yuhuu'
 );

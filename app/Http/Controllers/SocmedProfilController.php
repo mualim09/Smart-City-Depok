@@ -16,77 +16,54 @@ class SocmedProfilController extends Controller
     protected $sentiment;
     protected $SentimentAnalysis;
     protected $GetTweet;
+    protected $GetFollow;
+    protected $GetProfile;
 
 
-    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $gettweet)
+    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis,
+        SocmedRepository $gettweet, SocmedRepository $getfollow, SocmedRepository $getprofile)
     {
         $this->middleware('auth');
         $this->sentiment = $sentiment;
         $this->SentimentAnalysis = $SentimentAnalysis;
         $this->GetTweet = $gettweet;
+        $this->GetFollow = $getfollow;
+        $this->GetProfile = $getprofile;
     }
 
 
-    public function getfollow($flw){
-
-    $data = []; $profile_banner_url = [];
-
-    $data = $flw['users'];
-
-        for ($i=0; $i < count($data); $i++) { 
-
-        if (!empty($data[$i]['profile_banner_url'])) {
-            $profile_banner_url = $data[$i]['profile_banner_url'];
-        }
-
-        else{
-            $profile_banner_url = '';
-        }
-
-
-        $follow[$i] =
-        [
-            'id_akun'           => $data[$i]['id_str'],
-            'following'         => $data[$i]['following'],
-            'nama'              => $data[$i]['name'],
-            'nama_akun'         => $data[$i]['screen_name'],
-            'deskripsi'         => $data[$i]['description'],
-            'gambar_akun'       => $data[$i]['profile_image_url_https'],
-            'gambar_banner'     => $profile_banner_url,
-            'location'          => $data[$i]['location'],
-            'url'               => $data[$i]['url'],
-            'followers_count'   => $data[$i]['followers_count'],
-            'friends_count'     => $data[$i]['friends_count'],
-            'created_at'        => $data[$i]['created_at'],
-        ];    
-    }
-
-    return $follow; 
-    }
 
 
 
     public function profile()
     {
     $following       = Twitter::getFriends([
-                        'count' => 8, 
+                        'count' => '200', 
                         'format' => 'array']);
 
     $followers       = Twitter::getFollowers([
-                        'count' => 8, 
+                        'count' => '200', 
                         'format' => 'array']);
 
     $mytweet        = Twitter::getUserTimeline([
-                        'count' => 8, 
+                        'count' => '200', 
                         'tweet_mode' => 'extended', 
                         'format' => 'array']);
 
-    $get_following          = $this->getfollow($following);
-    $get_followers          = $this->getfollow($followers);
-    $get_tweets             = $this->GetTweet->gettweet($mytweet);
+    $profile       = Twitter::getUsers([
+                        'user_id' => '171893613', 
+                        'screen_name' => 'Tegar09',
+                        'format' => 'array' 
+                        ]);
 
-    // return $get_tweets;
-    return view('socmed/socmedprofile',compact('get_following', 'get_followers', 'get_tweets'));
+    $get_following          = $this->GetFollow->getfollow($following);
+    $get_followers          = $this->GetFollow->getfollow($followers);
+    $get_tweets             = $this->GetTweet->gettweet($mytweet);
+    $get_profile             = $this->GetProfile->getprofile($profile);
+
+
+    // return $get_profile;
+    return view('socmed/socmedprofile',compact('get_profile', 'get_following', 'get_followers', 'get_tweets'));
     } 
 
 

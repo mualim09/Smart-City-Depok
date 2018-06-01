@@ -14,15 +14,24 @@ use File;
 
 class SocmedTestingController extends Controller
 {
-    //  private $viewtweet;
 
-    //   public function __construct(viewtweet $viewtweet)
-    // {
-    //     $this->viewtweet = $viewtweet;
-    // }
 
-	
+public function trend()
+	{
 
-      
+	$trends = Twitter::getTrendsPlace([
+						'id' => '1032539', 
+                        ]);
+
+
+
+
+	return $trends;
+
+	}
+
+
+
+
 
 }

@@ -10,12 +10,19 @@
   </div>
 </section>
 
+
         {{-- ######### --}}
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#tweet">Chart 1</a></li>
-    <li><a data-toggle="tab" href="#menu1">Chart 2</a></li>
-    <li><a data-toggle="tab" href="#menu2">Chart 3</a></li>
-    <li><a data-toggle="tab" href="#menu3">Chart 4</a></li>
+    <li class="active"><a data-toggle="tab" href="#tweet">CHART TOTAL</a></li>
+    <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  CHART /TAHUN <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li role="presentation"><a data-toggle="tab" href="#menu1">Line Chart</a></li>
+                  <li role="presentation"><a data-toggle="tab" href="#menu2">Bar Chart</a></li>
+                </ul>
+              </li>
   </ul>
 
   {{-- <h2>HOME</h2> --}}
@@ -27,9 +34,9 @@
 
                 <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="line-chart" width="800" height="450"></canvas>
+                    <canvas id="pie-chart" width="800" height="450"></canvas>
                   </div>
-                  <div class="col-md-4 bg-aqua-active box-keterangan">
+                  <div class="col-md-4 bg-aqua-active box-ketsocmed">
                     <p class="text-center">
                       <i class="fa fa-info-circle fa-2x"></i><br>
                       <strong>Keterangan</strong>
@@ -49,13 +56,15 @@
   </div>
 {{-- ================================================== --}}
 
-    <div id="menu1" class="tab-pane fade">
-      
-      <div class="box-body">
+  <div id="menu1" class="tab-pane fade">  
+  <div class="box-body">
 
+
+
+  <div id="line" class="tab-pane fade in active">
     <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="canvasbar" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="line-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">
@@ -72,7 +81,12 @@
                     <div class="progress-group">
                     </div>
                   </div>
-      </div>
+  </div>
+
+
+
+
+    </div>
     </div>
     
 {{-- ================================================== --}}
@@ -82,7 +96,7 @@
 
       <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="radar" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="bar-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">
@@ -113,7 +127,7 @@
 
       <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="bubble-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="radar" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-keterangan">
                     <p class="text-center">
