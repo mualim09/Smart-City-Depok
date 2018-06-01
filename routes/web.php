@@ -483,6 +483,8 @@ Route::prefix('sipp-kling')->group(function() {
     Route::get('/trash', 'SippKlingController@trash')->name('trash');
 
     Route::get('/dashboard-detail', 'SippKlingController@dashboardDetail')->name('dashboard-detail');
+
+    Route::get('/test', 'SippKlingController@initestdoang');
 });
 
 Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');
