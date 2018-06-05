@@ -316,7 +316,7 @@ $('.ajax').click(function(){
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
-      labels: ["Positif", "Netal", "Negatif"],
+      labels: ["Positif", "Netral", "Negatif"],
       datasets: [{
         // label: "Population (millions)",
         backgroundColor: ["#2ed573","#ffcc66","#ff4757"],
@@ -342,7 +342,7 @@ new Chart(document.getElementById("pie-chart"), {
         fill: false
       }, { 
         data: <?php echo json_encode($bulan_netral); ?>,
-        label: "Netal",
+        label: "Netral",
         borderColor: "#ffcc66",
         fill: false
       }, { 
@@ -373,7 +373,7 @@ new Chart(document.getElementById("bar-chart"), {
         fill: false
       }, { 
         data: <?php echo json_encode($bulan_netral); ?>,
-        label: "Netal",
+        label: "Netral",
         backgroundColor: "#ffcc66",
         fill: false
       }, { 
@@ -404,7 +404,7 @@ new Chart(document.getElementById("bar-chart"), {
         fill: false
       }, { 
         data: <?php echo json_encode($tgl_netral); ?>,
-        label: "Netal",
+        label: "Netral",
         borderColor: "#ffcc66",
         fill: false
       }, { 

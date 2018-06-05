@@ -136,7 +136,7 @@ return $data1;
 //           DB::table('socmed_analysis')->insert($tweet_mention[$i]);
 //         }
 //     }
-// =======================================================================================================
+
 
     $dbtweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
 
@@ -191,7 +191,23 @@ return $data1;
                 'total_positif', 'total_netral', 'total_negatif'
 
         ));
-    } 
+    }
+
+
+
+// =======================================================================================================
+// =======================================================================================================
+// HAPUS TWEET
+// 
+public function delete_tweet($id_twitter)
+    {
+    $tweetdelete = DB::table('socmed_analysis')->where('id_twitter', $id_twitter)->delete();
+    return redirect('dashboard-socmed/analysis')->with('delete', 'Data Tweet telah dihapus'); 
+    }
+// 
+// 
+// =======================================================================================================
+// ======================================================================================================= 
 
 
 }

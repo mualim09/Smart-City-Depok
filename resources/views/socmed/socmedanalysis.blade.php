@@ -224,9 +224,9 @@
                   <td style="display:none;">{{$dbtweet->score_negatif}}</td>
                   <td>{{$dbtweet->created_at}}</td>
                   <td style="white-space: nowrap;" align="center">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" {{-- data-target="#modal-rumah-sehat-{{$rehat->id_rumah_sehat}}" --}}><i class="ion-eye"></i></button>
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-view-{{$dbtweet->id_twitter}}"><i class="ion-eye"></i></button>
 
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" {{-- data-target="#modal-hapus-rumah-sehat-{{$rehat->id_rumah_sehat}}" --}}><i class="ion-ios-trash"></i></button>
+                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$dbtweet->id_twitter}}"><i class="ion-ios-trash"></i></button>
 
                   </td>
                 </tr>
@@ -236,11 +236,91 @@
             
           </div>
 
-
 {{-- content box --}}
         </div>
         <!-- /.box-body -->
       </div>
 
+
+{{-- ============================================================================================================================== --}}
+{{-- ===============================================VIEW ANGKOT=================================================================== --}}
+@foreach ($dbtweets as $dbtweet)
+     <div class="modal fade" id="modal-view-{{$dbtweet->id_twitter}}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" align="center">Lihat</h4>
+              </div>
+              <div class="modal-body overflow-hidden">
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    Nama Akun
+                  </div>
+                  <div class="col-xs-9">
+                    {{$dbtweet->nama_akun}}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    Sentiment
+                  </div>
+                  <div class="col-xs-9">
+                    {{$dbtweet->sentiment}}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    Tweet
+                  </div>
+                  <div class="col-xs-9">
+                    {!!$dbtweet->tweet!!}
+                  </div>
+                </div>
+                <div class="col-xs-12 box-table">
+                  <div class="col-xs-3">
+                    Score
+                  </div>
+                  <div class="col-xs-9">
+                  Positif : {{$dbtweet->score_positif}}<br>
+                  Negatif : {{$dbtweet->score_netral}}<br>
+                  Netral  : {{$dbtweet->score_negatif}}
+                  </div>
+                </div>
+              </div>
+            </div>
+           </div>
+      </div>
+ @endforeach
+{{-- ============================================================================================================================== --}}
+@foreach ($dbtweets as  $dbtweet)
+<div class="modal fade" id="modal-hapus-{{$dbtweet->id_twitter}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #f56954">
+        <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-white" align="center">Hapus</h4>
+      </div>
+      <div class="modal-body overflow-hidden">
+        Apakah anda yakin ingin menghapus Tweet ini?
+      </div>
+      <div class="modal-footer">
+        <form action="/analysis/hapus/{{$dbtweet->id_twitter}}" method="post">
+          <input type="submit" class="btn btn-danger" name="submit" value="YA">
+          {{ csrf_field() }}
+          <input type="hidden" name="_method" value="DELETE">
+
+        <button type="button" class="btn pull-left" data-dismiss="modal">Tidak</button>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+@endforeach
+{{-- ============================================================================================================================== --}}
 
 @endsection

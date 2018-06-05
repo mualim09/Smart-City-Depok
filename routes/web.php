@@ -61,6 +61,7 @@ Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
 Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
 Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
 
+Route::delete('/analysis/hapus/{id_twitter}', 'SocmedAnalysisController@delete_tweet')->middleware('auth')->name('analysis');
 Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
 
 
