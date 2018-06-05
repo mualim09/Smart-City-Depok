@@ -23,6 +23,7 @@
                   <li role="presentation"><a data-toggle="tab" href="#menu2">Bar Chart</a></li>
                 </ul>
               </li>
+    <li><a data-toggle="tab" href="#menu3">CHART /HARI</a></li>          
   </ul>
 
   {{-- <h2>HOME</h2> --}}
@@ -37,16 +38,41 @@
                     <canvas id="pie-chart" width="800" height="450"></canvas>
                   </div>
                   <div class="col-md-4 bg-aqua-active box-ketsocmed">
+                    
                     <p class="text-center">
                       <i class="fa fa-info-circle fa-2x"></i><br>
                       <strong>Keterangan</strong>
                     </p>
-                    <div class="progress-group">
+{{--                     <div class="progress-group">
                       <span class="progress-text">Total Keseluruhan</span>
                       <span class="progress-number"><b>9</b></span>
-                    </div>
-                  </div>
+                    </div> --}}
 
+                      <div class="row" align="center">
+                      <div class="rating-block">
+                        <span class="info-box-icon bg-green"><i class="fa fa-thumbs-o-up"></i></span>
+                        <h4>Average user rating</h4>
+                        <h2 class="bold">4.3 <small>/ 5</small></h2>
+{{--                         <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        </button> --}}
+                    </div>
+                    </div>
+
+
+                  </div>
                   <div class="col-md-4 box-detail-keterangan">
                     <div class="progress-group">
                     </div>
@@ -58,8 +84,6 @@
 
   <div id="menu1" class="tab-pane fade">  
   <div class="box-body">
-
-
 
   <div id="line" class="tab-pane fade in active">
     <div class="line-height-box-body"></div>
@@ -82,9 +106,6 @@
                     </div>
                   </div>
   </div>
-
-
-
 
     </div>
     </div>
@@ -123,13 +144,13 @@
 
     <div id="menu3" class="tab-pane fade">
   
-    <div class="box-body">
+   <div class="box-body">
 
-      <div class="line-height-box-body"></div>
+                <div class="line-height-box-body"></div>
                   <div class="col-md-8">
-                    <canvas id="radar" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
+                    <canvas id="hari-chart" width="800" height="450"></canvas>
                   </div>
-                  <div class="col-md-4 bg-aqua-active box-keterangan">
+                  <div class="col-md-4 bg-aqua-active box-ketsocmed">
                     <p class="text-center">
                       <i class="fa fa-info-circle fa-2x"></i><br>
                       <strong>Keterangan</strong>
@@ -144,8 +165,6 @@
                     <div class="progress-group">
                     </div>
                   </div>
-
-
 
     </div>
     </div>

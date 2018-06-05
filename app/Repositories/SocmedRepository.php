@@ -87,6 +87,16 @@ class SocmedRepository
     }
 
 //=============================================================
+   
+    if ($data[$i]['favorited'] == 'true' ) {
+        $like_status = 'true';
+    }
+    else{
+        $like_status = '';
+    }
+
+//=============================================================
+
     if (!empty($data[$i]['entities']['urls'])) {
         $urls = $data[$i]['entities']['urls'];
 
@@ -159,7 +169,8 @@ class SocmedRepository
             'in_reply_to_status_id'     => $statusid,
             'in_reply_to_user_id_str'    => $reply_userid,
             'in_reply_to_screen_name'     => $reply_userakun,
-            'retweet_status'     => $retweet_status
+            'retweet_status'     => $retweet_status,
+            'like_status'       => $like_status
         ];    
     } 
 
@@ -202,6 +213,13 @@ public function getfollow($flw){
         }
 
 
+        $koneksi = Twitter::getFriendships(['source_id'           => '1000962488739885056',
+                                                  'source_screen_name'  => 'HiDepok',
+                                                  'target_id'           => $data[$i]['id_str'],
+                                                  'target_screen_name'  => $data[$i]['screen_name']
+                                                 ]);
+
+
         $follow[$i] =
         [
             'id_akun'           => $data[$i]['id_str'],
@@ -215,6 +233,8 @@ public function getfollow($flw){
             'url'               => $data[$i]['url'],
             'followers_count'   => $data[$i]['followers_count'],
             'friends_count'     => $data[$i]['friends_count'],
+            'status_following'  => $koneksi->relationship->source->following,
+            'status_follower'   => $koneksi->relationship->source,
             'created_at'        => $data[$i]['created_at'],
         ];    
     }
@@ -243,8 +263,6 @@ public function getfollow($flw){
 
 
     public function charttotal($sentiment){
-
-
     return  DB::table('socmed_analysis')
             ->where('sentiment', $sentiment)
             ->count();
@@ -252,11 +270,18 @@ public function getfollow($flw){
     }
 
     public function chartperbulan($sentiment, $tglawal, $tglakhir ){
-
-
     return  DB::table('socmed_analysis')
             ->where('sentiment', $sentiment)
             ->whereBetween('created_at', [$tglawal, $tglakhir])
+            ->count();
+
+    }
+
+    public function chartperhari($sentiment, $month, $alltgl ){
+    return  DB::table('socmed_analysis')
+            ->where('sentiment', $sentiment)
+            ->whereMonth('created_at', $month)
+            ->whereDay('created_at', $alltgl)
             ->count();
 
     }

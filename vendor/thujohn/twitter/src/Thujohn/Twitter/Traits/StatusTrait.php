@@ -240,4 +240,10 @@ Trait StatusTrait {
 		return $this->get('statuses/lookup', $parameters);
 	}
 
+
+	public function undoRt($id, $parameters = [])
+    {
+        return $this->post('statuses/unretweet/'.$id, $parameters);
+    }
+
 }

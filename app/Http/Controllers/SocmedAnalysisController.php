@@ -20,18 +20,20 @@ class SocmedAnalysisController extends Controller
 
     protected $ChartTotal;
     protected $ChartPerBulan;
+    protected $ChartPerHari;
 
 
     public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $charttotal,
-                        SocmedRepository $getprofile, SocmedRepository $chartperbulan)
+                        SocmedRepository $getprofile, SocmedRepository $chartperbulan, SocmedRepository $chartperhari)
     {
         $this->middleware('auth');
-        $this->GetProfile = $getprofile;
-        $this->sentiment = $sentiment;
+        $this->GetProfile       = $getprofile;
+        $this->sentiment        = $sentiment;
         $this->SentimentAnalysis = $SentimentAnalysis;
 
-        $this->ChartTotal = $charttotal;
-        $this->ChartPerBulan = $chartperbulan;
+        $this->ChartTotal       = $charttotal;
+        $this->ChartPerBulan    = $chartperbulan;
+        $this->ChartPerHari     = $chartperhari;
     }
 
     
@@ -83,7 +85,7 @@ return $data1;
 
     $profile       = Twitter::getUsers([
                         'user_id' => '1000962488739885056', 
-                        'screen_name' => 'DepokHi',
+                        'screen_name' => 'HiDepok',
                         'format' => 'array' 
                         ]);
 
@@ -138,6 +140,28 @@ return $data1;
 
     $dbtweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
 
+    $year = Carbon::now()->year; //tahun sekarang
+    $month = Carbon::now()->month; //bulan sekarang
+    $month1 = Carbon::now()->format('F Y'); //bulan tahun
+    $tgl  = Carbon::now()->format('l j F Y');
+
+    for ($m1=1; $m1<=12; $m1++) {       //loop all name month
+     $allmonth[] = date('F', mktime(0,0,0,$m1, 1, date('Y')));
+     }
+
+    $jml_tgl = Carbon::now()->endofMonth()->day;   //total tgl pd bulan
+     for ($t=1; $t<=$jml_tgl; $t++) {
+     $alltgl[] = $t;
+     }
+
+
+     for ($m=1; $m<=12; $m++) {
+    $dt[]  = Carbon::create($year, $m, 1, 0, 0, 0)->startofMonth()->toDateTimeString();
+    $dt2[]  = Carbon::create($year, $m, 1, 0, 0, 0)->endofMonth()->toDateTimeString();
+
+    }
+
+
 // =======================================================================================================
 // FUNGSI CHART
             
@@ -145,38 +169,26 @@ return $data1;
     $total_netral       = $this->ChartTotal->charttotal('netral');
     $total_negatif      = $this->ChartTotal->charttotal('negatif');
 
+    for ($b=0; $b<=11; $b++) {
+    $bulan_positif[]     = $this->ChartPerBulan->chartperbulan('positif', $dt[$b], $dt2[$b]);
+    $bulan_netral[]     = $this->ChartPerBulan->chartperbulan('netral', $dt[$b], $dt2[$b]);
+    $bulan_negatif[]     = $this->ChartPerBulan->chartperbulan('negatif', $dt[$b], $dt2[$b]);
+    }
 
-    $janfeb_positif     = $this->ChartPerBulan->chartperbulan('positif', '2018-01-01', '2018-02-28');
-    $janfeb_netral      = $this->ChartPerBulan->chartperbulan('netral', '2018-01-01', '2018-02-28');
-    $janfeb_negatif     = $this->ChartPerBulan->chartperbulan('negatif', '2018-01-01', '2018-02-28');
 
-    $marap_positif     = $this->ChartPerBulan->chartperbulan('positif', '2018-03-01', '2018-04-30');
-    $marap_netral      = $this->ChartPerBulan->chartperbulan('netral', '2018-03-01', '2018-04-30');
-    $marap_negatif     = $this->ChartPerBulan->chartperbulan('negatif', '2018-03-01', '2018-04-30');
+    for ($d=0; $d<$jml_tgl; $d++) {
+    $tgl_positif[]     = $this->ChartPerHari->chartperhari('positif', $month, $alltgl[$d]);
+    $tgl_netral[]     = $this->ChartPerHari->chartperhari('netral', $month, $alltgl[$d]);
+    $tgl_negatif[]     = $this->ChartPerHari->chartperhari('negatif', $month, $alltgl[$d]);
+    }
 
-    $meijun_positif     = $this->ChartPerBulan->chartperbulan('positif', '2018-05-01', '2018-06-30');
-    $meijun_netral      = $this->ChartPerBulan->chartperbulan('netral', '2018-05-01', '2018-06-30');
-    $meijun_negatif     = $this->ChartPerBulan->chartperbulan('negatif', '2018-05-01', '2018-06-30');
 
-    $julag_positif     = $this->ChartPerBulan->chartperbulan('positif', '2018-07-01', '2018-08-31');
-    $julag_netral      = $this->ChartPerBulan->chartperbulan('netral', '2018-07-01', '2018-08-31');
-    $julag_negatif     = $this->ChartPerBulan->chartperbulan('negatif', '2018-07-01', '2018-08-31');
-
-    $sepok_positif     = $this->ChartPerBulan->chartperbulan('positif', '2018-09-01', '2018-10-31');
-    $sepok_netral      = $this->ChartPerBulan->chartperbulan('netral', '2018-09-01', '2018-10-31');
-    $sepok_negatif     = $this->ChartPerBulan->chartperbulan('negatif', '2018-09-01', '2018-10-31');
-
-    $novdes_positif     = $this->ChartPerBulan->chartperbulan('positif', '2018-11-01', '2018-12-31');
-    $novdes_netral      = $this->ChartPerBulan->chartperbulan('netral', '2018-11-01', '2018-12-31');
-    $novdes_negatif     = $this->ChartPerBulan->chartperbulan('negatif', '2018-11-01', '2018-12-31');
-
-    return view('socmed/socmedanalysis',compact('get_profile', 'tweet_mention', 'get_data', 'dbtweets',
-
-            'total_positif', 'total_netral', 'total_negatif',
-
-            'janfeb_positif', 'janfeb_netral', 'janfeb_negatif', 'marap_positif', 'marap_netral', 'marap_negatif',
-            'meijun_positif', 'meijun_netral', 'meijun_negatif', 'julag_positif', 'julag_netral', 'julag_negatif',
-            'sepok_positif', 'sepok_netral', 'sepok_negatif', 'novdes_positif', 'novdes_netral', 'novdes_negatif'
+    // return $tgl;
+    return view('socmed/socmedanalysis',compact('year', 'month', 'month1', 'allmonth', 'alltgl', 'tgl', 
+                'bulan_positif', 'bulan_netral', 'bulan_negatif',
+                'tgl_positif', 'tgl_netral', 'tgl_negatif',
+                'get_profile', 'tweet_mention', 'get_data', 'dbtweets',
+                'total_positif', 'total_netral', 'total_negatif'
 
         ));
     } 

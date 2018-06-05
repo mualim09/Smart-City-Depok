@@ -41,7 +41,7 @@ class SocmedController extends Controller
     {
     $profile       = Twitter::getUsers([
                         'user_id' => '1000962488739885056', 
-                        'screen_name' => 'DepokHi',
+                        'screen_name' => 'HiDepok',
                         'format' => 'array' 
                         ]);
 
@@ -82,8 +82,8 @@ class SocmedController extends Controller
 // ============================================================================================
 
 
-    // return $data1_retweet;
-    // return json_encode($get_retweet);
+    // return $data1;
+    // return $data1_like;
     return view('socmed/dashboard3', compact('get_profile', 'data1_mention', 'data1', 'data1_like', 'data1_retweet'));
     }
 
@@ -113,6 +113,12 @@ class SocmedController extends Controller
     }
     $twitter = Twitter::postTweet($newTwitte);
     return back();
+    }
+
+        public function destroytweet(Request $request)
+    {
+    $destroytweet = Twitter::destroyTweet($request->id_twitter, ['trim_user' => '1']);
+    return back();  
     }
 
 
@@ -148,6 +154,24 @@ class SocmedController extends Controller
     return back();
     }
 
+            public function unretweet(Request $request)
+    {
+    $unretweet = Twitter::undoRt($request->id_twitter, ['trim_user' => '1']);
+    return back();
+    }
+
+
+            public function like(Request $request)
+    {
+    $like = Twitter::postFavorite(['id'=>($request->id_twitter)], ['include_entities' => '1']);
+    return back();  
+    }
+
+    public function unlike(Request $request)
+    {
+    $unlike = Twitter::destroyFavorite(['id'=>($request->id_twitter)], ['include_entities' => '1']);
+    return back();  
+    }
 
 
 

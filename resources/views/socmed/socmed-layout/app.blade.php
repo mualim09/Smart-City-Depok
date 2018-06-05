@@ -312,38 +312,6 @@ $('.ajax').click(function(){
     
 <script type="text/javascript">
 
-
-            new Chart(document.getElementById("line-chart"), {
-  type: 'line',
-  data: {
-    labels: ["Jan-Feb", "Mar-Apr", "Mei-Jun", "Jul-Ags", "Sep-Oktr", "Nov-Des"],
-    datasets: [{ 
-        data: [{{$janfeb_positif}},{{$marap_positif}},{{$meijun_positif}},{{$julag_positif}},{{$sepok_positif}},{{$novdes_positif}}],
-        label: "Positif",
-        borderColor: "#2ed573",
-        fill: false
-      }, { 
-        data: [{{$janfeb_netral}},{{$marap_netral}},{{$meijun_netral}},{{$julag_netral}},{{$sepok_netral}},{{$novdes_netral}}],
-        label: "Netal",
-        borderColor: "#ffcc66",
-        fill: false
-      }, { 
-        data: [{{$janfeb_negatif}},{{$marap_negatif}},{{$meijun_negatif}},{{$julag_negatif}},{{$sepok_negatif}},{{$novdes_negatif}}],
-        label: "Negatif",
-        borderColor: "#ff4757",
-        fill: false
-      }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Sentiment analysis Kepuasan Masyarakat Depok Pada Tahun 2018'
-    }
-  }
-});
-
-
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
@@ -357,30 +325,58 @@ new Chart(document.getElementById("pie-chart"), {
     options: {
       title: {
         display: true,
-        text: 'CHART TOTAL KEPUASAN MASYARAKAT DEPOK'
+        text: 'CHART TOTAL KEPUASAN MASYARAKAT DEPOK <?php echo $year ?>'
       }
     }
 });
 
-
+            new Chart(document.getElementById("line-chart"), {
+  type: 'line',
+  data: {
+    labels: <?php echo json_encode($allmonth); ?>,
+    datasets: [{ 
+        data: <?php echo json_encode($bulan_positif); ?>,
+        label: "Positif",
+        borderColor: "#2ed573",
+        fill: false
+      }, { 
+        data: <?php echo json_encode($bulan_netral); ?>,
+        label: "Netal",
+        borderColor: "#ffcc66",
+        fill: false
+      }, { 
+        data: <?php echo json_encode($bulan_negatif); ?>,
+        label: "Negatif",
+        borderColor: "#ff4757",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Sentiment analysis Masyarakat Depok <?php echo $year ?>'
+    }
+  }
+});
 
 new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
-      labels: ["Jan-Feb", "Mar-Apr", "Mei-Jun", "Jul-Ags", "Sep-Oktr", "Nov-Des"],
+      labels: <?php echo json_encode($allmonth); ?>,
       datasets: [
         {
-        data: [{{$janfeb_positif}},{{$marap_positif}},{{$meijun_positif}},{{$julag_positif}},{{$sepok_positif}},{{$novdes_positif}}],
+        data: <?php echo json_encode($bulan_positif); ?>,
         label: "Positif",
         backgroundColor: "#2ed573",
         fill: false
       }, { 
-        data: [{{$janfeb_netral}},{{$marap_netral}},{{$meijun_netral}},{{$julag_netral}},{{$sepok_netral}},{{$novdes_netral}}],
+        data: <?php echo json_encode($bulan_netral); ?>,
         label: "Netal",
         backgroundColor: "#ffcc66",
         fill: false
       }, { 
-        data: [{{$janfeb_negatif}},{{$marap_negatif}},{{$meijun_negatif}},{{$julag_negatif}},{{$sepok_negatif}},{{$novdes_negatif}}],
+        data: <?php echo json_encode($bulan_negatif); ?>,
         label: "Negatif",
         backgroundColor: "#ff4757",
         fill: false
@@ -390,11 +386,41 @@ new Chart(document.getElementById("bar-chart"), {
     options: {
       title: {
         display: true,
-        text: 'Sentiment Mayarakat Kota Depok'
+        text: 'Sentiment analysis Kepuasan Masyarakat Depok Pada Tahun <?php echo $year ?>'
       }
     }
 });
 
+
+            new Chart(document.getElementById("hari-chart"), {
+  type: 'line',
+  data: {
+    labels: <?php echo json_encode($alltgl); ?>,
+    datasets: [{ 
+        data: <?php echo json_encode($tgl_positif); ?>,
+        label: "Positif",
+        borderColor: "#2ed573",
+        fill: false
+      }, { 
+        data: <?php echo json_encode($tgl_netral); ?>,
+        label: "Netal",
+        borderColor: "#ffcc66",
+        fill: false
+      }, { 
+        data: <?php echo json_encode($tgl_negatif); ?>,
+        label: "Negatif",
+        borderColor: "#ff4757",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Sentiment analysis Kepuasan Masyarakat Depok <?php echo $month1 ?>'
+    }
+  }
+});
 
             
 
