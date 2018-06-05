@@ -153,13 +153,14 @@ body {
   width: 280%;
   height: 100%;
   left: calc(-280% + 90px);
-  background: rgba(32, 35, 42, 0.75);
+  background: rgba(32, 35, 42, 0.93);
   -webkit-transform: scaleX(0);
           transform: scaleX(0);
   -webkit-transform-origin: right center;
           transform-origin: right center;
   -webkit-transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 9999999;
 }
 .com__nav-link.flex-row {
   -ms-flex-flow: row wrap;
@@ -277,4 +278,31 @@ body {
 .logo img:hover {
   -webkit-transform: rotate(180deg) scale(1.1);
           transform: rotate(180deg) scale(1.1);
+}
+
+@media only screen and (max-width: 1050px) {
+  .com__section--text h1 {
+    font-size: 38px;
+  }
+  .com__section--text p {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .com__section--text h1 {
+    font-size: 28px;
+  }
+  .com__section--text p {
+    font-size: 12px;
+  }
+  .com__nav {
+    width: 60px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .com__nav {
+    width: 38px;
+  }
 }

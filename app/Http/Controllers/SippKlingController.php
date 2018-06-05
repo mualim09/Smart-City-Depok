@@ -203,4 +203,57 @@ class SippKlingController extends Controller
   public function dashboardDetail(){
     return view('sipp-kling-pages/dashboard-detail');
   }
+
+  public function initestdoang(){
+    $rumah_sehat = DB::table('rumah_sehat')
+                  ->select('id_rumah_sehat', 'waktu')
+                  ->orderBy('id_rumah_sehat','asc')
+                  ->count();
+
+    $dataJoin = DB::table('rumah_sehat as r')
+                  ->select('r.id_rumah_sehat', 'k.id_rumah_sehat', 'r.waktu')
+                  ->join('kks as k', 'k.id_rumah_sehat', '=', 'r.id_rumah_sehat')
+                  ->count();
+
+    // $no = 1;
+    // foreach ($rumah_sehat as $key => $data) {
+    //   //$data->id_rumah_sehat = $no++;
+    //   $chkData = DB::table('rumah_sehat')->where('id_rumah_sehat', $no)->count();
+      
+    //   if($chkData >= 1){
+    //     $no++;
+    //     // $data->id_rumah_sehat = 'valid';
+    //   } else {
+    //     // $data->id_rumah_sehat = 'ada zznya';
+    //     $dataValid = [
+    //       'id_rumah_sehat' => $no++
+    //     ];
+
+    //     DB::table('rumah_sehat')->where('id_rumah_sehat', $data->id_rumah_sehat)->update($dataValid);
+    //   }
+    // }
+    // foreach ($rumah_sehat as $key => $data) {
+    //   $dataValid = [
+    //     'waktu' => date('Y-m-d H:m:s', strtotime(str_replace('/', '-', $data->waktu)))
+    //   ];
+
+    //   DB::table('rumah_sehat')->where('id_rumah_sehat', $data->id_rumah_sehat)->update($dataValid);
+    // }
+
+    // $dataNotValid = DB::table('rumah_sehat')
+    //                 ->select('waktu','id_petugas','id_rumah_sehat')
+    //                 ->orderBy('waktu', 'asc')
+    //                 ->get();
+
+    // foreach ($dataNotValid as $key => $data) {
+    //   $dataValid = [
+    //     'waktu' => date('Y-m-d H:m:s', strtotime(str_replace('pagi','AM', str_replace('malam', 'PM', str_replace('/', '-', $data->waktu)))))
+    //   ];
+
+    //   DB::table('rumah_sehat')->where('id_rumah_sehat', $data->id_rumah_sehat)->update($dataValid);
+    // }
+    // zz11, zz12, zz13, zz14, zz15, zz2, zz3, zz4, zz5, zz6, zz8, zz9
+    // DB::table('rumah_sehat')->where('id_rumah_sehat','like','%zz%')->delete();
+    return $dataJoin;
+  }
 }

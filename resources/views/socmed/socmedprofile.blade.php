@@ -29,7 +29,9 @@
           {{-- ==== --}}
     <div class="container">
     {{-- <div class="row justify-content-center"> --}}
-    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
+
+    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
+
 
             <!-- Post Create Box
             ================================================= -->

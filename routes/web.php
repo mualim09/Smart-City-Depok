@@ -47,6 +47,7 @@ Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middle
 Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
 
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
+
 Route::post('destroytweet', ['as'=>'post.destroytweet','uses'=>'SocmedController@destroytweet']);
 
 Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
@@ -60,9 +61,8 @@ Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
 Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
 Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
 
-
-
 Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
+
 
 
 //===============================================================
@@ -226,6 +226,7 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 // });
 // Route::get('/blog/{judul}', 'BlogController@error');
 
+// Route::get('/', 'VisitorController@visitor');
 Route::get('/', 'FeedController@berita');
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');
@@ -499,6 +500,8 @@ Route::prefix('sipp-kling')->group(function() {
     Route::get('/trash', 'SippKlingController@trash')->name('trash');
 
     Route::get('/dashboard-detail', 'SippKlingController@dashboardDetail')->name('dashboard-detail');
+
+    Route::get('/test', 'SippKlingController@initestdoang');
 });
 
 Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');

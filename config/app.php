@@ -185,6 +185,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
 
     ],
 
@@ -241,6 +242,7 @@ return [
         'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
         'SentimentAnalysis' => Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
     ],
 
 ];

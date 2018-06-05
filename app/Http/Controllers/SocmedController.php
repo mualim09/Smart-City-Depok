@@ -74,10 +74,12 @@ class SocmedController extends Controller
 
     $data1          = $this->GetTweet->gettweet($get_home);
     $data1_mention  =$this->GetTweet->gettweet($get_mention);
+
     $data1_like     =$this->GetTweet->gettweet($get_like);
     $get_profile    = $this->GetProfile->getprofile($profile);
 
     $data1_retweet     =$this->GetTweet->gettweet($mytweet);
+
 
 // ============================================================================================
 
@@ -172,6 +174,57 @@ class SocmedController extends Controller
     $unlike = Twitter::destroyFavorite(['id'=>($request->id_twitter)], ['include_entities' => '1']);
     return back();  
     }
+
+
+
+        public function reply(Request $request)
+    {
+    $this->validate($request, [
+        'tweet' => 'required',
+        ]);
+    $newTwitte =    [
+                    'status' => $request->tweet,
+                     'in_reply_to_status_id' => $request->id_twitter
+                    ];
+
+    
+    if(!empty($request->images)){
+    foreach ($request->images as $key => $value) {
+    $uploaded_media = Twitter::uploadMedia(['media' => File::get($value->getRealPath())]);
+    if(!empty($uploaded_media)){
+                    $newTwitte['media_ids'][$uploaded_media->media_id_string] = $uploaded_media->media_id_string;
+                }
+    }
+    }
+    $reply = Twitter::postTweet($newTwitte);
+    return back();
+    }
+
+
+            public function retweet(Request $request)
+    {
+    // $this->validate($request, [
+    //     'tweet' => 'required',
+    //     ]);
+    $newTwitte =    [
+                    'trim_user' => 'true',
+                    'id' => $request->id_twitter
+                    // 'status' => $request->tweet
+                    ];
+
+    // json_encode($newTwitte);
+    // if(!empty($request->images)){
+    // foreach ($request->images as $key => $value) {
+    // $uploaded_media = Twitter::uploadMedia(['media' => File::get($value->getRealPath())]);
+    // if(!empty($uploaded_media)){
+    //                 $newTwitte['media_ids'][$uploaded_media->media_id_string] = $uploaded_media->media_id_string;
+    //             }
+    // }
+    // }
+    $retweet = Twitter::postRt($newTwitte);
+    return back();
+    }
+
 
 
 
