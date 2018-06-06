@@ -573,7 +573,7 @@ class ComposerStaticInitb929e885ba20a36ecb37c6bee23632b3
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
-        'Composer\\CaBundle\\CaBundle' => __DIR__ . '/..' . '/composer/ca-bundle/src/CaBundle.php',
+
         'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_22_034745_create_admins_table.php',
         'CreateSocmedAnalysesTable' => __DIR__ . '/../..' . '/database/migrations/2018_04_29_125702_create_socmed_analyses_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

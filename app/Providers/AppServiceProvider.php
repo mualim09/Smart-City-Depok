@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        // $kecamatans = DB::table('petugas_sikelings')->select('kecamatan')->groupBy('kecamatan')->get();
-        // View::share('kecamatans', $kecamatans);
+        $kecamatans = DB::table('petugas_sikelings')->select('kecamatan')->groupBy('kecamatan')->get();
+        View::share('kecamatans', $kecamatans);
     }
 
     /**

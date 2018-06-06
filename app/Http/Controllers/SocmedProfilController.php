@@ -37,6 +37,8 @@ class SocmedProfilController extends Controller
 
     public function profile()
     {
+
+
     $following       = Twitter::getFriends([
                         'count' => '200', 
                         'format' => 'array']);
@@ -51,9 +53,9 @@ class SocmedProfilController extends Controller
                         'format' => 'array']);
 
     $profile       = Twitter::getUsers([
-                        'user_id' => '171893613', 
-                        'screen_name' => 'Tegar09',
-                        'format' => 'array' 
+                        'user_id' => '1000962488739885056', 
+                        'screen_name' => 'HiDepok',
+                        'format' => 'array'  
                         ]);
 
     $get_following          = $this->GetFollow->getfollow($following);
@@ -62,10 +64,35 @@ class SocmedProfilController extends Controller
     $get_profile             = $this->GetProfile->getprofile($profile);
 
 
-    // return $get_profile;
+
+
+
+    // return $get_following;
     return view('socmed/socmedprofile',compact('get_profile', 'get_following', 'get_followers', 'get_tweets'));
     } 
 
+
+
+
+            public function postfollow(Request $request)
+    {
+    $postfollow = Twitter::postFollow([
+                                        'user_id' => $request->id_akun,
+                                        'screen_name' => $request->nama_akun,
+                                        'follow'    => '1'
+                                      ]);
+    return back();  
+    }
+
+
+            public function postunfollow(Request $request)
+    {
+    $postunfollow = Twitter::postUnfollow([
+                                        'user_id' => $request->id_akun,
+                                        'screen_name' => $request->nama_akun
+                                      ]);
+    return back();  
+    }
 
 
       
