@@ -299,7 +299,11 @@ function persenwilayah($kota)
         <ul class="users-list clearfix" style="padding: 1em 0">
           @foreach($user as $users)
           <li>
+            @if (!empty ($users->foto))
             <img src="{{ $users->foto }}" alt="User Image" width="70px">
+            @else
+            <div class="w3-circle w3-black" width="70px"></div>
+            @endif
             <a class="users-list-name" href="#">{{ $users->username }}</a>
             <span class="users-list-date">{{ str_limit ($users->bio, 10) }}</span>
           </li>
@@ -468,34 +472,26 @@ function persenwilayah($kota)
     }
   });
 
-  new Chart(document.getElementById("statistik-pengajuan"), {
-  type: 'line',
-  data: {
-    labels: ['Diterima', 'Diproses', 'Ditolak'],
-    datasets: [{ 
-        data: [1006,114,2478],
-        label: "Diterima",
-        borderColor: "#3cba9f",
-        fill: false
-      }, { 
-        data: [282,3050,5267],
-        label: "Diproses",
-        borderColor: "#8e5ea2",
-        fill: false
-      }, { 
-        data: [168,570,734],
-        label: "Ditolak",
-        borderColor: "#c45850",
-        fill: false
+  // Bar chart
+new Chart(document.getElementById("statistik-pengajuan"), {
+    type: 'bar',
+    data: {
+      labels: ["Diterima", "Diproses", "Ditolak"],
+      datasets: [
+        {
+          label: "Population (millions)",
+          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+          data: <?php echo json_encode($pengajuanjml); ?>,
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Predicted world population (millions) in 2050'
       }
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Statistik Pengajuan Karya Warga Depok Tahun 2018'
     }
-  }
 });
 
   new Chart(document.getElementById("statistik-pembaca-artikel"), {

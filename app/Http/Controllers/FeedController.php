@@ -8,10 +8,11 @@ use Feeds;
 use Location;
 use DB;
 use App\ModelVisitor;
+use App\Notification;
 
 class FeedController extends Controller
 {
-    public function berita()
+    public function index()
     {
     	$ip= \Request::ip();
 	    $data = Location::get('182.23.86.44');
@@ -51,5 +52,14 @@ class FeedController extends Controller
 
         include(app_path('\Notification.php'));
       return view('/welcome', compact('beritas','articles'));
+    }
+
+    public function notification()
+    {
+        Notification::add('articles', 'articles');
+        Notification::add('title', 'title');
+        Notification::add('desc', 'desc');
+        Notification::add('articles', 'articles');
+        Notification::add('url', 'url');
     }
 }

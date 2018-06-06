@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\ModelVisitor;
+use App\StatistikModel;
 
 class HomeController extends Controller
 {
@@ -75,23 +76,12 @@ class HomeController extends Controller
         }
         
         //statistik pengajuan
-        // $pengajuan = array();
-        // for($j=1;$j<=3;$j++)
-        // {
-        //     $pengajuans = DB::table('penghargaans')->selectRaw("count(id_penghargaan) as pengajuan_karya")
-        //     ->where('status', $j)
-        //     ->get();
-        //     foreach($pengajuans as $pengajuan2)
-        //     {
-        //         array_push($pengajuan, $pengajuan2->pengajuan_karya);
-        //     }
-        // }
-        // dd($pengajuan);
+        $pengajuan = StatistikModel::selectRaw(" DISTINCT (SELECT COALESCE(COUNT(status), 0) FROM penghargaans WHERE status = 'diterima') as status_diterima, (SELECT COALESCE(COUNT(status), 0) FROM penghargaans WHERE status = 'diproses') as status_diproses, (SELECT COALESCE(COUNT(status), 0) FROM penghargaans WHERE status = 'ditolak') as status_ditolak")
+        ->first();
 
-        // $pengajuan = DB::table('penghargaans')
-        // ->distinct()
-        // ->selectRaw("count(status) as total_pengajuan")
-
+        $pengajuanjml = array();
+        array_push($pengajuanjml, $pengajuan->status_diterima, $pengajuan->status_diproses, $pengajuan->status_ditolak);
+        // dd($pengajuanjml);
 
         //visitor
         $visitor = array();
@@ -106,6 +96,6 @@ class HomeController extends Controller
             }
         }
 
-        return view('dashboard', compact('user', 'visitor', 'jumlahuser', 'complaint', 'arrayart', 'arrayartjml', 'arrayevent', 'arrayjmlevent'));
+        return view('dashboard', compact('user', 'visitor', 'jumlahuser', 'complaint', 'arrayart', 'arrayartjml', 'arrayevent', 'arrayjmlevent', 'pengajuan', 'pengajuanjml'));
     }
 } 
