@@ -22,9 +22,13 @@ class SocmedAnalysisController extends Controller
     protected $ChartPerBulan;
     protected $ChartPerHari;
 
+    protected $Str_Hightlight;
+
+
 
     public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $charttotal,
-                        SocmedRepository $getprofile, SocmedRepository $chartperbulan, SocmedRepository $chartperhari)
+                        SocmedRepository $getprofile, SocmedRepository $chartperbulan, SocmedRepository $chartperhari,
+                    SocmedRepository $str_highlight)
     {
         $this->middleware('auth');
         $this->GetProfile       = $getprofile;
@@ -34,7 +38,23 @@ class SocmedAnalysisController extends Controller
         $this->ChartTotal       = $charttotal;
         $this->ChartPerBulan    = $chartperbulan;
         $this->ChartPerHari     = $chartperhari;
+
+        $this->Str_Hightlight = $str_highlight;
+
+
     }
+
+// =====================================================================================================================================
+// =======================================================Fungsi Highlight==============================================================
+// =====================================================================================================================================
+public function highlightkeyword($string, $search, $color)
+{
+
+        $tweetclr = $this->Str_Hightlight->str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE|STR_HIGHLIGHT_WHOLEWD, '<span style="color: '.$color.'">\1</span>');
+
+return $tweetclr;
+}
+// =====================================================================================================================================
 
     
       public function getanalysisdata($data)
@@ -82,6 +102,26 @@ return $data1;
 
         public function analysis()
     {
+define('STR_HIGHLIGHT_SIMPLE', 1);
+
+/**
+ * Only match whole words in the string
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_WHOLEWD', 2);
+
+/**
+ * Case sensitive matching
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_CASESENS', 4);
+
+/**
+ * Overwrite links if matched
+ * This should be used when the replacement string is a link
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_STRIPLINKS', 8);
 
     $profile       = Twitter::getUsers([
                         'user_id' => '1000962488739885056', 
@@ -97,49 +137,92 @@ return $data1;
     	'count' 		=> 100,
     	]);
 
-    // $d_search = Twitter::getSearch([
-    //     'q'             => "pemkotdepok macet",
-    //     'tweet_mode'    => 'extended',
-    //     'result_type'   => 'recent',
-    //     'format'        => 'array',
-    //     'count'         => 100,
-    //     ]);
 
     $get_data                   = $this->getanalysisdata($data_search);
     $get_profile                = $this->GetProfile->getprofile($profile);
     
 // // ======================================================================================================
-//     $data_mention = Twitter::getMentionsTimeline(['count' => 10, 'format' => 'array']);	
-//     $nilai_mention = [];
-//     for ($i=0; $i < count($data_mention); $i++) { 
-//         $nilai_mention[$i] = [
+    $data_mention = Twitter::getMentionsTimeline(['count' => 10, 'format' => 'array']);	
+    $nilai_mention = [];
+    for ($i=0; $i < count($data_mention); $i++) { 
+        $nilai_mention[$i] = [
 
-//             'score' => $this->sentiment->score($data_mention[$i]['text'])
-//         ];
-//     }
+            'score' => $this->sentiment->score($data_mention[$i]['text'])
+        ];
+    }
 
-//     $tweet_mention = [];
-//     for ($i=0; $i < count($data_mention); $i++) { 
-//         $tweet_mention[$i] = [
-//             'id_twitter' => $data_mention[$i]['id'],
-//             'nama_akun' => $data_mention[$i]['user']['name'],
-//             'tweet' => $data_mention[$i]['text'],
-//             'sentiment' => $this->SentimentAnalysis->decision($data_mention[$i]['text']),
-//             'score_positif' => $nilai_mention[$i]['score']['positif'],
-//             'score_netral' => $nilai_mention[$i]['score']['netral'],
-//             'score_negatif' => $nilai_mention[$i]['score']['negatif'],
-//             'created_at' => $data_mention[$i]['created_at'],
-//         ];
+    $tweet_mention = [];
+    for ($i=0; $i < count($data_mention); $i++) { 
+        $tweet_mention[$i] = [
+            'id_twitter' => $data_mention[$i]['id'],
+            'nama_akun' => $data_mention[$i]['user']['name'],
+            'tweet' => $data_mention[$i]['text'],
+            'sentiment' => $this->SentimentAnalysis->decision($data_mention[$i]['text']),
+            'score_positif' => $nilai_mention[$i]['score']['positif'],
+            'score_netral' => $nilai_mention[$i]['score']['netral'],
+            'score_negatif' => $nilai_mention[$i]['score']['negatif'],
+            'created_at' => $data_mention[$i]['created_at'],
+        ];
 
-//         $checkdata = DB::table('socmed_analysis')->where('id_twitter', $data_mention[$i]['id'])->get()->count();
-//         if($checkdata == 0){
-//           DB::table('socmed_analysis')->insert($tweet_mention[$i]);
-//         }
-//     }
+        $checkdata = DB::table('socmed_analysis')->where('id_twitter', $data_mention[$i]['id'])->get()->count();
+        if($checkdata == 0){
+          DB::table('socmed_analysis')->insert($tweet_mention[$i]);
+        }
+    }
+// =========================================================================================================
+// ======================================= DATA BAG OF WORD ================================================
+// =========================================================================================================
 
 
-    $dbtweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
+for ($i=37; $i<count( $this->sentiment->getList('positif')); $i++)
+{ 
+    $keypos[] = $this->sentiment->getList('positif')[$i];
+}
 
+for ($i=9; $i<count( $this->sentiment->getList('netral')); $i++)
+{ 
+    $keynet[] = $this->sentiment->getList('netral')[$i];
+}
+
+for ($i=39; $i<count( $this->sentiment->getList('negatif')); $i++)
+{ 
+    $keyneg[] = $this->sentiment->getList('negatif')[$i];
+}
+// ------------------------------------------------------------------------------------------
+// ---------------------------------- TABEL VIEW --------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+$datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
+
+    foreach ($datatweets as $key => $datatweet) {
+
+    if ($datatweet->sentiment == 'negatif') {
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keyneg, "#fd79a8"); 
+    }
+
+    elseif ($datatweet->sentiment == 'positif') {
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keypos, "#00b894"); 
+    }
+
+    else
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keynet, "#6c5ce7"); 
+
+    
+    $dbtweets [] = [ 'id_twitter' => $datatweet->id_twitter,
+                    'nama_akun' => $datatweet->nama_akun,
+                    'tweet' => $tweet,
+                    'sentiment' => $datatweet->sentiment,
+                    'score_positif' => $datatweet->score_positif,
+                    'score_netral' => $datatweet->score_netral,
+                    'score_negatif' => $datatweet->score_negatif,
+                    'created_at' => $datatweet->created_at
+                    ];
+
+    }
+
+// ###########################################################################################################
+// ###################################### GET DATA CHART #####################################################
+// ###########################################################################################################
     $year = Carbon::now()->year; //tahun sekarang
     $month = Carbon::now()->month; //bulan sekarang
     $month1 = Carbon::now()->format('F Y'); //bulan tahun
@@ -161,14 +244,14 @@ return $data1;
 
     }
 
-
-// =======================================================================================================
-// FUNGSI CHART
+    // FUNGSI CHART TOTAL
             
     $total_positif      = $this->ChartTotal->charttotal('positif');
     $total_netral       = $this->ChartTotal->charttotal('netral');
     $total_negatif      = $this->ChartTotal->charttotal('negatif');
 
+
+    // FUNGSI CHART PERBULAN
     for ($b=0; $b<=11; $b++) {
     $bulan_positif[]     = $this->ChartPerBulan->chartperbulan('positif', $dt[$b], $dt2[$b]);
     $bulan_netral[]     = $this->ChartPerBulan->chartperbulan('netral', $dt[$b], $dt2[$b]);
@@ -176,15 +259,18 @@ return $data1;
     }
 
 
+    // FUNGSI CHART PERHARI
     for ($d=0; $d<$jml_tgl; $d++) {
     $tgl_positif[]     = $this->ChartPerHari->chartperhari('positif', $month, $alltgl[$d]);
     $tgl_netral[]     = $this->ChartPerHari->chartperhari('netral', $month, $alltgl[$d]);
     $tgl_negatif[]     = $this->ChartPerHari->chartperhari('negatif', $month, $alltgl[$d]);
     }
+// =======================================================================================================
+// =======================================================================================================
 
 
-    // return $tgl;
-    return view('socmed/socmedanalysis',compact('year', 'month', 'month1', 'allmonth', 'alltgl', 'tgl', 
+    return view('socmed/socmedanalysis',compact('keypos', 'keynet', 'keyneg',
+                'year', 'month', 'month1', 'allmonth', 'alltgl', 'tgl', 
                 'bulan_positif', 'bulan_netral', 'bulan_negatif',
                 'tgl_positif', 'tgl_netral', 'tgl_negatif',
                 'get_profile', 'tweet_mention', 'get_data', 'dbtweets',
@@ -196,16 +282,13 @@ return $data1;
 
 
 // =======================================================================================================
+// ===================================== HAPUS TWEET======================================================
 // =======================================================================================================
-// HAPUS TWEET
-// 
 public function delete_tweet($id_twitter)
     {
     $tweetdelete = DB::table('socmed_analysis')->where('id_twitter', $id_twitter)->delete();
     return redirect('dashboard-socmed/analysis')->with('delete', 'Data Tweet telah dihapus'); 
     }
-// 
-// 
 // =======================================================================================================
 // ======================================================================================================= 
 

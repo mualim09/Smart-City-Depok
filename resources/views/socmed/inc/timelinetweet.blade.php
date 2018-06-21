@@ -4,6 +4,7 @@
 
 
       <div class="post-detail">
+
         <div class="user-info">
           <h5><a href="{!!$datas['nama_akun_url']!!}" class="profile-link">{{$datas['nama']}}</a> 
           <span class="following">
@@ -11,11 +12,11 @@
           </span>
           </h5>
           <p class="text-muted">{{$datas['created_at']}}</p>
-        
-
         </div>
-        <div class="reaction">
-          <a class="btn text-blue" data-toggle="modal" data-target="#modal-reply-{{$datas['id_twitter']}}"><i class="fa fa-reply-all"></i></a>
+        
+        <div class="reaction">      
+
+          <a class="btn text-blue symbolmodal" data-toggle="modal" data-target="#modal-reply-{{$datas['id_twitter']}}"><i class="fa fa-reply-all"></i></a>
           
         {{-- ========================================================================================================= --}}
         {{-- Retweet --}}
@@ -23,11 +24,11 @@
         <form method="POST" action="{{ route('post.unretweet') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="fa fa-retweet text-green">{{$datas['retweet_count']}}
+            <button type="submit" class="fa fa-retweet text-green symbolbutton">{{$datas['retweet_count']}}
             </button>
          </form>
         @else
-        <a class="btn text-green" data-toggle="modal" data-target="#modal-retweet-{{$datas['id_twitter']}}"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>  
+        <a class="btn text-green symbolmodal" data-toggle="modal" data-target="#modal-retweet-{{$datas['id_twitter']}}"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>  
         @endif
 
         {{-- ========================================================================================================= --}}
@@ -37,20 +38,37 @@
         <form method="POST" action="{{ route('post.unlike') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="glyphicon glyphicon-heart text-red">{{$datas['favorite_count']}}
+            <button type="submit" class="glyphicon glyphicon-heart text-red symbolbutton">{{$datas['favorite_count']}}
             </button>
          </form>
         @else
         <form method="POST" action="{{ route('post.like') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="glyphicon glyphicon-heart text-red">{{$datas['favorite_count']}}
+            <button type="submit" class="glyphicon glyphicon-heart text-red symbolbutton">{{$datas['favorite_count']}}
             </button>
         </form>
         @endif
         {{-- ========================================================================================================= --}}
 
+        <div class="btn-group">
+        @if($datas['nama_akun'] == $get_profile['nama_akun'])
+
+          <a class="btn-del dropdown-toggle" data-toggle="dropdown"><i class="fa fa-angle-down"></i></a>          
+          <ul class="dropdown-menu dropdel">
+              <form method="POST" action="{{ route('post.destroytweet') }}" enctype="multipart/form-data">
+                {{ csrf_field() }}
+              <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
+            <li><button type="submit" class="glyphicon glyphicon-trash symbolbutton pull-right"> Delete
+            </button></li>    
+            </form>
+          </ul>
+        @endif  
+        </div>      
+
+
         </div>
+
         <div class="line-divider"></div>
         <div class="post-text">
         {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
@@ -69,14 +87,14 @@
     @endif 
 
 
-    @if($datas['nama_akun'] == $get_profile['nama_akun'])
+{{--     @if($datas['nama_akun'] == $get_profile['nama_akun'])
     <form method="POST" action="{{ route('post.destroytweet') }}" enctype="multipart/form-data">
       {{ csrf_field() }}
     <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
     <button type="submit" class="glyphicon glyphicon-trash pull-right">
     </button>
     </form>
-    @endif
+    @endif --}}
 
     </div>
   </div>

@@ -17,9 +17,9 @@
   {{-- <h2>HOME</h2> --}}
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#tweet">Tweets</a></li>
-    <li><a data-toggle="tab" href="#menu1">Following</a></li>
-    <li><a data-toggle="tab" href="#menu2">Followers</a></li>
-    <li><a data-toggle="tab" href="#menu3">Find</a></li>
+    <li><a data-toggle="tab" href="#following">Following</a></li>
+    <li><a data-toggle="tab" href="#followers">Followers</a></li>
+    <li><a data-toggle="tab" href="#findaccount">Find</a></li>
   </ul>
 
   <div class="tab-content">
@@ -54,7 +54,7 @@
 {{-- ================================================== --}}
     
 
-    <div id="menu1" class="tab-pane fade">
+    <div id=following class="tab-pane">
       
       <div class="box-body">
       {{-- <div class="container"> --}}
@@ -87,7 +87,7 @@
     
 {{-- ================================================== --}}
 
-    <div id="menu2" class="tab-pane fade">
+    <div id="followers" class="tab-pane fade">
   
           <div class="box-body">
       {{-- <div class="container"> --}}
@@ -121,7 +121,7 @@
 {{-- ================================================== --}}
     
 
-    <div id="menu3" class="tab-pane fade"> 
+    <div id="findaccount" class="tab-pane fade"> 
     <div class="box-body">
     <div class="container">
 

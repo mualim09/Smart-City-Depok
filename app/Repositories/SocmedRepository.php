@@ -259,6 +259,7 @@ public function getfollow($flw){
 
     return $paginatedItems;
     }
+
 // ########################################################################################################################
 
 
@@ -285,6 +286,58 @@ public function getfollow($flw){
             ->count();
 
     }
+
+
+
+// ########################################################################################################################
+// ############################################ HIGHLIGH TEXT #############################################################
+// ########################################################################################################################
+
+function str_highlight($text, $needle, $options = null, $highlight = null)
+{
+    // Default highlighting
+    if ($highlight === null) {
+        $highlight = '<strong>\1</strong>';
+    }
+
+    // Select pattern to use
+    if ($options & STR_HIGHLIGHT_SIMPLE) {
+        $pattern = '#(%s)#';
+        $sl_pattern = '#(%s)#';
+    } else {
+        $pattern = '#(?!<.*?)(%s)(?![^<>]*?>)#';
+        $sl_pattern = '#<a\s(?:.*?)>(%s)</a>#';
+    }
+
+    // Case sensitivity
+    if (!($options & STR_HIGHLIGHT_CASESENS)) {
+        $pattern .= 'i';
+        $sl_pattern .= 'i';
+    }
+
+$needle = (array) $needle;
+foreach ($needle as $needle_s) {
+        $needle_s = preg_quote($needle_s);
+
+        // Escape needle with optional whole word check
+        if ($options & STR_HIGHLIGHT_WHOLEWD) {
+            $needle_s = '\b' . $needle_s . '\b';
+        }
+
+        // Strip links
+        if ($options & STR_HIGHLIGHT_STRIPLINKS) {
+            $sl_regex = sprintf($sl_pattern, $needle_s);
+            $text = preg_replace($sl_regex, '\1', $text);
+        }
+
+        $regex = sprintf($pattern, $needle_s);
+$text = preg_replace($regex, $highlight, $text);
+}
+
+    return $text;
+}
+
+
 
 
 }

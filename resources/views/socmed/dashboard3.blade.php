@@ -15,9 +15,9 @@
   {{-- <h2>HOME</h2> --}}
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#timeline">Timeline</a></li>
-    <li><a data-toggle="tab" href="#menu1">Mention</a></li>
-    <li><a data-toggle="tab" href="#menu2">Like</a></li>
-    <li><a data-toggle="tab" href="#menu3">Retweet</a></li>
+    <li><a data-toggle="tab" href="#mention">Mention</a></li>
+    <li><a data-toggle="tab" href="#like">Like</a></li>
+    <li><a data-toggle="tab" href="#retweet">Retweet</a></li>
   </ul>
 
   <div class="tab-content">
@@ -101,7 +101,7 @@
 {{-- =============================================================== Mention ============================================================== --}}
 
     
-<div id="menu1" class="tab-pane fade">
+<div id="mention" class="tab-pane fade">
   
     <div class="box-body">
 <div class="container">
@@ -146,7 +146,7 @@
     
 {{-- ================================================== --}}
 
-<div id="menu2" class="tab-pane fade">
+<div id="like" class="tab-pane fade">
 
 <div class="box-body">
 <div class="container">
@@ -168,14 +168,33 @@
 </div>
 </div>
 
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ REPLY +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+
+@foreach($data1_like as $datas)
+
+  @include('socmed.inc.replytweet')
+
+@endforeach
+
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RETWEET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+
+@foreach($data1_like as $datas)
+
+  @include('socmed.inc.retweettweet')
+
+@endforeach
+
 {{-- ================================================== --}}
     
 
-<div id="menu3" class="tab-pane fade">
-  
+<div id="retweet" class="tab-pane fade">  
   <div class="box-body">
-<div class="container">
-<div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
+    <div class="container">
+      <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 3em">
       
        @foreach($data1_retweet as $datas)
        @if (!empty($datas['retweet_status']))
@@ -189,14 +208,30 @@
       {{ $data1_retweet->links() }}              
       </div>
 
-  </div>
-</div>    
-
-
+      </div>
+    </div>    
   </div>
 </div>
 
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ REPLY +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
 
+@foreach($data1_retweet as $datas)
+
+  @include('socmed.inc.replytweet')
+
+@endforeach
+
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RETWEET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+
+@foreach($data1_retweet as $datas)
+
+  @include('socmed.inc.retweettweet')
+
+@endforeach
 
 {{-- ========================================================================================================================================= --}}
   </div>   

@@ -81,7 +81,7 @@ class SocmedProfilController extends Controller
                                         'screen_name' => $request->nama_akun,
                                         'follow'    => '1'
                                       ]);
-    return back();  
+    return redirect('dashboard-socmed/profile#following');  
     }
 
 
@@ -91,7 +91,7 @@ class SocmedProfilController extends Controller
                                         'user_id' => $request->id_akun,
                                         'screen_name' => $request->nama_akun
                                       ]);
-    return back();  
+    return redirect('dashboard-socmed/profile#followers');  
     }
 
 

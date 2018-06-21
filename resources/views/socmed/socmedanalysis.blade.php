@@ -10,9 +10,9 @@
   </div>
 </section>
 
-
         {{-- ######### --}}
   <ul class="nav nav-tabs">
+
     <li class="active"><a data-toggle="tab" href="#tweet">CHART TOTAL</a></li>
     <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -215,18 +215,18 @@
                 @foreach ($dbtweets as $no => $dbtweet)
                 <tr>
                   <td><?php echo ($no + 1); ?></td>
-                  <td>{{$dbtweet->id_twitter}}</td>
-                  <td>{{$dbtweet->nama_akun}}</td>
-                  <td>{!!$dbtweet->tweet!!}</td>
-                  <td>{{$dbtweet->sentiment}}</td>
-                  <td style="display:none;">{{$dbtweet->score_positif}}</td>
-                  <td style="display:none;">{{$dbtweet->score_netral}}</td>
-                  <td style="display:none;">{{$dbtweet->score_negatif}}</td>
-                  <td>{{$dbtweet->created_at}}</td>
+                  <td>{{$dbtweet['id_twitter']}}</td>
+                  <td>{{$dbtweet['nama_akun']}}</td>
+                  <td>{!!$dbtweet['tweet']!!}</td>
+                  <td>{{$dbtweet['sentiment']}}</td>
+                  <td style="display:none;">{{$dbtweet['score_positif']}}</td>
+                  <td style="display:none;">{{$dbtweet['score_netral']}}</td>
+                  <td style="display:none;">{{$dbtweet['score_negatif']}}</td>
+                  <td>{{$dbtweet['created_at']}}</td>
                   <td style="white-space: nowrap;" align="center">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-view-{{$dbtweet->id_twitter}}"><i class="ion-eye"></i></button>
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat btn-info" data-toggle="modal" data-target="#modal-view-{{$dbtweet['id_twitter']}}"><i class="ion-eye"></i></button>
 
-                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$dbtweet->id_twitter}}"><i class="ion-ios-trash"></i></button>
+                    <button type="button" class="btn btn-flat btn-danger" data-toggle="modal" data-target="#modal-hapus-{{$dbtweet['id_twitter']}}"><i class="ion-ios-trash"></i></button>
 
                   </td>
                 </tr>
@@ -243,9 +243,9 @@
 
 
 {{-- ============================================================================================================================== --}}
-{{-- ===============================================VIEW ANGKOT=================================================================== --}}
+{{-- ===============================================VIEW Detail=================================================================== --}}
 @foreach ($dbtweets as $dbtweet)
-     <div class="modal fade" id="modal-view-{{$dbtweet->id_twitter}}">
+     <div class="modal fade" id="modal-view-{{$dbtweet['id_twitter']}}">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -259,7 +259,7 @@
                     Nama Akun
                   </div>
                   <div class="col-xs-9">
-                    {{$dbtweet->nama_akun}}
+                    {{$dbtweet['nama_akun']}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
@@ -267,7 +267,7 @@
                     Sentiment
                   </div>
                   <div class="col-xs-9">
-                    {{$dbtweet->sentiment}}
+                    {{$dbtweet['sentiment']}}
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
@@ -275,7 +275,9 @@
                     Tweet
                   </div>
                   <div class="col-xs-9">
-                    {!!$dbtweet->tweet!!}
+                  
+                  {!! $dbtweet['tweet'] !!}
+                  
                   </div>
                 </div>
                 <div class="col-xs-12 box-table">
@@ -283,9 +285,9 @@
                     Score
                   </div>
                   <div class="col-xs-9">
-                  Positif : {{$dbtweet->score_positif}}<br>
-                  Negatif : {{$dbtweet->score_netral}}<br>
-                  Netral  : {{$dbtweet->score_negatif}}
+                  Positif : {{$dbtweet['score_positif']}}<br>
+                  Negatif : {{$dbtweet['score_netral']}}<br>
+                  Netral  : {{$dbtweet['score_negatif']}}
                   </div>
                 </div>
               </div>
@@ -295,7 +297,7 @@
  @endforeach
 {{-- ============================================================================================================================== --}}
 @foreach ($dbtweets as  $dbtweet)
-<div class="modal fade" id="modal-hapus-{{$dbtweet->id_twitter}}">
+<div class="modal fade" id="modal-hapus-{{$dbtweet['id_twitter']}}">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #f56954">
@@ -307,7 +309,7 @@
         Apakah anda yakin ingin menghapus Tweet ini?
       </div>
       <div class="modal-footer">
-        <form action="/analysis/hapus/{{$dbtweet->id_twitter}}" method="post">
+        <form action="/analysis/hapus/{{$dbtweet['id_twitter']}}" method="post">
           <input type="submit" class="btn btn-danger" name="submit" value="YA">
           {{ csrf_field() }}
           <input type="hidden" name="_method" value="DELETE">
