@@ -249,7 +249,7 @@ $jabos  = $this->viewdatatabel("jasa_bogas");
             'nama_tempat'       => $request->nama_tempat,
             'alamat'            => $request->alamat,
             'id_data'           => 19,
-            'waktu'             => new DateTime()
+            'waktu'             => new DateTime() 
 
         ]);  
    return redirect('sipp-kling/dashboard-tabel')->with('success', 'Data tempat Kuliner telah ditambahkan');

@@ -18,4 +18,6 @@ return array(
     'Laracasts\\Flash' => array($vendorDir . '/laracasts/flash/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
+    'Google_Service_' => array($vendorDir . '/google/apiclient-services/src'),
+    'Google_' => array($vendorDir . '/google/apiclient/src'),
 );

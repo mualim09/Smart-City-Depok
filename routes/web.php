@@ -47,11 +47,23 @@ Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middle
 Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
 
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
+
+Route::post('destroytweet', ['as'=>'post.destroytweet','uses'=>'SocmedController@destroytweet']);
+
 Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
+
 Route::post('retweet', ['as'=>'post.retweet','uses'=>'SocmedController@retweet']);
+Route::post('unretweet', ['as'=>'post.unretweet','uses'=>'SocmedController@unretweet']);
 
+Route::post('like', ['as'=>'post.like','uses'=>'SocmedController@like']);
+Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
 
-Route::get('dashboard-socmed/coba', 'SocmedTestingController@trend')->middleware('auth')->name('home');
+Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
+Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
+
+Route::delete('/analysis/hapus/{id_twitter}', 'SocmedAnalysisController@delete_tweet')->middleware('auth')->name('analysis');
+Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
+
 
 
 //===============================================================

@@ -17,9 +17,9 @@
   {{-- <h2>HOME</h2> --}}
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#tweet">Tweets</a></li>
-    <li><a data-toggle="tab" href="#menu1">Following</a></li>
-    <li><a data-toggle="tab" href="#menu2">Followers</a></li>
-    <li><a data-toggle="tab" href="#menu3">Likes</a></li>
+    <li><a data-toggle="tab" href="#following">Following</a></li>
+    <li><a data-toggle="tab" href="#followers">Followers</a></li>
+    <li><a data-toggle="tab" href="#findaccount">Find</a></li>
   </ul>
 
   <div class="tab-content">
@@ -37,48 +37,9 @@
             ================================================= -->
 
            @foreach($get_tweets as $datas)
-            <div class="post-content">
-              <div class="post-container">
-                <img src="{{$datas['gambar_akun']}}" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="{!!$datas['nama_akun_url']!!}" class="profile-link">{{$datas['nama']}}</a> 
-                    <span class="following">
-                      <a href="{!!$datas['nama_akun_url']!!}"> @ {{$datas['nama_akun']}} </a>
-                    </span>
-                  </h5>
-                    <p class="text-muted">{{$datas['created_at']}}</p>
-                  </div>
-                  <div class="reaction">
-                    <a class="btn text-blue"><i class="fa fa-reply-all"></i></a>
-                    <a class="btn text-green"><i class="fa fa-retweet"></i>{{$datas['retweet_count']}}</a>
-                    <a class="btn text-red"><i class="fa fa-heart-o"></i>{{$datas['favorite_count']}}</a>
-                  </div>
-                  <div class="line-divider"></div>
-                  <div class="post-text">
-                  {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
-                    {{-- {!!$datas['tweet1']!!} --}}
-                      @if($datas['url'] != [])
-                      {!!$datas['url']!!}
-                      @endif
-                  </div>
-              @if($datas['pictvid'] == '')
-              
-              @elseif($datas['video'] == '') 
-              <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 100%; top: -0px;>
 
-              @elseif($datas['video'] != '')
-            <video width=100%; top: -0px; loop controls>
-               <source src="{!!$datas['pictvid']!!}" type="video/mp4">
-               {{-- <source src="{!!$datas['pictvid']!!}" type="application/x-mpegURL"> --}}
-            </video>
+          @include('socmed.inc.timelinetweet')
 
-              @endif 
-
-              </div>
-            </div>
-
-          </div>
            @endforeach
           <div style="text-align: right;">
           {{ $get_tweets->links() }}              
@@ -93,7 +54,7 @@
 {{-- ================================================== --}}
     
 
-    <div id="menu1" class="tab-pane fade">
+    <div id=following class="tab-pane">
       
       <div class="box-body">
       {{-- <div class="container"> --}}
@@ -104,28 +65,10 @@
                     <div class="friend-list">
                       <div class="row">
                         {{-- ===================================================================================================== --}}
-                        @foreach ($get_following  as $following)
-                          {{-- expr --}}
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            @if (!empty($following ['gambar_banner']))        
-                    <img src="{!!$following['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=70px; />
-                            @else 
-                            <div style="height: 70px; background-color: #eee"></div>
-                            @endif
-                            <div class="card-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                              <img src="{!!$following['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                <h5><a href="jobprof.php" class="profile-link">{{$following['nama']}}</a></h5>
+                        @foreach ($get_following  as $follow)
 
-                                <p style="font-size: 10pt"><a href="jobprof.php" class="profile-link">@ {{$following['nama_akun']}}</a></p>
+                         @include('socmed.inc.akunview')                        
 
-                                <h6 class="grey">{!! str_limit ($following['deskripsi'], 100) !!}</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                         @endforeach
                         {{-- ===================================================================================================== --}}
                       </div>
@@ -144,7 +87,7 @@
     
 {{-- ================================================== --}}
 
-    <div id="menu2" class="tab-pane fade">
+    <div id="followers" class="tab-pane fade">
   
           <div class="box-body">
       {{-- <div class="container"> --}}
@@ -155,26 +98,10 @@
                     <div class="friend-list">
                       <div class="row">
 {{-- ===================================================================================================== --}}
-                        @foreach ($get_followers  as $followers)
-                          {{-- expr --}}
-                        <div class="col-md-3 col-sm-3">
-                          <div class="friend-card sh">
-                            @if (!empty($followers['gambar_banner']))        
-                          <img src="{!!$followers['gambar_banner']!!}" alt="profile-cover" {{-- class="img-responsive cover" --}} width=100%; height=70px; />
-                            @else 
-                            <div style="height: 70px; background-color: #eee"></div>
-                            @endif
-                            <div class="card-info">
-                                 <button class="btn btn-primary1 pull-right ">Following</button>
-                              <img src="{!!$followers['gambar_akun']!!}" alt="user" class="profile-photo-lg" />
-                              <div class="friend-info">
-                                <h5><a href="jobprof.php" class="profile-link">{{$followers['nama']}}</a></h5>
-                                <p style="font-size: 7pt"><a href="jobprof.php" class="profile-link">@ {{$followers['nama_akun']}}</a></p>
-                                <h6 class="grey">{!! str_limit ($followers['deskripsi'], 100) !!}</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                        @foreach ($get_followers  as $follow)
+                         
+                         @include('socmed.inc.akunview')
+
                         @endforeach
 {{-- ===================================================================================================== --}}   
                       </div>
@@ -194,88 +121,35 @@
 {{-- ================================================== --}}
     
 
-    <div id="menu3" class="tab-pane fade">
-      
-  <div class="box-body">
-          {{-- ==== --}}
+    <div id="findaccount" class="tab-pane fade"> 
+    <div class="box-body">
     <div class="container">
-    {{-- <div class="row justify-content-center"> --}}
-    <div class="col-md-6 col-md-offset-2" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888;">
 
             <!-- Post Create Box
             ================================================= -->
-            <!-- Post Create Box End-->
-
-            <!-- Post Content
-            ================================================= -->
-            <br>
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Alexis Clark</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 3 mins ago</p>
-                  </div>
+        <div class="container">
+          <div class="row">
+                <div class="col-md-6">
+                <h2>Cari Akun Twitter</h2>
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control input-lg" name="namaakun" placeholder="pemkotdepok" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-lg" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Sophia Lee</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Updated her status about 33 mins ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">Linda Lohan</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 1 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-            <div class="post-content">
-              <div class="post-container">
-                <img src="http://placehold.it/300x300" alt="user" class="profile-photo-md pull-left" />
-                <div class="post-detail">
-                  <div class="user-info">
-                    <h5><a href="timeline.html" class="profile-link">John Doe</a> <span class="following">following</span></h5>
-                    <p class="text-muted">Published a photo about 2 hour ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Post Content
-            ================================================= -->
-
-            <!-- Post Content
-            ================================================= -->
           </div>
+        </div>
+
     </div>
-          {{-- ==== --}}
     </div> {{-- box didalam tab--}}
-
     </div>
 
-{{-- ===== --}}
+{{-- ===============================================================================--}}
       </div>
     </div>     
   </div>
