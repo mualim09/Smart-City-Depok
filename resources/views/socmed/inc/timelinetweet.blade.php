@@ -86,16 +86,6 @@
 
     @endif 
 
-
-{{--     @if($datas['nama_akun'] == $get_profile['nama_akun'])
-    <form method="POST" action="{{ route('post.destroytweet') }}" enctype="multipart/form-data">
-      {{ csrf_field() }}
-    <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-    <button type="submit" class="glyphicon glyphicon-trash pull-right">
-    </button>
-    </form>
-    @endif --}}
-
     </div>
   </div>
 </div>

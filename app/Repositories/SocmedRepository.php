@@ -1,25 +1,16 @@
 <?php
 
-
+ 
 namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Input;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
-use PHPInsight\Sentiment;
 use Twitter;
 use File;
 use Request;
 
 class SocmedRepository
 {
-
-    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis)
-    {
-        $this->sentiment = $sentiment;
-        $this->SentimentAnalysis = $SentimentAnalysis;
-    }
 
 
     public function getprofile($data){

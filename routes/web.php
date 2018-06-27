@@ -42,7 +42,7 @@ Route::get('/dashboard4', function () {
 //===============================================================
 //                          TWITTER                             =
 //===============================================================
-Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
+Route::get('dashboard-socmed', 'SocmedController@twitterTimeLine')->middleware('auth')->name('home');
 Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
 Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
 

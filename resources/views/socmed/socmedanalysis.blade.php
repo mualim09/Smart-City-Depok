@@ -1,6 +1,6 @@
 @extends('socmed.socmed-layout.app')
 
-@section('content')
+@section('content') 
 
 <div class="box">
 <section class="content-header overflow-hidden">
@@ -16,7 +16,7 @@
     <li class="active"><a data-toggle="tab" href="#tweet">CHART TOTAL</a></li>
     <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  CHART /TAHUN <span class="caret"></span>
+                  CHART /BULAN <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li role="presentation"><a data-toggle="tab" href="#menu1">Line Chart</a></li>
@@ -32,53 +32,14 @@
   <div id="tweet" class="tab-pane fade in active">
 {{-- ISI Timeline --}}
    <div class="box-body">
+    <div class="line-height-box-body"></div>
+    <div class="col-md-8">
+      <canvas id="pie-chart" width="800" height="450"></canvas>
+    </div>
 
-                <div class="line-height-box-body"></div>
-                  <div class="col-md-8">
-                    <canvas id="pie-chart" width="800" height="450"></canvas>
-                  </div>
-                  <div class="col-md-4 bg-aqua-active box-ketsocmed">
-                    
-                    <p class="text-center">
-                      <i class="fa fa-info-circle fa-2x"></i><br>
-                      <strong>Keterangan</strong>
-                    </p>
-{{--                     <div class="progress-group">
-                      <span class="progress-text">Total Keseluruhan</span>
-                      <span class="progress-number"><b>9</b></span>
-                    </div> --}}
+ @include('socmed.inc.detailbox')
 
-                      <div class="row" align="center">
-                      <div class="rating-block">
-                        <span class="info-box-icon bg-green"><i class="fa fa-thumbs-o-up"></i></span>
-                        <h4>Average user rating</h4>
-                        <h2 class="bold">4.3 <small>/ 5</small></h2>
-{{--                         <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        </button> --}}
-                    </div>
-                    </div>
-
-
-                  </div>
-                  <div class="col-md-4 box-detail-keterangan">
-                    <div class="progress-group">
-                    </div>
-                  </div>
-
-    </div> {{-- box didalam tab --}}
+    </div> 
   </div>
 {{-- ================================================== --}}
 
@@ -87,25 +48,15 @@
 
   <div id="line" class="tab-pane fade in active">
     <div class="line-height-box-body"></div>
-                  <div class="col-md-8">
-                    <canvas id="line-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
-                  </div>
-                  <div class="col-md-4 bg-aqua-active box-keterangan">
-                    <p class="text-center">
-                      <i class="fa fa-info-circle fa-2x"></i><br>
-                      <strong>Keterangan</strong>
-                    </p>
-                    <div class="progress-group">
-                      <span class="progress-text">Total Keseluruhan</span>
-                      <span class="progress-number"><b>9</b></span>
-                    </div>
-                  </div>
+    <div class="col-md-8">
+      <canvas id="line-chart" width="800" height="450" style="display: block; height: 450px; width: 901px;"></canvas>
+    </div>
+    
 
-                  <div class="col-md-4 box-detail-keterangan">
-                    <div class="progress-group">
-                    </div>
-                  </div>
-  </div>
+
+    @include('socmed.inc.detailboxbulan')
+       
+    </div>
 
     </div>
     </div>
@@ -116,26 +67,12 @@
     <div class="box-body">
 
       <div class="line-height-box-body"></div>
-                  <div class="col-md-8">
-                    <canvas id="bar-chart" width="1351" height="675" style="display: block; height: 450px; width: 901px;"></canvas>
-                  </div>
-                  <div class="col-md-4 bg-aqua-active box-keterangan">
-                    <p class="text-center">
-                      <i class="fa fa-info-circle fa-2x"></i><br>
-                      <strong>Keterangan</strong>
-                    </p>
-                    <div class="progress-group">
-                      <span class="progress-text">Total Keseluruhan</span>
-                      <span class="progress-number"><b>9</b></span>
-                    </div>
-                  </div>
+      <div class="col-md-8">
+        <canvas id="bar-chart" width="800" height="450" style="display: block; height: 450px; width: 901px;"></canvas>
+      </div>
+    
 
-                  <div class="col-md-4 box-detail-keterangan">
-                    <div class="progress-group">
-                    </div>
-                  </div>
-
-
+    @include('socmed.inc.detailboxbulan')
 
     </div>
     </div>
@@ -145,26 +82,13 @@
     <div id="menu3" class="tab-pane fade">
   
    <div class="box-body">
+    <div class="line-height-box-body"></div>
+    <div class="col-md-8">
+      <canvas id="hari-chart" width="1351" height="675"></canvas>
+    </div>
+  
 
-                <div class="line-height-box-body"></div>
-                  <div class="col-md-8">
-                    <canvas id="hari-chart" width="800" height="450"></canvas>
-                  </div>
-                  <div class="col-md-4 bg-aqua-active box-ketsocmed">
-                    <p class="text-center">
-                      <i class="fa fa-info-circle fa-2x"></i><br>
-                      <strong>Keterangan</strong>
-                    </p>
-                    <div class="progress-group">
-                      <span class="progress-text">Total Keseluruhan</span>
-                      <span class="progress-number"><b>9</b></span>
-                    </div>
-                  </div>
-
-                  <div class="col-md-4 box-detail-keterangan">
-                    <div class="progress-group">
-                    </div>
-                  </div>
+    @include('socmed.inc.detailboxhari')
 
     </div>
     </div>
@@ -254,40 +178,34 @@
                 <h4 class="modal-title" align="center">Lihat</h4>
               </div>
               <div class="modal-body overflow-hidden">
-                <div class="col-xs-12 box-table">
+                <div class="row">
                   <div class="col-xs-3">
-                    Nama Akun
+                    <div class="col-xs-12 no-padding" style="margin-bottom: 10px">
+                      <strong>Nama akun</strong><br>
+                      <small><b>{{$dbtweet['nama_akun']}}</b></small>
+                    </div>
+                    <div class="col-xs-12 no-padding" style="margin-bottom: 10px">
+                      <strong>Status</strong><br>
+                      @if($dbtweet['sentiment'] == 'negatif')
+                        <small class="status-sentiment">{{$dbtweet['sentiment']}}</small>
+                      @elseif($dbtweet['sentiment'] == 'netral')
+                        <small style="display: block;width: 100%;background:#fc6;padding: 3px 12px;color: #fff">{{$dbtweet['sentiment']}}</small>
+                      @else
+                        <small style="display: block;width: 100%;background: green;padding: 3px 12px;color: #fff">{{$dbtweet['sentiment']}}</small>
+                      @endif
+                    </div>
+                    <div class="col-xs-12 no-padding" style="margin-bottom: 10px;background: #f0f0f0;padding: 6px 13px !important">
+                      <strong>Score</strong><br>
+                      Positif : {{$dbtweet['score_positif']}}<br>
+                      Netral : {{$dbtweet['score_netral']}}<br>
+                      Negatif  : {{$dbtweet['score_negatif']}}
+                    </div>
                   </div>
                   <div class="col-xs-9">
-                    {{$dbtweet['nama_akun']}}
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    Sentiment
-                  </div>
-                  <div class="col-xs-9">
-                    {{$dbtweet['sentiment']}}
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    Tweet
-                  </div>
-                  <div class="col-xs-9">
-                  
-                  {!! $dbtweet['tweet'] !!}
-                  
-                  </div>
-                </div>
-                <div class="col-xs-12 box-table">
-                  <div class="col-xs-3">
-                    Score
-                  </div>
-                  <div class="col-xs-9">
-                  Positif : {{$dbtweet['score_positif']}}<br>
-                  Negatif : {{$dbtweet['score_netral']}}<br>
-                  Netral  : {{$dbtweet['score_negatif']}}
+                    <strong>Tweet:</strong>
+                    <div class="box-tweet">
+                      {!! $dbtweet['tweet'] !!}
+                    </div>
                   </div>
                 </div>
               </div>

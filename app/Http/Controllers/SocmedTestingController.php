@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
@@ -16,9 +17,12 @@ use Carbon\Carbon;
 
 class SocmedTestingController extends Controller
 {
+    
+
     protected $sentiment;
     protected $SentimentAnalysis;
     protected $GetList;
+
 
 public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis)
     {
@@ -117,89 +121,7 @@ $text = preg_replace($regex, $highlight, $text);
 }
 
 public function test()
-	{
-// define('STR_HIGHLIGHT_SIMPLE', 1);
-
-// /**
-//  * Only match whole words in the string
-//  * (off by default)
-//  */
-// define('STR_HIGHLIGHT_WHOLEWD', 2);
-
-// /**
-//  * Case sensitive matching
-//  * (off by default)
-//  */
-// define('STR_HIGHLIGHT_CASESENS', 4);
-
-// /**
-//  * Overwrite links if matched
-//  * This should be used when the replacement string is a link
-//  * (off by default)
-//  */
-// define('STR_HIGHLIGHT_STRIPLINKS', 8);
-// $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
-
-//     foreach ($datatweets as $key => $dt) {
-
-//     if ($dt->sentiment == 'negatif') {
-//             $tweet =   $this->highlightkeyword($dt->tweet, $keyneg, "#fd79a8"); 
-//     }
-
-//     elseif ($dt->sentiment == 'positif') {
-//             $tweet =   $this->highlightkeyword($dt->tweet, $keypos, "#00b894"); 
-//     }
-
-//     else
-//             $tweet =   $this->highlightkeyword($dt->tweet, $keynet, "#6c5ce7"); 
-
-    
-//     $dbtweets [] = [ 'id_twitter' => $dt->id_twitter,
-//                     'nama_akun' => $dt->nama_akun,
-//                     'tweet' => $tweet,
-//                     'sentiment' => $dt->sentiment,
-//                     'score_positif' => $dt->score_positif,
-//                     'score_netral' => $dt->score_netral,
-//                     'score_negatif' => $dt->score_negatif,
-//                     'score_negatif' => $dt->score_negatif
-//                     ];
-
-//     }
-// =================================================================================================================
-// for ($m=1; $m<=12; $m++) {
-//      $month[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
-//      }
-
-// 	$year = Carbon::now()->year;
-
-// for ($m=1; $m<=12; $m++) {
-// 	$dt[]  = Carbon::create($year, $m, 1, 0, 0, 0)->startofMonth()->toDateTimeString();
-// 	$dt2[]  = Carbon::create($year, $m, 1, 0, 0, 0)->endofMonth()->toDateTimeString();
-
-// }
-
-// $jml_tgl = Carbon::now()->endofMonth()->day;   //total tgl pd bulan
-//      for ($t=1; $t<=$jml_tgl; $t++) {
-//      $alltgl[] = $t;
-//      }
-
-//     $month = Carbon::now(); //bulan sekaang
-//     $month1 = $month->format('F Y');
-
-//===============================================================================================================
-// $string = 'I like match1 and a match3, and here is match2';
-// $newstring = $string;
-
-
-// $highlightcolor = "#fd79a8";
-// $newstring = str_replace('[#]', '<span style="color: '.$highlightcolor.';">', $newstring);
-// $newstring = str_replace('[@]', '</span>', $newstring);
-
-// $find = array('/match1/', '/match2/');
-// $replace = array($newstring);
-
-// $data = preg_replace($find, $replace, $string);
-// ==================================================================================================================
+{
 
 
 
@@ -220,16 +142,121 @@ for ($i=39; $i<count( $this->sentiment->getList('negatif')); $i++)
     $keyneg[] = $this->sentiment->getList('negatif')[$i];
 }
 
+for ($i=0; $i<count( $this->sentiment->getList('ignore')); $i++)
+{ 
+    $keyignore[] = $this->sentiment->getList('ignore')[$i];
+}
 
-// $string = 'Lampu penerangan jalan sepanjang jl. Juanda Depok mati semua. Rawan dan membahayakan pengguna jalan. @RadioElshinta @pemkotdepok';
-// $search = $keyneg;
-// $highlight = 'green';
-// $dbtweets = $this->str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE|STR_HIGHLIGHT_WHOLEWD, '<span style="color: '.$highlight.'">\1</span>');
+for ($i=0; $i<count( $this->sentiment->getList('prefix')); $i++)
+{ 
+    $keyprefix[] = $this->sentiment->getList('prefix')[$i];
+}
 
-return $keynet; 
-// return $data;
+// $dicti = $keypos+$keynet+$keyneg;
+
+// // 
+// $sentence = '@Dishub_Dpk @manto_dpk @pemkotdepok @IdrisAShomad Jangan lupa untuk membenahi Traffic Light perempatan RTM yang sudah 2 tahun lewat mati. Kalo memang tidak terpakai tolong dicabut saja. Tidak berfungsi buat apa dipajang2. akan';
+
+// foreach ($keyneg as $negPrefix) {
+
+//             //Search if that prefix is in the document
+//             if (strpos($sentence, $negPrefix) !== false) {
+//                 //Reove the white space after the negative prefix
+//                 $sentence = str_replace($negPrefix . ' ', $negPrefix, $sentence);
+//             }
+//         }
+
+// $tokens = $this->sentiment->_getTokens($sentence);
+//         // calculate the score in each category
+
+//         $total_score = 0;
+
+//         //Empty array for the scores for each of the possible categories
+//         $scores = array();
+
+//         //Loop through all of the different classes set in the $classes variable
+//         foreach ($this->classes as $class) {
+
+//             //In the scores array add another dimention for the class and set it's value to 1. EG $scores->neg->1
+//             $scores[$class] = 1;
+
+//             //For each of the individual words used loop through to see if they match anything in the $dictionary
+//             foreach ($tokens as $token) {
+
+//                 //If statement so to ignore tokens which are either too long or too short or in the $ignoreList
+//                 if (strlen($token) > $this->minTokenLength && strlen($token) < $this->maxTokenLength && !in_array($token, $keyignore)) {
+//                     //If dictionary[token][class] is set
+//                     if (isset($this->dictionary[$token][$class])) {
+//                         //Set count equal to it
+//                         $count = $this->dictionary[$token][$class];
+//                     } else {
+//                         $count = 0;
+//                     }
+
+//                     //Score[class] is calcumeted by $scores[class] x $count +1 divided by the $classTokCounts[class] + $tokCount
+//                     $scores[$class] *= ($count + 1);
+//                 }
+//             }
+
+//             //Score for this class is the prior probability multiplyied by the score for this class
+//             $scores[$class] = $this->prior[$class] * $scores[$class];
+//         }
+
+
+// $tes[] = [
+
+// 'dec1' => $this->SentimentAnalysis->decision('@IdrisAShomad @manto_dpk @dkpdepok1 @pemkotdepok @ipandut arus air kali krukut yang terhambat karena proyek JORR, selain sampah kiriman dr arah wilayah lain DAN tak tuntas untuk pembersihan kali dr kerak lumpur, SUKSES membuat air masuk > TEMBOK perumahan Grand Matoa JEBOL !!😡 https://t.co/WajrXwmwRv'),
+
+// 'dec12' => $this->sentiment->categorise('@IdrisAShomad @manto_dpk @dkpdepok1 @pemkotdepok @ipandut arus air kali krukut yang terhambat karena proyek JORR, selain sampah kiriman dr arah wilayah lain DAN tak tuntas untuk pembersihan kali dr kerak lumpur, SUKSES membuat air masuk > TEMBOK perumahan Grand Matoa JEBOL !!😡 https://t.co/WajrXwmwRv'),
+
+
+$sc2 = $this->sentiment->score('perbuatan mahasiswa itu sangat tidak pantas');
+// 
+
+$sentence = '@bemPNJ perbuataN Mahasiswa itu sangat tidak pantas dilakukan ‡';
+
+foreach ($keyprefix as $negPrefix) {
+// if (strpos($sentence, $negPrefix) !== false) {
+                //Reove the white space after the negative prefix
+                $sentence = str_replace($negPrefix . ' ', $negPrefix, $sentence);
+            // }
+        }
+
+      $sentence = str_replace("\r\n", " ", $sentence);
+
+      $diac =
+                /* A */ chr(192) . chr(193) . chr(194) . chr(195) . chr(196) . chr(197) .
+                /* a */ chr(224) . chr(225) . chr(226) . chr(227) . chr(228) . chr(229) .
+                /* O */ chr(210) . chr(211) . chr(212) . chr(213) . chr(214) . chr(216) .
+                /* o */ chr(242) . chr(243) . chr(244) . chr(245) . chr(246) . chr(248) .
+                /* E */ chr(200) . chr(201) . chr(202) . chr(203) .
+                /* e */ chr(232) . chr(233) . chr(234) . chr(235) .
+                /* Cc */ chr(199) . chr(231) .
+                /* I */ chr(204) . chr(205) . chr(206) . chr(207) .
+                /* i */ chr(236) . chr(237) . chr(238) . chr(239) .
+                /* U */ chr(217) . chr(218) . chr(219) . chr(220) .
+                /* u */ chr(249) . chr(250) . chr(251) . chr(252) .
+                /* yNn */ chr(255) . chr(209) . chr(241);
+
+        $sentence = strtolower(strtr($sentence, $diac, 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn'));
+        // $sentence = strtolower($sentence);
+
+        
+        $sentence = explode(" ", '@bemPNJ perbuataN Mahasiswa itu sangat tidakpantas dilakukan');
+
+        // for ($i=0; $i<count($sentence) ; $i++) { 
+        //     $sentence = strtolower($sentence[$i]);
+        // }
+
+ 
+return $sc2;
 
 	}
 
-
 }
+ 
+
+
+
+
+         
