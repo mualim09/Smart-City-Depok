@@ -33,6 +33,11 @@
     background-color: #ffffff !important;
     padding: 0 0 1em 0;
 }
+.modal-success .modal-body {
+    background-color: #ffffff !important;
+    padding: 0 0 1em 0;
+    color: #000;
+}
 .w3-border-bottom {
     border-bottom: 1px solid #eee!important;
 }
@@ -111,7 +116,7 @@ function persenwilayah($kota)
     <!-- ./col -->
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
-      <div class="small-box bg-green">
+      <div class="small-box bg-green" data-toggle="modal" data-target="#complaint" style="cursor: pointer;">
         <div class="inner">
           <h3 style="color: white">{{ $complaint }}</h3>
           <p style="color:white">Kritik dan Saran</p>
@@ -126,8 +131,8 @@ function persenwilayah($kota)
       <!-- small box -->
       <div class="small-box bg-orange">
         <div class="inner">
-          <h3 style="color: white">53<sup style="font-size: 20px">%</sup></h3>
-          <p style="color:white">Kestabilan Aplikasi</p>
+          <h3 style="color: white">0<sup style="font-size: 20px">%</sup></h3>
+          <p style="color:white">Bounce Rate</p>
         </div>
         <div class="icon">
           <i class="ion ion-stats-bars" style="color:white"></i>
@@ -158,24 +163,7 @@ function persenwilayah($kota)
         </div>
       </div>
     </div>
-
-    <div class="box box-widget">
-      <div class="box-header with-border bg-maroon">
-        <span class="info-box-icon bg-maroon" style="background-color: white"><i class="ion ion-ios-download"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Statistik Download Aplikasi</h4></span>
-        </div>
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times" style="color:white"></i></button>
-        </div>
-      </div>
-      <div class="chart" style="padding: 22px;">
-        <canvas id="stat_downloadaplikasi" width="800" height="450"></canvas>
-      </div>
-    </div>
-
+  
     <div class="box box-widget">
       <div class="box-header with-border bg-teal">
         <span class="info-box-icon bg-teal" style="background-color: white"><i class="ion ion-ios-paper"></i></span>
@@ -191,7 +179,6 @@ function persenwilayah($kota)
       <div class="chart" style="padding: 22px;">
         <canvas id="statistik-pengajuan" style="height:250px"></canvas>
       </div>
-      <!-- /.box-body -->
     </div>
 
     <div class="box box-widget">
@@ -281,6 +268,24 @@ function persenwilayah($kota)
     </div>
 
     <div class="box box-widget">
+      <div class="box-header with-border bg-maroon">
+        <span class="info-box-icon bg-maroon" style="background-color: white"><i class="ion ion-ios-download"></i></span>
+        <div class="info-box-content">
+          <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Download Aplikasi</h4></span>
+        </div>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times" style="color:white"></i></button>
+        </div>
+      </div>
+      <div class="chart" style="padding: 22px;">
+        <center><p style="margin: 0;color: #4444449e"><b> Jumlah aplikasi Hi-Depok yang telah digunakan sebanyak : </p>
+        <h1 class="maroon" style="margin: 0; color: #d81b60;">{{ $downloadapp }}</b></h1></center>
+      </div>
+    </div>
+
+    <div class="box box-widget">
       <div class="box-header with-border bg-aqua">
         <span class="info-box-icon bg-aqua" style="background-color: white"><i class="ion ion-ios-personadd"></i></span>
         <div class="info-box-content">
@@ -318,6 +323,7 @@ function persenwilayah($kota)
       <!-- /.box-footer -->
     </div>
 
+
     <div class="box box-widget">
       <div class="box-header with-border bg-green">
         <span class="info-box-icon bg-green" style="background-color: white"><i class="ion ion-ios-book"></i></span>
@@ -337,23 +343,6 @@ function persenwilayah($kota)
     </div>
     <!-- /.box-body -->
 
-    <div class="box box-widget">
-      <div class="box-header with-border bg-purple">
-        <span class="info-box-icon bg-purple" style="background-color: white"><i class="ion ion-ios-book"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-number" style="margin-top: 30px; font-style: bold"><h4>Interest</h4></span>
-        </div>
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times" style="color:white"></i></button>
-        </div>
-      </div>
-      <div class="box-body">
-       <div class="chart">
-        <canvas id="artikel" style="height:250px"></canvas>
-      </div>
-    </div>
 
 
 </div>
@@ -408,6 +397,24 @@ function persenwilayah($kota)
     </div>
   </div>
 
+  <!-- Modal Complaint -->
+  <div class="modal modal-success fade" id="complaint">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Kritik dan Saran</h4>
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="text/javascript">
     new Chart(document.getElementById("statistikvisitor"), {
       type: 'line',
@@ -429,27 +436,6 @@ function persenwilayah($kota)
       }
     });
 
-  // Bar chart
-  new Chart(document.getElementById("stat_downloadaplikasi"), {
-    type: 'bar',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-      {
-        label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-        data: [2478,5267,734,784,433]
-      }
-      ]
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Statistik Download Aplikasi Hi-Depok 2018'
-      }
-    }
-  });
 
   //statistik event
   new Chart(document.getElementById("statistik-event"), {

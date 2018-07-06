@@ -14,6 +14,21 @@
 // Route::get('/inputdataumum', 'Dashboard2@dataumum');
 
 
+//===============================================================
+//                             email                            =
+//===============================================================
+Route::post('/sendMail', 'MailController@sendMail');
+Route::get('/loginMail', function () {
+    return view('email/login');
+});
+Route::get('/tesemail', function () {
+    return view('email/email');
+});
+
+Route::post('/tesemail2', 'SendMailController@sendMail');
+
+// ##############################################################
+
 
 //===============================================================
 //                          lockscreen                          =
@@ -235,9 +250,7 @@ Route::get('/blog/{judul}', 'BlogController@viewblog2');
 Route::get('/event', 'EventController@viewevent');
 Route::get('/event/{nama_event}', 'EventController@viewevent2');
 Route::resource('complaint', 'ComplainController');
-Route::get('/information', function () {
-    return view('information');
-});
+Route::get('/information', 'InformasiController@index');
 Route::get('/faq', function () {
     return view('faq');
 });

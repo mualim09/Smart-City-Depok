@@ -48,6 +48,21 @@
   background: #0088cc !important;
 }
 
+.btntl {
+  padding: 0px 5px;
+}
+
+.btn-del {
+  font-size: 14pt;
+  color: #909090;
+  cursor: pointer;
+}
+
+.dropdel {
+    left: auto;
+    right: calc(50% - 10px - 9px);
+}
+
 .btn-following{
   background: #27aae1;
   padding: 5px 10px;

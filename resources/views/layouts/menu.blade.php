@@ -1,17 +1,22 @@
 <ul class="sidebar-menu" data-widget="tree">
   <li class="treeview">
-  <a href="#">
-    <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
-  </a>
-  
-  <ul class="treeview-menu">
+    <a href="/dashboard">
+      <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+    </a>
+    <!-- dihide untuk kepentingan skripsi -->
+  <!-- <ul class="treeview-menu">
     <li><a href="/dashboard"><i class="fa fa-circle-o"></i> Dashboard Aplikasi</a></li>
     <li><a href="/dashboard2"><i class="fa fa-circle-o"></i> Dashboard Data Publik</a></li>
-    <!--<li><a href="/dashboard3"><i class="fa fa-circle-o"></i> Dashboard 3 </a></li>-->
     <li><a href="/dashboard4"><i class="fa fa-circle-o"></i> Dashboard Kesling </a></li>
-  </ul>
+  </ul> -->
 </li>
 
+  <li class="treeview">
+    <a href="#">
+      <i class="fa fa-area-chart"></i> <span>Analysis Data</span>
+    </a>
+  </li>
+  
 <li class="treeview">
   <a href="#">
     <i class="fa fa-edit"></i> <span>Forms</span>
@@ -43,12 +48,14 @@
   </ul>
 </li>
 
+
+
 <li class="treeview">
   <a href="#">
     <i class="fa fa-table"></i> <span>Data</span>
     <i class="fa fa-angle-left pull-right"></i>
   </a>
-            
+
   <ul class="treeview-menu">
     <li class="treeview">
       <a href="#"><i class="fa fa-th-large"></i> Data Master
@@ -131,118 +138,118 @@
         <li class="treeview">
           <a href="olahraga"><i class="fa fa-list-ul"></i>Olahraga</a></li>
 
-         <li class="treeview">
-          <a href="#"><i class="fa fa-list-ul"></i>Transportasi
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>    
-          <ul class="treeview-menu">
-            <li><a href="angkot"><i class="fa fa-circle-o"></i>Angkot</a></li>
-            <li><a href="jpengiriman"><i class="fa fa-circle-o"></i>Jasa Pengiriman</a></li>            
-          </ul>
-        </li> 
+          <li class="treeview">
+            <a href="#"><i class="fa fa-list-ul"></i>Transportasi
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>    
+            <ul class="treeview-menu">
+              <li><a href="angkot"><i class="fa fa-circle-o"></i>Angkot</a></li>
+              <li><a href="jpengiriman"><i class="fa fa-circle-o"></i>Jasa Pengiriman</a></li>            
+            </ul>
+          </li> 
 
-        <li class="treeview">
-          <a href="#"><i class="fa fa-list-ul"></i>Fasilitas Umum
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>    
-          <ul class="treeview-menu">
-            <li><a href="tibadah"><i class="fa fa-circle-o"></i>Tempat Ibadah</a></li>
-            <li><a href="tpu"><i class="fa fa-circle-o"></i>TPU</a></li>
-            <li><a href="taman"><i class="fa fa-circle-o"></i>Taman</a></li>
-          </ul>
-        </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-list-ul"></i>Fasilitas Umum
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>    
+            <ul class="treeview-menu">
+              <li><a href="tibadah"><i class="fa fa-circle-o"></i>Tempat Ibadah</a></li>
+              <li><a href="tpu"><i class="fa fa-circle-o"></i>TPU</a></li>
+              <li><a href="taman"><i class="fa fa-circle-o"></i>Taman</a></li>
+            </ul>
+          </li>
 
-        <li class="treeview">
-          <a href="#"><i class="fa fa-list-ul"></i>Instansi
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>    
-          <ul class="treeview-menu">
-            <li><a href="pdam"><i class="fa fa-circle-o"></i>PDAM</a></li>
-            <li><a href="pospolisi"><i class="fa fa-circle-o"></i>Pos Polisi</a></li>
-            <li><a href="pln"><i class="fa fa-circle-o"></i>PLN</a></li>
-            <li><a href="spbu"><i class="fa fa-circle-o"></i>SPBU</a></li>
-            <li><a href="damkar"><i class="fa fa-circle-o"></i>Pemadam Kebakaran</a></li>
-            <li><a href="tni"><i class="fa fa-circle-o"></i>TNI</a></li>
-          </ul>
-        </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-list-ul"></i>Instansi
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>    
+            <ul class="treeview-menu">
+              <li><a href="pdam"><i class="fa fa-circle-o"></i>PDAM</a></li>
+              <li><a href="pospolisi"><i class="fa fa-circle-o"></i>Pos Polisi</a></li>
+              <li><a href="pln"><i class="fa fa-circle-o"></i>PLN</a></li>
+              <li><a href="spbu"><i class="fa fa-circle-o"></i>SPBU</a></li>
+              <li><a href="damkar"><i class="fa fa-circle-o"></i>Pemadam Kebakaran</a></li>
+              <li><a href="tni"><i class="fa fa-circle-o"></i>TNI</a></li>
+            </ul>
+          </li>
 
-        <li class="treeview">
-          <a href="#"><i class="fa fa-list-ul"></i>Kependudukan
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>    
-          <ul class="treeview-menu">
-            <li><a href="kelurahan"><i class="fa fa-circle-o"></i>Kelurahan</a></li>
-            <li><a href="kecamatan"><i class="fa fa-circle-o"></i>Kecamatan</a></li>
-            <li><a href="penduduk"><i class="fa fa-circle-o"></i>Penduduk</a></li>
-          </ul>
-        </li>
+          <li class="treeview">
+            <a href="#"><i class="fa fa-list-ul"></i>Kependudukan
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>    
+            <ul class="treeview-menu">
+              <li><a href="kelurahan"><i class="fa fa-circle-o"></i>Kelurahan</a></li>
+              <li><a href="kecamatan"><i class="fa fa-circle-o"></i>Kecamatan</a></li>
+              <li><a href="penduduk"><i class="fa fa-circle-o"></i>Penduduk</a></li>
+            </ul>
+          </li>
 
-      </ul>
-    </li>
+        </ul>
+      </li>
 
-    <li class="treeview">
-      <a href="#"><i class="fa fa-th-large"></i> Data Umum
-        <span class="pull-right-container">
+      <li class="treeview">
+        <a href="#"><i class="fa fa-th-large"></i> Data Umum
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="events"><i class="fa fa-circle-o"></i>Event</a></li>
+          <li><a href="blogs"><i class="fa fa-circle-o"></i>Blog</a></li>
+
+        </ul>
+      </li>
+
+
+      <li class="treeview">
+        <a href="#">
+          <i class="fa fa-user"></i> <span>OPD</span>
           <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li><a href="events"><i class="fa fa-circle-o"></i>Event</a></li>
-        <li><a href="blogs"><i class="fa fa-circle-o"></i>Blog</a></li>
+        </a>
 
-      </ul>
-    </li>
+        <ul class="treeview-menu">
+          <li><a href="/opd"><i class="fa fa-circle-o"></i>Data OPD</a></li>
+          <li><a href="/dataadmin2"><i class="fa fa-circle-o"></i>Data Admin</a></li>
+        </ul>
+      </li>
 
-
-<li class="treeview">
-  <a href="#">
-    <i class="fa fa-user"></i> <span>OPD</span>
-    <i class="fa fa-angle-left pull-right"></i>
-  </a>
-
-  <ul class="treeview-menu">
-    <li><a href="/opd"><i class="fa fa-circle-o"></i>Data OPD</a></li>
-    <li><a href="/dataadmin2"><i class="fa fa-circle-o"></i>Data Admin</a></li>
-  </ul>
-</li>
-
-    <li><a href="/datauser"><i class="fa fa-user-plus"></i>Data User</a></li>
-    <li><a href="/datapartner"><i class="fa fa-users"></i>Data Partner</a></li>
-  </ul>
-</li>
+      <li><a href="/datauser"><i class="fa fa-user-plus"></i>Data User</a></li>
+      <li><a href="/datapartner"><i class="fa fa-users"></i>Data Partner</a></li>
+    </ul>
+  </li>
 
 
 
 
-<li class="treeview">
-  <a href="#">
-    <i class="fa fa-circle-o"></i> <span>Konten</span>
-    <i class="fa fa-angle-left pull-right"></i>
-  </a>
+  <li class="treeview">
+    <a href="#">
+      <i class="fa fa-circle-o"></i> <span>Konten</span>
+      <i class="fa fa-angle-left pull-right"></i>
+    </a>
 
-  <ul class="treeview-menu">
-    <li><a href="/faqs"><i class="fa fa-circle-o"></i>FAQ</a></li>
-    <li><a href="/abouts"><i class="fa fa-circle-o"></i>About</a></li>
-  </ul>
-</li>
+    <ul class="treeview-menu">
+      <li><a href="/faqs"><i class="fa fa-circle-o"></i>FAQ</a></li>
+      <li><a href="/abouts"><i class="fa fa-circle-o"></i>About</a></li>
+    </ul>
+  </li>
 
 
-<li class="treeview">
-  <a href="#">
-    <i class="fa fa-star"></i> <span>Masterpiece</span>
-    <i class="fa fa-angle-left pull-right"></i>
-  </a>
+  <li class="treeview">
+    <a href="#">
+      <i class="fa fa-star"></i> <span>Masterpiece</span>
+      <i class="fa fa-angle-left pull-right"></i>
+    </a>
 
-  <ul class="treeview-menu">
-    <li><a href="/karya"><i class="fa fa-circle-o"></i>Karya</a></li>
-    <li><a href="/museum"><i class="fa fa-circle-o"></i>Museum</a></li>
-  </ul>
-</li>
+    <ul class="treeview-menu">
+      <li><a href="/karya"><i class="fa fa-circle-o"></i>Karya</a></li>
+      <li><a href="/museum"><i class="fa fa-circle-o"></i>Museum</a></li>
+    </ul>
+  </li>

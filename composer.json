@@ -13,11 +13,14 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "maatwebsite/excel": "~2.1.0",
+        "riverskies/laravel-newsletter-subscription": "^1.2",
+        "snowfire/beautymail": "dev-master",
         "stevebauman/location": "^3.0",
         "symfony/polyfill-iconv": "^1.5",
         "thujohn/twitter": "~2.0",
         "unisharp/laravel-ckeditor": "^4.6",
-        "willvincent/feeds": "1.1.*"
+        "willvincent/feeds": "1.1.*",
+        "raulr/google-play-scraper": "dev-master#9db0cc7a3de3a92cde1feb90ae4241507fdaa1b4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
