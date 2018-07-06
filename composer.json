@@ -13,8 +13,12 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "maatwebsite/excel": "~2.1.0",
+<<<<<<< HEAD
         "riverskies/laravel-newsletter-subscription": "^1.2",
         "snowfire/beautymail": "dev-master",
+=======
+        "spatie/laravel-analytics": "^3.6",
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
         "stevebauman/location": "^3.0",
         "symfony/polyfill-iconv": "^1.5",
         "thujohn/twitter": "~2.0",

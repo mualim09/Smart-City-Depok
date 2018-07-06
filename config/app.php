@@ -172,6 +172,7 @@ return [
         Unisharp\Ckeditor\ServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
         Antoineaugusti\LaravelSentimentAnalysis\LaravelSentimentAnalysisServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -244,6 +245,7 @@ return [
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
         'SentimentAnalysis' => Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis::class,
         'Location' => Stevebauman\Location\Facades\Location::class,
+        'Analytics' => Spatie\Analytics\AnalyticsFacade::class,
     ],
 
 ];

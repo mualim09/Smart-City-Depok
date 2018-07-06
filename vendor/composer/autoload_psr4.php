@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'willvincent\\Feeds\\' => array($vendorDir . '/willvincent/feeds/src'),
+    'phpseclib\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
@@ -35,12 +36,20 @@ return array(
     'Symfony\\Component\\BrowserKit\\' => array($vendorDir . '/symfony/browser-kit'),
     'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Stevebauman\\Location\\' => array($vendorDir . '/stevebauman/location/src'),
+<<<<<<< HEAD
     'Riverskies\\LaravelNewsletterSubscription\\' => array($vendorDir . '/riverskies/laravel-newsletter-subscription/src'),
     'Raulr\\GooglePlayScraper\\' => array($vendorDir . '/raulr/google-play-scraper/src'),
+=======
+    'Spatie\\Analytics\\' => array($vendorDir . '/spatie/laravel-analytics/src'),
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
+<<<<<<< HEAD
+=======
+    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
     'Prettus\\Validator\\' => array($vendorDir . '/prettus/laravel-validation/src/Prettus/Validator'),
     'Prettus\\Repository\\' => array($vendorDir . '/prettus/l5-repository/src/Prettus/Repository'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
@@ -49,17 +58,26 @@ return array(
     'MaxMind\\WebService\\' => array($vendorDir . '/maxmind/web-service-common/src/WebService'),
     'MaxMind\\Exception\\' => array($vendorDir . '/maxmind/web-service-common/src/Exception'),
     'MaxMind\\Db\\' => array($vendorDir . '/maxmind-db/reader/src/MaxMind/Db'),
+    'Madewithlove\\IlluminatePsrCacheBridge\\' => array($vendorDir . '/madewithlove/illuminate-psr-cache-bridge/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'Laravel\\Tinker\\' => array($vendorDir . '/laravel/tinker/src'),
     'InfyOm\\Generator\\' => array($vendorDir . '/infyomlabs/laravel-generator/src'),
     'InfyOm\\AdminLTETemplates\\' => array($vendorDir . '/infyomlabs/adminlte-templates/src'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
+<<<<<<< HEAD
     'Hashids\\' => array($vendorDir . '/hashids/hashids/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Goutte\\' => array($vendorDir . '/fabpot/goutte/Goutte'),
+=======
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
+    'Google\\Auth\\' => array($vendorDir . '/google/auth/src'),
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
     'GeoIp2\\' => array($vendorDir . '/geoip2/geoip2/src'),
+    'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),

@@ -43,15 +43,35 @@
     - Scroll Down Arrow
     - Preloader
 ==================================================*/
+.symbolmodal{ 
+  background: transparent;
+  border: 1px solid transparent;
+  float: left;
+  margin-top:0px;
+  padding-top:0px;
+  margin-right: 12px;
+}
+
+.symbolbutton{ 
+  background: transparent;
+  border: 1px solid transparent;
+  float: left;
+  margin-top:2px;
+  margin-right: 15px;
+}
+
 .box-ketsocmed {
   padding: 20px;
   background: #0088cc !important;
 }
 
+<<<<<<< HEAD
 .btntl {
   padding: 0px 5px;
 }
 
+=======
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
 .btn-del {
   font-size: 14pt;
   color: #909090;
@@ -60,7 +80,11 @@
 
 .dropdel {
     left: auto;
+<<<<<<< HEAD
     right: calc(50% - 10px - 9px);
+=======
+    right: calc(20% - 10px - 9px);
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
 }
 
 .btn-following{
@@ -1563,6 +1587,7 @@ ul.online-users li span.online-dot{
   position: absolute;
   right: 0;
   top: 0;
+  width: 175px;
 }
 
 .post-content .post-container .post-detail .post-comment{

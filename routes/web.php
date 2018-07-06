@@ -519,3 +519,7 @@ Route::prefix('sipp-kling')->group(function() {
 });
 
 Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahanByKec');
+
+Route::get('/sipp-kling/test-sipp-kling', function(){
+    return view('sipp-kling-pages/test');
+});

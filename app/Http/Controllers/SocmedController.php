@@ -150,7 +150,7 @@ class SocmedController extends Controller
             public function retweet(Request $request)
     {
     $retweet = Twitter::postRt($request->id_twitter, ['trim_user' => '1']);
-    return back();
+    return redirect('dashboard-socmed#retweet');
     }
 
             public function unretweet(Request $request)
@@ -163,7 +163,7 @@ class SocmedController extends Controller
             public function like(Request $request)
     {
     $like = Twitter::postFavorite(['id'=>($request->id_twitter)], ['include_entities' => '1']);
-    return back();  
+    return redirect('dashboard-socmed#like');
     }
 
     public function unlike(Request $request)
