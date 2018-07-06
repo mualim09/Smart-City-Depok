@@ -85,7 +85,7 @@ body {font-family: "Open Sans"}
               <p> {{ str_limit($blog->isi, 150) }} </p>
             </div>
             <div class="w3-container" style="padding: 0 2em">
-            <p><a href="/blog/{{ $blog->judul }}"><button class="blog_contentbtn w3-button w3-white w3-border">Read More</button></a></p>
+            <p><a href="/blog/{{ $blog->judul }}"><button class="blog_contentbtn w3-button w3-white w3-border">Baca Selengkapnya</button></a></p>
             </div>
           </div>
           @endforeach   

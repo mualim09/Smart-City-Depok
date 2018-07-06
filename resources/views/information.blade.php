@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ URL::asset('css/informasi.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('css/loader.css') }}">
 </head>
 <style>
     @font-face {
@@ -34,8 +35,17 @@
     .orange-hd {
       background: #f8981d;
     }
+    h1 {
+        font-family: "Segoe UI",Arial,sans-serif;
+        margin: 10px 0;
+    }
   </style>
-
+<!-- Loader -->
+<div id="loader-wrapper">
+  <div id="loader"> </div>
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+</div>
 <body>
   <!-- Navbar (sit on top) -->
   <div class="w3-top">
@@ -49,7 +59,7 @@
         </div>
     </div>
   </div>
-   <!-- Hidden Sidebar (reveals when clicked on menu icon)-->
+  <!-- Hidden Sidebar (reveals when clicked on menu icon)-->
   <nav class="w3-sidebar w3-black w3-animate-right f_nav" style="display:none;padding-top:150px;right:0;z-index:2" id="mySidebar">
     <a class="w3-display-topleft w3-padding-16" href="#">
       <img class="hidepok_logo" src="{{ URL::asset('img/minilogo.png') }}">
@@ -58,13 +68,13 @@
       <i class="fa fa-remove"></i>
     </a>
     <div class="f_bold w3-display-middle w3-bar-block w3-center">
-      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">BERANDA</a>
-      <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">INFORMASI</a>
-      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">PETA</a>
-      <a href="/blog" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">BLOG</a>
-      <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">ACARA</a>
-      <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">OPEN DATA</a>
-      <a href="/faq" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()" style="text-decoration: none;">FAQ</a>
+      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BERANDA</a>
+      <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">INFORMASI</a>
+      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">PETA</a>
+      <a href="/blog" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BLOG</a>
+      <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">ACARA</a>
+      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">OPEN DATA</a>
+      <a href="/faq" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">FAQ</a>
     </div>
     <div class="w3-display-bottommiddle f_nav2" style="margin-bottom:2em">
       desain oleh <a class="w3-text-blue" href="http://www.tireg-dev.com" style="text-decoration:none;"><b> Tireg Dev </b></a> <img src="{{ URL::asset('img/tireg_wh.png') }}" style="width:30px; height:30px">
@@ -147,5 +157,6 @@
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src="{{ URL::asset('js/informasi.js') }}"></script>
   <script src="{{ URL::asset('js/nav.js') }}"></script>
+  <script  src="{{ URL::asset('js/loader.js') }}"></script>
 </body>
 </html>

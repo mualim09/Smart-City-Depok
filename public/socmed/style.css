@@ -70,6 +70,13 @@
   padding-right: 0px;
 }
 
+<<<<<<< HEAD
+.btntl {
+  padding: 0px 5px;
+}
+
+=======
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
 .btn-del {
   font-size: 14pt;
   color: #909090;
@@ -78,7 +85,11 @@
 
 .dropdel {
     left: auto;
+<<<<<<< HEAD
+    right: calc(50% - 10px - 9px);
+=======
     right: calc(20% - 10px - 9px);
+>>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
 }
 
 .btn-following{

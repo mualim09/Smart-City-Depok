@@ -73,7 +73,6 @@
         <p class="tagline fresponsive">
           Hi-Depok merupakan wujud peningkatan pelayanan pemerintah Kota Depok kepada warganya. Aplikasi ini dapat membantu warga Kota Depok dalam berbagai aspek pelayanan seperti pelayanan kesehatan, keamanan, sosial dan juga kebutuhan akan informasi
         </p>
-        <!-- <a href="#"  id="notificationButton" class="button">Notification</a> -->
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Didukung oleh 
         <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
@@ -154,6 +153,7 @@
             <img class="sponsor3" src="{{ URL::asset('img/logoopendata.png')}}">
           </div><br>
           <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-black w3-border w3-border-black w3-round-large tagline fresponsive" style="padding: 0px 16px;">Kritik dan Saran</button>
+          <button onclick="document.getElementById('id02').style.display='block'" class="w3-btn w3-black w3-border w3-border-black w3-round-large tagline fresponsive" style="padding: 0px 16px;">Subscribe?</button>
         </div>
       </div>
     </div>
@@ -198,11 +198,11 @@
     </div>
   </div>
 
-  <div id="id02" class="w3-modal" style="display: block;">
-    <div class="w3-display-topmiddle modal_subs w3-border w3-round-large w3-animate-top w3-card-4" style="animation: animatetop 8s;">
+  <div id="id02" class="w3-modal">
+    <div class="w3-display-topmiddle modal_subs w3-border w3-round-large w3-animate-top w3-card-4">
         <p class="f_reg w3-justify">Apakah Anda ingin berlangganan aplikasi Hi-Depok? Untuk mendapatkan informasi Kota Depok lebih banyak lagi. Klik tombol Subscribe di bawah ini ya.</p><br>
         <center>
-        <button class="f_reg w3-button w3-black w3-border w3-round-large w3-border-white"> Subscribe</button>
+        <a href="/loginMail" class="f_reg w3-button w3-black w3-border w3-round-large w3-border-white"> Subscribe</a>
         <button class="f_reg w3-button w3-black w3-border w3-round-large w3-border-white" onclick="document.getElementById('id02').style.display='none'"> Cancel </button>
         </center>
     </div>
@@ -214,8 +214,6 @@
   <script  src="{{ URL::asset('js/loader.js') }}"></script>
   <script src="{{ URL::asset('js/nav.js') }}"></script>
   <script src="{{ URL::asset('js/news2.js') }}"></script>
-
-  <!-- <script src="{{ URL::asset('js/notification.js') }}"></script> -->
 
 </body>
 </html>

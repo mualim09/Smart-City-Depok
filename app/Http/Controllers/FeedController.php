@@ -8,15 +8,14 @@ use Feeds;
 use Location;
 use DB;
 use App\ModelVisitor;
+use App\Notification;
 
 class FeedController extends Controller
 {
-    public function berita()
+    public function index()
     {
     	$ip= \Request::ip();
 	    $data = Location::get('182.23.86.44');
-
-
 		ModelVisitor::create([
             'ip'     		 => $ip,
             'country_name'   => $data->countryName,
@@ -31,13 +30,14 @@ class FeedController extends Controller
             'longitude'		 => $data->longitude,
             'metro_code'	 => $data->metroCode,
             'area_code'		 => $data->areaCode,
-            'driver'		 => $data->driver
+            'driver'		 => $data->driver,
+            'bounce_rate'    => 'Utama'
         ]);
 
-    	$feed = \Feeds::make(['http://www.depoknews.id/feed/', 'http://www.depokpos.com/feed/', 
+    	$feed = \Feeds::make([ 'http://www.depoknews.id/feed/', 'http://www.depokpos.com/feed/', 
                         'http://www.depoktik.co.id/feed/', 'http://feeds.feedburner.com/depokgoid'], 1);
+        $beritas = $feed->get_items();
 
-        $beritas = $feed->get_items(); //grab all items inside the rss
         $articles = array();
         foreach($beritas as $beritass)
         {
@@ -48,8 +48,17 @@ class FeedController extends Controller
         		array_push($artikel, substr($deskripsi[1],0,35));
         	array_push($articles, $artikel);
         }
-
         include(app_path('\Notification.php'));
+
       return view('/welcome', compact('beritas','articles'));
+    }
+
+    public function notification()
+    {
+        Notification::add('articles', 'articles');
+        Notification::add('title', 'title');
+        Notification::add('desc', 'desc');
+        Notification::add('articles', 'articles');
+        Notification::add('url', 'url');
     }
 }

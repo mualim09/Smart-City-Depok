@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\models\Blog;
+use App\Email;
 use Excel;
 use Response; 
 use App\ModelVisitor;
@@ -31,6 +32,25 @@ class BlogController extends AppBaseController
     { 
         $blogs = DB::table('blogs')->orderBy('id_blog','dsc')->paginate(6);
         return view('pages/data/blog')->with('blogs', $blogs);
+        $ip= \Request::ip();
+        $data = Location::get('182.23.86.44');
+        ModelVisitor::create([
+            'ip'             => $ip,
+            'country_name'   => $data->countryName,
+            'country_code'   => $data->countryCode,
+            'region_name'    => $data->regionName,
+            'region_code'    => $data->regionCode,
+            'city_name'      => $data->cityName,
+            'zip_code'       => $data->zipCode,
+            'iso_code'       => $data->isoCode,
+            'postal_code'    => $data->postalCode,
+            'latitude'       => $data->latitude,
+            'longitude'      => $data->longitude,
+            'metro_code'     => $data->metroCode,
+            'area_code'      => $data->areaCode,
+            'driver'         => $data->driver,
+            'bounce_rate'    => 'Blog'
+        ]);
     }
 
     /**
@@ -76,6 +96,25 @@ class BlogController extends AppBaseController
             'image'      => $fileNameToStore       
 
         ]);
+
+        $terbaru = DB::table('blogs')->latest()->first();
+         $surel = Email::select('*')->get();
+         $judul = $terbaru->judul;
+         $desc = $terbaru->isi;
+        $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+
+        foreach($surel as $surels)
+        {
+        $imels = $surels->email;        
+        $beautymail->send('email.sendmail', ['judul' => $judul, 'desc' => $desc, 'jenis' => 'blog', 'judul_jenis' => 'Artikel'], function($message) use($imels)
+        {
+            // $to_email = Input::get('email');
+            $message
+                ->from('hidepok.id@gmail.com', 'Hi-Depok')
+                ->to($imels, $imels)
+                ->subject('Artikel Terbaru!');
+        });
+        }
           return redirect('/blogs');
     }
 
@@ -248,7 +287,7 @@ class BlogController extends AppBaseController
             'metro_code'     => $data->metroCode,
             'area_code'      => $data->areaCode,
             'driver'         => $data->driver,
-            'halaman'        => $judul
+            'blogs'           => $judul
         ]);
     return view('blog/viewblog', ['blog' => $blog, 'cakblogs' => $cakblogs]);
 
