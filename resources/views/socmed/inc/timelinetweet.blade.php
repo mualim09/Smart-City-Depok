@@ -38,14 +38,14 @@
         <form method="POST" action="{{ route('post.unlike') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="glyphicon glyphicon-heart text-red symbolbutton">{{$datas['favorite_count']}}
+            <button type="submit" class="fa fa-heart text-red symbolbutton">{{$datas['favorite_count']}}
             </button>
          </form>
         @else
         <form method="POST" action="{{ route('post.like') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="glyphicon glyphicon-heart text-red symbolbutton">{{$datas['favorite_count']}}
+            <button type="submit" class="fa fa-heart-o text-red symbolbutton">{{$datas['favorite_count']}}
             </button>
         </form>
         @endif
@@ -71,7 +71,10 @@
 
         <div class="line-divider"></div>
         <div class="post-text">
-        {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{!!$datas['tweet']!!}{{-- </p> --}}
+        <div style="word-wrap: break-word; padding: 10px">{!!$datas['tweet']!!}</div>
+
+
+        {{--   <p><i class="em em-thumbsup"></i> <i class="em em-thumbsup"></i> --}}{{--  --}}{{-- </p> --}}
         </div>
     @if($datas['pictvid'] == '')
     
@@ -79,7 +82,7 @@
     <img src="{!!$datas['pictvid']!!}" class="img-thumbnail" width= 100%; {{-- height= 50%; --}} top: -0px;>
 
     @elseif($datas['video'] != '')
-  <video width=100%; top: -0px; loop controls>
+  <video width=100%; top: -0px; controls>
      <source src="{!!$datas['pictvid']!!}" type="video/mp4">
      {{-- <source src="{!!$datas['pictvid']!!}" type="application/x-mpegURL"> --}}
   </video>

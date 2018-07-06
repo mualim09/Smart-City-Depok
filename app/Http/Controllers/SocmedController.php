@@ -21,7 +21,7 @@ class SocmedController extends Controller
         $this->middleware('auth');
         $this->GetTweet = $gettweet;
         $this->GetProfile = $getprofile;
-
+ 
     }
 
     // ===============================================================================================================================
@@ -115,9 +115,11 @@ class SocmedController extends Controller
     {
     $this->validate($request, [
         'tweet' => 'required',
+
         ]);
+    $isi = '@'.$request->nama_akun.' '.$request->tweet;
     $newTwitte =    [
-                    'status' => $request->tweet,
+                    'status' => $isi,
                      'in_reply_to_status_id' => $request->id_twitter
                     ];
     if(!empty($request->images)){

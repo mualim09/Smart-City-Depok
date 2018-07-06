@@ -51,9 +51,22 @@
           {{-- ==== --}}
     </div> {{-- box didalam tab--}}
   </div>
-{{-- ================================================== --}}
-    
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Reply+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+@foreach($get_tweets as $datas)
 
+  @include('socmed.inc.replytweet')
+
+@endforeach
+
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RETWEET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+
+@foreach($get_tweets as $datas)
+
+  @include('socmed.inc.retweettweet')
+
+@endforeach
+    
+{{-- =============================================================================================================================== --}}
 <div id=following class="tab-pane"> 
   <div class="box-body">
     <div class="col-md-10" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">

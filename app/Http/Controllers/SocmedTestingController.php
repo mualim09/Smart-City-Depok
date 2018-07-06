@@ -11,6 +11,7 @@ use PHPInsight\Sentiment;
 use Twitter;
 use File;
 use Carbon\Carbon;
+use App\Repositories\SocmedRepository;
 
 
 // use App\Http\Controllers\SocmedController\viewtweet;
@@ -18,113 +19,161 @@ use Carbon\Carbon;
 class SocmedTestingController extends Controller
 {
     
-
+// Inisialisasi awal
+    protected $GetProfile; 
     protected $sentiment;
     protected $SentimentAnalysis;
-    protected $GetList;
+
+    protected $ChartTotal;
+    protected $ChartPerBulan;
+    protected $ChartPerHari;
+
+    protected $Str_Hightlight;
 
 
-public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis)
+
+    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $charttotal,
+                        SocmedRepository $getprofile, SocmedRepository $chartperbulan, SocmedRepository $chartperhari,
+                    SocmedRepository $str_highlight)
     {
-        $this->sentiment = $sentiment;
+        $this->middleware('auth');
+        $this->GetProfile       = $getprofile;
+        $this->sentiment        = $sentiment;
         $this->SentimentAnalysis = $SentimentAnalysis;
-        // $this->GetList = $GetList;
+
+        $this->ChartTotal       = $charttotal;
+        $this->ChartPerBulan    = $chartperbulan;
+        $this->ChartPerHari     = $chartperhari;
+
+        $this->Str_Hightlight = $str_highlight;
+
+
     }
+// ====================================================================================================================================
 
-
-
-function highlights($text, $words, $case = false) { 
- 
- $words = trim($words);
- $words_array = explode(',', $words);
- 
- $regex = ($case !== false) ? '/\b(' . implode('|', array_map('preg_quote', $words_array)) . ')\b/i' : '/\b(' . implode('|', array_map('preg_quote', $words_array)) . ')\b/';
- foreach($words_array as $word) { 
-  if(strlen(trim($word)) != 0) 
-   $text = preg_replace($regex, '<font style="background: yellow";>$1</font>', $text);
-  } 
- 
- return $text;
-}
-
-
-
-function highlightkeyword($strs, $searchs, $color) {
-    $newstring = $strs;
-    
-    foreach ($searchs as $search) {
-    $str = $newstring ;
-    $highlightcolor = $color;
-    $occurrences = substr_count(strtolower($str), strtolower($search));
-    $match = array();
- 
-    for ($i=0;$i<$occurrences;$i++) {
-        $match[$i] = stripos($str, $search, $i);
-        $match[$i] = substr($str, $match[$i], strlen($search));
-        $newstring = str_replace($match[$i], '[#]'.$match[$i].'[@]', strip_tags($newstring));
-    }
- }
-    $newstring = str_replace('[#]', '<span style="color: '.$highlightcolor.';">', $newstring);
-    $newstring = str_replace('[@]', '</span>', $newstring);
-
-    
-    
-    return $newstring;
-}
-
-
-
-
-function str_highlight($text, $needle, $options = null, $highlight = null)
+    public function highlightkeyword($string, $search, $color)
 {
 
-    // Default highlighting
-    if ($highlight === null) {
-        $highlight = '<strong>\1</strong>';
+        $tweetclr = $this->Str_Hightlight->str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE|STR_HIGHLIGHT_WHOLEWD, '<span style="color: '.$color.'">\1</span>');
+
+return $tweetclr;
+}
+// =====================================================================================================================================
+ 
+    
+      public function getanalysisdata($data)
+    {
+for ($i=0; $i <count($data) ; $i++) { 
+    $ds = $data['statuses'];
+
+    
+    $nilai = [];
+    for ($i=0; $i < count($ds); $i++) { 
+        $nilai[$i] = [
+
+            'score' => $this->sentiment->score($ds[$i]['full_text'])
+        ];
     }
+$data1 = [];
+for ($i=0; $i < count($ds); $i++) { 
+    
+    $data1[$i] = [
+    'id_twitter' => $ds[$i]['id'],
+    'nama_akun' => $ds[$i]['user']['name'],
+    'tweet' => $ds[$i]['full_text'],
+    'sentiment' => $this->SentimentAnalysis->decision($ds[$i]['full_text']),
+    'score_positif' => $nilai[$i]['score']['positif'],
+    'score_netral' => $nilai[$i]['score']['netral'],
+    'score_negatif' => $nilai[$i]['score']['negatif'],
+    'created_at' =>Carbon::parse($ds[$i]['created_at'])->toDateTimeString(),
+    ];
+    $checkdata = DB::table('socmed_analysis')->where('tweet', $ds[$i]['full_text'])->get()->count();
 
-    // Select pattern to use
-    if ($options & STR_HIGHLIGHT_SIMPLE) {
-        $pattern = '#(%s)#';
-        $sl_pattern = '#(%s)#';
-    } else {
-        $pattern = '#(?!<.*?)(%s)(?![^<>]*?>)#';
-        $sl_pattern = '#<a\s(?:.*?)>(%s)</a>#';
-    }
-
-    // Case sensitivity
-    if (!($options & STR_HIGHLIGHT_CASESENS)) {
-        $pattern .= 'i';
-        $sl_pattern .= 'i';
-    }
-
-$needle = (array) $needle;
-foreach ($needle as $needle_s) {
-        $needle_s = preg_quote($needle_s);
-
-        // Escape needle with optional whole word check
-        if ($options & STR_HIGHLIGHT_WHOLEWD) {
-            $needle_s = '\b' . $needle_s . '\b';
+        if($checkdata != 1){
+          DB::table('socmed_analysis')->insert($data1[$i]);
         }
-
-        // Strip links
-        if ($options & STR_HIGHLIGHT_STRIPLINKS) {
-            $sl_regex = sprintf($sl_pattern, $needle_s);
-            $text = preg_replace($sl_regex, '\1', $text);
-        }
-
-        $regex = sprintf($pattern, $needle_s);
-$text = preg_replace($regex, $highlight, $text);
+    }
 }
 
-    return $text;
+return $data1;
 }
 
-public function test()
-{
 
 
 
+
+        public function analysis()
+    {
+define('STR_HIGHLIGHT_SIMPLE', 1);
+
+/**
+ * Only match whole words in the string
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_WHOLEWD', 2);
+
+/**
+ * Case sensitive matching
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_CASESENS', 4);
+
+/**
+ * Overwrite links if matched
+ * This should be used when the replacement string is a link
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_STRIPLINKS', 8);
+
+    $profile       = Twitter::getUsers([
+                        'user_id' => '1000962488739885056', 
+                        'screen_name' => 'HiDepok',
+                        'format' => 'array' 
+                        ]);
+
+    $data_search = Twitter::getSearch([
+        'q'             => 'pemkotdepok',
+        'tweet_mode' => 'extended',
+        'result_type'   => 'recent',
+        'format'        => 'array',
+        'count'         => 100,
+        ]);
+
+
+    $get_data                   = $this->getanalysisdata($data_search);
+    $get_profile                = $this->GetProfile->getprofile($profile);
+    
+// // ======================================================================================================
+    $data_mention = Twitter::getMentionsTimeline(['count' => 50, 'format' => 'array']); 
+    $nilai_mention = [];
+    for ($i=0; $i < count($data_mention); $i++) { 
+        $nilai_mention[$i] = [
+
+            'score' => $this->sentiment->score($data_mention[$i]['text'])
+        ];
+    }
+
+    $tweet_mention = [];
+    for ($i=0; $i < count($data_mention); $i++) { 
+        $tweet_mention[$i] = [
+            'id_twitter' => $data_mention[$i]['id'],
+            'nama_akun' => $data_mention[$i]['user']['name'],
+            'tweet' => $data_mention[$i]['text'],
+            'sentiment' => $this->SentimentAnalysis->decision($data_mention[$i]['text']),
+            'score_positif' => $nilai_mention[$i]['score']['positif'],
+            'score_netral' => $nilai_mention[$i]['score']['netral'],
+            'score_negatif' => $nilai_mention[$i]['score']['negatif'],
+            'created_at' => $data_mention[$i]['created_at'],
+        ];
+
+        $checkdata = DB::table('socmed_analysis')->where('tweet', $data_mention[$i]['text'])->get()->count();
+        if($checkdata == 0){
+          DB::table('socmed_analysis')->insert($tweet_mention[$i]);
+        }
+    }
+// =========================================================================================================
+// ======================================= DATA BAG OF WORD ================================================
+// =========================================================================================================
 
 
 for ($i=37; $i<count( $this->sentiment->getList('positif')); $i++)
@@ -141,117 +190,122 @@ for ($i=39; $i<count( $this->sentiment->getList('negatif')); $i++)
 { 
     $keyneg[] = $this->sentiment->getList('negatif')[$i];
 }
+// ------------------------------------------------------------------------------------------
+// ---------------------------------- TABEL VIEW --------------------------------------------
+// ------------------------------------------------------------------------------------------
 
-for ($i=0; $i<count( $this->sentiment->getList('ignore')); $i++)
-{ 
-    $keyignore[] = $this->sentiment->getList('ignore')[$i];
-}
+$datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
 
-for ($i=0; $i<count( $this->sentiment->getList('prefix')); $i++)
-{ 
-    $keyprefix[] = $this->sentiment->getList('prefix')[$i];
-}
+    foreach ($datatweets as $key => $datatweet) {
 
-// $dicti = $keypos+$keynet+$keyneg;
+    if ($datatweet->sentiment == 'negatif') {
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keyneg, "#fd79a8"); 
+    }
 
-// // 
-// $sentence = '@Dishub_Dpk @manto_dpk @pemkotdepok @IdrisAShomad Jangan lupa untuk membenahi Traffic Light perempatan RTM yang sudah 2 tahun lewat mati. Kalo memang tidak terpakai tolong dicabut saja. Tidak berfungsi buat apa dipajang2. akan';
+    elseif ($datatweet->sentiment == 'positif') {
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keypos, "#00b894"); 
+    }
 
-// foreach ($keyneg as $negPrefix) {
+    else
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keynet, "#6c5ce7"); 
 
-//             //Search if that prefix is in the document
-//             if (strpos($sentence, $negPrefix) !== false) {
-//                 //Reove the white space after the negative prefix
-//                 $sentence = str_replace($negPrefix . ' ', $negPrefix, $sentence);
-//             }
-//         }
+    
+    $dbtweets [] = [ 'id_twitter' => $datatweet->id_twitter,
+                    'nama_akun' => $datatweet->nama_akun,
+                    'tweet' => $tweet,
+                    'sentiment' => $datatweet->sentiment,
+                    'score_positif' => $datatweet->score_positif,
+                    'score_netral' => $datatweet->score_netral,
+                    'score_negatif' => $datatweet->score_negatif,
+                    'created_at' => $datatweet->created_at
+                    ];
 
-// $tokens = $this->sentiment->_getTokens($sentence);
-//         // calculate the score in each category
+    }
 
-//         $total_score = 0;
+// ###########################################################################################################
+// ###################################### GET DATA CHART #####################################################
+// ###########################################################################################################
+    $year = Carbon::now()->year; //tahun sekarang
+    $month = '6'; //bulan sekarang
+    $month1 = Carbon::now()->format('F Y'); //bulan tahun
+    $tgl  = Carbon::now()->format('l j F Y');
+    $tgl1 = Carbon::now()->day; //tanggal sekarang
 
-//         //Empty array for the scores for each of the possible categories
-//         $scores = array();
+    $awal_bulan =   Carbon::now()->startOfMonth()->toDateTimeString();
+    $akhir_bulan =  Carbon::now()->EndOfMonth()->toDateTimeString();
 
-//         //Loop through all of the different classes set in the $classes variable
-//         foreach ($this->classes as $class) {
+    for ($m1=1; $m1<=12; $m1++) {       //loop all name month
+     $allmonth[] = date('F', mktime(0,0,0,$m1, 1, date('Y')));
+     }
 
-//             //In the scores array add another dimention for the class and set it's value to 1. EG $scores->neg->1
-//             $scores[$class] = 1;
-
-//             //For each of the individual words used loop through to see if they match anything in the $dictionary
-//             foreach ($tokens as $token) {
-
-//                 //If statement so to ignore tokens which are either too long or too short or in the $ignoreList
-//                 if (strlen($token) > $this->minTokenLength && strlen($token) < $this->maxTokenLength && !in_array($token, $keyignore)) {
-//                     //If dictionary[token][class] is set
-//                     if (isset($this->dictionary[$token][$class])) {
-//                         //Set count equal to it
-//                         $count = $this->dictionary[$token][$class];
-//                     } else {
-//                         $count = 0;
-//                     }
-
-//                     //Score[class] is calcumeted by $scores[class] x $count +1 divided by the $classTokCounts[class] + $tokCount
-//                     $scores[$class] *= ($count + 1);
-//                 }
-//             }
-
-//             //Score for this class is the prior probability multiplyied by the score for this class
-//             $scores[$class] = $this->prior[$class] * $scores[$class];
-//         }
+    $jml_tgl = '30';   //total tgl pd bulan
+     for ($t=1; $t<=$jml_tgl; $t++) {
+     $alltgl[] = $t;
+     }
 
 
-// $tes[] = [
+     for ($m=1; $m<=12; $m++) {
+    $dt[]  = Carbon::create($year, $m, 1, 0, 0, 0)->startofMonth()->toDateTimeString();
+    $dt2[]  = Carbon::create($year, $m, 1, 0, 0, 0)->endofMonth()->toDateTimeString();
 
-// 'dec1' => $this->SentimentAnalysis->decision('@IdrisAShomad @manto_dpk @dkpdepok1 @pemkotdepok @ipandut arus air kali krukut yang terhambat karena proyek JORR, selain sampah kiriman dr arah wilayah lain DAN tak tuntas untuk pembersihan kali dr kerak lumpur, SUKSES membuat air masuk > TEMBOK perumahan Grand Matoa JEBOL !!😡 https://t.co/WajrXwmwRv'),
+    } 
 
-// 'dec12' => $this->sentiment->categorise('@IdrisAShomad @manto_dpk @dkpdepok1 @pemkotdepok @ipandut arus air kali krukut yang terhambat karena proyek JORR, selain sampah kiriman dr arah wilayah lain DAN tak tuntas untuk pembersihan kali dr kerak lumpur, SUKSES membuat air masuk > TEMBOK perumahan Grand Matoa JEBOL !!😡 https://t.co/WajrXwmwRv'),
+    // FUNGSI CHART TOTAL  
+    $total_positif      = DB::table('socmed_analysis')
+                        ->where('sentiment', 'positif')
+                        ->whereBetween('created_at', ['05-02-2018', '06-27-2018'])
+                        ->count();
+
+    $total_netral       = DB::table('socmed_analysis')
+                        ->where('sentiment', 'netral')
+                        ->whereBetween('created_at', ['05-02-2018', '06-27-2018'])
+                        ->count();
+    
+    $total_negatif      = DB::table('socmed_analysis')
+                        ->where('sentiment', 'negatif')
+                        ->whereBetween('created_at', ['05-02-2018', '06-27-2018'])
+                        ->count();
 
 
-$sc2 = $this->sentiment->score('perbuatan mahasiswa itu sangat tidak pantas');
-// 
+    // FUNGSI CHART PERBULAN
+    for ($b=0; $b<=11; $b++) {
+    $bulan_positif[]     = $this->ChartPerBulan->chartperbulan('positif', $dt[$b], $dt2[$b]);
+    $bulan_netral[]     = $this->ChartPerBulan->chartperbulan('netral', $dt[$b], $dt2[$b]);
+    $bulan_negatif[]     = $this->ChartPerBulan->chartperbulan('negatif', $dt[$b], $dt2[$b]);
+    }
+    $bulan_positif2     = $this->ChartPerBulan->chartperbulan('positif', $awal_bulan, $akhir_bulan);
+    $bulan_netral2     = $this->ChartPerBulan->chartperbulan('netral', $awal_bulan, $akhir_bulan);
+    $bulan_negatif2     = $this->ChartPerBulan->chartperbulan('negatif', $awal_bulan, $akhir_bulan);
 
-$sentence = '@bemPNJ perbuataN Mahasiswa itu sangat tidak pantas dilakukan ‡';
 
-foreach ($keyprefix as $negPrefix) {
-// if (strpos($sentence, $negPrefix) !== false) {
-                //Reove the white space after the negative prefix
-                $sentence = str_replace($negPrefix . ' ', $negPrefix, $sentence);
-            // }
-        }
+    // FUNGSI CHART PERHARI
+    for ($d=0; $d<28; $d++) {
+    $tgl_positif[]     = $this->ChartPerHari->chartperhari('positif', $month, $alltgl[$d]);
+    $tgl_netral[]     = $this->ChartPerHari->chartperhari('netral', $month, $alltgl[$d]);
+    $tgl_negatif[]     = $this->ChartPerHari->chartperhari('negatif', $month, $alltgl[$d]);
+    }
+    $tgl_positif2     = $this->ChartPerHari->chartperhari('positif', $month, $tgl1);
+    $tgl_netral2     = $this->ChartPerHari->chartperhari('netral', $month, $tgl1);
+    $tgl_negatif2     = $this->ChartPerHari->chartperhari('negatif', $month, $tgl1);
+// =======================================================================================================
+// =======================================================================================================
 
-      $sentence = str_replace("\r\n", " ", $sentence);
+    $date = Carbon::parse('2018-06-01 11:00:00');
+    $now = Carbon::now();
 
-      $diac =
-                /* A */ chr(192) . chr(193) . chr(194) . chr(195) . chr(196) . chr(197) .
-                /* a */ chr(224) . chr(225) . chr(226) . chr(227) . chr(228) . chr(229) .
-                /* O */ chr(210) . chr(211) . chr(212) . chr(213) . chr(214) . chr(216) .
-                /* o */ chr(242) . chr(243) . chr(244) . chr(245) . chr(246) . chr(248) .
-                /* E */ chr(200) . chr(201) . chr(202) . chr(203) .
-                /* e */ chr(232) . chr(233) . chr(234) . chr(235) .
-                /* Cc */ chr(199) . chr(231) .
-                /* I */ chr(204) . chr(205) . chr(206) . chr(207) .
-                /* i */ chr(236) . chr(237) . chr(238) . chr(239) .
-                /* U */ chr(217) . chr(218) . chr(219) . chr(220) .
-                /* u */ chr(249) . chr(250) . chr(251) . chr(252) .
-                /* yNn */ chr(255) . chr(209) . chr(241);
+    $diff = $date->diffInDays($now);
 
-        $sentence = strtolower(strtr($sentence, $diac, 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn'));
-        // $sentence = strtolower($sentence);
+    return view('socmed/testing',compact('keypos', 'keynet', 'keyneg',
+                'year', 'month', 'month1', 'allmonth', 'alltgl', 'tgl', 
+                'bulan_positif', 'bulan_netral', 'bulan_negatif',
+                'bulan_positif2', 'bulan_netral2', 'bulan_negatif2',
+                'tgl_positif', 'tgl_netral', 'tgl_negatif',
+                'tgl_positif2', 'tgl_netral2', 'tgl_negatif2',
+                'get_profile', 'tweet_mention', 'get_data', 'dbtweets',
+                'total_positif', 'total_netral', 'total_negatif'
 
-        
-        $sentence = explode(" ", '@bemPNJ perbuataN Mahasiswa itu sangat tidakpantas dilakukan');
-
-        // for ($i=0; $i<count($sentence) ; $i++) { 
-        //     $sentence = strtolower($sentence[$i]);
-        // }
-
- 
-return $sc2;
-
-	}
+        ));
+    }
 
 }
  

@@ -311,7 +311,7 @@ class Sentiment {
 	 * @param str $string	String being broken up
 	 * @return array An array of tokens
 	 */
-	private function _getTokens($string) {
+	public function _getTokens($string) {
 
 		// Replace line endings with spaces
 		$string = str_replace("\r\n", " ", $string);

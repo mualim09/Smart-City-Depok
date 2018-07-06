@@ -82,13 +82,14 @@ for ($i=0; $i < count($ds); $i++) {
     'score_negatif' => $nilai[$i]['score']['negatif'],
     'created_at' =>Carbon::parse($ds[$i]['created_at'])->toDateTimeString(),
     ];
-    $checkdata = DB::table('socmed_analysis')->where('id_twitter', $ds[$i]['id'])->get()->count();
+    $checkdata = DB::table('socmed_analysis')->where('tweet', $ds[$i]['full_text'])->get()->count();
 
-        if($checkdata == 0){
+        if($checkdata != 1){
           DB::table('socmed_analysis')->insert($data1[$i]);
         }
     }
 }
+
 return $data1;
 }
 // ================================================================================================
@@ -136,7 +137,7 @@ define('STR_HIGHLIGHT_STRIPLINKS', 8);
     $get_profile                = $this->GetProfile->getprofile($profile);
     
 // // ======================================================================================================
-    $data_mention = Twitter::getMentionsTimeline(['count' => 10, 'format' => 'array']);	
+    $data_mention = Twitter::getMentionsTimeline(['count' => 50, 'format' => 'array']);	
     $nilai_mention = [];
     for ($i=0; $i < count($data_mention); $i++) { 
         $nilai_mention[$i] = [
@@ -158,7 +159,7 @@ define('STR_HIGHLIGHT_STRIPLINKS', 8);
             'created_at' => $data_mention[$i]['created_at'],
         ];
 
-        $checkdata = DB::table('socmed_analysis')->where('id_twitter', $data_mention[$i]['id'])->get()->count();
+        $checkdata = DB::table('socmed_analysis')->where('tweet', $data_mention[$i]['text'])->get()->count();
         if($checkdata == 0){
           DB::table('socmed_analysis')->insert($tweet_mention[$i]);
         }
