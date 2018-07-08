@@ -84,7 +84,9 @@ class AuthenticateSession
     protected function logout($request)
     {
         $this->auth->logout();
+
         $request->session()->flush();
+
         throw new AuthenticationException;
     }
 }

@@ -125,8 +125,11 @@ trait AuthenticatesUsers
     protected function sendFailedLoginResponse(Request $request)
     {
         $errors = [$this->username() => trans('auth.failed')];
-        if ($request->expectsJson()) 
-        {return response()->json($errors, 422);}
+
+        if ($request->expectsJson()) {
+            return response()->json($errors, 422);
+        }
+
         return redirect()->back()
             ->withInput($request->only($this->username(), 'remember'))
             ->withErrors($errors);
@@ -151,7 +154,9 @@ trait AuthenticatesUsers
     public function logout(Request $request)
     {
         $this->guard()->logout();
+
         $request->session()->invalidate();
+
         return redirect('/');
     }
 

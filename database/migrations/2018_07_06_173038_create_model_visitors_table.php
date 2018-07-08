@@ -31,7 +31,7 @@ class CreateModelVisitorsTable extends Migration
             $table->string('metro_code');
             $table->string('area_code');
             $table->string('driver');
-            $table->string('blog');
+            $table->string('blogs');
             $table->string('event');
             $table->string('bounce_rate');
             $table->timestamps();

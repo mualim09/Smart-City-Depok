@@ -69,7 +69,7 @@
 {{-- =============================================================================================================================== --}}
 <div id=following class="tab-pane"> 
   <div class="box-body">
-    <div class="col-md-10" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
+    <div class="col-md-11" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
           {{--  ====  --}}
                     <div class="block-title">
                     <div class="friend-list">
@@ -98,7 +98,7 @@
 
 <div id="followers" class="tab-pane fade">  
   <div class="box-body">
-    <div class="col-md-10" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
+    <div class="col-md-11" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
           {{--  ====  --}}
                     <div class="block-title">
                     <div class="friend-list">

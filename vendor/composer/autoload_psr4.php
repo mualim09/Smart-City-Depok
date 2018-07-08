@@ -35,26 +35,12 @@ return array(
     'Symfony\\Component\\BrowserKit\\' => array($vendorDir . '/symfony/browser-kit'),
     'SuperClosure\\' => array($vendorDir . '/jeremeamia/SuperClosure/src'),
     'Stevebauman\\Location\\' => array($vendorDir . '/stevebauman/location/src'),
-<<<<<<< HEAD
-    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
-    'Psy\\' => array($vendorDir . '/psy/psysh/src'),
-    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
-=======
-<<<<<<< HEAD
     'Riverskies\\LaravelNewsletterSubscription\\' => array($vendorDir . '/riverskies/laravel-newsletter-subscription/src'),
     'Raulr\\GooglePlayScraper\\' => array($vendorDir . '/raulr/google-play-scraper/src'),
-=======
-    'Spatie\\Analytics\\' => array($vendorDir . '/spatie/laravel-analytics/src'),
->>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
-<<<<<<< HEAD
-=======
-    'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
->>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
->>>>>>> 6b9dcb501ea7a18d3c14c9436639d618f65f7eff
     'Prettus\\Validator\\' => array($vendorDir . '/prettus/laravel-validation/src/Prettus/Validator'),
     'Prettus\\Repository\\' => array($vendorDir . '/prettus/l5-repository/src/Prettus/Repository'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
@@ -68,21 +54,11 @@ return array(
     'InfyOm\\Generator\\' => array($vendorDir . '/infyomlabs/laravel-generator/src'),
     'InfyOm\\AdminLTETemplates\\' => array($vendorDir . '/infyomlabs/adminlte-templates/src'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     'Hashids\\' => array($vendorDir . '/hashids/hashids/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Goutte\\' => array($vendorDir . '/fabpot/goutte/Goutte'),
-=======
-    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
-    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
-    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
-    'Google\\Auth\\' => array($vendorDir . '/google/auth/src'),
->>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
->>>>>>> 6b9dcb501ea7a18d3c14c9436639d618f65f7eff
     'GeoIp2\\' => array($vendorDir . '/geoip2/geoip2/src'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),

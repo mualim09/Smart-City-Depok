@@ -15,7 +15,7 @@ class FeedController extends Controller
     public function index()
     {
     	$ip= \Request::ip();
-	    $data = Location::get('182.23.86.44');
+	    $data = Location::get($ip);
 		ModelVisitor::create([
             'ip'     		 => $ip,
             'country_name'   => $data->countryName,
