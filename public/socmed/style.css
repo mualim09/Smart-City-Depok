@@ -62,7 +62,12 @@
 
 .box-ketsocmed {
   padding: 20px;
-  background: #0088cc !important;
+  /*background: #0088cc !important;*/
+}
+
+.no-padding {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .btn-del {
@@ -98,11 +103,41 @@
     background-color:#D8D8D8;
   color:#FFF;
 }
+
+.status-sentiment {
+  display: block;
+  width: 100%;
+  background: red;
+  padding: 3px 12px; 
+  color: #fff;
+}
+
+.box-tweet {
+  background: #f4f8fb;
+  border: 1px solid #e1ecf4;
+  padding: 15px;
+}
+
+.right-side-information-grafik {
+  overflow: hidden;
+  padding: 10px 10px 10px 5px;
+  border-left: 4px solid #1ba1ed; 
+  background: #f9f9f9
+}
+
+.third-leading {
+  font-size: 16px;
+}
+
+.text-right {
+  text-align: right;
+}
 .rating-block{
-  background-color:#FAFAFA;
-  border:1px solid #EFEFEF;
+  background-color:#F0f0f0;
+  /*border:1px solid #EFEFEF;*/
   padding:15px 15px 20px 15px;
-  border-radius:3px;
+  /*border-radius:3px;*/
+  overflow: hidden;
 }
 .bold{
   font-weight:400;
@@ -2822,3 +2857,7 @@ ul.contact li i{
 }
 
 
+/* modified */
+li {
+  list-style: none !important;
+}
