@@ -4,6 +4,7 @@
       <form method="POST" action="{{ route('post.reply') }}" enctype="multipart/form-data">
           {{ csrf_field() }}
       <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
+      <input type="hidden" name="nama_akun" value="{{$datas['nama_akun']}}">
       <div class="modal-header bg-aqua-active">
         <button type="button" class="close font-white" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
@@ -43,7 +44,8 @@
             </div>
 
             <div style="margin-top: 20px;" >
-            <textarea name="tweet" class="form-control" rows="4" cols="300" maxlength="280" required>&#64;{{$datas['nama_akun']}}&nbsp;</textarea>
+
+            <textarea name="tweet" class="form-control" rows="4" cols="300" maxlength="280" required></textarea>
             </div>
 
       </div>

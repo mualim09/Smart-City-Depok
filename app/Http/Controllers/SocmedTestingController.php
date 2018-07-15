@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
@@ -10,199 +11,169 @@ use PHPInsight\Sentiment;
 use Twitter;
 use File;
 use Carbon\Carbon;
+use App\Repositories\SocmedRepository;
 
 
 // use App\Http\Controllers\SocmedController\viewtweet;
 
 class SocmedTestingController extends Controller
 {
+    
+// Inisialisasi awal
+    protected $GetProfile; 
     protected $sentiment;
     protected $SentimentAnalysis;
-    protected $GetList;
 
-public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis)
+    protected $ChartTotal;
+    protected $ChartPerBulan;
+    protected $ChartPerHari;
+
+    protected $Str_Hightlight;
+
+
+
+    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $charttotal,
+                        SocmedRepository $getprofile, SocmedRepository $chartperbulan, SocmedRepository $chartperhari,
+                    SocmedRepository $str_highlight)
     {
-        $this->sentiment = $sentiment;
+        $this->middleware('auth');
+        $this->GetProfile       = $getprofile;
+        $this->sentiment        = $sentiment;
         $this->SentimentAnalysis = $SentimentAnalysis;
-        // $this->GetList = $GetList;
+
+        $this->ChartTotal       = $charttotal;
+        $this->ChartPerBulan    = $chartperbulan;
+        $this->ChartPerHari     = $chartperhari;
+
+        $this->Str_Hightlight = $str_highlight;
+
+
     }
+// ====================================================================================================================================
 
-
-
-function highlights($text, $words, $case = false) { 
- 
- $words = trim($words);
- $words_array = explode(',', $words);
- 
- $regex = ($case !== false) ? '/\b(' . implode('|', array_map('preg_quote', $words_array)) . ')\b/i' : '/\b(' . implode('|', array_map('preg_quote', $words_array)) . ')\b/';
- foreach($words_array as $word) { 
-  if(strlen(trim($word)) != 0) 
-   $text = preg_replace($regex, '<font style="background: yellow";>$1</font>', $text);
-  } 
- 
- return $text;
-}
-
-
-
-function highlightkeyword($strs, $searchs, $color) {
-    $newstring = $strs;
-    
-    foreach ($searchs as $search) {
-    $str = $newstring ;
-    $highlightcolor = $color;
-    $occurrences = substr_count(strtolower($str), strtolower($search));
-    $match = array();
- 
-    for ($i=0;$i<$occurrences;$i++) {
-        $match[$i] = stripos($str, $search, $i);
-        $match[$i] = substr($str, $match[$i], strlen($search));
-        $newstring = str_replace($match[$i], '[#]'.$match[$i].'[@]', strip_tags($newstring));
-    }
- }
-    $newstring = str_replace('[#]', '<span style="color: '.$highlightcolor.';">', $newstring);
-    $newstring = str_replace('[@]', '</span>', $newstring);
-
-    
-    
-    return $newstring;
-}
-
-
-
-
-function str_highlight($text, $needle, $options = null, $highlight = null)
+    public function highlightkeyword($string, $search, $color)
 {
 
-    // Default highlighting
-    if ($highlight === null) {
-        $highlight = '<strong>\1</strong>';
-    }
+        $tweetclr = $this->Str_Hightlight->str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE|STR_HIGHLIGHT_WHOLEWD, '<span style="color: '.$color.'">\1</span>');
 
-    // Select pattern to use
-    if ($options & STR_HIGHLIGHT_SIMPLE) {
-        $pattern = '#(%s)#';
-        $sl_pattern = '#(%s)#';
-    } else {
-        $pattern = '#(?!<.*?)(%s)(?![^<>]*?>)#';
-        $sl_pattern = '#<a\s(?:.*?)>(%s)</a>#';
-    }
-
-    // Case sensitivity
-    if (!($options & STR_HIGHLIGHT_CASESENS)) {
-        $pattern .= 'i';
-        $sl_pattern .= 'i';
-    }
-
-$needle = (array) $needle;
-foreach ($needle as $needle_s) {
-        $needle_s = preg_quote($needle_s);
-
-        // Escape needle with optional whole word check
-        if ($options & STR_HIGHLIGHT_WHOLEWD) {
-            $needle_s = '\b' . $needle_s . '\b';
-        }
-
-        // Strip links
-        if ($options & STR_HIGHLIGHT_STRIPLINKS) {
-            $sl_regex = sprintf($sl_pattern, $needle_s);
-            $text = preg_replace($sl_regex, '\1', $text);
-        }
-
-        $regex = sprintf($pattern, $needle_s);
-$text = preg_replace($regex, $highlight, $text);
+return $tweetclr;
 }
-
-    return $text;
-}
-
-public function test()
-	{
-// define('STR_HIGHLIGHT_SIMPLE', 1);
-
-// /**
-//  * Only match whole words in the string
-//  * (off by default)
-//  */
-// define('STR_HIGHLIGHT_WHOLEWD', 2);
-
-// /**
-//  * Case sensitive matching
-//  * (off by default)
-//  */
-// define('STR_HIGHLIGHT_CASESENS', 4);
-
-// /**
-//  * Overwrite links if matched
-//  * This should be used when the replacement string is a link
-//  * (off by default)
-//  */
-// define('STR_HIGHLIGHT_STRIPLINKS', 8);
-// $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
-
-//     foreach ($datatweets as $key => $dt) {
-
-//     if ($dt->sentiment == 'negatif') {
-//             $tweet =   $this->highlightkeyword($dt->tweet, $keyneg, "#fd79a8"); 
-//     }
-
-//     elseif ($dt->sentiment == 'positif') {
-//             $tweet =   $this->highlightkeyword($dt->tweet, $keypos, "#00b894"); 
-//     }
-
-//     else
-//             $tweet =   $this->highlightkeyword($dt->tweet, $keynet, "#6c5ce7"); 
+// =====================================================================================================================================
+ 
+    
+      public function getanalysisdata($data)
+    {
+for ($i=0; $i <count($data) ; $i++) { 
+    $ds = $data['statuses'];
 
     
-//     $dbtweets [] = [ 'id_twitter' => $dt->id_twitter,
-//                     'nama_akun' => $dt->nama_akun,
-//                     'tweet' => $tweet,
-//                     'sentiment' => $dt->sentiment,
-//                     'score_positif' => $dt->score_positif,
-//                     'score_netral' => $dt->score_netral,
-//                     'score_negatif' => $dt->score_negatif,
-//                     'score_negatif' => $dt->score_negatif
-//                     ];
+    $nilai = [];
+    for ($i=0; $i < count($ds); $i++) { 
+        $nilai[$i] = [
 
-//     }
-// =================================================================================================================
-// for ($m=1; $m<=12; $m++) {
-//      $month[] = date('F', mktime(0,0,0,$m, 1, date('Y')));
-//      }
+            'score' => $this->sentiment->score($ds[$i]['full_text'])
+        ];
+    }
+$data1 = [];
+for ($i=0; $i < count($ds); $i++) { 
+    
+    $data1[$i] = [
+    'id_twitter' => $ds[$i]['id'],
+    'nama_akun' => $ds[$i]['user']['name'],
+    'tweet' => $ds[$i]['full_text'],
+    'sentiment' => $this->SentimentAnalysis->decision($ds[$i]['full_text']),
+    'score_positif' => $nilai[$i]['score']['positif'],
+    'score_netral' => $nilai[$i]['score']['netral'],
+    'score_negatif' => $nilai[$i]['score']['negatif'],
+    'created_at' =>Carbon::parse($ds[$i]['created_at'])->toDateTimeString(),
+    ];
+    $checkdata = DB::table('socmed_analysis')->where('tweet', $ds[$i]['full_text'])->get()->count();
 
-// 	$year = Carbon::now()->year;
+        if($checkdata != 1){
+          DB::table('socmed_analysis')->insert($data1[$i]);
+        }
+    }
+}
 
-// for ($m=1; $m<=12; $m++) {
-// 	$dt[]  = Carbon::create($year, $m, 1, 0, 0, 0)->startofMonth()->toDateTimeString();
-// 	$dt2[]  = Carbon::create($year, $m, 1, 0, 0, 0)->endofMonth()->toDateTimeString();
-
-// }
-
-// $jml_tgl = Carbon::now()->endofMonth()->day;   //total tgl pd bulan
-//      for ($t=1; $t<=$jml_tgl; $t++) {
-//      $alltgl[] = $t;
-//      }
-
-//     $month = Carbon::now(); //bulan sekaang
-//     $month1 = $month->format('F Y');
-
-//===============================================================================================================
-// $string = 'I like match1 and a match3, and here is match2';
-// $newstring = $string;
-
-
-// $highlightcolor = "#fd79a8";
-// $newstring = str_replace('[#]', '<span style="color: '.$highlightcolor.';">', $newstring);
-// $newstring = str_replace('[@]', '</span>', $newstring);
-
-// $find = array('/match1/', '/match2/');
-// $replace = array($newstring);
-
-// $data = preg_replace($find, $replace, $string);
-// ==================================================================================================================
+return $data1;
+}
 
 
 
+
+
+        public function analysis()
+    {
+define('STR_HIGHLIGHT_SIMPLE', 1);
+
+/**
+ * Only match whole words in the string
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_WHOLEWD', 2);
+
+/**
+ * Case sensitive matching
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_CASESENS', 4);
+
+/**
+ * Overwrite links if matched
+ * This should be used when the replacement string is a link
+ * (off by default)
+ */
+define('STR_HIGHLIGHT_STRIPLINKS', 8);
+
+    $profile       = Twitter::getUsers([
+                        'user_id' => '1000962488739885056', 
+                        'screen_name' => 'HiDepok',
+                        'format' => 'array' 
+                        ]);
+
+    $data_search = Twitter::getSearch([
+        'q'             => 'pemkotdepok',
+        'tweet_mode' => 'extended',
+        'result_type'   => 'recent',
+        'format'        => 'array',
+        'count'         => 100,
+        ]);
+
+
+    $get_data                   = $this->getanalysisdata($data_search);
+    $get_profile                = $this->GetProfile->getprofile($profile);
+    
+// // ======================================================================================================
+    $data_mention = Twitter::getMentionsTimeline(['count' => 50, 'format' => 'array']); 
+    $nilai_mention = [];
+    for ($i=0; $i < count($data_mention); $i++) { 
+        $nilai_mention[$i] = [
+
+            'score' => $this->sentiment->score($data_mention[$i]['text'])
+        ];
+    }
+
+    $tweet_mention = [];
+    for ($i=0; $i < count($data_mention); $i++) { 
+        $tweet_mention[$i] = [
+            'id_twitter' => $data_mention[$i]['id'],
+            'nama_akun' => $data_mention[$i]['user']['name'],
+            'tweet' => $data_mention[$i]['text'],
+            'sentiment' => $this->SentimentAnalysis->decision($data_mention[$i]['text']),
+            'score_positif' => $nilai_mention[$i]['score']['positif'],
+            'score_netral' => $nilai_mention[$i]['score']['netral'],
+            'score_negatif' => $nilai_mention[$i]['score']['negatif'],
+            'created_at' => $data_mention[$i]['created_at'],
+        ];
+
+        $checkdata = DB::table('socmed_analysis')->where('tweet', $data_mention[$i]['text'])->get()->count();
+        if($checkdata == 0){
+          DB::table('socmed_analysis')->insert($tweet_mention[$i]);
+        }
+    }
+// =========================================================================================================
+// ======================================= DATA BAG OF WORD ================================================
+// =========================================================================================================
 
 
 for ($i=37; $i<count( $this->sentiment->getList('positif')); $i++)
@@ -219,17 +190,127 @@ for ($i=39; $i<count( $this->sentiment->getList('negatif')); $i++)
 { 
     $keyneg[] = $this->sentiment->getList('negatif')[$i];
 }
+// ------------------------------------------------------------------------------------------
+// ---------------------------------- TABEL VIEW --------------------------------------------
+// ------------------------------------------------------------------------------------------
+
+$datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
+
+    foreach ($datatweets as $key => $datatweet) {
+
+    if ($datatweet->sentiment == 'negatif') {
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keyneg, "#fd79a8"); 
+    }
+
+    elseif ($datatweet->sentiment == 'positif') {
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keypos, "#00b894"); 
+    }
+
+    else
+            $tweet =   $this->highlightkeyword($datatweet->tweet, $keynet, "#6c5ce7"); 
+
+    
+    $dbtweets [] = [ 'id_twitter' => $datatweet->id_twitter,
+                    'nama_akun' => $datatweet->nama_akun,
+                    'tweet' => $tweet,
+                    'sentiment' => $datatweet->sentiment,
+                    'score_positif' => $datatweet->score_positif,
+                    'score_netral' => $datatweet->score_netral,
+                    'score_negatif' => $datatweet->score_negatif,
+                    'created_at' => $datatweet->created_at
+                    ];
+
+    }
+
+// ###########################################################################################################
+// ###################################### GET DATA CHART #####################################################
+// ###########################################################################################################
+    $year = Carbon::now()->year; //tahun sekarang
+    $month = '6'; //bulan sekarang
+    $month1 = Carbon::now()->format('F Y'); //bulan tahun
+    $tgl  = Carbon::now()->format('l j F Y');
+    $tgl1 = Carbon::now()->day; //tanggal sekarang
+
+    $awal_bulan =   Carbon::now()->startOfMonth()->toDateTimeString();
+    $akhir_bulan =  Carbon::now()->EndOfMonth()->toDateTimeString();
+
+    for ($m1=1; $m1<=12; $m1++) {       //loop all name month
+     $allmonth[] = date('F', mktime(0,0,0,$m1, 1, date('Y')));
+     }
+
+    $jml_tgl = '30';   //total tgl pd bulan
+     for ($t=1; $t<=$jml_tgl; $t++) {
+     $alltgl[] = $t;
+     }
 
 
-// $string = 'Lampu penerangan jalan sepanjang jl. Juanda Depok mati semua. Rawan dan membahayakan pengguna jalan. @RadioElshinta @pemkotdepok';
-// $search = $keyneg;
-// $highlight = 'green';
-// $dbtweets = $this->str_highlight($string, $search, STR_HIGHLIGHT_SIMPLE|STR_HIGHLIGHT_WHOLEWD, '<span style="color: '.$highlight.'">\1</span>');
+     for ($m=1; $m<=12; $m++) {
+    $dt[]  = Carbon::create($year, $m, 1, 0, 0, 0)->startofMonth()->toDateTimeString();
+    $dt2[]  = Carbon::create($year, $m, 1, 0, 0, 0)->endofMonth()->toDateTimeString();
 
-return $keynet; 
-// return $data;
+    } 
 
-	}
+    // FUNGSI CHART TOTAL  
+    $total_positif      = DB::table('socmed_analysis')
+                        ->where('sentiment', 'positif')
+                        ->whereBetween('created_at', ['05-02-2018', '06-27-2018'])
+                        ->count();
 
+    $total_netral       = DB::table('socmed_analysis')
+                        ->where('sentiment', 'netral')
+                        ->whereBetween('created_at', ['05-02-2018', '06-27-2018'])
+                        ->count();
+    
+    $total_negatif      = DB::table('socmed_analysis')
+                        ->where('sentiment', 'negatif')
+                        ->whereBetween('created_at', ['05-02-2018', '06-27-2018'])
+                        ->count();
+
+
+    // FUNGSI CHART PERBULAN
+    for ($b=0; $b<=11; $b++) {
+    $bulan_positif[]     = $this->ChartPerBulan->chartperbulan('positif', $dt[$b], $dt2[$b]);
+    $bulan_netral[]     = $this->ChartPerBulan->chartperbulan('netral', $dt[$b], $dt2[$b]);
+    $bulan_negatif[]     = $this->ChartPerBulan->chartperbulan('negatif', $dt[$b], $dt2[$b]);
+    }
+    $bulan_positif2     = $this->ChartPerBulan->chartperbulan('positif', $awal_bulan, $akhir_bulan);
+    $bulan_netral2     = $this->ChartPerBulan->chartperbulan('netral', $awal_bulan, $akhir_bulan);
+    $bulan_negatif2     = $this->ChartPerBulan->chartperbulan('negatif', $awal_bulan, $akhir_bulan);
+
+
+    // FUNGSI CHART PERHARI
+    for ($d=0; $d<28; $d++) {
+    $tgl_positif[]     = $this->ChartPerHari->chartperhari('positif', $month, $alltgl[$d]);
+    $tgl_netral[]     = $this->ChartPerHari->chartperhari('netral', $month, $alltgl[$d]);
+    $tgl_negatif[]     = $this->ChartPerHari->chartperhari('negatif', $month, $alltgl[$d]);
+    }
+    $tgl_positif2     = $this->ChartPerHari->chartperhari('positif', $month, $tgl1);
+    $tgl_netral2     = $this->ChartPerHari->chartperhari('netral', $month, $tgl1);
+    $tgl_negatif2     = $this->ChartPerHari->chartperhari('negatif', $month, $tgl1);
+// =======================================================================================================
+// =======================================================================================================
+
+    $date = Carbon::parse('2018-06-01 11:00:00');
+    $now = Carbon::now();
+
+    $diff = $date->diffInDays($now);
+
+    return view('socmed/testing',compact('keypos', 'keynet', 'keyneg',
+                'year', 'month', 'month1', 'allmonth', 'alltgl', 'tgl', 
+                'bulan_positif', 'bulan_netral', 'bulan_negatif',
+                'bulan_positif2', 'bulan_netral2', 'bulan_negatif2',
+                'tgl_positif', 'tgl_netral', 'tgl_negatif',
+                'tgl_positif2', 'tgl_netral2', 'tgl_negatif2',
+                'get_profile', 'tweet_mention', 'get_data', 'dbtweets',
+                'total_positif', 'total_netral', 'total_negatif'
+
+        ));
+    }
 
 }
+ 
+
+
+
+
+         

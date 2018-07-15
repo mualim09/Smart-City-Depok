@@ -3,41 +3,32 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
-use Illuminate\Support\Facades\DB;
-use PHPInsight\Sentiment;
 use Twitter;
-use File;
 use App\Repositories\SocmedRepository;
+use File;
+
 
 class SocmedController extends Controller
 {
 // Inisialisasi awal
-    protected $sentiment;
-    protected $SentimentAnalysis;
     protected $GetTweet;
     protected $GetProfile;
 
         
-    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis, SocmedRepository $gettweet,
+    public function __construct(SocmedRepository $gettweet,
             SocmedRepository $getprofile)
     {
         $this->middleware('auth');
-        $this->sentiment = $sentiment;
-        $this->SentimentAnalysis = $SentimentAnalysis;
         $this->GetTweet = $gettweet;
         $this->GetProfile = $getprofile;
-
-     // global $gambar;
-     // global $data1;
+ 
     }
 
     // ===============================================================================================================================
 
 
 
-        public function twitterUserTimeLine()
+        public function twitterTimeLine() 
     {
     $profile       = Twitter::getUsers([
                         'user_id' => '1000962488739885056', 
@@ -47,8 +38,7 @@ class SocmedController extends Controller
 
     $get_home       = Twitter::getHomeTimeline([
                         'widget_type' => 'video', 
-                        'count' => '50', 
-                        'since_id' => 5, 
+                        'count' => '50',  
                         'tweet_mode' => 'extended', 
                         'format' => 'array']);
 
@@ -104,15 +94,13 @@ class SocmedController extends Controller
         ]);
     $newTwitte = ['status' => $request->tweet];
 
-    
     if(!empty($request->images)){
     foreach ($request->images as $key => $value) {
     $uploaded_media = Twitter::uploadMedia(['media' => File::get($value->getRealPath())]);
     if(!empty($uploaded_media)){
                     $newTwitte['media_ids'][$uploaded_media->media_id_string] = $uploaded_media->media_id_string;
                 }
-    }
-    }
+    }}
     $twitter = Twitter::postTweet($newTwitte);
     return back();
     }
@@ -127,21 +115,20 @@ class SocmedController extends Controller
     {
     $this->validate($request, [
         'tweet' => 'required',
+
         ]);
+    $isi = '@'.$request->nama_akun.' '.$request->tweet;
     $newTwitte =    [
-                    'status' => $request->tweet,
+                    'status' => $isi,
                      'in_reply_to_status_id' => $request->id_twitter
                     ];
-
-    
     if(!empty($request->images)){
     foreach ($request->images as $key => $value) {
     $uploaded_media = Twitter::uploadMedia(['media' => File::get($value->getRealPath())]);
     if(!empty($uploaded_media)){
                     $newTwitte['media_ids'][$uploaded_media->media_id_string] = $uploaded_media->media_id_string;
                 }
-    }
-    }
+    }}
     $reply = Twitter::postTweet($newTwitte);
     return back();
     }

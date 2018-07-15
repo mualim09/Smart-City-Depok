@@ -41,7 +41,7 @@
     - Media Queries
     - Slide Animations
     - Scroll Down Arrow
-    - Preloader
+    - Preloader 
 ==================================================*/
 .symbolmodal{ 
   background: transparent;
@@ -70,6 +70,15 @@
   padding-right: 0px;
 }
 
+.no-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.btntl {
+  padding: 0px 5px;
+}
+
 .btn-del {
   font-size: 14pt;
   color: #909090;
@@ -78,7 +87,7 @@
 
 .dropdel {
     left: auto;
-    right: calc(20% - 10px - 9px);
+    right: calc(50% - 10px - 9px);
 }
 
 .btn-following{
@@ -237,10 +246,10 @@ html, body {
 }
 
 body{
-	font-family: 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   line-height: 26px;
-	color: #6d6e71;
-	font-size: 13px;
+  color: #6d6e71;
+  font-size: 13px;
 }
  
 
@@ -292,17 +301,17 @@ a:hover{color: #149AC9;}
 a, a:active, a:focus {outline: none;}
 
 section h1.section-title{
-	font-family: 'Agency FB', sans-serif;
-	font-size: 215px;
-	color: #E6E7E8;
-	margin-bottom: -55px;
+  font-family: 'Agency FB', sans-serif;
+  font-size: 215px;
+  color: #E6E7E8;
+  margin-bottom: -55px;
 }
 
 section h2.sub-title{
-	font-family: 'Agency FB', sans-serif;
-	color: #E6E7E8;
-	font-size: 50px;
-	margin: 40px 0;
+  font-family: 'Agency FB', sans-serif;
+  color: #E6E7E8;
+  font-size: 50px;
+  margin: 40px 0;
 }
 
 
@@ -380,8 +389,8 @@ section h2.sub-title{
 }
 
 section .wrapper{
-	padding-top: 100px;
-	padding-bottom: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 #page-contents{
@@ -465,13 +474,13 @@ margin-bottom: 10px;
 }
 
 .btn-primary{
-	background: #27aae1;
-	padding: 7px 25px;
-	border: none;
-	font-size: 14px;
-	border-radius: 4px;
-	color: #fff;
-	position: relative;
+  background: #27aae1;
+  padding: 7px 25px;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
   font-weight: 600;
   outline: none;
   border-radius: 30px;
@@ -504,24 +513,24 @@ margin-bottom: 10px;
           }
 
 .btn-secondary{
-	background: linear-gradient(to bottom, rgba(109,110,113,1), rgba(0,0,0,1));
-	padding: 0 40px;
-	border: none;
-	min-height: 36px;
-	font-size: 18px;
-	border-radius: 6px;
-	color: #fff;
-	position: relative;
+  background: linear-gradient(to bottom, rgba(109,110,113,1), rgba(0,0,0,1));
+  padding: 0 40px;
+  border: none;
+  min-height: 36px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: #fff;
+  position: relative;
   outline: none;
 }
 
 .btn-secondary:hover{
-	background: #000;
+  background: #000;
   transition: all 1s;
 }
 
 section img{
-	margin: auto;
+  margin: auto;
 }
 
 img.profile-photo{
@@ -537,15 +546,15 @@ img.profile-photo-lg{
 }
 
 img.profile-photo-md{
-	height: 50px;
-	width: 50px;
-	border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 img.profile-photo-sm{
-	height: 40px;
-	width: 40px;
-	border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 
 img.profile-photo-xs{
@@ -614,10 +623,10 @@ ul li{
 }
 
 textarea{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .custom-label{
@@ -768,16 +777,16 @@ textarea{
 
 #header-inverse .menu ul.main-menu li ul.dropdown-menu::before{
   content: "";
-	display: block;  
-	position: absolute;
-	right: 20px;
-	bottom: 100%;
-	width: 0;
-	height: 0;
-	border-bottom: 10px solid #231F20;
-	border-top: 10px solid transparent;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
+  display: block;  
+  position: absolute;
+  right: 20px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #231F20;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 
 
@@ -786,13 +795,13 @@ textarea{
   ==================================================*/
 
 #banner{
-	background: url("http://placehold.it/1920x900") fixed no-repeat;
+  background: url("http://placehold.it/1920x900") fixed no-repeat;
   background-position: center;
-	background-size: cover;
-	width: 100%;
-	min-height: 550px;
-	position: relative;
-	top: 0;
+  background-size: cover;
+  width: 100%;
+  min-height: 550px;
+  position: relative;
+  top: 0;
 }
 
 /*==================================================
@@ -884,12 +893,12 @@ textarea{
   ==================================================*/
 
 #features{
-	background: #EFEFEF;
-	background: radial-gradient(#fff 50%, #EFEFEF 90%);
-	background: -moz-radial-gradient(#fff 50%, #EFEFEF 90%);
-	background: -webkit-radial-gradient(#fff 50%, #EFEFEF 90%);
-	background: -o-radial-gradient(#fff 50%, #EFEFEF 90%);
-	text-align: center;
+  background: #EFEFEF;
+  background: radial-gradient(#fff 50%, #EFEFEF 90%);
+  background: -moz-radial-gradient(#fff 50%, #EFEFEF 90%);
+  background: -webkit-radial-gradient(#fff 50%, #EFEFEF 90%);
+  background: -o-radial-gradient(#fff 50%, #EFEFEF 90%);
+  text-align: center;
 }
 
 #features .feature-item .feature-icon{
@@ -1011,11 +1020,11 @@ textarea{
   ==================================================*/
 
 #site-facts{
-	background: radial-gradient(rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 1) 100%), url("http://placehold.it/1920x1280") fixed no-repeat;
-	background-size: cover;
-	height: 500px !important;
-	text-align: center;
-	color: #fff;
+  background: radial-gradient(rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 1) 100%), url("http://placehold.it/1920x1280") fixed no-repeat;
+  background-size: cover;
+  height: 500px !important;
+  text-align: center;
+  color: #fff;
 }
 
 #site-facts .circle{
@@ -1096,7 +1105,7 @@ textarea{
 
 #live-feed{
   background: #fff;
-	text-align: center;
+  text-align: center;
 }
 
 #live-feed ul.online-users li {
@@ -2647,113 +2656,113 @@ ul.contact li i{
 }
 
 .slideDown.appear{
-	animation-name: slideDown;
-	-webkit-animation-name: slideDown;
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
 
-	animation-duration: 1s;
-	-webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
 
-	animation-timing-function: ease;
-	-webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
 
-	visibility: visible !important;
+  visibility: visible !important;
 }
 
 @keyframes slideDown {
-	0% {
-		transform: translateY(-100%);
-	}
-	50%{
-		transform: translateY(8%);
-	}
-	65%{
-		transform: translateY(-4%);
-	}
-	80%{
-		transform: translateY(4%);
-	}
-	95%{
-		transform: translateY(-2%);
-	}
-	100% {
-		transform: translateY(0%);
-	}
+  0% {
+    transform: translateY(-100%);
+  }
+  50%{
+    transform: translateY(8%);
+  }
+  65%{
+    transform: translateY(-4%);
+  }
+  80%{
+    transform: translateY(4%);
+  }
+  95%{
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 @-webkit-keyframes slideDown {
-	0% {
-		-webkit-transform: translateY(-100%);
-	}
-	50%{
-		-webkit-transform: translateY(8%);
-	}
-	65%{
-		-webkit-transform: translateY(-4%);
-	}
-	80%{
-		-webkit-transform: translateY(4%);
-	}
-	95%{
-		-webkit-transform: translateY(-2%);
-	}
-	100% {
-		-webkit-transform: translateY(0%);
-	}
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  50%{
+    -webkit-transform: translateY(8%);
+  }
+  65%{
+    -webkit-transform: translateY(-4%);
+  }
+  80%{
+    -webkit-transform: translateY(4%);
+  }
+  95%{
+    -webkit-transform: translateY(-2%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
 }
 
 .slideUp.appear{
-	animation-name: slideUp;
-	-webkit-animation-name: slideUp;
+  animation-name: slideUp;
+  -webkit-animation-name: slideUp;
 
-	animation-duration: 1s;
-	-webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
 
-	animation-timing-function: ease;
-	-webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
 
-	visibility: visible !important;
+  visibility: visible !important;
 }
 
 @keyframes slideUp {
-	0% {
-		transform: translateY(100%);
-	}
-	50%{
-		transform: translateY(-8%);
-	}
-	65%{
-		transform: translateY(4%);
-	}
-	80%{
-		transform: translateY(-4%);
-	}
-	95%{
-		transform: translateY(2%);
-	}
-	100% {
-		transform: translateY(0%);
-	}
+  0% {
+    transform: translateY(100%);
+  }
+  50%{
+    transform: translateY(-8%);
+  }
+  65%{
+    transform: translateY(4%);
+  }
+  80%{
+    transform: translateY(-4%);
+  }
+  95%{
+    transform: translateY(2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 @-webkit-keyframes slideUp {
-	0% {
-		-webkit-transform: translateY(100%);
-	}
-	50%{
-		-webkit-transform: translateY(-8%);
-	}
-	65%{
-		-webkit-transform: translateY(4%);
-	}
-	80%{
-		-webkit-transform: translateY(-4%);
-	}
-	95%{
-		-webkit-transform: translateY(2%);
-	}
-	100% {
-		-webkit-transform: translateY(0%);
-	}
+  0% {
+    -webkit-transform: translateY(100%);
+  }
+  50%{
+    -webkit-transform: translateY(-8%);
+  }
+  65%{
+    -webkit-transform: translateY(4%);
+  }
+  80%{
+    -webkit-transform: translateY(-4%);
+  }
+  95%{
+    -webkit-transform: translateY(2%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
 }
 
 
@@ -2762,21 +2771,21 @@ ul.contact li i{
   ==================================================*/
 
 .arrows {
-	width: 60px;
-	height: 72px;
-	position: absolute;
-	left: 0;
+  width: 60px;
+  height: 72px;
+  position: absolute;
+  left: 0;
   right: 0;
-	margin: auto;
-	bottom: -90px;
+  margin: auto;
+  bottom: -90px;
 }
 
 .arrows path {
-	stroke: #27aae1;
-	fill: transparent;
-	stroke-width: 1px;
-	animation: arrow 2s infinite;
-	-webkit-animation: arrow 2s infinite;
+  stroke: #27aae1;
+  fill: transparent;
+  stroke-width: 1px;
+  animation: arrow 2s infinite;
+  -webkit-animation: arrow 2s infinite;
 }
 
 @keyframes arrow
@@ -2796,18 +2805,18 @@ ul.contact li i{
 }
 
 .arrows path.a1 {
-	animation-delay:-1s;
-	-webkit-animation-delay:-1s;
+  animation-delay:-1s;
+  -webkit-animation-delay:-1s;
 }
 
 .arrows path.a2 {
-	animation-delay:-0.5s;
-	-webkit-animation-delay:-0.5s;
+  animation-delay:-0.5s;
+  -webkit-animation-delay:-0.5s;
 }
 
 .arrows path.a3 {
-	animation-delay:0s;
-	-webkit-animation-delay:0s;
+  animation-delay:0s;
+  -webkit-animation-delay:0s;
 }
 
 

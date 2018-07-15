@@ -1,31 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use PHPInsight\Sentiment;
 use Twitter;
-use File;
 use App\Repositories\SocmedRepository;
 
 class SocmedProfilController extends Controller
 {
   // Inisialisasi awal
-    protected $sentiment;
-    protected $SentimentAnalysis;
     protected $GetTweet;
     protected $GetFollow;
     protected $GetProfile;
 
 
-    public function __construct(Sentiment $sentiment, SentimentAnalysis $SentimentAnalysis,
-        SocmedRepository $gettweet, SocmedRepository $getfollow, SocmedRepository $getprofile)
+    public function __construct( SocmedRepository $gettweet, SocmedRepository $getfollow, SocmedRepository $getprofile)
     {
         $this->middleware('auth');
-        $this->sentiment = $sentiment;
-        $this->SentimentAnalysis = $SentimentAnalysis;
         $this->GetTweet = $gettweet;
         $this->GetFollow = $getfollow;
         $this->GetProfile = $getprofile;
@@ -91,7 +81,7 @@ class SocmedProfilController extends Controller
                                         'user_id' => $request->id_akun,
                                         'screen_name' => $request->nama_akun
                                       ]);
-    return redirect('dashboard-socmed/profile#followers');  
+    return redirect('dashboard-socmed/profile#following');
     }
 
 

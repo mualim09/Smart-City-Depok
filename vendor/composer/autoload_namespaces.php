@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'tmhOAuth' => array($vendorDir . '/themattharris/tmhoauth'),
     'Thujohn\\Twitter' => array($vendorDir . '/thujohn/twitter/src'),
+    'Snowfire\\Beautymail\\' => array($vendorDir . '/snowfire/beautymail/src'),
     'SimplePie' => array($vendorDir . '/simplepie/simplepie/library'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
@@ -18,6 +19,4 @@ return array(
     'Laracasts\\Flash' => array($vendorDir . '/laracasts/flash/src'),
     'JakubOnderka\\PhpConsoleHighlighter' => array($vendorDir . '/jakub-onderka/php-console-highlighter/src'),
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
-    'Google_Service_' => array($vendorDir . '/google/apiclient-services/src'),
-    'Google_' => array($vendorDir . '/google/apiclient/src'),
 );

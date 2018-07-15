@@ -76,8 +76,10 @@
 
   <!-- Isi Blog -->
   <div class="w3-content w3-padding-32" style="max-width: 1000px">
-    @foreach($events as $event)
-    <div class="event_content w3-card-4 w3-white w3-padding-16" data-ix="scale-on-scroll">
+    
+    <div class="w3-row">
+      @foreach($events as $event)
+    <div class="event_content w3-third w3-white w3-padding-16 w3-border" data-ix="scale-on-scroll">
       <div class="w3-container" style="padding: 0 2em">
         <h3 class="blog_contentjudul"><b>{{ $event->nama_event}}</b></h3>
         <h5 class="blog_contenttime"><span class="w3-opacity">Tanggal berlangsung : {{ $event->tgl_mulai }} s/d {{ $event->tgl_akhir }}</span></h5>
@@ -91,6 +93,8 @@
     </div>
     @endforeach 
     {{$events->links()}}
+    </div>
+    
   </div>
 
   <!-- Footer -->

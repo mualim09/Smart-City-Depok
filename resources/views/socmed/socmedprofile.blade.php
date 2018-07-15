@@ -19,7 +19,7 @@
     <li class="active"><a data-toggle="tab" href="#tweet">Tweets</a></li>
     <li><a data-toggle="tab" href="#following">Following</a></li>
     <li><a data-toggle="tab" href="#followers">Followers</a></li>
-    <li><a data-toggle="tab" href="#findaccount">Find</a></li>
+    {{-- <li><a data-toggle="tab" href="#findaccount">Find</a></li> --}}
   </ul>
 
   <div class="tab-content">
@@ -51,15 +51,25 @@
           {{-- ==== --}}
     </div> {{-- box didalam tab--}}
   </div>
-{{-- ================================================== --}}
-    
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Reply+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+@foreach($get_tweets as $datas)
 
-    <div id=following class="tab-pane">
-      
-      <div class="box-body">
-      {{-- <div class="container"> --}}
-    {{-- <div class="row justify-content-center"> --}}
-      <div class="col-md-11">
+  @include('socmed.inc.replytweet')
+
+@endforeach
+
+{{-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ RETWEET +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ --}}
+
+@foreach($get_tweets as $datas)
+
+  @include('socmed.inc.retweettweet')
+
+@endforeach
+    
+{{-- =============================================================================================================================== --}}
+<div id=following class="tab-pane"> 
+  <div class="box-body">
+    <div class="col-md-11" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
           {{--  ====  --}}
                     <div class="block-title">
                     <div class="friend-list">
@@ -79,20 +89,16 @@
 
                     </div>
                 </div>
-            </div>
-          {{-- </div> --}}
-          {{-- ==== --}}
-      </div>
+
     </div>
+  </div>
+</div>
     
 {{-- ================================================== --}}
 
-    <div id="followers" class="tab-pane fade">
-  
-          <div class="box-body">
-      {{-- <div class="container"> --}}
-    {{-- <div class="row justify-content-center"> --}}
-      <div class="col-md-11">
+<div id="followers" class="tab-pane fade">  
+  <div class="box-body">
+    <div class="col-md-11" style="background-color: white; box-shadow: 0px 0px 3px 0.5px #888888; padding: 2em; margin-top: 1em">
           {{--  ====  --}}
                     <div class="block-title">
                     <div class="friend-list">
@@ -111,12 +117,10 @@
                       </div>
 
                     </div>
-                </div>
-            </div>
-          {{-- </div> --}}
-          {{-- ==== --}}
-      </div>
+                    </div>
     </div>
+  </div>
+</div>
 
 {{-- ================================================== --}}
     
@@ -157,6 +161,4 @@
 </div>
 
         
-
-
 @endsection

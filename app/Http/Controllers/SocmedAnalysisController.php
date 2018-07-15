@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use PHPInsight\Sentiment;
 use Twitter;
-use File;
 use App\Repositories\SocmedRepository;
 use Carbon\Carbon;
 
@@ -55,11 +54,10 @@ public function highlightkeyword($string, $search, $color)
 return $tweetclr;
 }
 // =====================================================================================================================================
-
+ 
     
       public function getanalysisdata($data)
     {
-
 for ($i=0; $i <count($data) ; $i++) { 
     $ds = $data['statuses'];
 
@@ -71,11 +69,9 @@ for ($i=0; $i <count($data) ; $i++) {
             'score' => $this->sentiment->score($ds[$i]['full_text'])
         ];
     }
-
 $data1 = [];
 for ($i=0; $i < count($ds); $i++) { 
     
-
     $data1[$i] = [
     'id_twitter' => $ds[$i]['id'],
     'nama_akun' => $ds[$i]['user']['name'],
@@ -86,15 +82,14 @@ for ($i=0; $i < count($ds); $i++) {
     'score_negatif' => $nilai[$i]['score']['negatif'],
     'created_at' =>Carbon::parse($ds[$i]['created_at'])->toDateTimeString(),
     ];
+    $checkdata = DB::table('socmed_analysis')->where('tweet', $ds[$i]['full_text'])->get()->count();
 
-    $checkdata = DB::table('socmed_analysis')->where('id_twitter', $ds[$i]['id'])->get()->count();
-
-        if($checkdata == 0){
+        if($checkdata != 1){
           DB::table('socmed_analysis')->insert($data1[$i]);
         }
     }
-
 }
+
 return $data1;
 }
 // ================================================================================================
@@ -142,7 +137,7 @@ define('STR_HIGHLIGHT_STRIPLINKS', 8);
     $get_profile                = $this->GetProfile->getprofile($profile);
     
 // // ======================================================================================================
-    $data_mention = Twitter::getMentionsTimeline(['count' => 10, 'format' => 'array']);	
+    $data_mention = Twitter::getMentionsTimeline(['count' => 50, 'format' => 'array']);	
     $nilai_mention = [];
     for ($i=0; $i < count($data_mention); $i++) { 
         $nilai_mention[$i] = [
@@ -164,7 +159,7 @@ define('STR_HIGHLIGHT_STRIPLINKS', 8);
             'created_at' => $data_mention[$i]['created_at'],
         ];
 
-        $checkdata = DB::table('socmed_analysis')->where('id_twitter', $data_mention[$i]['id'])->get()->count();
+        $checkdata = DB::table('socmed_analysis')->where('tweet', $data_mention[$i]['text'])->get()->count();
         if($checkdata == 0){
           DB::table('socmed_analysis')->insert($tweet_mention[$i]);
         }
@@ -227,6 +222,10 @@ $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
     $month = Carbon::now()->month; //bulan sekarang
     $month1 = Carbon::now()->format('F Y'); //bulan tahun
     $tgl  = Carbon::now()->format('l j F Y');
+    $tgl1 = Carbon::now()->day; //tanggal sekarang
+
+    $awal_bulan =   Carbon::now()->startOfMonth()->toDateTimeString();
+    $akhir_bulan =  Carbon::now()->EndOfMonth()->toDateTimeString();
 
     for ($m1=1; $m1<=12; $m1++) {       //loop all name month
      $allmonth[] = date('F', mktime(0,0,0,$m1, 1, date('Y')));
@@ -244,8 +243,7 @@ $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
 
     }
 
-    // FUNGSI CHART TOTAL
-            
+    // FUNGSI CHART TOTAL  
     $total_positif      = $this->ChartTotal->charttotal('positif');
     $total_netral       = $this->ChartTotal->charttotal('netral');
     $total_negatif      = $this->ChartTotal->charttotal('negatif');
@@ -257,6 +255,9 @@ $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
     $bulan_netral[]     = $this->ChartPerBulan->chartperbulan('netral', $dt[$b], $dt2[$b]);
     $bulan_negatif[]     = $this->ChartPerBulan->chartperbulan('negatif', $dt[$b], $dt2[$b]);
     }
+    $bulan_positif2     = $this->ChartPerBulan->chartperbulan('positif', $awal_bulan, $akhir_bulan);
+    $bulan_netral2     = $this->ChartPerBulan->chartperbulan('netral', $awal_bulan, $akhir_bulan);
+    $bulan_negatif2     = $this->ChartPerBulan->chartperbulan('negatif', $awal_bulan, $akhir_bulan);
 
 
     // FUNGSI CHART PERHARI
@@ -265,6 +266,9 @@ $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
     $tgl_netral[]     = $this->ChartPerHari->chartperhari('netral', $month, $alltgl[$d]);
     $tgl_negatif[]     = $this->ChartPerHari->chartperhari('negatif', $month, $alltgl[$d]);
     }
+    $tgl_positif2     = $this->ChartPerHari->chartperhari('positif', $month, $tgl1);
+    $tgl_netral2     = $this->ChartPerHari->chartperhari('netral', $month, $tgl1);
+    $tgl_negatif2     = $this->ChartPerHari->chartperhari('negatif', $month, $tgl1);
 // =======================================================================================================
 // =======================================================================================================
 
@@ -272,7 +276,9 @@ $datatweets = DB::table('socmed_analysis')->orderBy('created_at','dsc')->get();
     return view('socmed/socmedanalysis',compact('keypos', 'keynet', 'keyneg',
                 'year', 'month', 'month1', 'allmonth', 'alltgl', 'tgl', 
                 'bulan_positif', 'bulan_netral', 'bulan_negatif',
+                'bulan_positif2', 'bulan_netral2', 'bulan_negatif2',
                 'tgl_positif', 'tgl_netral', 'tgl_negatif',
+                'tgl_positif2', 'tgl_netral2', 'tgl_negatif2',
                 'get_profile', 'tweet_mention', 'get_data', 'dbtweets',
                 'total_positif', 'total_netral', 'total_negatif'
 

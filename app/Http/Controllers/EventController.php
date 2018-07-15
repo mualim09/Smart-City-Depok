@@ -27,6 +27,7 @@ class EventController extends Controller
     {
       $events = DB::table('events')->orderBy('id_event','dsc')->get();
       return view('pages/data/event', compact('events'));
+      
     }
 
 
@@ -80,6 +81,25 @@ class EventController extends Controller
         'deskripsi_event'   => $request->deskripsi_event,
         'image_event'       => $fileNameToStore     
       ]);
+
+      $terbaru = Event::select('nama_event')->latest()->first();
+         $surel = Email::select('*')->get();
+         $judul = $terbaru->nama_event;
+         $desc = $terbaru->deskripsi_event;
+        $beautymail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+
+        foreach($surel as $surels)
+        {
+        $imels = $surels->email;        
+        $beautymail->send('email.sendmail', ['judul' => $judul, 'desc' => $deskripsi_event, 'jenis' => 'event', 'judul_jenis' => 'Event'], function($message) use($imels)
+        {
+            // $to_email = Input::get('email');
+            $message
+                ->from('hidepok.id@gmail.com', 'Hi-Depok')
+                ->to($imels, $imels)
+                ->subject('Acara Terbaru!');
+        });
+        }
 
       return redirect('/events');
     }
@@ -197,6 +217,27 @@ class EventController extends Controller
       ->latest()
       ->limit(3)
       ->get();
+
+      $ip= \Request::ip();
+      $data = Location::get($ip);
+      ModelVisitor::create([
+            'ip'             => $ip,
+            'country_name'   => $data->countryName,
+            'country_code'   => $data->countryCode,
+            'region_name'    => $data->regionName,
+            'region_code'    => $data->regionCode,
+            'city_name'      => $data->cityName,
+            'zip_code'       => $data->zipCode,
+            'iso_code'       => $data->isoCode,
+            'postal_code'    => $data->postalCode,
+            'latitude'       => $data->latitude,
+            'longitude'      => $data->longitude,
+            'metro_code'     => $data->metroCode,
+            'area_code'      => $data->areaCode,
+            'driver'         => $data->driver,
+            'bounce_rate'    => 'Event'
+        ]);
+
       return view('/event', ['events' => $events, 'slides' => $slides]);
     }
 
@@ -211,7 +252,7 @@ class EventController extends Controller
       ->get();
 
       $ip= \Request::ip();
-        $data = Location::get('182.23.86.44');
+        $data = Location::get($ip);
         
       ModelVisitor::create([
         'ip'             => $ip,

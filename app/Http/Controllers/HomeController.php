@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Raulr\GooglePlayScraper\Scraper;
 use App\User;
 use App\ModelVisitor;
+use App\Pengajuan;
 
 class HomeController extends Controller
 {
@@ -29,29 +31,33 @@ class HomeController extends Controller
     public function index()
     {
 
-        // $user = DB::select('SELECT * from user_android where id_ = ?', [$id_user])
-        // ->first();
+        //download
+        $scraper = new Scraper();
+        $app = $scraper->getApp('tiregdev.sipepikeling');
+        $downloadapp = $app['downloads'];
 
-       $user     = DB::table('user_android')
-       ->orderBY('id_user', 'dsc')
-       ->limit(8)
-       ->get();
+        //member
+        $jumlahuser = DB::table('user_android')->count();
+        $user     = DB::table('user_android')
+        ->orderBY('id_user', 'dsc')
+        ->limit(8)
+        ->get();
 
-         $jumlahuser = DB::table('user_android')->count(); //untuk menghitung jumlah user
+        //kritik dan saran
+         $complaint = DB::table('complaints')->count();
 
-         $complaint = DB::table('complaints')->count(); //untuk menghitung complain
          $i = 1;
 
          //statistik pembaca artikel
-         $artikel = ModelVisitor::select('halaman')
+         $artikel = ModelVisitor::select('blogs')
          ->distinct()
          ->get();
          $arrayart = array();
          foreach ($artikel as $artikel2) {
-            array_push($arrayart, $artikel2->halaman);
+            array_push($arrayart, $artikel2->blogs);
         }
-        $jmlartikel = ModelVisitor::selectRaw('halaman, count(halaman) as total_halaman')
-        ->groupBy('halaman')
+        $jmlartikel = ModelVisitor::selectRaw('blogs, count(blogs) as total_halaman')
+        ->groupBy('blogs')
         ->get();
         $arrayartjml = array();
         foreach ($jmlartikel as $jmlartikel2) {
@@ -75,23 +81,11 @@ class HomeController extends Controller
         }
         
         //statistik pengajuan
-        // $pengajuan = array();
-        // for($j=1;$j<=3;$j++)
-        // {
-        //     $pengajuans = DB::table('penghargaans')->selectRaw("count(id_penghargaan) as pengajuan_karya")
-        //     ->where('status', $j)
-        //     ->get();
-        //     foreach($pengajuans as $pengajuan2)
-        //     {
-        //         array_push($pengajuan, $pengajuan2->pengajuan_karya);
-        //     }
-        // }
-        // dd($pengajuan);
-
-        // $pengajuan = DB::table('penghargaans')
-        // ->distinct()
-        // ->selectRaw("count(status) as total_pengajuan")
-
+        $pengajuan = Pengajuan::selectRaw(" DISTINCT (SELECT COALESCE(COUNT(status), 0) FROM penghargaans WHERE status = 'diterima') as status_diterima, (SELECT COALESCE(COUNT(status), 0) FROM penghargaans WHERE status = 'diproses') as status_diproses, (SELECT COALESCE(COUNT(status), 0) FROM penghargaans WHERE status = 'ditolak') as status_ditolak")
+        ->first();
+        $pengajuanjml = array();
+        array_push($pengajuanjml, $pengajuan->status_diterima, $pengajuan->status_diproses, $pengajuan->status_ditolak);
+        
 
         //visitor
         $visitor = array();
@@ -106,6 +100,25 @@ class HomeController extends Controller
             }
         }
 
-        return view('dashboard', compact('user', 'visitor', 'jumlahuser', 'complaint', 'arrayart', 'arrayartjml', 'arrayevent', 'arrayjmlevent'));
+        //bounce rate
+        // $semuapengunjung = ModelVisitor::selectRaw("count(distinct ip) ip")->first();
+        // $pengunjungs = ModelVisitor::selectRaw("distinct ip")->get();
+        // $pengunjung1 = 0;
+        // foreach($pengunjungs as $pengunjungss)
+        // {
+        //     $pengunjung1halaman = ModelVisitor::selectRaw("count(distinct bounce_rate) bounce_rate")
+        //     ->where('ip', $pengunjungss->ip)
+        //     ->first();
+        //     if($pengunjung1halaman->bounce_rate==1)
+        //     {
+        //         $pengunjung1++;
+        //     }
+        // }
+        // $bouncerate = ($pengunjung1/$semuapengunjung->ip)*100;
+        // var_dump($pengunjung1);
+        // var_dump($semuapengunjung->ip);
+        // var_dump($bouncerate);
+
+        return view('dashboard', compact('user', 'visitor', 'jumlahuser', 'complaint', 'arrayart', 'arrayartjml', 'arrayevent', 'arrayjmlevent', 'pengajuan', 'pengajuanjml', 'downloadapp', 'bouncerate'));
     }
 } 

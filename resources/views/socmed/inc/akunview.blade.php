@@ -39,12 +39,3 @@
 </div>
 </div>
 
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.btn.btn-following.pull-right').hover(function() {
-      $(this).html('Following');
-    }, function() {
-      $(this).html('Unfollow');
-    });
-  });
-</script>

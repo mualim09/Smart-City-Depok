@@ -38,14 +38,14 @@
         <form method="POST" action="{{ route('post.unlike') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="glyphicon glyphicon-heart text-red symbolbutton">{{$datas['favorite_count']}}
+            <button type="submit" class="fa fa-heart text-red symbolbutton">{{$datas['favorite_count']}}
             </button>
          </form>
         @else
         <form method="POST" action="{{ route('post.like') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
             <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-            <button type="submit" class="glyphicon glyphicon-heart text-red symbolbutton">{{$datas['favorite_count']}}
+            <button type="submit" class="fa fa-heart-o text-red symbolbutton">{{$datas['favorite_count']}}
             </button>
         </form>
         @endif
@@ -85,16 +85,6 @@
   </video>
 
     @endif 
-
-
-{{--     @if($datas['nama_akun'] == $get_profile['nama_akun'])
-    <form method="POST" action="{{ route('post.destroytweet') }}" enctype="multipart/form-data">
-      {{ csrf_field() }}
-    <input type="hidden" name="id_twitter" value="{{$datas['id_twitter']}}">
-    <button type="submit" class="glyphicon glyphicon-trash pull-right">
-    </button>
-    </form>
-    @endif --}}
 
     </div>
   </div>

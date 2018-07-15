@@ -14,6 +14,21 @@
 // Route::get('/inputdataumum', 'Dashboard2@dataumum');
 
 
+//===============================================================
+//                             email                            =
+//===============================================================
+Route::post('/sendMail', 'MailController@sendMail');
+Route::get('/loginMail', function () {
+    return view('email/login');
+});
+Route::get('/tesemail', function () {
+    return view('email/email');
+});
+
+Route::post('/tesemail2', 'SendMailController@sendMail');
+
+// ##############################################################
+
 
 //===============================================================
 //                          lockscreen                          =
@@ -42,9 +57,10 @@ Route::get('/dashboard4', function () {
 //===============================================================
 //                          TWITTER                             =
 //===============================================================
-Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
+Route::get('dashboard-socmed', 'SocmedController@twitterTimeLine')->middleware('auth')->name('home');
 Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
 Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
+Route::get('dashboard-socmed/testing', 'SocmedTestingController@analysis')->middleware('auth')->name('analysis');
 
 Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
 
@@ -228,16 +244,14 @@ Route::get('/karyareject', 'MasterpieceController@index_reject');
 // Route::get('/blog/{judul}', 'BlogController@error');
 
 // Route::get('/', 'VisitorController@visitor');
-Route::get('/', 'FeedController@berita');
+Route::get('/', 'FeedController@index');
 Route::get('/maps', 'MapsController@maps');
 Route::get('/blog', 'BlogController@viewblog');
 Route::get('/blog/{judul}', 'BlogController@viewblog2');
 Route::get('/event', 'EventController@viewevent');
 Route::get('/event/{nama_event}', 'EventController@viewevent2');
 Route::resource('complaint', 'ComplainController');
-Route::get('/information', function () {
-    return view('information');
-});
+Route::get('/information', 'InformasiController@index');
 Route::get('/faq', function () {
     return view('faq');
 });
