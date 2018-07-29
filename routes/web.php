@@ -10,36 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/inputdatamaster', 'Dashboard2@datamaster');
-// Route::get('/inputdataumum', 'Dashboard2@dataumum');
-
-
-//===============================================================
-//                             email                            =
-//===============================================================
-Route::post('/sendMail', 'MailController@sendMail');
-Route::get('/loginMail', function () {
-    return view('email/login');
-});
-Route::get('/tesemail', function () {
-    return view('email/email');
-});
-
-Route::post('/tesemail2', 'SendMailController@sendMail');
-
-// ##############################################################
-
-
-//===============================================================
-//                          lockscreen                          =
-//===============================================================
-Route::get('/lockscreen', function () {
-    return view('lockscreen');
-});
-Auth::routes();
-// ##############################################################
-
-
+Route::group(['middleware' => ['authrev']], function () {
 
 //===============================================================
 //                     Dashboard 1 2 3 4                        =
@@ -53,175 +24,15 @@ Route::get('/dashboard4', function () {
     return view('pages/dashboard4');
 });
 
-
-//===============================================================
-//                          TWITTER                             =
-//===============================================================
-Route::get('dashboard-socmed', 'SocmedController@twitterTimeLine')->middleware('auth')->name('home');
-Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
-Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
-Route::get('dashboard-socmed/testing', 'SocmedTestingController@analysis')->middleware('auth')->name('analysis');
-
-Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
-
-Route::post('destroytweet', ['as'=>'post.destroytweet','uses'=>'SocmedController@destroytweet']);
-
-Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
-
-Route::post('retweet', ['as'=>'post.retweet','uses'=>'SocmedController@retweet']);
-Route::post('unretweet', ['as'=>'post.unretweet','uses'=>'SocmedController@unretweet']);
-
-Route::post('like', ['as'=>'post.like','uses'=>'SocmedController@like']);
-Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
-
-Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
-Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
-
-Route::delete('/analysis/hapus/{id_twitter}', 'SocmedAnalysisController@delete_tweet')->middleware('auth')->name('analysis');
-Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
-
-
-
-//===============================================================
-//                          DATA UMUM                           =
-//===============================================================
-Route::resource('/events', 'EventController');
-
-Route::resource('/blogs', 'BlogController');
-Route::post('import_csv_file', 'BlogController@import_csv_file');
-
-
-Route::get('/spaceroom', 'PendaftaranController@index_spaceroom');
-Route::delete('/spaceroom/{id_sr}', 'PendaftaranController@destroy_spaceroom');
-
-
-Route::get('/volunteer', 'PendaftaranController@index_volunteer');
-Route::delete('/volunteer/{id_volunteer}', 'PendaftaranController@destroy_volunteer');
-
-
-Route::resource('/broadcast', 'BroadcastController');
-//###############################################################
-
-
-
 //===============================================================
 //                          Content                             =
-//===============================================================
-Route::resource('/abouts', 'AboutController');
-
-
-Route::get('/faqs', function () {
-    return view('content/faq');
-});
-
-
-//###############################################################
-
-
-
-//===============================================================
-//                               OPD                            =
-//===============================================================
-Route::resource('/opd', 'OpdController');
-
-Route::resource('/adminopd', 'AdminopdController');
-Route::post('import_adminopd', 'AdminopdController@import_adminopd');
-
-Route::get('/dataadmin1', function () {
-    return view('pages/admin1');
-});
-// Route::get('/dataadmin2', function () {
-//     return view('pages/admin2');
-// });
-
-Route::get('/lihatadmin', function () {
-    return view('opd/adminview');
-});
-// ##############################################################
-
-
-
-//===============================================================
-//                            USER                              =
-//===============================================================
-Route::resource('/datauser', 'AndroiduserController');
-//###############################################################
-
-
-
-//===============================================================
-//                          PARTNER                             =
-//===============================================================
-Route::get('/datapartner', function () {
-    return view('partner/partner');
-});
-
-Route::get('/lihatpartner', function () {
-    return view('partner/partnerview');
-});
-
-Route::get('/editpartner', function () {
-    return view('partner/partneredit');
-});
-//###############################################################
-
-
-
-//===============================================================
-//               Input Data Sementara                           =
 //===============================================================
 Route::get('/inputdataumum', function () {
     return view('pages/inputdata');
 });
-
-
-Route::get('/inputdatamaster', function () {
-    return view('pages/inputdata2');
-});
-
-Route::get('/kesehatan', function () {
-    return view('pages/form/sehat');
-});
-
-Route::get('/pendidikan', function () {
-    return view('pages/form/pendidikan');
-});
-
-Route::get('/perekonomian', function () {
-    return view('pages/form/perekonomian');
-});
-
-Route::get('/sosial', function () {
-    return view('pages/form/sosial');
-});
-
-Route::get('/pariwisata', function () {
-    return view('pages/form/pariwisata');
-});
-
-Route::get('/fasilitasumum', function () {
-    return view('pages/form/fasilitasumum');
-});
-
-Route::get('/inputolahraga', function () {
-    return view('pages/form/inputolahraga');
-});
-
-Route::get('/transportasi', function () {
-    return view('pages/form/transportasi');
-});
-
-Route::get('/kependudukan', function () {
-    return view('pages/form/kependudukan');
-});
-
-Route::get('/instansi', function () {
-    return view('pages/form/instansi');
-});
-
-// ##############################################################
-
-
+Route::resource('/abouts', 'AboutController');
+Route::resource('/faqs', 'FaqController');
+Route::resource('/broadcast', 'BroadcastController');
 
 //===============================================================
 //                  Karya & Masterpiece                         =
@@ -232,34 +43,34 @@ Route::put('/karya/{id_penghargaan}', 'MasterpieceController@accept');
 Route::get('/karya', 'MasterpieceController@index_status');
 Route::get('/karyaaccept', 'MasterpieceController@index_accept');
 Route::get('/karyareject', 'MasterpieceController@index_reject');
-// =============================================
 
 
 //===============================================================
-//                   TAMPILAN PUBLIC                            =
+//                            USER                              =
 //===============================================================
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/blog/{judul}', 'BlogController@error');
+Route::resource('/datauser', 'AndroiduserController');
 
-// Route::get('/', 'VisitorController@visitor');
-Route::get('/', 'FeedController@index');
-Route::get('/maps', 'MapsController@maps');
-Route::get('/blog', 'BlogController@viewblog');
-Route::get('/blog/{judul}', 'BlogController@viewblog2');
-Route::get('/event', 'EventController@viewevent');
-Route::get('/event/{nama_event}', 'EventController@viewevent2');
-Route::resource('complaint', 'ComplainController');
-Route::get('/information', 'InformasiController@index');
-Route::get('/faq', function () {
-    return view('faq');
+
+//===============================================================
+//                               OPD                            =
+//===============================================================
+Route::resource('/opd', 'OpdController');
+Route::resource('/adminopd', 'AdminopdController');
+Route::post('import_adminopd', 'AdminopdController@import_adminopd');
+
+
+//===============================================================
+//                          PARTNER                             =
+//===============================================================
+Route::get('/datapartner', function () {
+    return view('partner/partner');
 });
-Route::resource('/faqs', 'FaqController');
-#################################################################
-
-
-
+Route::get('/lihatpartner', function () {
+    return view('partner/partnerview');
+});
+Route::get('/editpartner', function () {
+    return view('partner/partneredit');
+});
 
 
 
@@ -377,53 +188,190 @@ Route::post('import_damkar', 'DamkarController@import_damkar');
 
 Route::resource('tni', 'TniController');
 Route::post('import_tni', 'TniController@import_tni');
+
+
+//===============================================================
+//               Input Data Sementara                           =
+//===============================================================
+Route::get('/inputdatamaster', function () {
+    return view('pages/inputdata2');
+});
+Route::get('/kesehatan', function () {
+    return view('pages/form/sehat');
+});
+Route::get('/pendidikan', function () {
+    return view('pages/form/pendidikan');
+});
+Route::get('/perekonomian', function () {
+    return view('pages/form/perekonomian');
+});
+Route::get('/sosial', function () {
+    return view('pages/form/sosial');
+});
+Route::get('/pariwisata', function () {
+    return view('pages/form/pariwisata');
+});
+Route::get('/fasilitasumum', function () {
+    return view('pages/form/fasilitasumum');
+});
+Route::get('/inputolahraga', function () {
+    return view('pages/form/inputolahraga');
+});
+Route::get('/transportasi', function () {
+    return view('pages/form/transportasi');
+});
+Route::get('/kependudukan', function () {
+    return view('pages/form/kependudukan');
+});
+Route::get('/instansi', function () {
+    return view('pages/form/instansi');
+});
 // ###################################################################
+});
+
+
+// ###################============================####################
 
 
 
-//========================================================================
+
+
+//===============================================================
+//                             email                            =
+//===============================================================
+Route::post('/sendMail', 'MailController@sendMail');
+Route::get('/loginMail', function () {
+    return view('email/login');
+});
+
+// ##############################################################
+
+
+//===============================================================
+//                          lockscreen                          =
+//===============================================================
+Route::get('/lockscreen', function () {
+    return view('lockscreen');
+});
+Auth::routes();
+// ##############################################################
+
+
+//===============================================================
+//                            kmeans                            =
+//===============================================================
+
+Route::get('/dashboard-analysis', function () {
+    return view('kmeans/app');
+});
+Route::get('/kmeans','KmeansController@jsphp');
+Route::post('/kmeans-post','KmeansController@postjsphp');
+// ##############################################################
+
+
+
+
+
+//===============================================================
+//                          TWITTER                             =
+//===============================================================
+Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
+Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
+Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
+
+Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
+
+Route::post('destroytweet', ['as'=>'post.destroytweet','uses'=>'SocmedController@destroytweet']);
+
+Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
+
+Route::post('retweet', ['as'=>'post.retweet','uses'=>'SocmedController@retweet']);
+Route::post('unretweet', ['as'=>'post.unretweet','uses'=>'SocmedController@unretweet']);
+
+Route::post('like', ['as'=>'post.like','uses'=>'SocmedController@like']);
+Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
+
+Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
+Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
+
+Route::delete('/analysis/hapus/{id_twitter}', 'SocmedAnalysisController@delete_tweet')->middleware('auth')->name('analysis');
+Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
+
+
+
+//===============================================================
+//                          BLOG DAN EVENT                      =
+//===============================================================
+Route::resource('/events', 'EventController');
+
+Route::resource('/blogs', 'BlogController');
+Route::post('import_csv_file', 'BlogController@import_csv_file');
+
+//###############################################################
+
+
+
+
+
+//###############################################################
+//OPD
+Route::get('/dataadmin1', function () {
+    return view('pages/admin1');
+});
+Route::get('/lihatadmin', function () {
+    return view('opd/adminview');
+});
+// ##############################################################
+
+
+//===============================================================
 //Masih blom dipake
 //--------------------------------------------------
 Route::get('/blogform', function () {
     return view('pages/data/blogform');
 });
-
 Route::get('/eventform', function () {
     return view('pages/data/eventform');
 });
-
 Route::get('/ensiklopediaform', function () {
     return view('pages/data/ensiklopediaform');
 });
-
 Route::get('/broadcastform', function () {
     return view('pages/data/broadcastform');
 });
 //---------------------------------------------------
 
 
+
+
+
+//===============================================================
+//                   TAMPILAN PUBLIC                            =
+//===============================================================
+Route::get('/', 'FeedController@index');
+Route::get('/maps', 'MapsController@maps');
+Route::get('/blog', 'BlogController@viewblog');
+Route::get('/blog/{judul}', 'BlogController@viewblog2');
+Route::get('/event', 'EventController@viewevent');
+Route::get('/event/{nama_event}', 'EventController@viewevent2');
+Route::resource('complaint', 'ComplainController');
+Route::get('/information', 'InformasiController@index');
+Route::get('/faq', function () {
+    return view('faq');
+});
+#################################################################
+
+
+
 //===============================================================
 //                      SIPP-KLING                              =
 //===============================================================
-
-
 // Route::get('/sipp-kling/dashboard', 'SippKlingController@total_jumlah');
-
-
-
 // Route::get('/sipp-kling/dashboard-tabel', function(){
-
-
 // this is just for passing data
-// <<<<<<< HEAD
 Route::get('/sipp-kling-data-kelurahan/', 'SippKlingController@getDataKelurahan');
-
-// ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
 // this is just for passing data
 // FILTER
-
-
 // #######################################################################################################################
 
 Route::prefix('sipp-kling')->group(function() {

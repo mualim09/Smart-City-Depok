@@ -8,7 +8,7 @@ class Pasar extends Model
 {
     protected $table = 'pasars';
 
-    protected $primarykey ='id_pasar';
+    protected $primaryKey ='id_pasar';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

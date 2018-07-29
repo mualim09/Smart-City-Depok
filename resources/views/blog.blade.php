@@ -47,10 +47,10 @@ body {font-family: "Open Sans"}
     <div class="f_bold w3-display-middle w3-bar-block w3-center">
       <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BERANDA</a>
       <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">INFORMASI</a>
-      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">PETA</a>
+      <!-- <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">PETA</a> -->
       <a href="/blog" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BLOG</a>
       <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">ACARA</a>
-      <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">OPEN DATA</a>
+      <!-- <a href="/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">OPEN DATA</a> -->
       <a href="/faq" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">FAQ</a>
     </div>
     <div class="w3-display-bottommiddle f_nav2" style="margin-bottom:2em">
@@ -82,7 +82,7 @@ body {font-family: "Open Sans"}
             <div class="w3-container" style="padding: 0 2em">
               <h3 class="blog_contentjudul"><b>{{ $blog->judul }}</b></h3>
               <h5 class="blog_contenttime"><span class="w3-opacity">{{ $blog->created_at }}</span></h5>
-              <p> {{ str_limit($blog->isi, 150) }} </p>
+              <p> {!! str_limit($blog->isi, 150) !!} </p>
             </div>
             <div class="w3-container" style="padding: 0 2em">
             <p><a href="/blog/{{ $blog->judul }}"><button class="blog_contentbtn w3-button w3-white w3-border">Baca Selengkapnya</button></a></p>

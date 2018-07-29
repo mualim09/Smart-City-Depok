@@ -8,7 +8,7 @@ class Puskesmas extends Model
 {
     protected $table = 'puskesmass';
 
-    protected $primarykey ='id_puskesmas';
+    protected $primaryKey ='id_puskesmas';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

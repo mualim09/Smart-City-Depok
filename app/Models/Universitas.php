@@ -8,7 +8,7 @@ class Universitas extends Model
 {
      protected $table = 'universitass';
 
-    protected $primarykey ='id_universitas';
+    protected $primaryKey ='id_universitas';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

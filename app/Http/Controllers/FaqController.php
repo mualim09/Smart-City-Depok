@@ -14,11 +14,6 @@ use Response;
 class FaqController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
 
     /**
      * Display a listing of the resource.
@@ -50,13 +45,13 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'judul'              => 'required',
-            'isi'                => 'required'  
+            'question'              => 'required',
+            'answer'                => 'required'  
         ]);
 // =======================================================
         DB::table('content_faqs')->insert([
-            'judul'              => $request->judul,
-            'isi'                => $request->isi,
+            'question'              => $request->question,
+            'answer'                => $request->answer
         ]);
           return redirect('/faqs');
     }
@@ -93,8 +88,8 @@ class FaqController extends Controller
     public function update(Request $request, $id_faq)
     {
         $this->validate($request, [
-            'judul'         => 'required',
-            'isi'              => 'required'
+            'question'         => 'required',
+            'answer'              => 'required'
         ]);
 // // =======================================================
 
@@ -103,8 +98,8 @@ class FaqController extends Controller
             DB::table('content_faqs')
             ->where('id_faq', $id_faq)
             ->update([  
-            'judul'           => $request->judul,
-            'isi'                => $request->isi
+            'question'           => $request->question,
+            'answer'                => $request->answer
                     ]);
         
 

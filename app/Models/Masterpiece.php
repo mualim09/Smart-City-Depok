@@ -8,7 +8,7 @@ class Masterpiece extends Model
 {
     protected $table = 'penghargaans';
 
-    protected $primarykey ='id_penghargaan';
+    protected $primaryKey ='id_penghargaan';
 
     protected $fillable = [
     	'nama_peraih', 'nama_prestasi', 'instansi', 'deskripsi',

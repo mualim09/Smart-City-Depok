@@ -8,7 +8,7 @@ class Penduduk extends Model
 {
     protected $table = 'penduduk_kelurahans';
 
-    protected $primarykey ='id_penduduk';
+    protected $primaryKey ='id_penduduk';
 
     protected $fillable = [
     	'kecamatan', 'kelurahan', 'laki_laki', 'perempuan', 'total_penduduk_kel',  'id_data'

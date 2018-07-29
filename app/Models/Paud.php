@@ -8,7 +8,7 @@ class Paud extends Model
 {
     protected $table = 'pauds';
 
-    protected $primarykey ='id_paud';
+    protected $primaryKey ='id_paud';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

@@ -11,17 +11,12 @@ use App\Pengajuan;
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-
 
     /**
      * Show the application dashboard.
@@ -101,23 +96,20 @@ class HomeController extends Controller
         }
 
         //bounce rate
-        // $semuapengunjung = ModelVisitor::selectRaw("count(distinct ip) ip")->first();
-        // $pengunjungs = ModelVisitor::selectRaw("distinct ip")->get();
-        // $pengunjung1 = 0;
-        // foreach($pengunjungs as $pengunjungss)
-        // {
-        //     $pengunjung1halaman = ModelVisitor::selectRaw("count(distinct bounce_rate) bounce_rate")
-        //     ->where('ip', $pengunjungss->ip)
-        //     ->first();
-        //     if($pengunjung1halaman->bounce_rate==1)
-        //     {
-        //         $pengunjung1++;
-        //     }
-        // }
-        // $bouncerate = ($pengunjung1/$semuapengunjung->ip)*100;
-        // var_dump($pengunjung1);
-        // var_dump($semuapengunjung->ip);
-        // var_dump($bouncerate);
+        $semuapengunjung = ModelVisitor::selectRaw("count(distinct ip) ip")->first();
+        $pengunjungs = ModelVisitor::selectRaw("distinct ip")->get();
+        $pengunjung1 = 0;
+        foreach($pengunjungs as $pengunjungss)
+        {
+            $pengunjung1halaman = ModelVisitor::selectRaw("count(distinct bounce_rate) bounce_rate")
+            ->where('ip', $pengunjungss->ip)
+            ->first();
+            if($pengunjung1halaman->bounce_rate==1)
+            {
+                $pengunjung1++;
+            }
+        }
+        $bouncerate = ($pengunjung1/$semuapengunjung->ip)*100;
 
         return view('dashboard', compact('user', 'visitor', 'jumlahuser', 'complaint', 'arrayart', 'arrayartjml', 'arrayevent', 'arrayjmlevent', 'pengajuan', 'pengajuanjml', 'downloadapp', 'bouncerate'));
     }

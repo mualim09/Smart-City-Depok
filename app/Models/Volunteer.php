@@ -8,7 +8,7 @@ class Volunteer extends Model
 {
     protected $table = 'volunteers';
 
-    protected $primarykey ='id_volunteer';
+    protected $primaryKey ='id_volunteer';
 
     public $timestampss =false;
 }

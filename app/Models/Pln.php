@@ -8,7 +8,7 @@ class Pln extends Model
 {
      protected $table = 'plns';
 
-    protected $primarykey ='id_pln';
+    protected $primaryKey ='id_pln';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

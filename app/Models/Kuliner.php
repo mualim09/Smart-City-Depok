@@ -8,7 +8,7 @@ class Kuliner extends Model
 {
     protected $table = 'kuliners';
 
-    protected $primarykey ='id_kuliner';
+    protected $primaryKey ='id_kuliner';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

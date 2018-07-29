@@ -1,22 +1,5 @@
-{{-- {{$user}} --}}
-
- 
 @extends('layouts.app')
-
 @section('content')
-
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
-{{-- <script src="../../plugins/JQuery/jquery-2.2.3.min.js"></script> --}}
-<script src="../../jQuery/jquery-3.2.1.min.js"></script>
-{{-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
-
-{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script> --}}
-
-
-{{--    <script src="../../plugins/morris/morris.min.js"></script>
-<script src="../../plugins/morris/morris.js"></script> --}}
 
 <script src="../../plugins/chartjs/Chart.min.js"></script>
 <script src="../../plugins/chartjs/Chart.js"></script>
@@ -116,7 +99,7 @@ function persenwilayah($kota)
     <!-- ./col -->
     <div class="col-lg-3 col-xs-6">
       <!-- small box -->
-      <div class="small-box bg-green" data-toggle="modal" data-target="#complaint" style="cursor: pointer;">
+      <div class="small-box bg-green">
         <div class="inner">
           <h3 style="color: white">{{ $complaint }}</h3>
           <p style="color:white">Kritik dan Saran</p>
@@ -131,7 +114,7 @@ function persenwilayah($kota)
       <!-- small box -->
       <div class="small-box bg-orange">
         <div class="inner">
-          <h3 style="color: white">0<sup style="font-size: 20px">%</sup></h3>
+          <h3 style="color: white">{!! round($bouncerate, 2) !!}<sup style="font-size: 20px">%</sup></h3>
           <p style="color:white">Bounce Rate</p>
         </div>
         <div class="icon">
@@ -397,23 +380,6 @@ function persenwilayah($kota)
     </div>
   </div>
 
-  <!-- Modal Complaint -->
-  <div class="modal modal-success fade" id="complaint">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Kritik dan Saran</h4>
-        </div>
-        <div class="modal-body">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script type="text/javascript">
     new Chart(document.getElementById("statistikvisitor"), {

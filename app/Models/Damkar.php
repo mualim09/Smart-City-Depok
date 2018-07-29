@@ -8,7 +8,7 @@ class Damkar extends Model
 {
     protected $table = 'damkars';
 
-    protected $primarykey ='id_damkar';
+    protected $primaryKey ='id_damkar';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

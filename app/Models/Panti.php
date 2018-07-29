@@ -8,7 +8,7 @@ class Panti extends Model
 {
     protected $table = 'panti_asuhans';
 
-    protected $primarykey ='id_panti';
+    protected $primaryKey ='id_panti';
 
     protected $fillable = [
     	'nama_panti', 'nama_pj', 'deskripsi', 'alamat', 'kontak',

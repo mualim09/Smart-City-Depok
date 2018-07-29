@@ -8,7 +8,7 @@ class Rs extends Model
 {
     protected $table = 'rss';
 
-    protected $primarykey ='id_rs';
+    protected $primaryKey ='id_rs';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

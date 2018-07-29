@@ -6,7 +6,7 @@ use Antoineaugusti\LaravelSentimentAnalysis\SentimentAnalysis;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use PHPInsight\Sentiment;
-use Twitter;
+use Twitter; 
 use App\Repositories\SocmedRepository;
 use Carbon\Carbon;
 

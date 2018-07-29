@@ -8,7 +8,7 @@ class Tpu extends Model
 {
     protected $table = 'tpus';
 
-    protected $primarykey ='id_tpu';
+    protected $primaryKey ='id_tpu';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

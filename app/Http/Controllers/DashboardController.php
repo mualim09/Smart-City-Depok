@@ -14,10 +14,6 @@ use Response;
 class DashboardController extends Controller
 {
 
-    
-
-
-    
     /**
      * Display a listing of the resource.
      *

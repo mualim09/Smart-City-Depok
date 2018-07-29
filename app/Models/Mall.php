@@ -8,7 +8,7 @@ class Mall extends Model
 {
     protected $table = 'malls';
 
-    protected $primarykey ='id_mall';
+    protected $primaryKey ='id_mall';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

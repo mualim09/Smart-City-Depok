@@ -8,7 +8,7 @@ class Wisata extends Model
 {
     protected $table = 'tempat_wisatas';
 
-    protected $primarykey ='id_wisata';
+    protected $primaryKey ='id_wisata';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

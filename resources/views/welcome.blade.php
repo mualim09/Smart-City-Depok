@@ -52,10 +52,10 @@
     <div class="f_bold w3-display-middle w3-bar-block w3-center">
       <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BERANDA</a>
       <a href="/information" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">INFORMASI</a>
-      <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">PETA</a>
+      <!-- <a href="/maps" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">PETA</a> -->
       <a href="/blog" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">BLOG</a>
       <a href="/event" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">ACARA</a>
-      <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">OPEN DATA</a>
+      <!-- <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">OPEN DATA</a> -->
       <a href="/faq" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">FAQ</a>
     </div>
     <div class="w3-display-bottommiddle f_nav2" style="margin-bottom:2em">
@@ -94,7 +94,7 @@
         @endforeach
         <div class="w3-text-white prev_news" onclick="plusDivs(-1)">&#10094;</div>
         <div class="w3-text-white next_news" onclick="plusDivs(1)">&#10095;</div>
-        <a href="/blog"><button class="w3-right w3-button w3-orange w3-border w3-border-white w3-round-large w3-text-white" style="margin-top: 1em"> Ingin Melihat Berita Lebih Banyak Lagi? </button></a>
+        <a href="/blog"><button class="btn_selengkapnya w3-center w3-button w3-orange w3-border w3-border-white w3-round-large w3-text-white" style="margin-top: 1em"> Lihat Berita Lainnya </button></a>
       </div>
       <div class="w3-display-bottommiddle f_nav2" style="bottom: 2%;color:#f8981d;"> Didukung oleh 
         <img src="{{ URL::asset('img/logodepok.png') }}" style="width: 16px; height: 20px;">
@@ -153,7 +153,7 @@
             <img class="sponsor3" src="{{ URL::asset('img/logoopendata.png')}}">
           </div><br>
           <button onclick="document.getElementById('id01').style.display='block'" class="w3-btn w3-black w3-border w3-border-black w3-round-large tagline fresponsive" style="padding: 0px 16px;">Kritik dan Saran</button>
-          <button onclick="document.getElementById('id02').style.display='block'" class="w3-btn w3-black w3-border w3-border-black w3-round-large tagline fresponsive" style="padding: 0px 16px;">Subscribe?</button>
+          <button onclick="document.getElementById('id02').style.display='block'" class="w3-btn w3-black w3-border w3-border-black w3-round-large tagline fresponsive" style="padding: 0px 16px;">Berlangganan?</button>
         </div>
       </div>
     </div>
@@ -208,7 +208,7 @@
     </div>
   </div>
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
   <script  src="{{ URL::asset('js/parallax2.js') }}"></script>
   <script  src="{{ URL::asset('js/loader.js') }}"></script>

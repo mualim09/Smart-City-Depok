@@ -21,6 +21,7 @@ class BlogController extends AppBaseController
     public function __construct()
   {
       $this->middleware('auth', ['except' => ['viewblog', 'viewblog2', 'error']] );
+      $this->middleware('revalidate', ['except' => ['viewblog', 'viewblog2', 'error']] );
   }
 
     /**

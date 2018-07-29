@@ -8,7 +8,7 @@ class Taman extends Model
 {
     protected $table = 'tamans';
 
-    protected $primarykey ='id_taman';
+    protected $primaryKey ='id_taman';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

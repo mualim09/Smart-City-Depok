@@ -8,7 +8,7 @@ class Spaceroom extends Model
 {
     protected $table = 'space_rooms';
 
-    protected $primarykey ='id_sr';
+    protected $primaryKey ='id_sr';
 
     public $timestampss =true;
 

@@ -8,7 +8,7 @@ class Perpus extends Model
 {
     protected $table = 'perpustakaans';
 
-    protected $primarykey ='id_perpustakaan';
+    protected $primaryKey ='id_perpustakaan';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

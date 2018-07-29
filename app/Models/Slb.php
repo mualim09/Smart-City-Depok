@@ -8,7 +8,7 @@ class Slb extends Model
 {
    protected $table = 'pendidikan_khususs';
 
-    protected $primarykey ='id_slb';
+    protected $primaryKey ='id_slb';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

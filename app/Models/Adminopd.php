@@ -8,7 +8,7 @@ class Adminopd extends Model
 {
     protected $table = 'admin_opds';
 
-    protected $primarykey ='id_opd';
+    protected $primaryKey ='id_opd';
 
     protected $fillable = [
     	'nama_opd', 'nip', 'alamat', 'no_telp',

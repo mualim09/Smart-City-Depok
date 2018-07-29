@@ -8,7 +8,7 @@ class Tibadah extends Model
 {
     protected $table = 'tempat_ibadahs';
 
-    protected $primarykey ='id_ibadah';
+    protected $primaryKey ='id_ibadah';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

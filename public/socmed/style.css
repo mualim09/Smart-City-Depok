@@ -70,13 +70,10 @@
   padding-right: 0px;
 }
 
-<<<<<<< HEAD
 .btntl {
   padding: 0px 5px;
 }
 
-=======
->>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
 .btn-del {
   font-size: 14pt;
   color: #909090;
@@ -85,11 +82,8 @@
 
 .dropdel {
     left: auto;
-<<<<<<< HEAD
     right: calc(50% - 10px - 9px);
-=======
-    right: calc(20% - 10px - 9px);
->>>>>>> 351fb21c67ee9267d88f155a870e27e7f0aa0e57
+    min-width: 100px;
 }
 
 .btn-following{
@@ -588,8 +582,9 @@ ul{
   padding-left: 15px;
 }
 
-ul li{
-  list-style-image: url('../socmed/images/bullet.png');
+.dropdel li{
+  /*list-style-image: url('../socmed/images/bullet.png') !important;*/
+  list-style:none;
 }
 
 .line{
@@ -2871,4 +2866,9 @@ ul.contact li i{
 /* modified */
 li {
   list-style: none !important;
+}
+
+.friend-list .row > div {
+    vertical-align: top;
+    min-height: 330px;
 }

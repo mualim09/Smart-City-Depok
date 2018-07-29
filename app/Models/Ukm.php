@@ -8,7 +8,7 @@ class Ukm extends Model
 {
     protected $table = 'ukms';
 
-    protected $primarykey ='id_ukm';
+    protected $primaryKey ='id_ukm';
 
     protected $fillable = [
     	'nama_ukm', 'nama_owner_ukm', 'gambaran_umum', 'alamat', 'no_telp',

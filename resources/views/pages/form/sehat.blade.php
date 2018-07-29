@@ -314,7 +314,7 @@
                   <div class="box-body">
                     <div class="box-header with-border">
                       <div class="col-md-12">
-                            <form action="import_rs" method="post" enctype="multipart/form-data">
+                            <form action="import_klinik" method="post" enctype="multipart/form-data">
                               <input type="hidden" name="_token" value="{{{ csrf_token() }}}">
                               <button type="button" class="btn btn-file btn-flat" style="background-color: black; color:white">Import Data<input type="file" name="csv_file"></button>
                               <button type="submit" class="btn btn-flat" data-dismiss="modal"><i class="ion ion-checkmark"></i></button>
@@ -442,7 +442,7 @@
                   <div class="box-body">
                     <div class="box-header with-border">
                       <div class="col-md-12">
-                            <form action="import_rs" method="post" enctype="multipart/form-data">
+                            <form action="import_puskesmas" method="post" enctype="multipart/form-data">
                               <input type="hidden" name="_token" value="{{{ csrf_token() }}}">
                               <button type="button" class="btn btn-file btn-flat" style="background-color: black; color:white">Import Data<input type="file" name="csv_file"></button>
                               <button type="submit" class="btn btn-flat" data-dismiss="modal"><i class="ion ion-checkmark"></i></button>
@@ -570,7 +570,7 @@
                   <div class="box-body">
                     <div class="box-header with-border">
                       <div class="col-md-12">
-                            <form action="import_rs" method="post" enctype="multipart/form-data">
+                            <form action="import_bidan" method="post" enctype="multipart/form-data">
                               <input type="hidden" name="_token" value="{{{ csrf_token() }}}">
                               <button type="button" class="btn btn-file btn-flat" style="background-color: black; color:white">Import Data<input type="file" name="csv_file"></button>
                               <button type="submit" class="btn btn-flat" data-dismiss="modal"><i class="ion ion-checkmark"></i></button>

@@ -8,7 +8,7 @@ class Broadcast extends Model
 {
     protected $table = 'broadcasts';
 
-    protected $primarykey ='id_broadcast';
+    protected $primaryKey ='id_broadcast';
 
     public $timestampss =true;
 }

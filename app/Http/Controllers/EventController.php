@@ -16,6 +16,7 @@ class EventController extends Controller
   public function __construct()
   {
     $this->middleware('auth', ['except' => ['viewevent', 'viewevent2']] );
+    $this->middleware('revalidate', ['except' => ['viewevent', 'viewevent2']] );
   }
 
     /**

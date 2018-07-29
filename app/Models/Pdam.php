@@ -8,7 +8,7 @@ class Pdam extends Model
 {
     protected $table = 'pdams';
 
-    protected $primarykey ='id_pdam';
+    protected $primaryKey ='id_pdam';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

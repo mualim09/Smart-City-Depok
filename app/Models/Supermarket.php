@@ -8,7 +8,7 @@ class Supermarket extends Model
 {
     protected $table = 'supermarkets';
 
-    protected $primarykey ='id_supermarket';
+    protected $primaryKey ='id_supermarket';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

@@ -8,7 +8,7 @@ class Smp extends Model
 {
     protected $table = 'smps';
 
-    protected $primarykey ='id_smp';
+    protected $primaryKey ='id_smp';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

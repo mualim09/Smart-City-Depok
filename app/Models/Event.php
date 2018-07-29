@@ -8,7 +8,7 @@ class Event extends Model
 {
     protected $table = 'events';
 
-    protected $primarykey ='id_event';
+    protected $primaryKey ='id_event';
 
     // protected $fillable = ['nama_event', 'penyelenggara', 'deskripsi_event', 'image_event', ];
 

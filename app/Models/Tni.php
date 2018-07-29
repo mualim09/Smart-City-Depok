@@ -8,7 +8,7 @@ class Tni extends Model
 {
     protected $table = 'tnis';
 
-    protected $primarykey ='id_tni';
+    protected $primaryKey ='id_tni';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',

@@ -8,7 +8,7 @@ class Komunitas extends Model
 {
    protected $table = 'komunitass';
 
-    protected $primarykey ='id_komunitas';
+    protected $primaryKey ='id_komunitas';
 
     protected $fillable = [
     	'nama_komunitas', 'deskripsi_komunitas', 'kontak_komunitas',

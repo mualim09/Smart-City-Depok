@@ -40,6 +40,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+        'authrev' => [
+            \Illuminate\Auth\Middleware\Authenticate::class,
+            \App\Http\Middleware\RevalidateBackHistory::class,
+        ],
     ];
 
     /**
@@ -56,5 +60,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'revalidate' => \App\Http\Middleware\RevalidateBackHistory::class,
     ];
 }

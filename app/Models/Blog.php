@@ -18,7 +18,7 @@ class Blog extends Model
 {
     protected $table = 'blogs';
 
-    protected $primarykey ='id_blog';
+    protected $primaryKey ='id_blog';
 
     protected $fillable = [
     	'judul', 'isi', 'image'

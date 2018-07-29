@@ -8,7 +8,7 @@ class Kecamatan extends Model
 {
     protected $table = 'kecamatans';
 
-    protected $primarykey ='id_kecamatan';
+    protected $primaryKey ='id_kecamatan';
 
     protected $fillable = [
     	'nama_kecamatan', 'alamat', 'nama_camat', 'no_telp',

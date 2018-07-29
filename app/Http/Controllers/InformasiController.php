@@ -30,5 +30,7 @@ class InformasiController extends Controller
             'driver'         => $data->driver,
             'bounce_rate'    => 'Informasi'
         ]);
+
+      return view('/information'); 
     }
 }

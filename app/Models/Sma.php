@@ -8,7 +8,7 @@ class Sma extends Model
 {
     protected $table = 'smas';
 
-    protected $primarykey ='id_sma';
+    protected $primaryKey ='id_sma';
 
     protected $fillable = [
     	'nama_tempat', 'gambaran_umum', 'alamat', 'no_telp',
