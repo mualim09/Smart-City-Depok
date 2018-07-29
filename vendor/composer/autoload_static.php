@@ -571,6 +571,7 @@ class ComposerStaticInitf5f9595667a8b8f25db265a4aa7a2c8d
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
+        'App\\Http\\Middleware\\RevalidateBackHistory' => __DIR__ . '/../..' . '/app/Http/Middleware/RevalidateBackHistory.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Middleware\\sippKlingAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/sippKlingAuth.php',

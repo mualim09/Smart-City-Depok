@@ -226,10 +226,37 @@ Route::get('/kependudukan', function () {
 Route::get('/instansi', function () {
     return view('pages/form/instansi');
 });
+
+
+
+//===============================================================
+//                          TWITTER                             =
+//===============================================================
+Route::get('dashboard-socmed', 'SocmedController@twitterTimeLine')->middleware('auth')->name('home');
+Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
+Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
+
+Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
+
+Route::post('destroytweet', ['as'=>'post.destroytweet','uses'=>'SocmedController@destroytweet']);
+
+Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
+
+Route::post('retweet', ['as'=>'post.retweet','uses'=>'SocmedController@retweet']);
+Route::post('unretweet', ['as'=>'post.unretweet','uses'=>'SocmedController@unretweet']);
+
+Route::post('like', ['as'=>'post.like','uses'=>'SocmedController@like']);
+Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
+
+Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
+Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
+
+Route::delete('/analysis/hapus/{id_twitter}', 'SocmedAnalysisController@delete_tweet')->middleware('auth')->name('analysis');
+Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
 // ###################################################################
+
+//TUTUP DARI FUNGSI AUTH
 });
-
-
 // ###################============================####################
 
 
@@ -267,35 +294,6 @@ Route::get('/dashboard-analysis', function () {
 Route::get('/kmeans','KmeansController@jsphp');
 Route::post('/kmeans-post','KmeansController@postjsphp');
 // ##############################################################
-
-
-
-
-
-//===============================================================
-//                          TWITTER                             =
-//===============================================================
-Route::get('dashboard-socmed', 'SocmedController@twitterUserTimeLine')->middleware('auth')->name('home');
-Route::get('dashboard-socmed/profile', 'SocmedProfilController@profile')->middleware('auth')->name('profile');
-Route::get('dashboard-socmed/analysis', 'SocmedAnalysisController@analysis')->middleware('auth')->name('analysis');
-
-Route::post('tweet', ['as'=>'post.tweet','uses'=>'SocmedController@tweet']);
-
-Route::post('destroytweet', ['as'=>'post.destroytweet','uses'=>'SocmedController@destroytweet']);
-
-Route::post('reply', ['as'=>'post.reply','uses'=>'SocmedController@reply']);
-
-Route::post('retweet', ['as'=>'post.retweet','uses'=>'SocmedController@retweet']);
-Route::post('unretweet', ['as'=>'post.unretweet','uses'=>'SocmedController@unretweet']);
-
-Route::post('like', ['as'=>'post.like','uses'=>'SocmedController@like']);
-Route::post('unlike', ['as'=>'post.unlike','uses'=>'SocmedController@unlike']);
-
-Route::post('postfollow', ['as'=>'post.follow','uses'=>'SocmedProfilController@postfollow']);
-Route::post('postunfollow', ['as'=>'post.unfollow','uses'=>'SocmedProfilController@postunfollow']);
-
-Route::delete('/analysis/hapus/{id_twitter}', 'SocmedAnalysisController@delete_tweet')->middleware('auth')->name('analysis');
-Route::get('dashboard-socmed/coba', 'SocmedTestingController@test')->middleware('auth')->name('home');
 
 
 
